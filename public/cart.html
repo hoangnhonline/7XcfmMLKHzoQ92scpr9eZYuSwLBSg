@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Giỏ hàng</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+<meta property="og:url" itemprop="url" content="">
+<meta property="og:title" content="">
+<meta property="og:description" itemprop="description" content="">
+<meta property="og:image" content="">
+<meta name="RATING" content="GENERAL">
+<meta content="INDEX,FOLLOW" name="robots">
+<meta name="Googlebot-News" content="noindex, nofollow">
+<meta name="copyright" content="">
+<meta name="author" content="">
+<meta http-equiv="audience" content="General">
+<meta name="resource-type" content="Document">
+<meta name="distribution" content="Global">
+<meta name="revisit-after" content="1 days">
+<meta name="GENERATOR" content="">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+<link rel="stylesheet" type="text/css" href="assets/lib/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="assets/lib/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="assets/lib/select2/css/select2.min.css">
+<link rel="stylesheet" type="text/css" href="assets/lib/jquery.bxslider/jquery.bxslider.css">
+<link rel="stylesheet" type="text/css" href="assets/lib/owl.carousel/owl.carousel.css">
+<link rel="stylesheet" type="text/css" href="assets/lib/jquery-ui/jquery-ui.css">
+<link rel="stylesheet" type="text/css" href="assets/css/animate.css">
+<link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+<link rel="stylesheet" type="text/css" href="assets/css/responsive.css">
+<link rel="stylesheet" type="text/css" href="assets/css/custom.css">
+
+</head>
+<body>
+
+    <!-- MAIN HEADER -->
+    <div class="container main-header">
+        <div class="row">
+            <h1 class="col-xs-12 col-sm-2 logo">
+                <a href="#"><img alt="Kute Shop" src="assets/images/logo.png"></a>
+            </h1>
+            <div class="col-xs-12 col-sm-6 header-search-box">
+                <form class="form-inline">
+                      <div class="form-group input-serach">
+                        <input type="text"  placeholder="Nhập sản phẩm cần tìm">
+                      </div>
+                      <button type="submit" class="pull-right btn-search"></button>
+                </form>
+            </div>
+
+            <div id="cart-block" class="col-xs-6 col-sm-1 shopping-cart-box">
+                <a class="cart-link" href="order.html">
+                    <span class="notify notify-left">2</span>
+                </a>
+            </div><!-- end /.shopping-cart-box -->
+            
+            <div class="choose-user-login col-sm-2 col-xs-6">
+                <div class="dropdown">
+                    <a class="current-open" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">
+                      <p class="login-name"><span>Đăng nhập</span></p>
+                      <p>Tài khoản & đơn hàng</p>
+                    </a>
+                    <ul class="dropdown-menu mega_dropdown" role="menu">
+                        <li><a href="login.html">Đăng nhập</a></li>
+                        <li><a href="register.html">Đăng ký</a></li>
+                    </ul>
+                </div>
+            </div><!-- end choose-user-login -->
+        </div>
+        
+    </div>
+    
+    
+    <!-- END MANIN HEADER -->
+    <div id="nav-top-menu" class="nav-top-menu">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3" id="box-vertical-megamenus">
+                    <div class="box-vertical-megamenus">
+                    <h4 class="title">
+                        <span class="title-menu">DANH MỤC</span>
+                        <span class="btn-open-mobile pull-right"><i class="fa fa-bars"></i></span>
+                    </h4>
+                    <div class="vertical-menu-content is-home">
+                        <ul class="vertical-menu-list">
+                            <li><a href="#"><img class="icon-menu" alt="Funky roots" src="assets/data/1.png">Electronics</a></li>
+                            <li>
+                                <a class="parent" href="#"><img class="icon-menu" alt="Funky roots" src="assets/data/2.png">Sports &amp; Outdoors</a>
+                                <div class="vertical-dropdown-menu">
+                                    <div class="vertical-groups col-sm-12">
+                                        <div class="mega-group col-sm-4">
+                                            <h4 class="mega-group-header"><span>Tennis</span></h4>
+                                            <ul class="group-link-default">
+                                                <li><a href="#">Tennis</a></li>
+                                                <li><a href="#">Coats &amp; Jackets</a></li>
+                                                <li><a href="#">Blouses &amp; Shirts</a></li>
+                                                <li><a href="#">Tops &amp; Tees</a></li>
+                                                <li><a href="#">Hoodies &amp; Sweatshirts</a></li>
+                                                <li><a href="#">Intimates</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="mega-group col-sm-4">
+                                            <h4 class="mega-group-header"><span>Swimming</span></h4>
+                                            <ul class="group-link-default">
+                                                <li><a href="#">Dresses</a></li>
+                                                <li><a href="#">Coats &amp; Jackets</a></li>
+                                                <li><a href="#">Blouses &amp; Shirts</a></li>
+                                                <li><a href="#">Tops &amp; Tees</a></li>
+                                                <li><a href="#">Hoodies &amp; Sweatshirts</a></li>
+                                                <li><a href="#">Intimates</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="mega-group col-sm-4">
+                                            <h4 class="mega-group-header"><span>Shoes</span></h4>
+                                            <ul class="group-link-default">
+                                                <li><a href="#">Dresses</a></li>
+                                                <li><a href="#">Coats &amp; Jackets</a></li>
+                                                <li><a href="#">Blouses &amp; Shirts</a></li>
+                                                <li><a href="#">Tops &amp; Tees</a></li>
+                                                <li><a href="#">Hoodies &amp; Sweatshirts</a></li>
+                                                <li><a href="#">Intimates</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="mega-custom-html col-sm-12">
+                                            <a href="#"><img src="assets/data/banner-megamenu.jpg" alt="Banner"></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li><a href="#"><img class="icon-menu" alt="Funky roots" src="assets/data/3.png">Smartphone &amp; Tablets</a></li>
+                            <li><a href="#"><img class="icon-menu" alt="Funky roots" src="assets/data/4.png">Health &amp; Beauty Bags</a></li>
+                            <li>
+                                <a class="parent" href="#">
+                                <img class="icon-menu" alt="Funky roots" src="assets/data/5.png">Shoes &amp; Accessories</a>
+                                <div class="vertical-dropdown-menu">
+                                        <div class="vertical-groups col-sm-12">
+                                            <div class="mega-group col-sm-12">
+                                                <h4 class="mega-group-header"><span>Special products</span></h4>
+                                                <div class="row mega-products">
+                                                    <div class="col-sm-3 mega-product">
+                                                        <div class="product-avatar">
+                                                            <a href="#"><img src="assets/data/p10.jpg" alt="product1"></a>
+                                                        </div>
+                                                        <div class="product-name">
+                                                            <a href="#">Fashion hand bag</a>
+                                                        </div>
+                                                        <div class="product-price">
+                                                            <div class="new-price">$38</div>
+                                                            <div class="old-price">$45</div>
+                                                        </div>
+                                                        <div class="product-star">
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star-half-o"></i>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-3 mega-product">
+                                                        <div class="product-avatar">
+                                                            <a href="#"><img src="assets/data/p11.jpg" alt="product1"></a>
+                                                        </div>
+                                                        <div class="product-name">
+                                                            <a href="#">Fashion hand bag</a>
+                                                        </div>
+                                                        <div class="product-price">
+                                                            <div class="new-price">$38</div>
+                                                            <div class="old-price">$45</div>
+                                                        </div>
+                                                        <div class="product-star">
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star-half-o"></i>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-3 mega-product">
+                                                        <div class="product-avatar">
+                                                            <a href="#"><img src="assets/data/p12.jpg" alt="product1"></a>
+                                                        </div>
+                                                        <div class="product-name">
+                                                            <a href="#">Fashion hand bag</a>
+                                                        </div>
+                                                        <div class="product-price">
+                                                            <div class="new-price">$38</div>
+                                                            <div class="old-price">$45</div>
+                                                        </div>
+                                                        <div class="product-star">
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star-half-o"></i>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-3 mega-product">
+                                                        <div class="product-avatar">
+                                                            <a href="#"><img src="assets/data/p13.jpg" alt="product1"></a>
+                                                        </div>
+                                                        <div class="product-name">
+                                                            <a href="#">Fashion hand bag</a>
+                                                        </div>
+                                                        <div class="product-price">
+                                                            <div class="new-price">$38</div>
+                                                            <div class="old-price">$45</div>
+                                                        </div>
+                                                        <div class="product-star">
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star-half-o"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                            </li>
+                            <li><a href="#"><img class="icon-menu" alt="Funky roots" src="assets/data/6.png">Toys &amp; Hobbies</a></li>
+                            <li><a href="#"><img class="icon-menu" alt="Funky roots" src="assets/data/7.png">Computers &amp; Networking</a></li>
+                            <li><a href="#"><img class="icon-menu" alt="Funky roots" src="assets/data/8.png">Laptops &amp; Accessories</a></li>
+                            <li><a href="#"><img class="icon-menu" alt="Funky roots" src="assets/data/9.png">Jewelry &amp; Watches</a></li>
+                            <li><a href="#"><img class="icon-menu" alt="Funky roots" src="assets/data/10.png">Flashlights &amp; Lamps</a></li>
+                            <li>
+                                <a href="#">
+                                    <img class="icon-menu" alt="Funky roots" src="assets/data/11.png">
+                                    Cameras &amp; Photo
+                                </a>
+                            </li>
+                            <li class="cat-link-orther">
+                                <a href="#">
+                                    <img class="icon-menu" alt="Funky roots" src="assets/data/5.png">
+                                    Television
+                                </a>
+                            </li>
+                            <li class="cat-link-orther">
+                                <a href="#">
+                                    <img class="icon-menu" alt="Funky roots" src="assets/data/7.png">Computers &amp; Networking
+                                </a>
+                            </li>
+                            <li class="cat-link-orther">
+                                <a href="#">
+                                    <img class="icon-menu" alt="Funky roots" src="assets/data/6.png">
+                                    Toys &amp; Hobbies
+                                </a>
+                            </li>
+                            <li class="cat-link-orther">
+                            <a href="#"><img class="icon-menu" alt="Funky roots" src="assets/data/9.png">Jewelry &amp; Watches</a></li>
+                        </ul>
+                        <div class="all-category"><span class="open-cate">All Categories</span></div>
+                    </div>
+                </div>
+                </div>
+                <div id="main-menu" class="col-sm-9 main-menu">
+                    <nav class="navbar navbar-default">
+                        <div class="container-fluid">
+                            <div class="navbar-header">
+                                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                                    <i class="fa fa-bars"></i>
+                                </button>
+                                <a class="navbar-brand" href="#">MENU</a>
+                            </div>
+                            <div id="navbar" class="navbar-collapse collapse">
+                                <ul class="nav navbar-nav">
+                                    <li class="active"><a href="#">Home</a></li>
+                                    <li class="dropdown">
+                                        <a href="category.html" class="dropdown-toggle" data-toggle="dropdown">Fashion</a>
+                                        <ul class="dropdown-menu mega_dropdown" role="menu" style="width: 830px;">
+                                            <li class="block-container col-sm-3">
+                                                <ul class="block">
+                                                    <li class="img_container">
+                                                        <a href="#">
+                                                            <img class="img-responsive" src="assets/data/men.png" alt="sport">
+                                                        </a>
+                                                    </li>
+                                                    <li class="link_container group_header">
+                                                        <a href="#">MEN'S</a>
+                                                    </li>
+                                                    <li class="link_container"><a href="#">Skirts</a></li>
+                                                    <li class="link_container"><a href="#">Jackets</a></li>
+                                                    <li class="link_container"><a href="#">Tops</a></li>
+                                                    <li class="link_container"><a href="#">Scarves</a></li>
+                                                    <li class="link_container"><a href="#">Pants</a></li>
+                                                </ul>
+                                            </li>
+                                             <li class="block-container col-sm-3">
+                                                <ul class="block">
+                                                    <li class="img_container">
+                                                        <a href="#">
+                                                            <img class="img-responsive" src="assets/data/women.png" alt="sport">
+                                                        </a>
+                                                    </li>
+                                                    <li class="link_container group_header">
+                                                        <a href="#">WOMEN'S</a>
+                                                    </li>
+                                                    <li class="link_container"><a href="#">Skirts</a></li>
+                                                    <li class="link_container"><a href="#">Jackets</a></li>
+                                                    <li class="link_container"><a href="#">Tops</a></li>
+                                                    <li class="link_container"><a href="#">Scarves</a></li>
+                                                    <li class="link_container"><a href="#">Pants</a></li>
+                                                </ul>
+                                            </li>
+                                             <li class="block-container col-sm-3">
+                                                <ul class="block">
+                                                    <li class="img_container">
+                                                        <a href="#">
+                                                            <img class="img-responsive" src="assets/data/kid.png" alt="sport">
+                                                        </a>
+                                                    </li>
+                                                    <li class="link_container group_header">
+                                                        <a href="#">Kids</a>
+                                                    </li>
+                                                    <li class="link_container"><a href="#">Shoes</a></li>
+                                                    <li class="link_container"><a href="#">Clothing</a></li>
+                                                    <li class="link_container"><a href="#">Tops</a></li>
+                                                    <li class="link_container"><a href="#">Scarves</a></li>
+                                                    <li class="link_container"><a href="#">Accessories</a></li>
+                                                </ul>
+                                            </li>
+                                             <li class="block-container col-sm-3">
+                                                <ul class="block">
+                                                    <li class="img_container">
+                                                        <a href="#">
+                                                            <img class="img-responsive" src="assets/data/trending.png" alt="sport">
+                                                        </a>
+                                                    </li>
+                                                    <li class="link_container group_header">
+                                                        <a href="#">TRENDING</a>
+                                                    </li>
+                                                    <li class="link_container"><a href="#">Men's Clothing</a></li>
+                                                    <li class="link_container"><a href="#">Kid's Clothing</a></li>
+                                                    <li class="link_container"><a href="#">Women's Clothing</a></li>
+                                                    <li class="link_container"><a href="#">Accessories</a></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="category.html" class="dropdown-toggle" data-toggle="dropdown">Sports</a></li>
+                                    <li class="dropdown">
+                                        <a href="category.html" class="dropdown-toggle" data-toggle="dropdown">Foods</a>
+                                            <ul class="mega_dropdown dropdown-menu" style="width: 830px;">
+                                            <li class="block-container col-sm-3">
+                                                <ul class="block">
+                                                    <li class="link_container group_header">
+                                                        <a href="#">Asian</a>
+                                                    </li>
+                                                    <li class="link_container">
+                                                        <a href="#">Vietnamese Pho</a>
+                                                    </li>
+                                                    <li class="link_container">
+                                                        <a href="#">Noodles</a>
+                                                    </li>
+                                                    <li class="link_container">
+                                                        <a href="#">Seafood</a>
+                                                    </li>
+                                                    <li class="link_container group_header">
+                                                        <a href="#">Sausages</a>
+                                                    </li>
+                                                    <li class="link_container">
+                                                        <a href="#">Meat Dishes</a>
+                                                    </li>
+                                                    <li class="link_container">
+                                                        <a href="#">Desserts</a>
+                                                    </li>
+                                                    <li class="link_container">
+                                                        <a href="#">Tops</a>
+                                                    </li>
+                                                    <li class="link_container">
+                                                        <a href="#">Tops</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li class="block-container col-sm-3">
+                                                <ul class="block">
+                                                    <li class="link_container group_header">
+                                                        <a href="#">European</a>
+                                                    </li>
+                                                    <li class="link_container">
+                                                        <a href="#">Greek Potatoes</a>
+                                                    </li>
+                                                    <li class="link_container">
+                                                        <a href="#">Famous Spaghetti</a>
+                                                    </li>
+                                                    <li class="link_container">
+                                                        <a href="#">Famous Spaghetti</a>
+                                                    </li>
+                                                    <li class="link_container group_header">
+                                                        <a href="#">Chicken</a>
+                                                    </li>
+                                                    <li class="link_container">
+                                                        <a href="#">Italian Pizza</a>
+                                                    </li>
+                                                    <li class="link_container">
+                                                        <a href="#">French Cakes</a>
+                                                    </li>
+                                                    <li class="link_container">
+                                                        <a href="#">Tops</a>
+                                                    </li>
+                                                    <li class="link_container">
+                                                        <a href="#">Tops</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li class="block-container col-sm-3">
+                                                <ul class="block">
+                                                    <li class="link_container group_header">
+                                                        <a href="#">FAST</a>
+                                                    </li>
+                                                    <li class="link_container">
+                                                        <a href="#">Hamberger</a>
+                                                    </li>
+                                                    <li class="link_container">
+                                                        <a href="#">Pizza</a>
+                                                    </li>
+                                                    <li class="link_container">
+                                                        <a href="#">Noodles</a>
+                                                    </li>
+                                                    <li class="link_container group_header">
+                                                        <a href="#">Sandwich</a>
+                                                    </li>
+                                                    <li class="link_container">
+                                                        <a href="#">Salad</a>
+                                                    </li>
+                                                    <li class="link_container">
+                                                        <a href="#">Paste</a>
+                                                    </li>
+                                                    <li class="link_container">
+                                                        <a href="#">Tops</a>
+                                                    </li>
+                                                    <li class="link_container">
+                                                        <a href="#">Tops</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li class="block-container col-sm-3">
+                                                <ul class="block">
+                                                    <li class="img_container">
+                                                        <img src="assets/data/banner-topmenu.jpg" alt="Banner">
+                                                    </li>
+                                                </ul>
+                                            </li>
+
+                                        </ul>
+                                    </li>
+                                    <li class="dropdown">
+                                        <a href="category.html" class="dropdown-toggle" data-toggle="dropdown">Digital</a>
+                                        <ul class="dropdown-menu container-fluid">
+                                            <li class="block-container">
+                                                <ul class="block">
+                                                    <li class="link_container"><a href="#">Mobile</a></li>
+                                                    <li class="link_container"><a href="#">Tablets</a></li>
+                                                    <li class="link_container"><a href="#">Laptop</a></li>
+                                                    <li class="link_container"><a href="#">Memory Cards</a></li>
+                                                    <li class="link_container"><a href="#">Accessories</a></li>
+                                                </ul>
+                                            </li>
+                                        </ul> 
+                                    </li>
+                                    <li><a href="category.html">Furniture</a></li>
+                                    <li><a href="category.html">Jewelry</a></li>
+                                    <li><a href="category.html">Blog</a></li>
+                                </ul>
+                            </div><!--/.nav-collapse -->
+                        </div>
+                    </nav>
+                </div>
+            </div>
+            <!-- userinfo on top-->
+            <div id="form-search-opntop">
+            </div>
+            <!-- userinfo on top-->
+            <div id="user-info-opntop">
+            </div>
+            <!-- CART ICON ON MMENU -->
+            <div id="shopping-cart-box-ontop">
+                <i class="fa fa-shopping-cart"></i>
+                <div class="shopping-cart-box-ontop-content"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end header -->
+
+<!-- page wapper-->
+<div class="columns-container">
+    <div class="container" id="columns">
+        <!-- breadcrumb -->
+        <div class="breadcrumb clearfix">
+            <a class="home" href="#" title="Return to Home">Home</a>
+            <span class="navigation-pipe">&nbsp;</span>
+            <a href="#" title="Giỏ hàng">Giỏ hàng</a>
+        </div>
+        <!-- ./breadcrumb -->
+        
+        <!-- page heading-->
+        <h2 class="page-heading">
+            <span class="page-heading-title3">Giỏ hàng</span>
+        </h2>
+        <!-- ../page heading-->
+        
+        <div class="page-content container">
+          <!-- row -->
+          <div class="cart-page row">
+            
+            <!-- Center colunm-->
+            <div class="col-lg-8 col-md-12 cart-col-1">              
+
+                <div class="row title visible-md-block visible-lg-block">
+                    <div class="col-lg-8 col-md-8">
+                        <h5>Sản phẩm trong giỏ hàng</h5>
+                        <span class="badge">1</span>
+                    </div>
+                    <div class="col-lg-1 col-md-1"><h6>Giá mua</h6></div>
+                    <div class="col-lg-1 col-md-1"><h6>Số lượng</h6></div>
+                    <div class="col-lg-1 col-md-1"><h6>Giá giảm</h6></div>
+                    <div class="col-lg-1 col-md-1 end"><h6>Thành tiền</h6></div>
+                </div>
+                
+                <form id="shopping-cart">
+                  <div class="row shopping-cart-item">
+                    <div class="col-lg-3 col-md-2 col-xs-3">
+                      <p class="image"> <span class="sale">-47%</span> <img class="img-responsive" src="https://vcdn.tikicdn.com/cache/200x280/media/catalog/product/2/6/2637.jpg"> </p>
+                    </div>
+                    <div class="col-lg-5 col-md-6 c2 col-xs-9">
+                      <input type="hidden" class="hidden-quantity" name="quantity[35456547]" value="1">
+                      <p class="name"> <a href="" target="_blank">Thẻ Nhớ Kingston MicroSD 32GB Class 10 (Kèm Adapter) <img class="img24h" src="./Giỏ hàng _ Tiki.vn_files/icon-24h.svg" title="Hỗ trợ giao hàng trong 24h tại TPHCM" alt="24h"> </a> </p>
+                      <p class="out-stock" data-js-stock="131017"></p>
+                      <div class="row visible-xs-block visible-sm-block">
+                        <div class="col-xs-6 col-sm-8">
+                          <p class="price">239.000&nbsp;₫</p>
+                          <p class="price2">450.000&nbsp;₫</p>
+                        </div>
+                        <div class="col-xs-6 col-sm-4 cart-col-3 quantity-block">
+                          <select class="form-control js-quantity-select quantity js-quantity-product">
+                            <option selected="" value="1"> 1 </option>
+                            <option value="2"> 2 </option>
+                            <option value="3"> 3 </option>
+                            <option value="4"> 4 </option>
+                            <option value="5"> 5 </option>
+                            <option value="6"> 6 </option>
+                            <option value="7"> 7 </option>
+                            <option value="8"> 8 </option>
+                            <option value="9"> 9 </option>
+                            <option value="10">10+</option>
+                          </select>
+                        </div>
+                      </div>
+                      <p class="action">
+                        <a href="javascript:void(0);" class="btn btn-link btn-item-delete" data-sku="5005443303225" data-title="Thẻ Nhớ Kingston MicroSD 32GB Class 10 (Kèm Adapter)" data-item-id="35456547" data-product-id="131017"> Xóa </a> 
+                        <a href="javascript:void(0);" class="btn btn-link btn-save-for-later" data-sku="5005443303225" data-title="Thẻ Nhớ Kingston MicroSD 32GB Class 10 (Kèm Adapter)" data-product-id="131017"> Để dành mua sau </a> 
+                      </p>
+                    </div>
+                    <div class="col-lg-1 col-md-1 visible-md-block visible-lg-block">
+                      <p class="price">239.000&nbsp;₫</p>
+                      <p class="price2">450.000&nbsp;₫</p>
+                    </div>
+                    <div class="col-lg-1 col-md-1 visible-md-block visible-lg-block quantity-block"> 
+                      <!-- If product qty < 10, show select options -->
+                      <select data-title="Thẻ Nhớ Kingston MicroSD 32GB Class 10 (Kèm Adapter)" data-sku="5005443303225" class="form-control js-quantity-select quantity js-quantity-product">
+                        <option selected="" value="1"> 1 </option>
+                        <option value="2"> 2 </option>
+                        <option value="3"> 3 </option>
+                        <option value="4"> 4 </option>
+                        <option value="5"> 5 </option>
+                        <option value="6"> 6 </option>
+                        <option value="7"> 7 </option>
+                        <option value="8"> 8 </option>
+                        <option value="9"> 9 </option>
+                        <option value="10">10+</option>
+                      </select>
+                    </div>
+                    <div class="col-lg-1 col-md-1 visible-md-block visible-lg-block">
+                      <p class="price">0&nbsp;₫</p>
+                    </div>
+                    <div class="col-lg-1 col-md-1 visible-md-block visible-lg-block end">
+                      <p class="price3">239.000&nbsp;₫</p>
+                    </div>
+                  </div><!-- end /.shopping-cart-item -->
+                  
+                  <div class="row shopping-cart-item">
+                    <div class="col-lg-3 col-md-2 col-xs-3">
+                      <p class="image"> <span class="sale">-47%</span> <img class="img-responsive" src="https://vcdn.tikicdn.com/cache/200x280/media/catalog/product/2/6/2637.jpg"> </p>
+                    </div>
+                    <div class="col-lg-5 col-md-6 c2 col-xs-9">
+                      <input type="hidden" class="hidden-quantity" name="quantity[35456547]" value="1">
+                      <p class="name"> <a href="" target="_blank">Thẻ Nhớ Kingston MicroSD 32GB Class 10 (Kèm Adapter) <img class="img24h" src="./Giỏ hàng _ Tiki.vn_files/icon-24h.svg" title="Hỗ trợ giao hàng trong 24h tại TPHCM" alt="24h"> </a> </p>
+                      <p class="out-stock" data-js-stock="131017"></p>
+                      <div class="row visible-xs-block visible-sm-block">
+                        <div class="col-xs-6 col-sm-8">
+                          <p class="price">239.000&nbsp;₫</p>
+                          <p class="price2">450.000&nbsp;₫</p>
+                        </div>
+                        <div class="col-xs-6 col-sm-4 cart-col-3 quantity-block">
+                          <select class="form-control js-quantity-select quantity js-quantity-product">
+                            <option selected="" value="1"> 1 </option>
+                            <option value="2"> 2 </option>
+                            <option value="3"> 3 </option>
+                            <option value="4"> 4 </option>
+                            <option value="5"> 5 </option>
+                            <option value="6"> 6 </option>
+                            <option value="7"> 7 </option>
+                            <option value="8"> 8 </option>
+                            <option value="9"> 9 </option>
+                            <option value="10">10+</option>
+                          </select>
+                        </div>
+                      </div>
+                      <p class="action">
+                        <a href="javascript:void(0);" class="btn btn-link btn-item-delete" data-sku="5005443303225" data-title="Thẻ Nhớ Kingston MicroSD 32GB Class 10 (Kèm Adapter)" data-item-id="35456547" data-product-id="131017"> Xóa </a> 
+                        <a href="javascript:void(0);" class="btn btn-link btn-save-for-later" data-sku="5005443303225" data-title="Thẻ Nhớ Kingston MicroSD 32GB Class 10 (Kèm Adapter)" data-product-id="131017"> Để dành mua sau </a> 
+                      </p>
+                    </div>
+                    <div class="col-lg-1 col-md-1 visible-md-block visible-lg-block">
+                      <p class="price">239.000&nbsp;₫</p>
+                      <p class="price2">450.000&nbsp;₫</p>
+                    </div>
+                    <div class="col-lg-1 col-md-1 visible-md-block visible-lg-block quantity-block"> 
+                      <!-- If product qty < 10, show select options -->
+                      <select data-title="Thẻ Nhớ Kingston MicroSD 32GB Class 10 (Kèm Adapter)" data-sku="5005443303225" class="form-control js-quantity-select quantity js-quantity-product">
+                        <option selected="" value="1"> 1 </option>
+                        <option value="2"> 2 </option>
+                        <option value="3"> 3 </option>
+                        <option value="4"> 4 </option>
+                        <option value="5"> 5 </option>
+                        <option value="6"> 6 </option>
+                        <option value="7"> 7 </option>
+                        <option value="8"> 8 </option>
+                        <option value="9"> 9 </option>
+                        <option value="10">10+</option>
+                      </select>
+                    </div>
+                    <div class="col-lg-1 col-md-1 visible-md-block visible-lg-block">
+                      <p class="price">0&nbsp;₫</p>
+                    </div>
+                    <div class="col-lg-1 col-md-1 visible-md-block visible-lg-block end">
+                      <p class="price3">239.000&nbsp;₫</p>
+                    </div>
+                  </div><!-- end /.shopping-cart-item -->
+                  
+                </form>
+                
+                <div class="row last">
+                    <div class="col-lg-12 col-md-12">
+                        <div class="all-new">
+                            <a class="btn btn-default btn-gradient" href="/"><i class="fa fa-angle-left"></i> Tiếp tục mua sắm</a>
+                        </div>
+                    </div>
+                </div>
+                                
+            </div>
+            <!-- ./ Center colunm -->
+            
+            <!-- Left colunm -->
+            <div class="col-lg-4 col-md-12 cart-col-2">
+                <div id="right-affix" class="affix-top">
+                  <div class="visible-lg-block">
+                    <div class="panel panel-default fee">
+                      <div class="panel-body">
+                        <p class="total">Tổng cộng: <span>1.159.000&nbsp;₫</span></p>
+                        <p class="total2">Thành tiền: <span>1.159.000&nbsp;₫ </span></p>
+                        <p class="text-right"> <i>(Đã bao gồm VAT)</i> </p>
+                      </div>
+                    </div>
+                    <button type="button" class="btn btn-large btn-block btn-default btn-checkout" onclick="location.href=&#39;/checkout/shipping&#39;;return false;"> TIẾN HÀNH ĐẶT HÀNG </button>
+                    
+                    <div class="popover bottom tikixu">
+                      <div class="arrow"></div>
+                      <div class="popover-content">
+                        <p class="p24h" no-border=""> <img src="https://vcdn.tikicdn.com/assets/img/icon-svg/icon-24h.svg" alt="24" height="20" width="34">Đơn hàng có thể được giao trong vòng <a href="/giao-hang-24h" target="_blank" title="Xem chi tiết">24 giờ</a> đến các <a title="" data-original-title="" href="javascript:void(0);" class="view-more-dist" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Quận nội thành bao gồm các quận số (trừ Q9, Q12), Bình Thạnh, Gò Vấp, Phú Nhuận, Tân Bình, Tân Phú.">quận nội thành</a> tại TP Hồ Chí Minh. </p>
+                      </div>
+                    </div>                    
+                  </div>
+                  <div class="row">
+                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-12">
+                      <div class="panel-group coupon" id="accordion">
+                        <div class="panel panel-default">
+                          <div class="panel-heading">
+                            <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#accordion" href="https://tiki.vn/checkout/cart/#collapseOne3" class="" aria-expanded="true"> Mã giảm giá / Quà tặng</a> </h4>
+                          </div>
+                          <div id="collapseOne3" class="panel-collapse collapse in" aria-expanded="true">
+                            <div class="panel-body">
+                              <div class="input-group">
+                                <input id="coupon" placeholder="Nhập ở đây.." type="text" class="form-control" value="">
+                                <span class="input-group-btn">
+                                <button class="btn btn-default btn-coupon" type="button">Đồng ý</button>
+                                </span> </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-6 visible-sm-block visible-md-block is-no-pl">
+                      <div class="panel panel-default fee">
+                        <div class="panel-body">
+                          <p class="total">Tổng cộng: <span>1.159.000&nbsp;₫</span></p>
+                          <p class="total2">Thành tiền: <span>1.159.000&nbsp;₫ </span></p>
+                          <p class="text-right"> <i>(Đã bao gồm VAT)</i> </p>
+                        </div>
+                      </div>
+                      <div class="visible-sm-block visible-md-block">
+                        <button type="button" class="btn btn-large btn-block btn-default btn-checkout" onclick="location.href=&#39;/checkout/shipping&#39;;return false;"> TIẾP TỤC </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="visible-xs-block">
+                    <div class="panel panel-default fee">
+                      <div class="panel-body">
+                        <p class="total">Tổng cộng: <span>1.159.000&nbsp;₫</span></p>
+                        <p class="total2">Thành tiền: <span>1.159.000&nbsp;₫ </span></p>
+                        <p class="text-right"> <i>(Đã bao gồm VAT)</i> </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="visible-xs-block">
+                    <button type="button" class="btn btn-large btn-block btn-default btn-checkout" onclick="location.href=&#39;/checkout/shipping&#39;;return false;"> TIẾN HÀNH ĐẶT HÀNG </button>
+                  </div>
+                </div>
+            </div>
+            <!-- ./left colunm -->
+            
+        </div><!-- ./row-->             
+        </div><!-- /.page-content -->   
+    </div>
+</div>
+<!-- ./page wapper-->
+
+<!-- Footer -->
+<footer id="footer">
+     <div class="container">
+            
+            <!-- servives -->
+            <div class="service">
+                <div class="col-xs-12 col-sm-4 service-item">
+                    <div class="icon">
+                        <img alt="services" src="assets/data/s1.png" />
+                    </div>
+                    <div class="info">
+                        <h3><a href="#">CAM KẾT 100% CHÍNH HÃNG</a></h3>
+                        <span>Nguồn gốc, xuất xứ sản phẩm rõ ràng</span>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-4 service-item">
+                    <div class="icon">
+                        <img alt="services" src="assets/data/s2.png" />
+                    </div>
+                    <div class="info">
+                        <h3><a href="#">ĐÓNG GÓI CẨN THẬN</a></h3>
+                        <span>Đảm bảo độ an toàn cho sản phẩm</span>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-4 service-item">
+                    <div class="icon">
+                        <img alt="services" src="assets/data/s3.png" />
+                    </div>
+                    
+                    <div class="info" >
+                        <h3><a href="#">XEM HÀNG TRƯỚC KHI NHẬN</a></h3>
+                        <span>Quyền lợi tối đa cho khách hàng</span>
+                    </div>
+                </div>
+            </div>
+            <!-- end services -->
+            
+            <!-- introduce-box -->
+            <div id="introduce-box" class="row">
+                <div class="col-md-3">
+                    <div id="address-box">
+                        <a href="#"><img src="assets/images/logo.png" alt=""></a>
+                        <div id="address-list">
+                            <div class="tit-name">Showroom:</div>
+                            <div class="tit-contain">240 Võ Văn Ngân, P.Bình Thọ, Q.Thủ Đức</div>
+                            <div class="tit-name">Hotline:</div>
+                            <div class="tit-contain">1900 636 975</div>
+                            <div class="tit-name">Email:</div>
+                            <div class="tit-contain">chamsoc@icho.vn</div>
+                        </div>
+                    </div> 
+                </div>
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div class="introduce-title">Thông tin công ty</div>
+                            <ul id="introduce-company"  class="introduce-list">
+                                <li><a href="#">Giới thiệu</a></li>
+                                <li><a href="#">Khuyến mãi</a></li>
+                                <li><a href="#">Sản phẩm mới</a></li>
+                                <li><a href="#">Tuyển dụng</a></li>
+                                <li><a href="#">Liên hệ</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="introduce-title">HỖ TRỢ KHÁCH HÀNG</div>
+                            <ul id = "introduce-Account" class="introduce-list">
+                                <li><a href="#">Hướng dẫn mua hàng</a></li>
+                                <li><a href="#">Bảo mật thông tin</a></li>
+                                <li><a href="#">Góp ý, khiếu nại</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="introduce-title">CHÍNH SÁCH MUA HÀNG</div>
+                            <ul id = "introduce-support"  class="introduce-list">
+                                <li><a href="#">Phương thức thanh toán</a></li>
+                                <li><a href="#">Hình thức vận chuyển</a></li>
+                                <li><a href="#">Chính sách bảo hành</a></li>
+                                <li><a href="#">Chính sách đổi trả</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div id="contact-box">
+                        <div class="introduce-title">Đăng ký nhận tin khuyến mãi</div>
+                        <div class="input-group" id="mail-box">
+                          <input type="text" placeholder="Email của bạn"/>
+                          <span class="input-group-btn">
+                            <button class="btn btn-default" type="button">OK</button>
+                          </span>
+                        </div><!-- /input-group -->
+                        <div class="introduce-title">Kết nối</div>
+                        <div class="social-link">
+                            <a href="#"><i class="fa fa-facebook"></i></a>
+                            <a href="#"><i class="fa fa-pinterest-p"></i></a>
+                            <a href="#"><i class="fa fa-vk"></i></a>
+                            <a href="#"><i class="fa fa-twitter"></i></a>
+                            <a href="#"><i class="fa fa-google-plus"></i></a>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div><!-- /#introduce-box -->
+            
+            <div id="footer-bottom-box" class="row">
+              <div class="col-sm-6">
+                <h3 class="tit">Công ty cổ phần I.P.L</h3>
+                <div id="address">
+                    <p>Văn phòng: 216 Hoàng Văn Thu, P.4, Q.Tân Bình, TP. Hồ Chí Minh</p>
+                    <p>GPĐKKD số 0310140399 do Sở KHĐT TP.HCM cấp ngày 02/07/2010 </p>
+                    <p>Chịu trách nhiệm nội dung: Nguyễn Đình Quốc Tú</p>
+                </div>
+              </div>
+              <div class="col-sm-6 bo-cong-thuong">
+                <a href="http://www.online.gov.vn/CustomWebsiteDisplay.aspx?DocId=24392" target="_blank"><img style="height: 60px; width: 160px;" src="assets/images/bo-cong-thuong.png" alt="Chứng nhận sàn giao dịch TMDT"> </a>
+              </div>
+            </div>
+
+            <div id="footer-menu-box">
+                <p class="text-center">Copyrights &#169; 2016 Icho.vn. All Rights Reserved.</p>
+            </div><!-- /#footer-menu-box -->
+        </div> 
+</footer>
+
+<a href="#" class="scroll_top" title="Scroll to Top" style="display: inline;">Scroll</a>
+<!-- Script-->
+<script type="text/javascript" src="assets/lib/jquery/jquery-1.11.2.min.js"></script>
+<script type="text/javascript" src="assets/lib/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="assets/lib/select2/js/select2.min.js"></script>
+<script type="text/javascript" src="assets/lib/jquery.bxslider/jquery.bxslider.min.js"></script>
+<script type="text/javascript" src="assets/lib/owl.carousel/owl.carousel.min.js"></script>
+<script type="text/javascript" src="assets/lib/jquery.countdown/jquery.countdown.min.js"></script>
+<script type="text/javascript" src="assets/lib/jquery.elevatezoom.js"></script>
+
+<script type="text/javascript" src="assets/lib/jquery-ui/jquery-ui.min.js"></script>
+
+<script type="text/javascript" src="assets/lib/fancyBox/jquery.fancybox.js"></script>
+
+<script type="text/javascript" src="assets/js/theme-script.js"></script>
+
+</body>
+</html>
