@@ -61,6 +61,9 @@ class HomeController extends Controller
 
 
     }
+    public function loadSlider(){
+        return view('frontend.home.ajax-slider');
+    }
     public function index(Request $request)
     {  
         $productArr = [];

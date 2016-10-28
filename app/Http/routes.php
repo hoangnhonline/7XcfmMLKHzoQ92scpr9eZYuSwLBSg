@@ -214,6 +214,7 @@ Route::group(['namespace' => 'Frontend'], function()
     Route::get('code/sang-map/seo-link', ['as' => 'seo-link', 'uses' => 'HomeController@showLink']);   
 
     Route::get('/', ['as' => 'home', 'uses' => 'HomeController@index']);
+    Route::get('/load-slider', ['as' => 'load-slider', 'uses' => 'HomeController@loadSlider']);
     Route::get('/chuong-trinh-khuyen-mai', ['as' => 'chuong-trinh-khuyen-mai', 'uses' => 'EventController@index']);
     Route::get('event/{slug}', ['as' => 'detail-event', 'uses' => 'EventController@detail']);
     Route::get('/may-bo-van-phong', ['as' => 'may-bo-van-phong', 'uses' => 'LapRapController@index']);

@@ -84,6 +84,29 @@
       <script src="{{ URL::asset('assets/js/icheck.min.js') }}"></script>
       <script type="text/javascript" src="{{ URL::asset('assets/js/lazy.js') }}"></script>
       <script type="text/javascript" src="{{ URL::asset('assets/js/theme-script.js') }}"></script>
+      @if(\Request::route()->getName() == "home")
+      <script type="text/javascript">
+          $(document).ready(function(){
+              $.ajax({
+                type: "GET",
+                url: '{{ route("load-slider")}}',              
+                success: function(data) {
+                    $('#home-slider').html(data);
+                    var slider = $('#contenhomeslider').bxSlider(
+                        {
+                            nextText:'<i class="fa fa-angle-right"></i>',
+                            prevText:'<i class="fa fa-angle-left"></i>',
+                            auto: true,
+                        }
+
+                    );
+                    
+                }              
+              });
+          });
+
+      </script>
+      @endif
       @yield('javascript')      
       <input type="hidden" id="route-ajax-login-fb" value="{{route('ajax-login-by-fb')}}">
       <input type="hidden" id="route-cap-nhat-thong-tin" value="{{ route('cap-nhat-thong-tin') }}">
