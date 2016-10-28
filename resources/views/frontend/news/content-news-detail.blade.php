@@ -9,7 +9,7 @@
             @if($detail->cate_id == 1)
             <a class="home" href="{{ route('news-list', 'tin-tuc') }}" title="Tin tức">Tin tức</a>            
             @elseif($detail->cate_id == 2)
-            <a class="home" href="{{ route('news-list', 'khuyen-mai') }}" title="Khuyến mãi">Khuyến mãi</a>        
+            <a class="home" href="{{ route('chuong-trinh-khuyen-mai') }}" title="Khuyến mãi">Khuyến mãi</a>        
             @elseif($detail->cate_id == 3)
             <a class="home" href="{{ route('news-list', 'tuyen-dung') }}" title="Tuyển dụng">Tuyển dụng</a>
             @else

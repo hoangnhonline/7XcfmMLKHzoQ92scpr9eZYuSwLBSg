@@ -38,11 +38,7 @@
                   </div>
                   <!-- ./block category  -->
                   <!-- Banner silebar -->
-                  <div class="block left-module">
-                      <div class="banner-opacity">
-                          <a href="#"><img src="{{ URL::asset('assets/data/slide-left.jpg') }}" alt="ads-banner"></a>
-                      </div>
-                  </div>
+                  @include('frontend.partials.banner-slidebar')
                   <!-- ./Banner silebar -->
             </div> 
             <div class="center_column col-xs-12 col-sm-9" id="center_column">

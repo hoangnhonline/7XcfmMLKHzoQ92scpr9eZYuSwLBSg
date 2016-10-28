@@ -17,17 +17,15 @@
         <!-- ./breadcrumb -->
         <!-- page heading-->
         <h1 class="page-heading">
-            <span class="page-heading-title2">Liên hệ</span>
+            <span class="page-heading-title2">THÔNG TIN Liên hệ</span>
         </h1>
         <!-- ../page heading-->
         <div id="contact" class="page-content page-contact">
             <div id="message-box-conact"></div>
             <div class="row">
                 
-                <div class="col-sm-6">
-                	
-	               
-                    <h3 class="page-subheading">ICHO.VN HÂN HẠNH PHỤC VỤ QUÝ KHÁCH</h3>
+                <div class="col-sm-6">	               
+                    
                     @if(Session::has('message'))
 	                <p class="alert alert-info" >{{ Session::get('message') }}</p>
 	                @endif
@@ -41,12 +39,12 @@
 	                @endif	
                     <div class="contact-form-box">
                         <div class="form-selector">
-                            <label>Quý khách đang quan tâm <span class="required">*</span></label>
+                            <label>Quý khách quan tâm <span class="required">*</span></label>
                             <select class="form-control input-sm" id="type" name="type">                                
-                                <option value="1" {{ old('type') == 1 ? "selected" : "" }}>Tư vấn</option>
-                                <option value="2" {{ old('type') == 2 ? "selected" : "" }}>Khiếu nại - Phản ánh</option>
-                                <option value="3" {{ old('type') == 3 ? "selected" : "" }}>Hợp tác với iCho.vn</option>
-                                <option value="4" {{ old('type') == 4 ? "selected" : "" }}>Góp ý cải tiến</option>
+                                <option value="1" {{ old('type') == 1 ? "selected" : "" }}>Tư vấn mua hàng</option>
+                                <option value="2" {{ old('type') == 2 ? "selected" : "" }}>Phản ánh dịch vụ</option>
+                                <option value="3" {{ old('type') == 3 ? "selected" : "" }}>Hợp tác</option>
+                                <option value="4" {{ old('type') == 4 ? "selected" : "" }}>Góp ý</option>
                             </select>                            
                         </div>
                         <div class="form-selector">
@@ -76,12 +74,12 @@
                     </div>
                     </form>
                 </div>
-                <div class="col-xs-12 col-sm-6" id="contact_form_map">
-                    <h3 class="page-subheading" style="margin-bottom:10px">THÔNG TIN LIÊN HỆ</h3>
+                <div class="col-xs-12 col-sm-6" id="contact_form_map">                    
                     <div class="content">
-                        <p>Showroom iCho.vn – Chợ máy tính và điện thoại</p>
-                        <p>240 Võ Văn Ngân, phường, Bình Thọ, quận Thủ Đức, TP.HCM</p>
-                        <p>Tổng đài tư vấn, hỗ trợ khách hàng (7h30 đến 20h): <span class="tel">1900 63 69 75</span></p>
+                        <h4 style="margin-bottom:10px">Showroom iCho.vn – Chợ máy tính và điện thoại</h4>
+                        <p>240 Võ Văn Ngân, Bình Thọ, Thủ Đức</p>
+                        <p>Tổng đài: <span class="tel">1900 63 69 75</span></p>
+                        <p>Thời gian hoạt động: <span class="tel">07h30 đến 20h00</span></p>
                         <p>Email: <a href="mailto:chamsoc@icho.vn">chamsoc@icho.vn</a></p>
                     </div>
                     <br/> 

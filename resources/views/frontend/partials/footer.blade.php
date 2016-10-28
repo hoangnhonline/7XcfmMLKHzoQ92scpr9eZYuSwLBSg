@@ -83,7 +83,7 @@
                             <div class="introduce-title">Thông tin công ty</div>
                             <ul id="introduce-company"  class="introduce-list">
                                 <li><a href="{{ route('danh-muc-cha', 'gioi-thieu') }}">Giới thiệu</a></li>
-                                <li><a href="{{ route('news-list', 'khuyen-mai') }}">Khuyến mãi</a></li>
+                                <li><a href="{{ route('chuong-trinh-khuyen-mai') }}">Khuyến mãi</a></li>
                                 <li><a href="#">Sản phẩm mới</a></li>
                                 <li><a href="{{ route('news-list', 'tuyen-dung') }}">Tuyển dụng</a></li>
                                 <li><a href="{{ route('contact') }}">Liên hệ</a></li>

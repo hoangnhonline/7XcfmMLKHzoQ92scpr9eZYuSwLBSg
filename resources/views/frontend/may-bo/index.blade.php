@@ -43,14 +43,7 @@
                     </div>
                 </div>
               
-                <div class="col-left-slide left-module">
-                    <ul class="owl-carousel owl-style2" data-loop="true" data-nav = "false" data-margin = "30" data-autoplayTimeout="1000" data-autoplayHoverPause = "true" data-items="1" data-autoplay="true">
-                        <li><a href="#"><img src="{{ URL::asset('assets/data/slide-left.jpg') }}" alt="slide-left"></a></li>
-                        <li><a href="#"><img src="{{ URL::asset('assets/data/slide-left.jpg') }}" alt="slide-left"></a></li>
-                        <li><a href="#"><img src="{{ URL::asset('assets/data/slide-left.jpg') }}" alt="slide-left"></a></li>
-                    </ul>
-
-                </div>
+                @include('frontend.partials.banner-slidebar')
              
             </div>
             <!-- ./left colunm -->

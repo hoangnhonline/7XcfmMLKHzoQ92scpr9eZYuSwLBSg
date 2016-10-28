@@ -22,7 +22,7 @@
                           <div class="layered-content">
                               <ul class="tree-menu">
                                   <li {{ $cateDetail->slug == 'tin-tuc' ? 'class=active' : '' }}><span></span><a href="{{ route('news-list', 'tin-tuc') }}">Tin tức</a></li>
-                                  <li {{ $cateDetail->slug == 'khuyen-mai' ? 'class=active' : '' }}><span></span><a href="{{ route('news-list', 'khuyen-mai') }}">Khuyến mãi</a></li>
+                                  <li {{ $cateDetail->slug == 'khuyen-mai' ? 'class=active' : '' }}><span></span><a href="{{ route('chuong-trinh-khuyen-mai') }}">Khuyến mãi</a></li>
                                   <li {{ $cateDetail->slug == 'kinh-nghiem-hay' ? 'class=active' : '' }}><span></span><a href="{{ route('news-list', 'kinh-nghiem-hay') }}">Kinh nghiệm hay</a></li>
                                   <li {{ $cateDetail->slug == 'tuyen-dung' ? 'class=active' : '' }}><span></span><a href="{{ route('news-list', 'tuyen-dung') }}">Tuyển dụng</a></li>
                               </ul>

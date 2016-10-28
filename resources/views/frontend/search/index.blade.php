@@ -25,7 +25,7 @@
                           <div class="layered-content">
                               <ul class="tree-menu">
                                   <li><span></span><a href="{{ route('news-list', 'tin-tuc') }}">Tin tức</a></li>
-                                  <li><span></span><a href="{{ route('news-list', 'khuyen-mai') }}">Khuyến mãi</a></li>
+                                  <li><span></span><a href="{{ route('chuong-trinh-khuyen-mai') }}">Khuyến mãi</a></li>
                                   <li><span></span><a href="{{ route('news-list', 'tuyen-dung') }}">Tuyển dụng</a></li>
                               </ul>
                           </div>
@@ -35,11 +35,7 @@
               </div>
               <!-- ./block category  -->
               <!-- Banner silebar -->
-              <div class="block left-module">
-                  <div class="banner-opacity">
-                      <a href="#"><img src="assets/data/slide-left.jpg" alt="ads-banner"></a>
-                  </div>
-              </div>
+              @include('frontend.partials.banner-slidebar')
               <!-- ./Banner silebar -->
           </div>
             <div class="center_column col-xs-12 col-sm-9" id="center_column">
