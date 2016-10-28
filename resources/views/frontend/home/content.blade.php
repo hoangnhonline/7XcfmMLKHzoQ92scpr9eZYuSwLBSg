@@ -100,7 +100,7 @@
                                                     <li class="col-sm-4">
                                                         <div class="left-block">
                                                             @if($product['pro_style'] == 2 && $product['image_pro'] != '')
-                                                            <img class="gift-icon" src="{{ Helper::showImage($product['image_pro']) }}" alt="qua tang kem {{ $product['name'] }}">
+                                                            <img class="gift-icon lazy" src="{{ Helper::showImage($product['image_pro']) }}" alt="qua tang kem {{ $product['name'] }}">
                                                             @endif
                                                             @if( $product['is_sale'] == 1)
                                                             <span class="discount">{{

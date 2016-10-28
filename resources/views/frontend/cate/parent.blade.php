@@ -52,13 +52,21 @@
                                                 ?>
                                                 <li class="col-sm-2">
                                                     <div class="left-block">
+                                                        @if($product['pro_style'] == 2 && $product['image_pro'] != '')
+                                                        <img class="gift-icon lazy" src="{{ Helper::showImage($product['image_pro']) }}" alt="qua tang kem {{ $product['name'] }}">
+                                                        @endif
                                                         @if( $product['is_sale'] == 1)
                                                         <span class="discount">-{{
                                                             100-round($product['price_sale']*100/$product['price'])
                                                         }}%</span>
                                                         @endif
-                                                        <a href="{{ route('chi-tiet', $product['slug']) }}"><img class="img-responsive lazy" alt="{{ $product['name'] }}" data-original="{{ Helper::showImage($product['image_url']) }}" /></a>
-                                                        @if( $rs->is_hover == 1)
+                                                        <a href="{{ route('chi-tiet', $product['slug']) }}"><img class="img-responsive lazy-img1 lazy" alt="{{ $product['name'] }}" data-original="{{ Helper::showImage($product['image_url']) }}" /></a>
+                                                        @if($product['pro_style'] == 1 && $product['image_pro'] != '')
+                                                        <img class="img-responsive lazy-img2 lazy" alt="product" src="{{ Helper::showImage($product['image_pro']) }}" />
+                                                        @endif
+                                                        </a>                                    
+                                                        @if( $rs->is_hover == 1 && $product['pro_style'] == 0)
+
                                                         <figure class="mask-info">
                                                             @foreach($hoverInfo as $info)
                                                             <?php 

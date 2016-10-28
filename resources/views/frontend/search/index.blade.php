@@ -51,12 +51,19 @@
                         <li class="col-xs-6 col-sm-4 col-md-3">
                             <div class="product-container">
                                 <div class="left-block">
+                                    @if($product['pro_style'] == 2 && $product['image_pro'] != '')
+                                    <img class="gift-icon lazy" src="{{ Helper::showImage($product['image_pro']) }}" alt="qua tang kem {{ $product['name'] }}">
+                                    @endif
                                     @if( $product['is_sale'] == 1)
                                     <span class="discount">-{{
                                         100-round($product['price_sale']*100/$product['price'])
                                     }}%</span>
                                     @endif
-                                    <a href="{{ route('chi-tiet', $product['slug']) }}"><img class="img-responsive lazy" alt="product" data-original="{{ Helper::showImage($product['image_url']) }}" /></a>                                     
+                                    <a href="{{ route('chi-tiet', $product['slug']) }}"><img class="img-responsive lazy-img2 lazy" alt="product" data-original="{{ Helper::showImage($product['image_url']) }}" /></a>   
+                                    @if($product['pro_style'] == 1 && $product['image_pro'] != '')
+                                    <img class="img-responsive lazy-img2 lazy" alt="product" src="{{ Helper::showImage($product['image_pro']) }}" />
+                                    @endif
+                                    </a>                                    
                                 </div>
                                 <div class="right-block">
                                     <h2 class="product-name"><a title="{{ $product['name'] }}" href="{{ route('chi-tiet', $product['slug']) }}">{{ $product['name'] }}</a></h2>
