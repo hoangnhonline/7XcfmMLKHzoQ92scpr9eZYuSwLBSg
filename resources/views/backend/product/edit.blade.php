@@ -214,7 +214,7 @@
                               @if( $hinhArr )
                                 @foreach( $hinhArr as $k => $hinh)
                                   <div class="col-md-3">
-                                    <img class="img-thumbnail" src="{{ config('icho.upload_url').$hinh }}" style="width:100%">
+                                    <img class="img-thumbnail" src="{{ Helper::showImage($hinh) }}" style="width:100%">
                                     <div class="checkbox">                                   
                                       <label><input type="radio" name="thumbnail_id" class="thumb" value="{{ $k }}" {{ $detail->thumbnail_id == $k ? "checked" : "" }}> Ảnh đại diện </label>
                                       <button class="btn btn-danger btn-sm remove-image" type="button" data-value="{{  $hinh }}" data-id="{{ $k }}" >Xóa</button>

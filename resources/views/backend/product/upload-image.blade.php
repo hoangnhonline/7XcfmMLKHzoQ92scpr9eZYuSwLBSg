@@ -1,7 +1,7 @@
 @if( !empty( $rsUpload ))
 	@foreach( $rsUpload as $tmp)
 	<div class="col-md-3">
-		<img class="img-thumbnail" src="{{ config('icho.upload_url').$tmp['image_path'] }}" style="width:100%">
+		<img class="img-thumbnail" src="{{ Helper::showImage($tmp['image_path']) }}" style="width:100%">
 		<div class="checkbox">
 		<input type="hidden" name="image_tmp_url[]" value="{{ $tmp['image_path'] }}">
 		<input type="hidden" name="image_tmp_name[]" value="{{ $tmp['image_name'] }}">

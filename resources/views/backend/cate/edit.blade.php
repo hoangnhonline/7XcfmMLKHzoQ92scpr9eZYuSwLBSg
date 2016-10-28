@@ -69,7 +69,7 @@
               <div class="form-group" style="margin-top:10px">  
                 <label class="col-md-3 row">Banner </label>    
                 <div class="col-md-9">
-                  <img id="thumbnail_icon" src="{{ $detail->icon_url ? config('icho.upload_url').$detail->icon_url : 'http://placehold.it/60x60' }}" class="img-thumbnail" width="60" height="60">
+                  <img id="thumbnail_icon" src="{{ $detail->icon_url ? Helper::showImage($detail->icon_url) : 'http://placehold.it/60x60' }}" class="img-thumbnail" width="60" height="60">
                   
                   <input type="file" id="file-icon" style="display:none" />
                

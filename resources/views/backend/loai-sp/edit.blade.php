@@ -107,7 +107,7 @@
               <div class="form-group" style="margin-top:10px">  
                 <label class="col-md-3 row">Icon màu</label>    
                 <div class="col-md-9">
-                  <img id="thumbnail_mau" src="{{ $detail->icon_mau ? config('icho.upload_url').$detail->icon_mau : 'http://placehold.it/60x60' }}" class="img-thumbnail" width="60" height="60">
+                  <img id="thumbnail_mau" src="{{ $detail->icon_mau ? Helper::showImage($detail->icon_mau) : 'http://placehold.it/60x60' }}" class="img-thumbnail" width="60" height="60">
                   
                   <input type="file" id="file-mau" style="display:none" />
                
@@ -117,7 +117,7 @@
               <div class="form-group" style="margin-top:10px">  
                 <label class="col-md-3 row">Icon khuyến mãi</label>    
                 <div class="col-md-9">
-                  <img id="thumbnail_km" src="{{ $detail->icon_km ? config('icho.upload_url').$detail->icon_km : 'http://placehold.it/60x60' }}" class="img-thumbnail" width="60" height="60">
+                  <img id="thumbnail_km" src="{{ $detail->icon_km ? Helper::showImage($detail->icon_km) : 'http://placehold.it/60x60' }}" class="img-thumbnail" width="60" height="60">
                   
                   <input type="file" id="file-km" style="display:none" />
                
@@ -127,7 +127,7 @@
               <div class="form-group" style="margin-top:10px">  
                 <label class="col-md-3 row">Icon trắng </label>    
                 <div class="col-md-9">
-                  <img id="thumbnail_icon" src="{{ $detail->icon_url ? config('icho.upload_url').$detail->icon_url : 'http://placehold.it/60x60' }}" class="img-thumbnail" width="60" height="60">
+                  <img id="thumbnail_icon" src="{{ $detail->icon_url ? Helper::showImage($detail->icon_url) : 'http://placehold.it/60x60' }}" class="img-thumbnail" width="60" height="60">
                   
                   <input type="file" id="file-icon" style="display:none" />
                
@@ -138,7 +138,7 @@
               <div class="form-group" style="margin-top:10px">  
                 <label class="col-md-3 row">Banner menu</label>    
                 <div class="col-md-9">
-                  <img id="thumbnail_banner" src="{{ $detail->banner_menu ? config('icho.upload_url').$detail->banner_menu : 'http://placehold.it/60x60' }}" class="img-thumbnail" width="120" height="120">
+                  <img id="thumbnail_banner" src="{{ $detail->banner_menu ? Helper::showImage($detail->banner_menu) : 'http://placehold.it/60x60' }}" class="img-thumbnail" width="120" height="120">
                   
                   <input type="file" id="file-banner" style="display:none" />
                
