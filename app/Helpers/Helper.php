@@ -16,6 +16,7 @@ class Helper
     public static function showImage($image_url, $type = 'original'){
 
         return strpos($image_url, 'http') === false ? config('icho.upload_url') . $type . '/' . $image_url : $image_url;        
+        //return strpos($image_url, 'http') === false ? config('icho.upload_url') . $image_url : $image_url;        
 
     }
     public static function seo(){

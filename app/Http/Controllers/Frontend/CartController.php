@@ -17,6 +17,8 @@ use App\Models\Banner;
 use App\Models\Orders;
 use App\Models\OrderDetail;
 use App\Models\Customer;
+use App\Models\Events;
+use App\Models\ProductEvent;
 use Helper, File, Session, Auth;
 use Mail;
 
@@ -302,8 +304,8 @@ class CartController extends Controller
 
         $orderDetail['order_id'] = $order_id;
         $service_fee = Session::get('service_fee');
-        
-        foreach ($arrProductInfo as $product) {
+       
+        foreach ($arrProductInfo as $product) {            
             # code...
             $orderDetail['sp_id']        = $product->id;
             $orderDetail['so_luong']     = $getlistProduct[$product->id];
@@ -312,7 +314,30 @@ class CartController extends Controller
             $orderDetail['so_dich_vu']    = isset($service_fee[$product->id]) ? $service_fee[$product->id]['so_luong'] : 0;
             $orderDetail['don_gia_dich_vu']    = isset($service_fee[$product->id]) ? $service_fee[$product->id]['don_gia_dich_vu'] : 0;
             $orderDetail['tong_dich_vu']    = isset($service_fee[$product->id]) ? $service_fee[$product->id]['fee'] : 0;
-            OrderDetail::create($orderDetail);  
+            OrderDetail::create($orderDetail); 
+
+            //  check so luong
+            if($product->is_event == 1){ // san pham event
+                $event_id = Session::get('event_id') ? Session::get('event_id') : 0;
+                if($event_id == 0){
+                    $dt = Carbon::now()->format('Y-m-d H:i:s');
+                    $tmpEvent = Events::where('from_date', '<=', $dt)->where('to_date', '>=', $dt)->where('status', 1)->join('product_event', 'sp_id', '=', 'events.id')->select('event_id')->first();
+                    if($tmpEvent){
+                        $event_id = $tmpEvent->event_id;
+                    }
+                }
+
+                $tmpPE = ProductEvent::where('sp_id', $product->id)->where('event_id', $event_id)->first();
+                if($tmpPE){                    
+                    $tmpSL = $tmpPE->so_luong_tam > 0 ? $tmpPE->so_luong_tam - 1 : 0;
+                    $tmpPE->update(['so_luong_tam' => $tmpSL]);
+                }                
+
+            }else{
+                $tmpModelProduct = SanPham::find($product->id);
+                $tmpSL = $tmpModelProduct->so_luong_tam > 0 ? $tmpModelProduct->so_luong_tam - 1 : 0;
+                $tmpModelProduct->update(['so_luong_tam' => $tmpSL]);
+            }
         }
 
         $customer_id = Session::get('userId');

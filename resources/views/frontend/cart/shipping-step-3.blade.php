@@ -226,8 +226,7 @@ $vangLaiArr  = Session::get('vanglai');
    <script type="text/javascript">
     $(document).ready(function() {
       $('.btn-checkout').click(function(){
-        $(this).hide();
-        $('#btnLoading').show();
+        $(this).attr('disabled', 'disabled').html('<i class="fa fa-spin fa-spinner"></i> Đang xử lý...');        
         var payment_method = $('input[name=payment_method]:checked').val();
         $.ajax({
           url: "{{route('dat-hang')}}",

@@ -56,15 +56,15 @@ class EventsController extends Controller
         if(!empty($tmpArr)){
             $dataArr['created_user'] = Auth::user()->id;
             $dataArr['updated_user'] = Auth::user()->id;
-            foreach ($tmpArr as $sp_id) {
-                
+            foreach ($tmpArr as $sp_id) {                
 
                 if($sp_id > 0){
                     $dataArr['sp_id'] = $sp_id;
                     $dataArr['event_id'] = $event_id;
                     $dataArr['so_luong'] = !empty($so_luong) && isset($so_luong[$sp_id]) ? $so_luong[$sp_id] : 0;
+                    $dataArr['so_luong_tam'] = $dataArr['so_luong'];
                     ProductEvent::create($dataArr);
-                    $tmpModel = SanPham::find($id);
+                    $tmpModel = SanPham::find($sp_id);
                     $tmpModel->is_event = 1;
                     $tmpModel->save();
                 }
