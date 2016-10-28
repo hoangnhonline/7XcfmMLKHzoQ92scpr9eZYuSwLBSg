@@ -43,8 +43,16 @@ class EventsController extends Controller
         $event_id = $request->event_id;
         $tmpArr = explode(',', $str_value);
         $so_luong = $request->so_luong ? $request->so_luong : [];
-        //var_dump($so_luong);die;
+        $rs = ProductEvent::where('event_id', $event_id)->lists('sp_id')->toArray();
+        if(!empty($rs)){
+            foreach($rs as $id){
+                $tmpModel = SanPham::find($id);
+                $tmpModel->is_event = 0;
+                $tmpModel->save();
+            }
+        }
         ProductEvent::where('event_id', $event_id)->delete();
+
         if(!empty($tmpArr)){
             $dataArr['created_user'] = Auth::user()->id;
             $dataArr['updated_user'] = Auth::user()->id;
@@ -56,6 +64,9 @@ class EventsController extends Controller
                     $dataArr['event_id'] = $event_id;
                     $dataArr['so_luong'] = !empty($so_luong) && isset($so_luong[$sp_id]) ? $so_luong[$sp_id] : 0;
                     ProductEvent::create($dataArr);
+                    $tmpModel = SanPham::find($id);
+                    $tmpModel->is_event = 1;
+                    $tmpModel->save();
                 }
             }
         }
