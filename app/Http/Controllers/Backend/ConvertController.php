@@ -44,11 +44,16 @@ class ConvertController extends Controller
     public function index(Request $request)
     {       
         set_time_limit(10000);
-        
-        //$this->mapThuocTinhTablet();
-        die;
-       // $phi = Helper::phiVanChuyen(8, 287);
-        //var_dump($phi);die;
+        $rs = SanPham::all();
+        foreach($rs as $sp){
+            echo $sp->id; 
+            echo "<hr>";
+            $model = SanPham::find($sp->id);
+            $slug = $model->slug;
+            $slug = str_replace(".", "-", $slug);
+            $model->slug = $slug;
+            $model->save();
+        }
     }
     public function mapThuocTinhTablet(){
          set_time_limit(10000);

@@ -315,7 +315,7 @@ class ProductController extends Controller
         $dataArr['is_sale'] = isset($dataArr['is_sale']) ? 1 : 0;        
         
         $dataArr['alias'] = Helper::stripUnicode($dataArr['name']);
-
+        $dataArr['slug'] = str_replace(".", "-", $dataArr['slug']);
         $dataArr['alias_extend'] = Helper::stripUnicode($dataArr['name_extend']);
 
         $dataArr['sp_phukien'] = rtrim( $dataArr['str_sp_phukien'], ',');
@@ -666,7 +666,7 @@ class ProductController extends Controller
         $dataArr['is_primary'] = isset($dataArr['is_primary']) ? 1 : 0;
         $dataArr['is_hot'] = isset($dataArr['is_hot']) ? 1 : 0;
         $dataArr['is_sale'] = isset($dataArr['is_sale']) ? 1 : 0;        
-        
+        $dataArr['slug'] = str_replace(".", "-", $dataArr['slug']);
         $dataArr['alias'] = Helper::stripUnicode($dataArr['name']);
 
         $dataArr['alias_extend'] = Helper::stripUnicode($dataArr['name_extend']);
