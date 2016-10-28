@@ -406,7 +406,9 @@ class ProductController extends Controller
             foreach ($hinhXoaArr as $image_id_xoa) {
                 $model = SpHinh::find($image_id_xoa);
                 $urlXoa = config('icho.upload_path')."/".$model->image_url;
-                unlink($urlXoa);
+                if(is_file($urlXoa)){
+                    unlink($urlXoa);
+                }
                 $model->delete();
             }
         }       
