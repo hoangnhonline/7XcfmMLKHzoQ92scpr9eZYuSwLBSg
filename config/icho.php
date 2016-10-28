@@ -9,7 +9,7 @@ return [
 
     'num_alert' => 10, // number rows for alert on top menu
     'upload_path' => public_path() . '/uploads/', // media_upload_path   
-    'upload_url' => $url . '/images/', // image path,
+    'upload_url' => $url . '/uploads/', // image path,
     'max_size_upload' => 8000000    
 ];
 
