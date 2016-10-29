@@ -59,7 +59,7 @@
                                         100-round($product['price_sale']*100/$product['price'])
                                     }}%</span>
                                     @endif
-                                    <a href="{{ route('chi-tiet', $product['slug']) }}"><img class="img-responsive lazy-img2 lazy" alt="product" data-original="{{ Helper::showImage($product['image_url']) }}" /></a>   
+                                    <a href="{{ route('chi-tiet', $product['slug']) }}"><img class="img-responsive lazy-img1 lazy" alt="product" data-original="{{ Helper::showImage($product['image_url']) }}" /></a>   
                                     @if($product['pro_style'] == 1 && $product['image_pro'] != '')
                                     <img class="img-responsive lazy-img2 lazy" alt="product" src="{{ Helper::showImage($product['image_pro']) }}" />
                                     @endif
