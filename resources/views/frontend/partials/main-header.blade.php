@@ -6,7 +6,7 @@
         @else
         <h1 class="col-xs-12 col-sm-2 col-md-2 logo">
         @endif
-            <a href="{{ route('home') }}"><img alt="Logo icho.vn" src="{{ URL::asset('assets/images/logo.png') }}"></a>
+            <a href="{{ route('home') }}"><img alt="Logo icho.vn" src="{{ Helper::showImage($settingArr['logo']) }}"></a>
         @if(in_array(\Request::route()->getName(), ['chi-tiet', 'danh-muc-con', 'news-detail', 'news-list']))
         </div>
         @else

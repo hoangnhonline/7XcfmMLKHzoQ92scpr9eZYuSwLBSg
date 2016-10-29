@@ -80,7 +80,11 @@
             return false;
         })
         /** HOME SLIDE**/
-        
+        $('.main-header form').submit(function(){
+            if($.trim($('input[name=keyword]').val()) == ''){
+                return false;
+            }
+        });
         /** Custom page sider**/
         if($('#home-slider').length >0 && $('#contenhomeslider-customPage').length >0){
             var slider = $('#contenhomeslider-customPage').bxSlider(
