@@ -33,9 +33,18 @@
                       
                       <div class="address-1">
                         <h4 class="mb20"> Địa chỉ người nhận </h4>
-                        <p>Trần Kim Quang</p>
-                        <p>Số 9 Đinh Tiên Hoàng, Phường Đa Kao, Quận 1, Hồ Chí Minh, Việt Nam</p>
-                        <p>ĐT: 0908303680</p>
+                        <p>{{ $customer->full_name }}</p>
+                        <p>{{ $customer->address }}, 
+                        @if(isset($customer->xa->name))
+                          {{$customer->xa->name}}
+                        @endif, 
+                        @if(isset($customer->huyen->name))
+                          {{$customer->huyen->name}},
+                        @endif
+                        @if(isset($customer->tinh->name))
+                          {{$customer->tinh->name}}
+                        @endif</p>
+                        <p>ĐT: {{ $customer->phone }}</p>
                       </div>
                       
                       <div class="row mb20 mt20">

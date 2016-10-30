@@ -38,6 +38,7 @@ class OrderController extends Controller
     $order_id = $request->order_id;
     $order = Orders::find($order_id);
     $customer_id = Session::get('userId'); 
+
     if($order->customer_id != $customer_id){
       return redirect()->route('home');
     }else{
@@ -48,7 +49,8 @@ class OrderController extends Controller
 
      $status = $this->status;
      $ngay_dat_hang = Carbon::parse($order->created_at)->format('d-m-Y H:i:s');
-    return view('frontend.account.order-detail', compact('order', 'orderDetail', 'seo', 'str_order_id', 'status', 'ngay_dat_hang'));
+     $customer = Customer::find($customer_id);
+    return view('frontend.account.order-detail', compact('order', 'orderDetail', 'seo', 'str_order_id', 'status', 'ngay_dat_hang', 'customer'));
   }
 
   public function show(Request $request)

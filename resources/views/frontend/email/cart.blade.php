@@ -48,16 +48,16 @@ $vangLaiArr = Session::get('vanglai');
                                 <a href="mailto:{{$customer->email}}" target="_blank">{{$customer->email}}</a><br>
                                 {{$customer->phone}} </td>
                               <td valign="top" style="padding:3px 9px 9px 9px;border-top:0;border-left:0;font-family:Arial,Helvetica,sans-serif;font-size:12px;color:#444;line-height:18px;font-weight:normal"><span style="text-transform:capitalize">{{$customer->full_name}}</span><br>
-                                <a href="mailto:{{$customer->email}}" target="_blank">{{$customer->email}}</a><br>
+                                <a href="mailto:{{ $customer->email }}" target="_blank">{{ $customer->email }}</a><br>
                                 @if(isset($customer->tinh->name))
-                                  {{$customer->tinh->name}},
+                                  {{ $customer->tinh->name }},
                                 @endif
                                 @if(isset($customer->huyen->name))
-                                  {{$customer->huyen->name}},
+                                  {{ $customer->huyen->name }},
                                 @endif
 
-                                {{$customer->address}} <br>
-                                {{$customer->phone}}<br>
+                                {{ $customer->address }} <br>
+                                {{ $customer->phone }}<br>
                             </tr>
                             @else
                             <tr>
