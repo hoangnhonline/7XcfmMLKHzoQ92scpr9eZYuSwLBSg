@@ -311,14 +311,14 @@
         $('#register-form').show();
         $('#login-form').hide();
         $('#radioIsNotUserIcho').iCheck('check');
-        $('#email')
+        $('#email').hide();
         // $('#full_name').val();
         @if(Session::has('fb_name'))
-            $('#full_name').val('{{Session::get('fb_name')}}');
+            $('#full_name').val(' {{Session::get('fb_name') }}');
         @endif
 
         @if(Session::has('fb_email'))
-            $('#email').val('{{Session::get('fb_email')}}');
+            $('#email').val('{{ Session::get('fb_email') }}');
         @endif
 
       @endif
