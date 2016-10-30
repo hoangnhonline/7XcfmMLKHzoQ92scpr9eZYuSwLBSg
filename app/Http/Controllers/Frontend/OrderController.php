@@ -67,7 +67,7 @@ class OrderController extends Controller
     }
     $customer_id = Session::get('userId');
     $customer = Customer::find($customer_id);
-    $orders = Orders::where('customer_id', $customer_id)->get();
+    $orders = Orders::where('customer_id', $customer_id)->orderBy('id', 'DESC')->get();
     $status = $this->status;
     
       $seo['title'] = $seo['description'] = $seo['keywords'] = "Đơn hàng của tôi";

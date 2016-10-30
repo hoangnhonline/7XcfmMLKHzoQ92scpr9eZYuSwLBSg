@@ -301,7 +301,7 @@ class CartController extends Controller
           $city_id = isset($vangLaiArr['city_id']) ? $vangLaiArr['city_id'] :  $customer->city_id;
         $arrDate = Helper::calDayDelivery( $city_id );
         
-        $order['ngay_giao_du_kien'] = implode(", ", $arrDate);
+        $order['ngay_giao_du_kien'] = implode(" - ", $arrDate);
 
 
         $getOrder = Orders::create($order);
