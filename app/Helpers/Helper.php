@@ -78,12 +78,9 @@ class Helper
         
         $tmp = City::find($city_id);
 
-        $region_id = $tmp->region_id;
-      
-        $endDay = $region_id == 1 ? time() + 3*3600*24 : time() + 4*3600*24;
-
-        $arrDate = self::createDateRangeArray(date('Y-m-d'), date('Y-m-d', $endDay));
-        
+        $region_id = $tmp->region_id;        
+        $endDay = $region_id == 1 ? time() + 8*3600*24 : time() + 9*3600*24;
+        $arrDate = self::createDateRangeArray(date('Y-m-d'), date('Y-m-d', $endDay));        
         return $arrDate;
     }
 
@@ -118,12 +115,6 @@ class Helper
     }
     public static function getDateFromRange($strDateFrom,$strDateTo)
     {
-        // takes two dates formatted as YYYY-MM-DD and creates an
-        // inclusive array of the dates between the from and to dates.
-
-        // could test validity of dates here but I'm already doing
-        // that in the main script
-
         $aryRange=array();
 
         $iDateFrom=mktime(1,0,0,substr($strDateFrom,5,2),     substr($strDateFrom,8,2),substr($strDateFrom,0,4));
@@ -141,7 +132,7 @@ class Helper
         return $aryRange;
     }
     public static function createDateRangeArray($strDateFrom, $strDateTo) {
-    //var_dump($strDateFrom, $strDateTo);die;     
+       
       $arrDate= $arrReturn = array();
 
       $iDateFrom= self::parseDate( $strDateFrom );
@@ -155,17 +146,30 @@ class Helper
           $arrDate[] = date('Y-m-d',$iDateFrom);
         }
       }
-      //var_dump($arrDate);die;
+      
         unset( $arrDate[0] );
+        
         $endDay = self::parseDate($arrDate[count($arrDate)]);
-
-        foreach( $arrDate as $date){
-            $day = date('D', strtotime($date) );
-            if( $day == 'Sat' || $day == 'Sun'){
-                    $endDay += 86400;                    
-            }
+      
+        $thuEndDay = date('D', $endDay);
+        if($thuEndDay == "Sat"){
+            $endDay += 3*86400;   
             $fromDay = $endDay-86400;
-        }
+        }elseif($thuEndDay == "Sun"){
+            $endDay += 2*86400; 
+            $fromDay = $endDay-86400;  
+        }else{
+            foreach( $arrDate as $date){
+
+                $day = date('D', strtotime($date) );
+                
+                if( $day == 'Sat' || $day == 'Sun'){
+                        $endDay += 86400;                    
+                }       
+
+                $fromDay = $endDay-86400;
+            }
+        }        
         $arrReturn['fromdate'] = self::parseThuVN($fromDay).", ".date('d/m/Y', $fromDay);
         $arrReturn['todate'] = self::parseThuVN($endDay).", ".date('d/m/Y', $endDay);
        
@@ -197,12 +201,11 @@ class Helper
             }
 
         }else{ // cac tinh thanh khac ngoai HCM
-            if( $kg > 3){
+            if( $kg > 2){
                 $phi = 48000;
                 $phi_them = 0;
-                $kg_them = ceil($kg - 3);
-                $region_type = self::checkRegion($city_id);
-
+                $kg_them = ceil($kg - 2);
+                $region_type = self::checkRegion($city_id);                
                 if( $region_type == 1){//cung mien                    
                     $phi_them = $kg_them*5000;
                 }elseif( $region_type == 2){ //lien mien
@@ -232,124 +235,7 @@ class Helper
         $detailCity = City::find($city_id);
         return $detailCity->region_id;
     }
-    public static function encodeLink($string){
-        $returnString = "";
-        $charsArray = str_split("e7NjchMCEGgTpsx3mKXbVPiAqn8DLzWo_6.tvwJQ-R0OUrSak954fd2FYyuH~1lIBZ");
-        $charsLength = count($charsArray);
-        $stringArray = str_split($string);
-        $keyArray = str_split(hash('sha256',self::$privateKey));
-        $randomKeyArray = array();
-        while(count($randomKeyArray) < $charsLength){
-            $randomKeyArray[] = $charsArray[rand(0, $charsLength-1)];
-        }
-        for ($a = 0; $a < count($stringArray); $a++){
-            $numeric = ord($stringArray[$a]) + ord($randomKeyArray[$a%$charsLength]);
-            $returnString .= $charsArray[floor($numeric/$charsLength)];
-            $returnString .= $charsArray[$numeric%$charsLength];
-        }
-        $randomKeyEnc = '';
-        for ($a = 0; $a < $charsLength; $a++){
-            $numeric = ord($randomKeyArray[$a]) + ord($keyArray[$a%count($keyArray)]);
-            $randomKeyEnc .= $charsArray[floor($numeric/$charsLength)];
-            $randomKeyEnc .= $charsArray[$numeric%$charsLength];
-        }
-        return $randomKeyEnc.hash('sha256',$string).$returnString;
-    }
-    public static function decodeLink($string){
-        $returnString = "";
-        $charsArray = str_split("e7NjchMCEGgTpsx3mKXbVPiAqn8DLzWo_6.tvwJQ-R0OUrSak954fd2FYyuH~1lIBZ");
-        $charsLength = count($charsArray);
-        $keyArray = str_split( hash( 'sha256', self::$privateKey ));
-        $stringArray = str_split(substr($string, ( $charsLength * 2 ) + 64));
-        $sha256 = substr( $string, ( $charsLength * 2 ), 64);
-        $randomKeyArray = str_split( substr( $string, 0, $charsLength*2 ));
-        $randomKeyDec = array();
-        if(count($randomKeyArray) < 132) return false;
-        for ($a = 0; $a < $charsLength*2; $a+=2){
-            $numeric = array_search($randomKeyArray[$a],$charsArray) * $charsLength;
-            $numeric += array_search($randomKeyArray[$a+1],$charsArray);
-            $numeric -= ord($keyArray[floor($a/2)%count($keyArray)]);
-            $randomKeyDec[] = chr($numeric);
-        }
-        for ($a = 0; $a < count($stringArray); $a+=2){
-            $numeric = array_search($stringArray[$a],$charsArray) * $charsLength;
-            $numeric += array_search($stringArray[$a+1],$charsArray);
-            $numeric -= ord($randomKeyDec[floor($a/2)%$charsLength]);
-            $returnString .= chr($numeric);
-        }
-        if(hash('sha256',$returnString) != $sha256){
-            return false;
-        }else{
-            return $returnString;
-        }
-    }
-    public static function getVideoZing($url){
-        $arrReturn = [];
-        $ch = curl_init($url);    
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
-        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, TRUE);        
-        curl_setopt($ch, CURLOPT_AUTOREFERER, TRUE);
-        $result = curl_exec($ch);    
-
-        curl_close($ch);   
-
-              
-            preg_match_all('/<source src\=\"(.*?)\" type\=\"video\/mp4\" data\-res\=\"480\"\/\>/',$result,$arr_preg);            
-            $arrReturn['f480'] = isset($arr_preg[1][1]) ? $arr_preg[1][1] : ""; 
-            
-            preg_match_all('/<source src\=\"(.*?)\" type\=\"video\/mp4\" data\-res\=\"360\"\/\>/',$result,$arr_preg);            
-            $arrReturn['f360'] = isset($arr_preg[1][1]) ? $arr_preg[1][1] : "";
-
-        
-        return $arrReturn;    
-    }
-    public static function curl($url) {
-         $ch = curl_init();
-         curl_setopt($ch, CURLOPT_URL, $url);
-         $head[] = "Connection: keep-alive";
-         $head[] = "Keep-Alive: 300";
-         $head[] = "Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7";
-         $head[] = "Accept-Language: en-us,en;q=0.5";
-         curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/37.0.2062.124 Safari/537.36');
-         curl_setopt($ch, CURLOPT_HTTPHEADER, $head);
-         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-         curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, FALSE);
-         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
-         curl_setopt($ch, CURLOPT_TIMEOUT, 60);
-         curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 60);
-         curl_setopt($ch, CURLOPT_FOLLOWLOCATION, TRUE);
-         curl_setopt($ch, CURLOPT_HTTPHEADER, array('Expect:'));
-         $page = curl_exec($ch);
-         curl_close($ch);
-         return $page;
-    }
-    public static function getPhotoGoogle($link){
-        $get = self::curl($link);
-        $data = explode('url\u003d', $get);
-        $url = explode('%3Dm', $data[1]);
-        $decode = urldecode($url[0]);
-        $count = count($data);
-        $linkDownload = array();
-        if($count > 4) {
-            $v1080p = $decode.'=m37';
-            $v720p = $decode.'=m22';
-            $v360p = $decode.'=m18';
-            $linkDownload['1080p'] = $v1080p;
-            $linkDownload['720p'] = $v720p;
-            $linkDownload['360p'] = $v360p;
-        }
-        if($count > 3) {
-            $v720p = $decode.'=m22';
-            $v360p = $decode.'=m18';
-            $linkDownload['720p'] = $v720p;
-            $linkDownload['360p'] = $v360p;
-        }
-        if($count > 2) {
-            $v360p = $decode.'=m18';
-            $linkDownload['360p'] = $v360p;
-        }
-        return $linkDownload;
-    }
+   
 
     public static function uploadPhoto($file, $base_folder = '', $date_dir=false){
     
@@ -379,7 +265,7 @@ class Helper
         $imgName = $imgName."-".time();
 
         $newFileName = "{$imgName}.{$imgExt}";
-       // var_dump($file->move($desPath, $newFileName));die;
+       
         if( $file->move($desPath, $newFileName) ){
             $imagePath = $basePath.$newFileName;
             $return['image_name'] = $newFileName;
