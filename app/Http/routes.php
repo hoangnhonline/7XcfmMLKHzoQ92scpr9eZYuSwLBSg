@@ -192,6 +192,8 @@ Route::group(['namespace' => 'Backend', 'prefix' => 'backend', 'middleware' => '
     });
     Route::group(['prefix' => 'account'], function () {
         Route::get('/', ['as' => 'account.index', 'uses' => 'AccountController@index']);
+        Route::get('/change-password', ['as' => 'account.change-pass', 'uses' => 'AccountController@changePass']);
+        Route::post('/store-password', ['as' => 'account.store-pass', 'uses' => 'AccountController@storeNewPass']);
         Route::get('/update-status/{status}/{id}', ['as' => 'account.update-status', 'uses' => 'AccountController@updateStatus']);
         Route::get('/create', ['as' => 'account.create', 'uses' => 'AccountController@create']);
         Route::post('/store', ['as' => 'account.store', 'uses' => 'AccountController@store']);

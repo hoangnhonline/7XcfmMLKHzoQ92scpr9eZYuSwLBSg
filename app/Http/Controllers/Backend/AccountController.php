@@ -31,6 +31,35 @@ class AccountController extends Controller
 
         return view('backend.account.create');
     }
+    public function changePass(){
+        return view('backend.account.change-pass');   
+    }
+
+    public function storeNewPass(Request $request){
+        $user_id = Auth::user()->id;
+        $detail = Account::find($user_id);
+        $old_pass = $request->old_pass;
+        $new_pass = $request->new_pass;
+        $new_pass_re = $request->new_pass_re;
+        if( $old_pass == '' || $new_pass == "" || $new_pass_re == ""){
+            return redirect()->back()->withErrors(["Chưa nhập đủ thông tin bắt buộc!"])->withInput();
+        }
+       
+        if(!password_verify($old_pass, $detail->password)){
+            return redirect()->back()->withErrors(["Nhập mật khẩu hiện tại không đúng!"])->withInput();
+        }
+        
+        if($new_pass != $new_pass_re ){
+            return redirect()->back()->withErrors("Xác nhận mật khẩu mới không đúng!")->withInput();   
+        }
+
+        $detail->password = Hash::make($new_pass);
+        $detail->save();
+        Session::flash('message', 'Đổi mật khẩu thành công');
+
+        return redirect()->route('account.change-pass');
+
+    }
     public function store(Request $request)
     {
        
