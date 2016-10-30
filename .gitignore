@@ -1,6 +1,14 @@
 /vendor
+<<<<<<< HEAD
 /node_modules
 /public/storage
 Homestead.yaml
 Homestead.json
+=======
+/storage
+composer.json
+composer.lock
+/bootstrap
+README.md
+>>>>>>> 6b655d5aed21349e2cedd4a3fe45baa86b727d64
 .env

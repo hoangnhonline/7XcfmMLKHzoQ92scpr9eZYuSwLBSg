@@ -262,6 +262,9 @@ class CartController extends Controller
                 return redirect()->route('home');
             }
         }
+        
+        $arrDate = Helper::calDayDelivery( $city_id );
+
         $vangLaiArr = Session::get('vanglai');
         $arrProductInfo = SanPham::whereIn('san_pham.id', $listProductId)
                             ->leftJoin('sp_hinh', 'sp_hinh.id', '=','san_pham.thumbnail_id')
@@ -295,7 +298,7 @@ class CartController extends Controller
         }
 
         $order['tong_tien'] = $order['tong_tien'] + $order['phi_giao_hang'] + $order['service_fee'];
-        
+        $order['ngay_giao_du_kien'] = implode(", ", $arrDate);
         $getOrder = Orders::create($order);
 
         $order_id = $getOrder->id;
@@ -345,7 +348,7 @@ class CartController extends Controller
 
         $email = isset($vangLaiArr['email']) ? $vangLaiArr['email'] :  $customer->email;
         $city_id = isset($vangLaiArr['city_id']) ? $vangLaiArr['city_id'] :  $customer->city_id;
-        $arrDate = Helper::calDayDelivery( $city_id );
+        
         // send email
         $order_id =str_pad($order_id, 6, "0", STR_PAD_LEFT);
         if($email != ''){
