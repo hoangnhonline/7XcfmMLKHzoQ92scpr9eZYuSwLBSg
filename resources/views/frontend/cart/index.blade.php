@@ -10,7 +10,7 @@
         <div class="breadcrumb clearfix">
             <a class="home" href="{{ route('home') }}" title="Trở về trang chủ">Trang chủ</a>
             <span class="navigation-pipe">&nbsp;</span>
-            <a href="" title="Giỏ hàng">Giỏ hàng</a>
+            <a href="{{ route('gio-hang') }}" title="Giỏ hàng">Giỏ hàng</a>
         </div>
         <!-- ./breadcrumb -->
         <div class="page-content container">

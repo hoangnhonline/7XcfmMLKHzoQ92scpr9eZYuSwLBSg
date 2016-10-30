@@ -9,9 +9,11 @@
     <div class="container" id="columns">
         <!-- breadcrumb -->
         <div class="breadcrumb clearfix">
-            <a class="home" href="#" title="Return to Home">Home</a>
+            <a class="home" href="{{ route('home') }}" title="trở về trang chủ">Trang chủ</a>
             <span class="navigation-pipe">&nbsp;</span>
-            <a href="#" title="Giới thiệu">Giới thiệu</a>
+            <a href="{{ route('order-history') }}" title="Đơn hàng của tôi">Đơn hàng </a>
+            <span class="navigation-pipe">&nbsp;</span>
+            <a href="#" title="Chi tiết">Chi tiết </a>
         </div>
         <!-- ./breadcrumb -->
         
@@ -100,14 +102,16 @@
                           @endforeach                         
                         </tbody>
                         <tfoot> 
+                        @if($rowOrder->tong_dich_vu >0)
                           <tr>
                             <td colspan="3" class="text-right"><strong>Chi phí dịch vụ</strong> : {{ number_format($rowOrder->so_dich_vu)}} x {{ number_format($rowOrder->don_gia_dich_vu)}}&nbsp;₫
                             </td>
                             <td><strong>{{ number_format($rowOrder->tong_dich_vu) }}&nbsp;₫</strong></td>
-                          </tr>                         
+                          </tr>  
+                          @endif                       
                           <tr>
                             <td colspan="3" class="text-right"><strong>Chi phí vận chuyển</strong></td>
-                            <td><strong>{{ number_format($order->phi_giao_hang)}}&nbsp;₫</strong></td>
+                            <td><strong>{{ $order->phi_giao_hang > 0 ? number_format($order->phi_giao_hang)."&nbsp;₫" : "Miễn phí" }}</strong></td>
                           </tr>
                           <tr>
                             <td colspan="3" class="text-right"><strong>Tổng cộng</strong></td>
