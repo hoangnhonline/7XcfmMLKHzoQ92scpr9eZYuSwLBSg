@@ -15,7 +15,7 @@
         </div>
         <!-- ./breadcrumb -->
         <div class="row">
-            
+            @include ('frontend.account.sidebar')
             <div class="center_column col-xs-12 col-sm-9" id="center_column">
                     <h1 class="page-heading">
                         <span class="page-heading-title2">Danh sách đơn hàng của tôi</span>

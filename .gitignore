@@ -1,0 +1,7 @@
+/vendor
+/storage
+composer.json
+composer.lock
+/bootstrap
+README.md
+.env
