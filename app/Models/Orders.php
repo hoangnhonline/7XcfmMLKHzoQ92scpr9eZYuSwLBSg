@@ -39,7 +39,10 @@ class Orders extends Model  {
       'ward_id',
       'address',
       'address_type',
-      'service_fee'
+      'service_fee',
+      'ngay_giao_du_kien',
+      'ngay_giao_thuc',
+      'phi_cod'
     ];
 
     public function order_detail()

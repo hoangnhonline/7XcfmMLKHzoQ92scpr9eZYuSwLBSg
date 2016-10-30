@@ -15,32 +15,7 @@
         </div>
         <!-- ./breadcrumb -->
         <div class="row">
-            <div class="col-sm-3" id="left_column">
-              <!-- block category -->
-                  <div class="block left-module">
-                      <p class="title_block">Thông tin tài khoản</p>
-                      <div class="block_content">
-                          <!-- layered -->
-                          <div class="layered layered-category">
-                              <div class="layered-content">
-                                  <ul class="tree-menu">
-                                      <li {{ \Request::route()->getName() == "order-history" ? "class=active" : "" }}>
-                                          <a href="{{ route('order-history') }}" title="Đơn hàng của tôi"> Đơn hàng của tôi</a>
-                                      </li>
-                                      <li>
-                                          <a href="{{ route('user-logout') }}" title="Thoát tài khoản">Thoát tài khoản </a>
-                                      </li>
-                                  </ul>
-                              </div>
-                          </div>
-                          <!-- ./layered -->
-                      </div>
-                  </div>
-                  <!-- ./block category  -->
-                  <!-- Banner silebar -->
-                  @include('frontend.partials.banner-slidebar')
-                  <!-- ./Banner silebar -->
-            </div> 
+            
             <div class="center_column col-xs-12 col-sm-9" id="center_column">
                     <h1 class="page-heading">
                         <span class="page-heading-title2">Danh sách đơn hàng của tôi</span>
@@ -51,7 +26,7 @@
                             <thead>
                             <tr>
                                 <th>
-                                    <span class="hidden-xs hidden-sm hidden-md">Mã Đơn hàng</span>
+                                    <span class="hidden-xs hidden-sm hidden-md">Mã ĐH</span>
                                     <span class="hidden-lg">Code</span>
                                 </th>
                                 <th>Ngày mua</th>
@@ -67,7 +42,7 @@
                             <tbody>
                             @foreach($orders as $order)
                                 <tr>
-                                    <td style="text-align:center"><a href="/sales/order/view?code=24808316">24808316</a></td>
+                                    <td style="text-align:center;"><a style="color:#ec1c24" href="{{ route('order-detail', $order->id)}}">{{ str_pad($order->id, 6, "0", STR_PAD_LEFT)}}</a></td>
                                     <td>{{ date('d/m/Y', strtotime($order->created_at)) }}</td>
                                     <td>                                        
                                     @foreach($order->order_detail()->get() as $detail)

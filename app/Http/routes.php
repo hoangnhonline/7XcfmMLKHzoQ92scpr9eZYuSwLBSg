@@ -248,8 +248,9 @@ Route::group(['namespace' => 'Frontend'], function()
         // Route::get('test', 'CartController@test');
     });
 
-    Route::group(['prefix' => 'order'], function () {
-        Route::get('history', ['as' => 'order-history', 'uses' => 'OrderController@history']);
+    Route::group(['prefix' => 'tai-khoan'], function () {
+        Route::get('don-hang-cua-toi', ['as' => 'order-history', 'uses' => 'OrderController@history']);
+        Route::get('/{order_id}/chi-tiet-don-hang', ['as' => 'order-detail', 'uses' => 'OrderController@detail']);
     });
     Route::get('{slugLoaiSp}/{slug}/', ['as' => 'danh-muc-con', 'uses' => 'CateController@cate']);
     

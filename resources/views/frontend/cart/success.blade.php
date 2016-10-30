@@ -29,13 +29,13 @@ $vangLaiArr = Session::get('vanglai');
                         <div class="row row-style-6">
                           <div class="col-lg-4 col-md-3 visible-lg-block visible-md-block"> <img src="{{ URL::asset('assets/images/thanh-cong.png') }}" class="img-responsive" alt="Image" height="178" width="195"> </div>
                           <div class="col-lg-8 col-md-9">
-                            <h3>Cảm ơn bạn đã mua hàng tại icho.vn!</h3>
+                            <h3>Cảm ơn bạn đã mua hàng tại iCho.vn!</h3>
                             
                             <!-- BEGIN ORDER INFO -->
                             <p>Mã số đơn hàng của bạn: </p>
                             <div class="well well-sm"> {{ $order_id }} </div>
                             @if($is_vanglai == 0)
-                            <p>Bạn có thể xem lại <a href="#">đơn hàng của tôi</a></p>
+                            <p>Bạn có thể xem lại <a href="{{ route('order-history') }}">đơn hàng của tôi</a></p>
                             @endif
                             <p> <img src="{{ URL::asset('assets/images/thanh-cong.png') }}" alt="" height="25" width="30"> Thời gian dự kiến giao hàng vào {{ $arrDate['fromdate']}} - {{ $arrDate['todate'] }}, không giao ngày Thứ Bảy &amp; Chủ Nhật. </p><br>
                             @if(($is_vanglai == 1 && $vangLaiArr['email'] != '') || (isset($customer) && $customer->email != ''))

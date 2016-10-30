@@ -18,24 +18,37 @@ use App\Models\OrderDetail;
 use App\Models\Customer;
 use Helper, File, Session, Auth;
 use Mail;
+use Carbon\Carbon;
 
 class OrderController extends Controller
 {
 
   protected $status = [
-    0 => 'Đang xử lý',
-    1 => 'Đang tạm ngừng',
-    2 => 'Đã hoàn thành',
-    3 => 'Đã huỷ',
-    4 => 'Đã hoàn lại tiền',
-    5 => 'Thất bại'
+    0 => 'Chờ xử lý',
+    1 => 'Đang xử lý',
+    2 => 'Đang tạm ngừng',
+    3 => 'Đã hoàn thành',
+    4 => 'Đã huỷ',
+    5 => 'Đã hoàn lại tiền',
+    6 => 'Thất bại'
   ];
 
-  public function index(Request $request)
+  public function detail(Request $request)
   {
-    $order = Orders::find(12);
-    dd($order->order_detail);
-    dd('you got index at here');
+    $order_id = $request->order_id;
+    $order = Orders::find($order_id);
+    $customer_id = Session::get('userId'); 
+    if($order->customer_id != $customer_id){
+      return redirect()->route('home');
+    }else{
+      $orderDetail = $order->order_detail;      
+    }
+    $str_order_id = str_pad($order->id, 6, "0", STR_PAD_LEFT);
+     $seo['title'] = $seo['description'] = $seo['keywords'] = "Chi tiết đơn hàng #".$str_order_id;
+
+     $status = $this->status;
+     $ngay_dat_hang = Carbon::parse($order->created_at)->format('d-m-Y H:i:s');
+    return view('frontend.account.order-detail', compact('order', 'orderDetail', 'seo', 'str_order_id', 'status', 'ngay_dat_hang'));
   }
 
   public function show(Request $request)
@@ -54,7 +67,9 @@ class OrderController extends Controller
     $customer = Customer::find($customer_id);
     $orders = Orders::where('customer_id', $customer_id)->get();
     $status = $this->status;
-    $seo = Helper::seo();
+    
+      $seo['title'] = $seo['description'] = $seo['keywords'] = "Đơn hàng của tôi";
+    
     return view('frontend.account.order-history', compact('orders', 'status', 'customer', 'seo'));
   }
 
