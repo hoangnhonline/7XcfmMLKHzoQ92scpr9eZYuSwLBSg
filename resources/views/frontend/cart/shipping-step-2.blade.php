@@ -352,20 +352,16 @@ $vangLaiArr = Session::get('vanglai');
       });
 
       $('#city_id').change(function() {
-        var city_id = $(this).val();
-
-        customer_district_id = '';
-        getDistrict(city_id);
+        customer_district_id = 0;
+        getDistrict($(this).val());
       });
       if( $('#city_id').val() > 0){
         getDistrict($('#city_id').val());
       }
 
-      $('#district_id').change(function() {
-        var district_id = $(this).val();
-
-        customer_ward_id = '';
-        getWard(district_id);
+      $('#district_id').change(function() {       
+        customer_ward_id = 0;
+        getWard($(this).val());
       });
       if( $('#district_id').val() > 0){
         getWard($('#district_id').val());
@@ -422,8 +418,7 @@ $vangLaiArr = Session::get('vanglai');
 
             for(i in list_ward) {
               $('#ward_id').append('<option value="'+list_ward[i].id+'">'+list_ward[i].name+'</option>');
-            }
-
+            }            
             $('#ward_id').val(customer_ward_id);
 
           }
