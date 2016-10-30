@@ -85,7 +85,7 @@
                                 <li class="logo-on-menu" id="small_logo" style="display:none;"><a href="{{ route('home') }}"><img class="lazy" data-original="{{ URL::asset('assets/images/logo.png') }}"></a></li>   
                                 <li {{ \Request::route()->getName() == 'home' ? "class=active" : "" }}><a href="{{ route('home') }}">Trang chủ</a></li>
                                 <li {{ \Request::route()->getName() == 'chuong-trinh-khuyen-mai' || (isset($is_km) && $is_km == 1) ? "class=active" : "" }}><a href="{{ route('chuong-trinh-khuyen-mai') }}">Khuyến mãi</a></li>                                
-                                <li {{ (\Request::route()->getName() == 'news-list' && Request::path() == 'tin-tuc') || (isset($is_news) && $is_news == 1)? "class=active" : "" }}><a href="{{ route('news-list', 'tin-tuc') }}">Tin Tức</a></li>
+                                <li {{ (\Request::route()->getName() == 'news-list' && Request::path() == 'tin-tuc') || (isset($is_news) && $is_news == 1)? "class=active" : "" }}><a href="{{ route('news-list', 'tin-tuc') }}">Tin tức</a></li>
                                 <li class="dropdown {{ isset($lap_rap) && $lap_rap == 1 ? "active" : "" }}" >
                                         <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">Ráp máy tính online</a>
                                         <ul class="dropdown-menu container-fluid">

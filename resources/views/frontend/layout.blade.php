@@ -38,32 +38,10 @@
         <link href="{{ URL::asset('assets/css/square/red.css') }}" rel="stylesheet">
     </head>
     <body {{ \Request::route()->getName() == "home" ? "class=home" : "" }}>
-    <!-- Hỗ trơ trực tuyến Facebook -->
-   <!-- <div class="contact-face" style="">
-            <div class="title_quancaog" style="background: #d0021b;color: #fff;padding: 3px 10px;cursor:pointer;">
-            <p class="xclose" style="display: none;margin: 0;" onclick="closeface();"><i class="fa fa-minus" aria-hidden="true" style="margin-right: 10px;"></i>Hỗ trợ trực tuyến</p>
-            <p class="xopen" style="margin: 0;" onclick="openface();"><i class="fa fa-envelope-o" style="margin-right: 10px;" aria-hidden="true"></i>Để lại lời nhắn</p>
-        </div>
-        <div class="fb-page" data-tabs="messages" data-href="https://www.facebook.com/www.icho.vn" data-width="320px" data-height="300" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true" data-show-posts="false">
-            <div class="fb-xfbml-parse-ignore">
-                <blockquote cite="https://www.facebook.com/www.icho.vn">
-                    <a href="https://www.facebook.com/www.icho.vn">iCho.vn</a>
-                </blockquote>
-            </div>
-        </div>
-    </div>
-    -->
-
-
         @yield('header')
-        <!-- end header -->
-        <!-- Home slideder-->
         @yield('slider')
-
         @yield('content')
-
         @yield('footer')
-
 
       <a href="#" class="scroll_top" title="Scroll to Top" style="display: inline;">Scroll</a>
       <!-- Script-->
@@ -114,5 +92,19 @@
       <input type="hidden" id="route-register-customer-ajax" value="{{ route('register-customer-ajax') }}">
       <input type="hidden" id="route-register-newsletter" value="{{ route('register.newsletter') }}">
       <input type="hidden" id="route-auth-login-ajax" value="{{ route('auth-login-ajax') }}">
-    </body>
+       <!-- Hỗ trơ trực tuyến Facebook -->
+  <div class="contact-face" style="">
+          <div class="title_quancaog" style="background: #d0021b;color: #fff;padding: 3px 10px;cursor:pointer;">
+          <p class="xclose" style="display: none;margin: 0;" onclick="closeface();"><i class="fa fa-minus" aria-hidden="true" style="margin-right: 10px;"></i>Hỗ trợ trực tuyến</p>
+          <p class="xopen" style="margin: 0;" onclick="openface();"><i class="fa fa-envelope-o" style="margin-right: 10px;" aria-hidden="true"></i>Để lại lời nhắn</p>
+      </div>
+      <div class="fb-page" data-tabs="messages" data-href="https://www.facebook.com/www.icho.vn" data-width="320px" data-height="300" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true" data-show-posts="false">
+          <div class="fb-xfbml-parse-ignore">
+              <blockquote cite="https://www.facebook.com/www.icho.vn">
+                  <a href="https://www.facebook.com/www.icho.vn">iCho.vn</a>
+              </blockquote>
+          </div>
+      </div>
+  </div>
+  </body>
 </html>

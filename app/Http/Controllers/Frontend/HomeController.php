@@ -175,7 +175,7 @@ class HomeController extends Controller
                 ->first();
         $is_km = $is_news = $is_kn = 0;
         if( $detail ){           
-            //var_dump("<pre>", $detail);die;
+
             $title = trim($detail->meta_title) ? $detail->meta_title : $detail->title;
 
             $hotArr = Articles::where( ['cate_id' => 1, 'is_hot' => 1] )->where('id', '<>', $id)->orderBy('id', 'desc')->limit(5)->get();
@@ -190,9 +190,7 @@ class HomeController extends Controller
             return view('frontend.news.news-detail', compact('title',  'hotArr', 'detail', 'otherArr', 'seo', 'socialImage', 'is_km', 'is_news', 'is_kn'));
         }else{
             return view('erros.404');
-        }     
-
-        
+        }
     }
 
     public function registerNews(Request $request)

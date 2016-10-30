@@ -85,8 +85,6 @@ class ReportController extends Controller
                 $subtitle = date('m-Y', strtotime($dateArr[0]));
             }
         }
-
-       // var_dump("<pre>", $data['cho_xu_ly']);
         return view('backend.report.index', compact( 'report_type', 'date_type' , 'date_to', 'date_from', 'data', 'dateArr', 'title','subtitle'));        
     }
 

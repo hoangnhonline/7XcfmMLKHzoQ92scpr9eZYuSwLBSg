@@ -30,33 +30,7 @@ class ProductController extends Controller
     */
     public function index(Request $request)
     {
-        //var_dump(Hash::make('huongll@@12'));
-        /*set_time_limit(10000);
-        $a = LoaiSp::all();
-        foreach ($a as $key => $value) {
-            $tmp1 = SanPham::where('loai_id', $value->id)->select('id', 'is_hot', 'price_sale')->orderBy('price_sale', 'desc')->orderBy('id', 'desc')->limit(12)->get();
-            if($tmp1->count()){
-                foreach ($tmp1 as $v) {
-                    $model = SanPham::find( $v->id );
-                    $model->is_hot =1;
-                    $model->save();
-                    # code...
-                }
-            }
-        }
-        die('123');
-        foreach ($a as $key => $value) {
-            $model = SanPham::find($value->id);
-            if( $value->price != $value->price_sale && $value->price_sale > 0){
-                
-                $model->is_sale = 1;
 
-            }else{
-                $model->is_sale = 0;
-            }
-            $model->save();
-        }
-        */
         $arrSearch['status'] = $status = isset($request->status) ? $request->status : 1;
         $arrSearch['is_hot'] = $is_hot = isset($request->is_hot) ? $request->is_hot : null;
         $arrSearch['is_sale'] = $is_sale = isset($request->is_sale) ? $request->is_sale : null;

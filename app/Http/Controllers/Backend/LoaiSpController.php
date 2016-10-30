@@ -113,7 +113,7 @@ class LoaiSpController extends Controller
         [
             'text_hien_thi.required' => 'Bạn chưa nhập text hiển thị',            
         ]);
-    //    var_dump("<pre>", $dataArr);die;
+
         if( !empty($dataArr['str_thuoc_tinh_id'])){
             $dataArr['str_thuoctinh_id'] = implode(',', $dataArr['str_thuoc_tinh_id']);
         }
@@ -191,7 +191,7 @@ class LoaiSpController extends Controller
         $dataArr['bg_color'] = $dataArr['bg_color'] != '' ? $dataArr['bg_color'] : '#EE484F';
         
         $dataArr['alias'] = Helper::stripUnicode($dataArr['name']);
-        //var_dump("<pre>", $dataArr);die;
+       
         if($dataArr['icon_url'] && $dataArr['icon_name']){
             
             $tmp = explode('/', $dataArr['icon_url']);

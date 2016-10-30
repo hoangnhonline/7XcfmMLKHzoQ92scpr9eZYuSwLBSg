@@ -137,7 +137,7 @@ class EventsController extends Controller
         
         $dataArr['from_date'] = Carbon::parse($dataArr['from_date'])->format('Y-m-d H:i:s');
         $dataArr['to_date'] = Carbon::parse($dataArr['to_date'])->format('Y-m-d H:i:s');
-        //var_dump("<pre>", $dataArr);die;
+
         if($dataArr['small_banner'] && $dataArr['small_name']){
             
             $tmp = explode('/', $dataArr['small_banner']);
@@ -171,7 +171,7 @@ class EventsController extends Controller
         $dataArr['created_user'] = Auth::user()->id;
 
         $dataArr['updated_user'] = Auth::user()->id;
-       // var_dump("<pre>", $dataArr);die;
+
         $rs = Events::create($dataArr);
         
         $id = $rs->id;

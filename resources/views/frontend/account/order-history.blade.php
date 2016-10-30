@@ -79,8 +79,9 @@
         font-size: 14px !important;
     }
 </style>
+<div class="clearfix"></div>
 @endsection
-<div class='clearfix'></div>
+
 @include('frontend.partials.footer')
 @section('javascript')
    <script type="text/javascript">

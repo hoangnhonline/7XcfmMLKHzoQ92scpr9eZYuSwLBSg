@@ -244,18 +244,14 @@ Route::group(['namespace' => 'Frontend'], function()
         Route::post('update-sanpham', ['as' => 'update-sanpham', 'uses' => 'CartController@update']);
         Route::post('them-sanpham', ['as' => 'them-sanpham', 'uses' => 'CartController@addProduct']);
         Route::get('thanh-cong', ['as' => 'thanh-cong', 'uses' => 'CartController@success']);
-        Route::post('dat-hang', ['as' => 'dat-hang', 'uses' => 'CartController@order']);
-        // Route::get('test', 'CartController@test');
+        Route::post('dat-hang', ['as' => 'dat-hang', 'uses' => 'CartController@order']);        
     });
 
     Route::group(['prefix' => 'tai-khoan'], function () {
         Route::get('don-hang-cua-toi', ['as' => 'order-history', 'uses' => 'OrderController@history']);
-        Route::get('/{order_id}/chi-tiet-don-hang', ['as' => 'order-detail', 'uses' => 'OrderController@detail']);
+        Route::get('/chi-tiet-don-hang/{order_id}', ['as' => 'order-detail', 'uses' => 'OrderController@detail']);
     });
     Route::get('{slugLoaiSp}/{slug}/', ['as' => 'danh-muc-con', 'uses' => 'CateController@cate']);
-    
-    
-
     Route::post('/dang-ki-newsletter', ['as' => 'register.newsletter', 'uses' => 'HomeController@registerNews']);
     Route::get('/cap-nhat-thong-tin', ['as' => 'cap-nhat-thong-tin', 'uses' => 'CartController@updateUserInformation']);
 
@@ -266,35 +262,11 @@ Route::group(['namespace' => 'Frontend'], function()
     Route::post('/customer/update', ['as' => 'update-customer', 'uses' => 'CustomerController@update']);
     Route::post('/customer/register', ['as' => 'register-customer', 'uses' => 'CustomerController@register']);
     Route::post('/customer/register-ajax', ['as' => 'register-customer-ajax', 'uses' => 'CustomerController@registerAjax']);
-    Route::post('/customer/checkemail', ['as' => 'checkemail-customer', 'uses' => 'CustomerController@isEmailExist']);
-
-
-
-    
+    Route::post('/customer/checkemail', ['as' => 'checkemail-customer', 'uses' => 'CustomerController@isEmailExist']);    
     Route::get('/tim-kiem.html', ['as' => 'search', 'uses' => 'HomeController@search']);
     Route::get('so-sanh.html', ['as' => 'so-sanh', 'uses' => 'CompareController@index']);
     Route::get('lien-he.html', ['as' => 'contact', 'uses' => 'HomeController@contact']);
-    /*Route::get('phuong-thuc-thanh-toan.html', ['as' => 'phuong-thuc-thanh-toan', 'uses' => 'PageController@index']);
-    Route::get('lien-he.html', ['as' => 'lien-he', 'uses' => 'PageController@contact']);
-    Route::get('hinh-thuc-van-chuyen.html', ['as' => 'hinh-thuc-van-chuyen', 'uses' => 'PageController@index']);
-    Route::get('chinh-sach-bao-hanh.html', ['as' => 'chinh-sach-bao-hanh', 'uses' => 'PageController@index']);
-    Route::get('chinh-sach-doi-tra.html', ['as' => 'chinh-sach-doi-tra', 'uses' => 'PageController@index']);
-    Route::get('gioi-thieu.html', ['as' => 'gioi-thieu', 'uses' => 'PageController@index']);
-    Route::get('huong-dan-mua-hang.html', ['as' => 'huong-dan-mua-hang', 'uses' => 'PageController@index']);
-    Route::get('bao-mat-thong-tin.html', ['as' => 'bao-mat-thong-tin', 'uses' => 'PageController@index']);
-    */
-    //Route::get('/phim-le', ['as' => 'phim-le', 'uses' => 'HomeController@cate']);
-    //::get('/phim-bo', ['as' => 'phim-bo', 'uses' => 'HomeController@cate']);
-
-    
-    
     Route::get('{slug}.html', ['as' => 'danh-muc-cha', 'uses' => 'CateController@index']);
-    
-
-    Route::get('/movies-info/{movies_id}', ['as' => 'movies-info', 'uses' => 'DetailController@ajaxMoviesInfo']);
-
-    Route::get('/download', ['as' => 'download', 'uses' => 'DetailController@download']);
-
 
 });
 

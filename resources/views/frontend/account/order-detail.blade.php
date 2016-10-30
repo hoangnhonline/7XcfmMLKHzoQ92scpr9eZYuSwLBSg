@@ -99,7 +99,12 @@
                           </tr>
                           @endforeach                         
                         </tbody>
-                        <tfoot>                          
+                        <tfoot> 
+                          <tr>
+                            <td colspan="3" class="text-right"><strong>Chi phí dịch vụ</strong> : {{ number_format($rowOrder->so_dich_vu)}} x {{ number_format($rowOrder->don_gia_dich_vu)}}&nbsp;₫
+                            </td>
+                            <td><strong>{{ number_format($rowOrder->tong_dich_vu) }}&nbsp;₫</strong></td>
+                          </tr>                         
                           <tr>
                             <td colspan="3" class="text-right"><strong>Chi phí vận chuyển</strong></td>
                             <td><strong>{{ number_format($order->phi_giao_hang)}}&nbsp;₫</strong></td>
@@ -111,7 +116,9 @@
                         </tfoot>
                       </table>
                     </div>
-                    <a href="{{ route('order-history')}}" class="btn btn-info btn-back"><i class="fa fa-caret-left"></i> Quay về đơn hàng của tôi</a> </div>
+                    <a href="{{ route('order-history')}}" class="btn btn-info btn-back"><i class="fa fa-caret-left"></i> Quay về đơn hàng của tôi</a>
+                    <button id="btnHuy" data-value="{{ $order->id }}" class="btn btn-danger" style="float:right"><i class="fa fa-times"></i> Hủy đơn hàng</button>
+                     </div>
 
               </div>
               <!-- ./ Center colunm -->
@@ -120,9 +127,8 @@
           <!-- ./row-->   
     </div>
 </div>
-
+<div class="clearfix"></div>
 @endsection
-<div class='clearfix'></div>
 @include('frontend.partials.footer')
 @section('javascript')
    <script type="text/javascript">

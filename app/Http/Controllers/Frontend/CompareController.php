@@ -60,9 +60,8 @@ class CompareController extends Controller
             }
         }        
         
-        $loaiThuocTinhArr = LoaiThuocTinh::where('loai_id', $loai_id)->orderBy('display_order')->get();
-        
-       // var_dump("<pre>", $meta);die;
+        $loaiThuocTinhArr = LoaiThuocTinh::where('loai_id', $loai_id)->orderBy('display_order')->get();        
+
         if( $loaiThuocTinhArr->count() > 0){
             foreach ($loaiThuocTinhArr as $value) {
 

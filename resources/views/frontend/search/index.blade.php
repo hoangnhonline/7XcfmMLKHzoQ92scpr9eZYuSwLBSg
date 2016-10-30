@@ -40,7 +40,7 @@
           </div>
             <div class="center_column col-xs-12 col-sm-9" id="center_column">
                     <h1 class="page-heading">
-                        <span class="page-heading-title2">Kết quả tìm kiếm cho '{{ $tu_khoa }}' ({{ $productArr->total() }})</span>
+                        <span class="page-heading-title2" style="text-transform:none">Kết quả tìm kiếm với từ khóa '{{ $tu_khoa }}' ({{ $productArr->total() }})</span>
                     </h1>
                     <!-- view-product-list-->
                 <div id="view-product-list" class="view-product-list">                                   
