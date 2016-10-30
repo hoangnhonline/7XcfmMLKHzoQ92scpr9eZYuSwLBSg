@@ -21,6 +21,7 @@
     <!-- ldp-banner-full -->
     <div class="ldp-banner-full">
         <img class="lazy" data-original="{{ Helper::showImage($detail->large_banner) }}" alt="{{ $detail->name }}">
+        <button type="button" class="btn-thelechuongtrinh" data-toggle="modal" data-target="#theleModal">Thể lệ chương trình</button>
     </div>
     <!-- ./ldp-banner-full -->
     <div class="container">        
@@ -87,6 +88,28 @@
         </div>
         <!-- ./row-->
     </div>
+</div>
+<!-- Modal -->
+<div id="theleModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Thể lệ chương trình</h4>
+      </div>
+      <div class="modal-body">
+        <?php 
+        echo $detail->the_le;
+        ?>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+      </div>
+    </div>
+
+  </div>
 </div>
 @endsection
 

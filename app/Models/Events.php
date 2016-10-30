@@ -23,7 +23,7 @@ class Events extends Model  {
      *
      * @var array
      */
-    protected $fillable = ['name', 'slug', 'status', 'small_banner', 'display_order', 'large_banner', 'description', 'meta_id', 'from_date', 'to_date', 'created_user', 'updated_user'];
+    protected $fillable = ['name', 'slug', 'status', 'small_banner', 'display_order', 'large_banner', 'description', 'meta_id', 'from_date', 'to_date', 'created_user', 'updated_user', 'the_le'];
 
     public function products()
     {

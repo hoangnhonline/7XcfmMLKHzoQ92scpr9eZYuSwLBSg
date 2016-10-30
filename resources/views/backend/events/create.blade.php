@@ -55,7 +55,11 @@
                 <div class="form-group">
                   <label>Mô tả</label>
                   <textarea class="form-control" rows="4" name="description" id="description">{{ old('description') }}</textarea>
-                </div>            
+                </div>  
+                <div class="form-group">
+                  <label>Thể lệ</label>
+                  <textarea class="form-control" rows="4" name="the_le" id="the_le">{{ old('the_le') }}</textarea>
+                </div>          
                 <div class="form-group" style="margin-top:10px;margin-bottom:10px">  
                   <label class="col-md-3 row">Banner nhỏ</label>    
                   <div class="col-md-9">
@@ -144,9 +148,22 @@
 
 @stop
 @section('javascript_page')
+<script src="{{ URL::asset('backend/dist/js/ckeditor/ckeditor.js') }}"></script>
 <script type="text/javascript" src="{{ URL::asset('assets/js/jquery.datetimepicker.min.js') }}"></script>
 <script type="text/javascript">
     $(document).ready(function(){
+      var editor2 = CKEDITOR.replace( 'the_le',{
+          language : 'vi',
+          height : 300,
+          toolbarGroups : [
+            
+            { name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ] },
+            { name: 'paragraph', groups: [ 'list', 'indent', 'blocks', 'align', 'bidi', 'paragraph' ] },
+            { name: 'links', groups: [ 'links' ] },           
+            '/',
+            
+          ]
+      });
       jQuery('.datetime').datetimepicker({
         format:'d-m-Y H:i',               
         step:15
