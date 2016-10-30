@@ -2778,7 +2778,7 @@ span.notify-right{
 .product-list li .left-block .gift-icon{
   position: absolute;
   left: 5px; top: 5px;
-  z-index: 999; margin: inherit;
+  z-index: 100; margin: inherit;
 }
 .product-list li .discount{
   background-color: #F77C00;

@@ -14,7 +14,7 @@
             <a href="" title="Đơn hàng của tôi">Tìm kiếm</a>
         </div>
         <!-- ./breadcrumb -->
-        <div class="row">
+        <div class="row">        
             <div class="col-sm-3" id="left_column">
               <!-- block category -->
               <div class="block left-module">
@@ -47,10 +47,18 @@
                     <!-- PRODUCT LIST -->
                     <ul class="row product-list grid">
                         @foreach( $productArr as $product )
-                        
+                        <?php 
+                            if( $loaiSpKey[$product['loai_id']]['is_hover'] == 1){                    
+                                $tmp = isset($product['thuoc_tinh']) ? $product['thuoc_tinh'] : "";
+                                $thuocTinhArr = json_decode($tmp, true);
+                            }
+                        ?>
                         <li class="col-xs-6 col-sm-4 col-md-3">
                             <div class="product-container">
                                 <div class="left-block">
+                                   @if($product['pro_style'] == 1 && $product['image_pro'] != '' && $loaiSpKey[$product['loai_id']]['icon_km'] != '')
+                                    <img class="gift-icon lazy" src="{{ Helper::showImage($loaiSpKey[$product['loai_id']]['icon_km']) }}" alt="Sản phẩm có quà tặng">
+                                    @endif
                                     @if($product['pro_style'] == 2 && $product['image_pro'] != '')
                                     <img class="gift-icon lazy" src="{{ Helper::showImage($product['image_pro']) }}" alt="qua tang kem {{ $product['name'] }}">
                                     @endif
@@ -63,7 +71,32 @@
                                     @if($product['pro_style'] == 1 && $product['image_pro'] != '')
                                     <img class="img-responsive lazy-img2 lazy" alt="product" src="{{ Helper::showImage($product['image_pro']) }}" />
                                     @endif
-                                    </a>                                    
+                                    </a>
+                                    @if( $loaiSpKey[$product['loai_id']]['is_hover'] == 1 && $product['pro_style'] == 0)
+                                    <figure class="mask-info">
+                                        @foreach($hoverInfo[$product['loai_id']] as $info)
+                                        <?php 
+                                        $tmpInfo = explode(",", $info->str_thuoctinh_id);        
+                                        ?>
+
+                                        <span>{{ $info->text_hien_thi}}: <?php
+                                        $countT = 0; $totalT = count($tmpInfo);
+                                        foreach( $tmpInfo as $tinfo){
+                                            $countT++;
+                                            if(isset($thuocTinhArr[$tinfo])){
+                                                echo $thuocTinhArr[$tinfo];
+                                                echo $countT < $totalT ? ", " : "";
+                                            }
+                                        }
+
+                                         ?></span>
+                                        @endforeach
+                                        <div class="btn-action">
+                                          <a class="btnorder" product-id={{$product['id']}}>Đặt hàng</a>
+                                          <a class="viewdetail" href="{{ route('chi-tiet', $product['slug']) }}">Chi tiết</a>
+                                        </div>
+                                    </figure>
+                                    @endif
                                 </div>
                                 <div class="right-block">
                                     <h2 class="product-name"><a title="{{ $product['name'] }}" href="{{ route('chi-tiet', $product['slug']) }}">{{ $product['name'] }}</a></h2>
@@ -115,7 +148,26 @@
 @section('javascript')
    <script type="text/javascript">
     $(document).ready(function() {
+      $(document).ready(function() {
+        $('.add_to_cart_button, .btnorder').click(function() {
+          var product_id = $(this).attr('product-id');
+          add_product_to_cart(product_id);
+        });
 
+        function add_product_to_cart(product_id) {
+          $.ajax({
+            url: "{{ route('them-sanpham') }}",
+            method: "POST",
+            data : {
+              id: product_id
+            },
+            success : function(data){
+              location.href = '{{ route("gio-hang") }}';
+            }
+          });
+        }
+
+      });
     });
   </script>
 @endsection

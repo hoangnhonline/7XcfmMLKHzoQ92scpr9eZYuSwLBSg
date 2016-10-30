@@ -127,8 +127,16 @@ class HomeController extends Controller
                         ->leftJoin('sp_thuoctinh', 'sp_thuoctinh.sp_id', '=','san_pham.id')
                         ->select('sp_hinh.image_url', 'san_pham.*', 'thuoc_tinh')
                         ->orderBy('id', 'desc')->paginate(20);
-        $seo['title'] = $seo['description'] =$seo['keywords'] = "Tìm kiếm sản phẩm theo từ khóa '".$tu_khoa."'";                            
-        return view('frontend.search.index', compact('productArr', 'tu_khoa', 'seo'));
+        $seo['title'] = $seo['description'] =$seo['keywords'] = "Tìm kiếm sản phẩm theo từ khóa '".$tu_khoa."'";
+        $hoverInfo = [];
+        if($productArr->count() > 0){
+            $hoverInfoTmp = HoverInfo::orderBy('display_order', 'asc')->orderBy('id', 'asc')->get();
+            foreach($hoverInfoTmp as $value){
+                $hoverInfo[$value->loai_id][] = $value;
+            }
+        }
+        //var_dump("<pre>", $hoverInfo);die;
+        return view('frontend.search.index', compact('productArr', 'tu_khoa', 'seo', 'hoverInfo'));
     }
     public function ajaxTab(Request $request){
         $table = $request->type ? $request->type : 'category';

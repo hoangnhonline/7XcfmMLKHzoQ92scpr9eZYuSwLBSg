@@ -49,7 +49,7 @@ class ViewComposerServiceProvider extends ServiceProvider
 	        if( $loaiSp ){
 
 	            foreach ( $loaiSp as $key => $value) {
-	            	$tmpArr = ['name' => $value->name, 'slug' => $value->slug, 'id' => $value->id, 'icon_url' => $value->icon_url, 'bg_color' => $value->bg_color, 'home_style' => $value->home_style, 'is_hover' => $value->is_hover, 'is_hot' => $value->is_hot, 'menu_ngang' => $value->menu_ngang, 'menu_doc' => $value->menu_doc, 'icon_mau' => $value->icon_mau , 'banner_menu' => $value->banner_menu];	            		
+	            	$tmpArr = ['name' => $value->name, 'slug' => $value->slug, 'id' => $value->id, 'icon_url' => $value->icon_url, 'bg_color' => $value->bg_color, 'home_style' => $value->home_style, 'is_hover' => $value->is_hover, 'is_hot' => $value->is_hot, 'menu_ngang' => $value->menu_ngang, 'menu_doc' => $value->menu_doc, 'icon_mau' => $value->icon_mau , 'banner_menu' => $value->banner_menu, 'icon_km' => $value->icon_km];	            		
 	            	$child = Cate::where(['status' => 1, 'loai_id' => $value->id])
 	                    ->orderBy('display_order')
 	                    ->select('name', 'slug', 'id', 'bg_color', 'icon_url', 'home_style')
