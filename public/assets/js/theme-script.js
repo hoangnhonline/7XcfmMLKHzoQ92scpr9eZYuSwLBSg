@@ -528,8 +528,36 @@ $(document).ready(function () {
         $('.btn-get-newsletter').click();
       }
     });
+    $('#reg_success').bind('keypress', function(e) {
+      if(e.keyCode==13){
+        $('#btnRegTin').click();
+      }
+    });
+    $('#btnRegTin').click(function() {
+        var email = $.trim($('#reg_success').val());        
+        if(validateEmail(email)) {
+            $.ajax({
+              url: $('#route-register-newsletter').val(),
+              method: "POST",
+              data : {
+                email: email,
+              },
+              success : function(data){
+                if(+data){
+                  swal('', 'Đăng ký nhận bản tin thành công.', 'success');
+                }
+                else {
+                  swal('', 'Địa chỉ email đã được đăng ký trước đó.', 'error');
+                }
+                $('#reg_success').val("");
+              }
+            });
+        } else {
+            swal({ title: '', text: 'Vui lòng nhập địa chỉ email hợp lệ.', type: 'error' });
+        }
+    });
     $('.btn-get-newsletter').click(function() {
-        var email = $('#newsletter_email').val();
+        var email = $.trim($('#newsletter_email').val());
         var $email = $(this).parent().prev();
         if(validateEmail(email)) {
             $.ajax({
@@ -540,19 +568,16 @@ $(document).ready(function () {
               },
               success : function(data){
                 if(+data){
-                  swal('Thông báo!', 'Đăng ký nhận bản tin thành công.', 'success');
+                  swal('', 'Đăng ký nhận bản tin thành công.', 'success');
                 }
                 else {
-                  swal('Thông báo!', 'Địa chỉ email đã được đăng ký trước đó.', 'error');
+                  swal('', 'Địa chỉ email đã được đăng ký trước đó.', 'error');
                 }
                 $email.val("");
-              },
-              error : function(e) {
-                alert( JSON.stringify(e));
               }
             });
         } else {
-            swal({ title: 'Có lỗi xảy ra!', text: 'Vui lòng nhập địa chỉ email hợp lệ.', type: 'error' });
+            swal({ title: '', text: 'Vui lòng nhập địa chỉ email hợp lệ.', type: 'error' });
         }
     });
 
@@ -738,4 +763,27 @@ $(document).ready(function() {
       }
     }, {scope: 'public_profile,email'});
   });
+  //mua hang
+    $('.add_to_cart_button, .btnorder, .compare-buy-btn').click(function() {
+        var product_id = $(this).attr('product-id');
+        add_product_to_cart(product_id);
+    });
 });
+
+
+
+function add_product_to_cart(product_id) {
+  $.ajax({
+    url: $('#route-add-to-cart').val(),
+    method: "POST",
+    data : {
+      id: product_id
+    },
+    success : function(data){
+      location.href = $('#route-cart').val();
+    },
+    error : function(e) {
+      alert( JSON.stringify(e));
+    }
+  });
+}

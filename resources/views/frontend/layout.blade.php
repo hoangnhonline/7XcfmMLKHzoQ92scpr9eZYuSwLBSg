@@ -91,6 +91,9 @@
       <input type="hidden" id="fb-app-id" value="{{ env('FACEBOOK_APP_ID') }}">
       <input type="hidden" id="route-register-customer-ajax" value="{{ route('register-customer-ajax') }}">
       <input type="hidden" id="route-register-newsletter" value="{{ route('register.newsletter') }}">
+      <input type="hidden" id="route-add-to-cart" value="{{ route('them-sanpham') }}" />
+      <input type="hidden" id="route-cart" value="{{ route('gio-hang') }}" />
+
       <input type="hidden" id="route-auth-login-ajax" value="{{ route('auth-login-ajax') }}">
        <!-- Hỗ trơ trực tuyến Facebook -->
   <div class="contact-face" style="">

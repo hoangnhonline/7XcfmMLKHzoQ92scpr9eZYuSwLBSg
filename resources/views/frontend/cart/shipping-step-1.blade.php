@@ -369,7 +369,7 @@
               if(+data){
                 location.reload();
               } else {
-                swal({ title: 'Có lỗi xảy ra!', text: 'Email này đã được đăng kí rồi.', type: 'error' });
+                swal({ title: '', text: 'Email này đã được đăng kí rồi.', type: 'error' });
               }
             },
             error : function(e) {

@@ -57,10 +57,10 @@ $vangLaiArr = Session::get('vanglai');
                       <div class="arrow"></div>
                       <div class="popover-content">
                         <h6>Nhập địa chỉ email của bạn</h6>
-                        <form novalidate target="_blank" name="mc-embedded-subscribe-form" id="mc-embedded-subscribe-form" method="post" action="#">
-                          <input name="EMAIL" id="mce-EMAIL" class="form-control" value="" required="required" pattern="" title="" type="text">
-                          <button type="button" class="btn btn-primary btn-block" name="subscribe" id="mc-embedded-subscribe">Đăng ký nhận tiện ích</button>
-                        </form>
+                        
+                          <input type="email" id="reg_success" class="form-control" value="" required="required" type="text">
+                          <button type="button" class="btn btn-primary btn-block" id="btnRegTin">Đăng ký nhận tin khuyến mãi</button>
+                        
                       </div>
                     </div>
                     <div class="facebook-page"> </div>

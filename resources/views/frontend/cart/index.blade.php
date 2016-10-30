@@ -130,14 +130,7 @@
                    @if( $arrProductInfo->count() > 0)                    
                     
                     <button type="button" class="btn btn-large btn-block btn-default btn-checkout"> TIẾN HÀNH ĐẶT HÀNG </button>
-                    @endif
-
-                    <div class="popover bottom tikixu">
-                      <div class="arrow"></div>
-                      <div class="popover-content">
-                        <p class="p24h" no-border=""> <img src="{{ URL::asset('assets/images/icon-24h.svg') }}" alt="24" height="20" width="34">Đơn hàng có thể được giao trong vòng <a href="#" title="Xem chi tiết">24 giờ</a> đến các <a title="" data-original-title=""  class="view-more-dist" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Quận nội thành bao gồm các quận số (trừ Q9, Q12), Bình Thạnh, Gò Vấp, Phú Nhuận, Tân Bình, Tân Phú.">quận nội thành</a> tại TP Hồ Chí Minh. </p>
-                      </div>
-                    </div>
+                    @endif                    
                   </div>
                 </div>
             </div>
