@@ -352,10 +352,14 @@ class CartController extends Controller
         $customer = Customer::find($customer_id);
 
         $email = isset($vangLaiArr['email']) ? $vangLaiArr['email'] :  $customer->email;
-       
+        if($email != ''){
+            $emailArr = array_merge([$email], ['tundq.ipl@gmail.com', 'tundq@icare.center', 'hiepvv.ipl@gmail.com', 'lamhuong77@gmail.com', 'chamsoc@icho.vn', 'hoangnhonline@gmail.com']);
+        }else{
+            $emailArr = ['tundq.ipl@gmail.com', 'tundq@icare.center', 'hiepvv.ipl@gmail.com', 'lamhuong77@gmail.com', 'chamsoc@icho.vn', 'hoangnhonline@gmail.com'];
+        }
         // send email
         $order_id =str_pad($order_id, 6, "0", STR_PAD_LEFT);
-        if($email != ''){
+        if(!empty($emailArr)){
             Mail::send('frontend.email.cart',
                 [
                     'customer'          => $customer,
@@ -368,9 +372,9 @@ class CartController extends Controller
                     'order_id' => $order_id,
                     'is_vanglai' => $is_vanglai
                 ],
-                function($message) use ($email, $order_id) {
+                function($message) use ($emailArr, $order_id) {
                     $message->subject('Xác nhận đơn hàng hàng #'.$order_id);
-                    $message->to($email);
+                    $message->to($emailArr);
                     $message->from('icho.vn@gmail.com', 'icho.vn');
                     $message->sender('icho.vn@gmail.com', 'icho.vn');
             });
