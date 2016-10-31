@@ -83,9 +83,9 @@ class DetailController extends Controller
         $compare1 = Compare::where('sp_1', $detail->id)->lists('sp_2')->toArray();              
         $compare2 = Compare::where('sp_2', $detail->id)->lists('sp_1')->toArray();        
         $sosanhArr = array_merge($compare1, $compare2);
-
-        $tmpArr = array_merge($phuKienArr, $tuongtuArr);
-       
+        //var_dump($sosanhArr);die;
+        $tmpArr = array_merge($phuKienArr, $tuongtuArr, $sosanhArr);
+        
         if( !empty($tmpArr)){
             $productTmpArr = SanPham::whereIn('san_pham.id', $tmpArr)
                 ->leftJoin('sp_hinh', 'sp_hinh.id', '=','san_pham.thumbnail_id')

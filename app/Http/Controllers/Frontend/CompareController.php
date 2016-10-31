@@ -74,8 +74,8 @@ class CompareController extends Controller
         }        
 
       
-                
-        return view('frontend.compare.index', compact('thuocTinhArr', 'loaiThuocTinhArr', 'spThuocTinhArr', 'productArr'));
+         $seo['title'] = $seo['description'] = $seo['keywords'] = "So sanh";         
+        return view('frontend.compare.index', compact('thuocTinhArr', 'loaiThuocTinhArr', 'spThuocTinhArr', 'productArr', 'seo'));
     }
 
 

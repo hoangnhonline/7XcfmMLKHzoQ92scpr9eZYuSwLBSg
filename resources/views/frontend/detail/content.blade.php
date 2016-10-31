@@ -292,10 +292,10 @@
                                     <span class="price product-price">{{ number_format($productArr[$sp_id]->price) }}</span>                                    
                                     @endif
                                 </div>
-                                @if( in_array( $sp_id, $sosanhArr ))
+                                
                                 <?php $str_sosanh = $detail->id.'-'.$sp_id; ?>
                                 <a href="{{ route('so-sanh', ['id' => $str_sosanh]) }}" class="compare-txt"> So sánh chi tiết</a>
-                                @endif
+                                
                                 <a rel="nofollow" href="javascript:void(0)" class="add_to_cart_button" product-id="{{ $sp_id }}">Mua</a>
                             </div>
                         </div>
@@ -344,10 +344,10 @@
                                     <span class="price product-price">{{ number_format($product->price) }}</span>                                    
                                     @endif
                                 </div>
-                                @if( in_array( $product->sp_id, $sosanhArr ))
+                                
                                 <?php $str_sosanh = $detail->id.'-'.$product->sp_id; ?>
                                 <a href="{{ route('so-sanh', ['id' => $str_sosanh]) }}" class="compare-txt"> So sánh chi tiết</a>
-                                @endif
+                                
                                 <a rel="nofollow" href="javascript:void(0)" class="add_to_cart_button" product-id="{{ $product->sp_id }}">Mua</a>
                             </div>
                         </div>
