@@ -323,6 +323,9 @@
                                     <li><a title="{{ $cate['name'] }}" href="{{ route('danh-muc-con', [$loai['slug'], $cate['slug']])}}">{{ $cate['name']}}</a></li>
                                     @endif
                                     @endforeach
+                                    @if($loai['id'] == 6)
+                                    <li><a title="Máy in" href="{{ route('danh-muc-cha', 'may-in') }}">Máy in</a></li>
+                                    @endif
 
                                 </ul>
                                 @else
