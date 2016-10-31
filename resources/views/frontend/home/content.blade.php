@@ -22,7 +22,9 @@
                         <div class="collapse navbar-collapse">
                           <ul class="nav navbar-nav"> 
                             @foreach( $loai['child'] as $cate)
+                            @if(!in_array($cate['id'], [27,28,29]))
                             <li><a title="{{ $cate['name'] }}" href="{{ route('danh-muc-con', [$loai['slug'], $cate['slug']])}}">{{ $cate['name']}}</a></li>
+                            @endif
                             @endforeach
                           </ul>
                         </div><!-- /.navbar-collapse -->
@@ -298,7 +300,9 @@
                         <div class="collapse navbar-collapse">           
                           <ul class="nav navbar-nav">
                                 @foreach( $loai['child'] as $cate)
+                                @if(!in_array($cate['id'], [27,28,29]))
                                 <li><a title="{{ $cate['name'] }}" href="{{ route('danh-muc-con', [$loai['slug'], $cate['slug']])}}">{{ $cate['name']}}</a></li>
+                                @endif
                                 @endforeach
                           </ul>
                         </div><!-- /.navbar-collapse -->

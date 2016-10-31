@@ -34,8 +34,7 @@ class EventController extends Controller
 
     public function detail(Request $request){
 
-        // check con ton tai hay ko ?
-        
+               
 
         $slug = $request->slug;        
         $detail = Events::where('slug', $slug)->first();       
@@ -43,6 +42,9 @@ class EventController extends Controller
             return redirect()->route('home');
         }
         $event_id = $detail->id;
+        
+        // check con ton tai hay ko ?
+
         $dt = Carbon::now()->format('Y-m-d H:i:s');
         $rsCheck = Events::where('from_date', '<=', $dt)->where('to_date', '>=', $dt)->where('status', 1)->where('id', $event_id)->first();
         if(!$rsCheck){
