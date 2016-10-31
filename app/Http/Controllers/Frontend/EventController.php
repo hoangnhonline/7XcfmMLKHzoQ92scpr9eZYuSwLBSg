@@ -44,7 +44,6 @@ class EventController extends Controller
         $event_id = $detail->id;
         
         // check con ton tai hay ko ?
-
         $dt = Carbon::now()->format('Y-m-d H:i:s');
         $rsCheck = Events::where('from_date', '<=', $dt)->where('to_date', '>=', $dt)->where('status', 1)->where('id', $event_id)->first();
         if(!$rsCheck){

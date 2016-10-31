@@ -319,7 +319,9 @@
                                 <ul class="sub-category-list">
 
                                     @foreach( $loai['child'] as $cate)
+                                    @if(!in_array($cate['id'], [27,28,29]))
                                     <li><a title="{{ $cate['name'] }}" href="{{ route('danh-muc-con', [$loai['slug'], $cate['slug']])}}">{{ $cate['name']}}</a></li>
+                                    @endif
                                     @endforeach
 
                                 </ul>
