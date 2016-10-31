@@ -41,6 +41,9 @@ class CateController extends Controller
         $productArr = [];
         $slug = $request->slug;
         $rs = LoaiSp::where('slug', $slug)->first();
+        if(!$rs){
+            return redirect()->route('home');
+        }
         if($rs){//danh muc cha
             $loai_id = $rs->id;
             $cateArr = Cate::where('status', 1)->where('loai_id', $loai_id)->get();
@@ -69,6 +72,9 @@ class CateController extends Controller
             return view('frontend.cate.parent', compact('productArr', 'cateArr', 'rs', 'hoverInfo', 'socialImage', 'seo'));
         }else{
             $detailPage = Pages::where('slug', $slug)->first();
+            if(!$detailPage){
+                return redirect()->route('home');
+            }
             $seo['title'] = $detailPage->meta_title ? $detailPage->meta_title : $detailPage->title;
             $seo['description'] = $detailPage->meta_description ? $detailPage->meta_description : $detailPage->title;
             $seo['keywords'] = $detailPage->meta_keywords ? $detailPage->meta_keywords : $detailPage->title;           
@@ -85,6 +91,9 @@ class CateController extends Controller
         $slugLoaiSp = $request->slugLoaiSp;
        
         $rs = LoaiSp::where('slug', $slugLoaiSp)->first();
+        if(!$rs){
+            return redirect()->route('home');
+        }
         $loai_id = $rs->id;
        
 
@@ -115,6 +124,9 @@ class CateController extends Controller
         $slugLoaiSp = $request->slugLoaiSp;
        
         $rs = LoaiSp::where('slug', $slugLoaiSp)->first();
+        if(!$rs){
+            return redirect()->route('home');
+        }
         $loai_id = $rs->id;
        
 
@@ -145,6 +157,9 @@ class CateController extends Controller
         $slugLoaiSp = $request->slugLoaiSp;
        
         $rs = LoaiSp::where('slug', $slugLoaiSp)->first();
+        if(!$rs){
+            return redirect()->route('home');
+        }
         $loai_id = $rs->id;
        
 
@@ -172,6 +187,9 @@ class CateController extends Controller
         
         
         $rs = LoaiSp::where('slug', $slugLoaiSp)->first();
+        if(!$rs){
+            return redirect()->route('home');
+        }
         $loai_id = $rs->id;
         
         $tmp = DB::table('price_range')->where('loai_id', $loai_id)->where('alias', $slugGia)->first();
@@ -281,6 +299,9 @@ class CateController extends Controller
         $slugLoaiSp = $request->slugLoaiSp;
         $slug = $request->slug;
         $rs = LoaiSp::where('slug', $slugLoaiSp)->first();
+        if(!$rs){
+            return redirect()->route('home');
+        }
         $loai_id = $rs->id;
         $rsCate = Cate::where(['loai_id' => $loai_id, 'slug' => $slug])->first();
         $cate_id = $rsCate->id;
@@ -341,6 +362,9 @@ class CateController extends Controller
         $detail = Articles::where( 'id', $id )
                 ->select('id', 'title', 'slug', 'description', 'image_url', 'content', 'meta_title', 'meta_description', 'meta_keywords', 'custom_text')
                 ->first();
+        if(!$detail){
+            return redirect()->route('home');
+        }
 
         if( $detail ){
             $cateArr = $cateActiveArr = $moviesActiveArr = [];

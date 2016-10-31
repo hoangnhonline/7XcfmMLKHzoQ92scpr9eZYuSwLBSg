@@ -34,12 +34,24 @@ class EventController extends Controller
 
     public function detail(Request $request){
 
+        // check con ton tai hay ko ?
+        
+
         $slug = $request->slug;        
         $detail = Events::where('slug', $slug)->first();       
+        if(!$detail){
+            return redirect()->route('home');
+        }
         $event_id = $detail->id;
+        $dt = Carbon::now()->format('Y-m-d H:i:s');
+        $rsCheck = Events::where('from_date', '<=', $dt)->where('to_date', '>=', $dt)->where('status', 1)->where('id', $event_id)->first();
+        if(!$rsCheck){
+            return redirect()->route('home');   
+        }       
+
         Session::set('event_id', $event_id);        
         $detail = Events::find($event_id);
-        $dataList = ProductEvent::where('event_id', $event_id)
+        $dataList = ProductEvent::where('event_id', $event_id)->where('product_event.status', 1)
                     ->join('san_pham', 'san_pham.id', '=', 'product_event.sp_id')                    
                     ->join('sp_hinh', 'san_pham.thumbnail_id', '=', 'sp_hinh.id')
                     ->join('loai_sp', 'san_pham.loai_id', '=', 'loai_sp.id')

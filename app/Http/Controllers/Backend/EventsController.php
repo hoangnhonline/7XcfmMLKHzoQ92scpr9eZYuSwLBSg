@@ -43,28 +43,40 @@ class EventsController extends Controller
         $event_id = $request->event_id;
         $tmpArr = explode(',', $str_value);
         $so_luong = $request->so_luong ? $request->so_luong : [];
-        $rs = ProductEvent::where('event_id', $event_id)->lists('sp_id')->toArray();
+        $rs = ProductEvent::where('event_id', $event_id)->where('status', 1)->get(); // status = 1
+        $arrIdDb = [];
         if(!empty($rs)){
-            foreach($rs as $id){
-                $tmpModel = SanPham::find($id);
-                $tmpModel->is_event = 0;
-                $tmpModel->save();
+            foreach($rs as $tmp1){
+                $arrIdDb[] = $tmp1->sp_id;
+                if(!in_array($tmp1->sp_id, $tmpArr)){
+                    $tmpPE1 =ProductEvent::where('event_id', $event_id)->where('sp_id', $tmp1->sp_id);
+                    $tmpPE1->update(['status' => 0, 'so_luong' => 0]);
+                    $tmpModel = SanPham::find($tmp1->sp_id);
+                    $tmpModel->so_luong_ton = $tmp1->so_luong + $tmpModel->so_luong_ton;
+                    $tmpModel->is_event = 0;
+                    $tmpModel->save();
+                }
             }
         }
-        ProductEvent::where('event_id', $event_id)->delete();
-
         if(!empty($tmpArr)){
             $dataArr['created_user'] = Auth::user()->id;
             $dataArr['updated_user'] = Auth::user()->id;
             foreach ($tmpArr as $sp_id) {                
 
-                if($sp_id > 0){
+                if($sp_id > 0 && !in_array($sp_id, $arrIdDb)){
+                    //check so luong hien tai
+                    $tmpModel = SanPham::find($sp_id);
+                    $so_luong_ton = $tmpModel->so_luong_ton;    
+
                     $dataArr['sp_id'] = $sp_id;
                     $dataArr['event_id'] = $event_id;
+                    $dataArr['status'] = 1;
                     $dataArr['so_luong'] = !empty($so_luong) && isset($so_luong[$sp_id]) ? $so_luong[$sp_id] : 0;
+
+                    $dataArr['so_luong'] = $dataArr['so_luong'] <= $so_luong_ton ? $dataArr['so_luong'] : $so_luong_ton;
                     $dataArr['so_luong_tam'] = $dataArr['so_luong'];
                     ProductEvent::create($dataArr);
-                    $tmpModel = SanPham::find($sp_id);
+                    $tmpModel->so_luong_ton = $so_luong_ton - $dataArr['so_luong'];
                     $tmpModel->is_event = 1;
                     $tmpModel->save();
                 }
@@ -218,7 +230,7 @@ class EventsController extends Controller
     {
         $event_id = $request->event_id;
         $detail = Events::find($event_id);        
-        $dataList = ProductEvent::where('event_id', $event_id)
+        $dataList = ProductEvent::where('event_id', $event_id)->where('product_event.status', 1)
                     ->join('san_pham', 'san_pham.id', '=', 'product_event.sp_id')
                     ->join('sp_hinh', 'san_pham.thumbnail_id', '=', 'sp_hinh.id')
                     ->join('loai_sp', 'san_pham.loai_id', '=', 'loai_sp.id')
@@ -334,8 +346,16 @@ class EventsController extends Controller
     {
         // delete
         $event_id = $request->event_id;
-        $sp_id = $request->sp_id;
-        ProductEvent::where(['event_id' => $event_id, 'sp_id' => $sp_id])->delete();      
+        $sp_id = $request->sp_id;       
+
+        $tmpPE1 =ProductEvent::where('event_id', $event_id)->where('sp_id', $sp_id)->first();
+        
+        $tmpModel = SanPham::find($sp_id);
+        $tmpModel->so_luong_ton = $tmpPE1->so_luong + $tmpModel->so_luong_ton;
+        $tmpModel->is_event = 0;
+        $tmpModel->save();
+
+        $tmpPE1->update(['status' => 0, 'so_luong' => 0]);       
 
         // redirect
         Session::flash('message', 'Xóa sản phẩm khuyến mãi thành công');
