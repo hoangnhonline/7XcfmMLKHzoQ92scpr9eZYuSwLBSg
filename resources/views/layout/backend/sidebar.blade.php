@@ -91,7 +91,7 @@
       <li {{ in_array(\Request::route()->getName(), ['events.index', 'events.edit', 'events.create', 'events.product-event']) ? "class=active" : "" }}>
         <a href="{{ route('events.index') }}">
           <i class="fa fa-file-image-o"></i>
-          <span>Chương trình khuyến mãi</span>
+          <span>Khuyến mãi</span>
           <span class="pull-right-container">
             <i class="fa fa-angle-left pull-right"></i>
           </span>
@@ -119,9 +119,7 @@
           <li {{ \Request::route()->getName() == "info-seo.index" ? "class=active" : "" }}><a href="{{ route('info-seo.index') }}"><i class="fa fa-circle-o"></i> Cài đặt SEO</a></li>
           <li {{ \Request::route()->getName() == "loai-thuoc-tinh.index" ? "class=active" : "" }}><a href="{{ route('loai-thuoc-tinh.index') }}"><i class="fa fa-circle-o"></i> Loại thuộc tính</a></li>
           <li {{ \Request::route()->getName() == "thuoc-tinh.index" ? "class=active" : "" }}><a href="{{ route('thuoc-tinh.index') }}"><i class="fa fa-circle-o"></i> Thuộc tính</a></li>
-          <li {{ \Request::route()->getName() == "tinh.index" ? "class=active" : "" }}><a href="{{ route('tinh.index') }}"><i class="fa fa-circle-o"></i> Tỉnh/thành</a></li>
-          <li><a href="pages/UI/sliders.html"><i class="fa fa-circle-o"></i> Quận/huyện</a></li>
-          <li><a href="pages/UI/timeline.html"><i class="fa fa-circle-o"></i> Phường/Xã</a></li>          
+          <li {{ \Request::route()->getName() == "color.index" ? "class=active" : "" }}><a href="{{ route('color.index') }}"><i class="fa fa-circle-o"></i> Màu sắc</a></li>      
         </ul>
       </li>
       <!--<li class="header">LABELS</li>

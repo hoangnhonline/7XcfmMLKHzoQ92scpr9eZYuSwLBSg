@@ -8,7 +8,7 @@
     </h1>
     <ol class="breadcrumb">
       <li><a href="#"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-      <li><a href="{{ route('pages.index') }}">Thông tin trnag</a></li>
+      <li><a href="{{ route('pages.index') }}">Thông tin trang</a></li>
       <li class="active">Chỉnh sửa</li>
     </ol>
   </section>

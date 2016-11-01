@@ -57,6 +57,14 @@ Route::group(['namespace' => 'Backend', 'prefix' => 'backend', 'middleware' => '
         Route::post('/update', ['as' => 'pages.update', 'uses' => 'PagesController@update']);
         Route::get('{id}/destroy', ['as' => 'pages.destroy', 'uses' => 'PagesController@destroy']);
     });
+    Route::group(['prefix' => 'color'], function () {
+        Route::get('/', ['as' => 'color.index', 'uses' => 'ColorController@index']);
+        Route::get('/create', ['as' => 'color.create', 'uses' => 'ColorController@create']);
+        Route::post('/store', ['as' => 'color.store', 'uses' => 'ColorController@store']);
+        Route::get('{id}/edit',   ['as' => 'color.edit', 'uses' => 'ColorController@edit']);
+        Route::post('/update', ['as' => 'color.update', 'uses' => 'ColorController@update']);
+        Route::get('{id}/destroy', ['as' => 'color.destroy', 'uses' => 'ColorController@destroy']);
+    });
     Route::group(['prefix' => 'info-seo'], function () {
         Route::get('/', ['as' => 'info-seo.index', 'uses' => 'InfoSeoController@index']);
         Route::get('/create', ['as' => 'info-seo.create', 'uses' => 'InfoSeoController@create']);

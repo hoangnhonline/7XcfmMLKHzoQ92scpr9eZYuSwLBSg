@@ -36,6 +36,12 @@ class ProductController extends Controller
         $arrSearch['is_sale'] = $is_sale = isset($request->is_sale) ? $request->is_sale : null;
         $arrSearch['loai_id'] = $loai_id = isset($request->loai_id) ? $request->loai_id : null;
         $arrSearch['cate_id'] = $cate_id = isset($request->cate_id) ? $request->cate_id : null;
+
+        $arrSearch['het_hang'] = $het_hang = isset($request->het_hang) ? $request->het_hang : null;
+        $arrSearch['chua_nhap_gia'] = $chua_nhap_gia = isset($request->chua_nhap_gia) ? $request->chua_nhap_gia : null;
+        $arrSearch['thieu_can_nang'] = $thieu_can_nang = isset($request->thieu_can_nang) ? $request->thieu_can_nang : null;
+        $arrSearch['thieu_kich_thuoc'] = $thieu_kich_thuoc = isset($request->thieu_kich_thuoc) ? $request->thieu_kich_thuoc : null;
+
         $arrSearch['name'] = $name = isset($request->name) && trim($request->name) != '' ? trim($request->name) : '';
         
         $query = SanPham::where('san_pham.status', $status);
@@ -50,6 +56,20 @@ class ProductController extends Controller
         }
         if( $cate_id ){
             $query->where('san_pham.cate_id', $cate_id);
+        }
+        if( $het_hang ){
+            $query->where('san_pham.so_luong_ton', 0);
+        }
+        if( $chua_nhap_gia ){
+            $query->where('san_pham.price', 0);
+        }
+        if( $thieu_can_nang ){
+            $query->where('san_pham.can_nang', 0);
+        }
+        if( $thieu_kich_thuoc ){
+            $query->where('san_pham.chieu_dai', 0);
+            $query->orWhere('san_pham.chieu_rong', 0);
+            $query->orWhere('san_pham.chieu_cao', 0);
         }
         if( $name != ''){
             $query->where('san_pham.name', 'LIKE', '%'.$name.'%');
