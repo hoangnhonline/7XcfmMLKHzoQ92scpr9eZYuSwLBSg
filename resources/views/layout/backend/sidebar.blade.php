@@ -106,7 +106,7 @@
           </span>
         </a>       
       </li> 
-      <li class="treeview {{ in_array(\Request::route()->getName(), ['loai-thuoc-tinh.index', 'thuoc-tinh.index', 'tinh.index']) ? 'active' : '' }}">
+      <li class="treeview {{ in_array(\Request::route()->getName(), ['loai-thuoc-tinh.index', 'thuoc-tinh.index', 'color.index']) ? 'active' : '' }}">
         <a href="#">
           <i class="fa  fa-gears"></i>
           <span>Cài đặt</span>
