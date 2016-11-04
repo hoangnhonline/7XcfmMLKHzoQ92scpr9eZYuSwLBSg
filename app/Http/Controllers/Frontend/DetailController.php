@@ -42,7 +42,7 @@ class DetailController extends Controller
 
         $spThuocTinhArr = $productArr = [];
         $slug = $request->slug;
-        $detail = SanPham::where('slug', $slug)->first();
+        $detail = SanPham::where('slug', $slug)->where('cate_id', '>', 0)->where('loai_id', '>', 0)->first();
         if(!$detail){
             return redirect()->route('home');
         }
