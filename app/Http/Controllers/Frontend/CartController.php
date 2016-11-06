@@ -362,7 +362,6 @@ class CartController extends Controller
         }
         // send email
         $order_id =str_pad($order_id, 6, "0", STR_PAD_LEFT);
-        /*
         if(!empty($emailArr)){
             Mail::send('frontend.email.cart',
                 [
@@ -383,7 +382,7 @@ class CartController extends Controller
                     $message->sender('icho.vn@gmail.com', 'icho.vn');
             });
         }
-        */
+        
         return 'success';
 
     }
