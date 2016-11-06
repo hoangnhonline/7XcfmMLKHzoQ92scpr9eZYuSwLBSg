@@ -43,8 +43,17 @@
         @yield('content')
         @yield('footer')
 
-      <a href="#" class="scroll_top" title="Scroll to Top" style="display: inline;">Scroll</a>
+      <!--<a href="#" class="scroll_top" title="Scroll to Top" style="display: inline;">Scroll</a>-->
       <!-- Script-->
+      <input type="hidden" id="route-ajax-login-fb" value="{{route('ajax-login-by-fb')}}">
+      <input type="hidden" id="route-cap-nhat-thong-tin" value="{{ route('cap-nhat-thong-tin') }}">
+      <input type="hidden" id="fb-app-id" value="{{ env('FACEBOOK_APP_ID') }}">
+      <input type="hidden" id="route-register-customer-ajax" value="{{ route('register-customer-ajax') }}">
+      <input type="hidden" id="route-register-newsletter" value="{{ route('register.newsletter') }}">
+      <input type="hidden" id="route-add-to-cart" value="{{ route('them-sanpham') }}" />
+      <input type="hidden" id="route-cart" value="{{ route('gio-hang') }}" />
+
+      <input type="hidden" id="route-auth-login-ajax" value="{{ route('auth-login-ajax') }}">
       <script type="text/javascript" src="{{ URL::asset('assets/lib/jquery/jquery-1.11.2.min.js') }}"></script>
       <script type="text/javascript" src="{{ URL::asset('assets/lib/bootstrap/js/bootstrap.min.js') }}"></script>
       <script type="text/javascript" src="{{ URL::asset('assets/lib/select2/js/select2.min.js') }}"></script>
@@ -58,6 +67,7 @@
       <script src="{{ URL::asset('assets/js/sweetalert2.min.js') }}"></script>
       @if(\Request::route()->getName() == "chi-tiet")
       <script type="text/javascript" src="{{ URL::asset('assets/lib/fancyBox/jquery.fancybox.js') }}"></script>
+      <script type="text/javascript" src="{{ URL::asset('assets/js/readmore.min.js') }}"></script>
       @endif
       <script src="{{ URL::asset('assets/js/icheck.min.js') }}"></script>
       <script type="text/javascript" src="{{ URL::asset('assets/js/lazy.js') }}"></script>
@@ -86,17 +96,9 @@
       </script>
       @endif
       @yield('javascript')      
-      <input type="hidden" id="route-ajax-login-fb" value="{{route('ajax-login-by-fb')}}">
-      <input type="hidden" id="route-cap-nhat-thong-tin" value="{{ route('cap-nhat-thong-tin') }}">
-      <input type="hidden" id="fb-app-id" value="{{ env('FACEBOOK_APP_ID') }}">
-      <input type="hidden" id="route-register-customer-ajax" value="{{ route('register-customer-ajax') }}">
-      <input type="hidden" id="route-register-newsletter" value="{{ route('register.newsletter') }}">
-      <input type="hidden" id="route-add-to-cart" value="{{ route('them-sanpham') }}" />
-      <input type="hidden" id="route-cart" value="{{ route('gio-hang') }}" />
-
-      <input type="hidden" id="route-auth-login-ajax" value="{{ route('auth-login-ajax') }}">
+      
        <!-- Hỗ trơ trực tuyến Facebook -->
-  <div class="contact-face" style="">
+  <!--<div class="contact-face" style="">
           <div class="title_quancaog" style="background: #d0021b;color: #fff;padding: 3px 10px;cursor:pointer;">
           <p class="xclose" style="display: none;margin: 0;" onclick="closeface();"><i class="fa fa-minus" aria-hidden="true" style="margin-right: 10px;"></i>Hỗ trợ trực tuyến</p>
           <p class="xopen" style="margin: 0;" onclick="openface();"><i class="fa fa-envelope-o" style="margin-right: 10px;" aria-hidden="true"></i>Để lại lời nhắn</p>
@@ -108,6 +110,6 @@
               </blockquote>
           </div>
       </div>
-  </div>
+  </div>-->
   </body>
 </html>

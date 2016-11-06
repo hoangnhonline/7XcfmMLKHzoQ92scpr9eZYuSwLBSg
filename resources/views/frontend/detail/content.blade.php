@@ -227,14 +227,14 @@
                   @endif
               </ul>
               <div class="tab-container">
-                  <div id="productdetail" class="tab-panel active product-content-detail" style="text-align:justify">
-                      <?php echo ($detail->chi_tiet); ?>
-                      <div class="box-readmore" style="display:none">
-                          <a href="javascript:void(0)" class="readmore">Xem chi tiết</a>
+                  <div id="productdetail" class="tab-panel active product-content-detail content-read-more" style="text-align:justify">
+                      <div id="content-chitiet">
+                      <?php echo ($detail->chi_tiet); ?>                     
                       </div>
                   </div>
                   @if( !empty( $thuocTinhArr ))
-                  <div id="thongtinkythuat" class="tab-panel">                      
+                  <div id="thongtinkythuat" class="tab-panel">  
+                      <div id="content-thongso">                    
                      <table class="table table-responsive table-bordered">
                       @foreach($thuocTinhArr as $loaithuoctinh)
                         <tr style="background-color:#CCC">
@@ -249,7 +249,8 @@
                           @endforeach
                         @endif
                       @endforeach
-                      </table>                    
+                      </table>  
+                      </div>                  
                   </div>
                   @endif
               </div>
@@ -366,5 +367,8 @@
 </div>
 @endsection
 @section('javascript_page')
+<script type="text/javascript">
+  
 
+</script>
 @endsection

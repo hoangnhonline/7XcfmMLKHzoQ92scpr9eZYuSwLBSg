@@ -4795,7 +4795,7 @@ padding-right: 10px;
   margin-bottom: 0;
 }
 .product-tab .tab-container .tab-panel{
-  line-height: 24px;
+  
 }
 .product-comments-block-tab {
   overflow: hidden;
@@ -4809,8 +4809,7 @@ padding-right: 10px;
 
 .product-content-detail {
   text-align: justify;
-  position: relative;
-  max-height: 500px;
+  position: relative;  
   overflow: hidden;
   -webkit-transition: max-height 1s;
   transition: max-height 1s;
