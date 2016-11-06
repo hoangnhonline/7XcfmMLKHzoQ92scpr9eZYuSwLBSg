@@ -476,6 +476,29 @@
         $('.box-readmore').hide();
     }    
     */
+    /*$('#btnEmptyCart').click(function(){
+        var obj = $(this);
+        swal({
+          title: "",
+          text: "Xóa tất cả sản phẩm trong giỏ hàng ?",
+          type: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#DD6B55",
+          confirmButtonText: "Xóa"          
+        },
+        function(isConfirm){
+            if(isConfirm){
+              $.ajax({
+                url : obj.data('url'),
+                type : 'GET',
+                success : function(){
+                    //window.location.reload();
+                }
+              });
+            }
+        });
+    });
+    */
     if($('#content-chitiet').length==1){
         $('#content-chitiet').readmore({
             speed: 100,
@@ -669,9 +692,6 @@ $(document).ready(function () {
                else {
                     location.reload();
                }
-              },
-              error : function(e) {
-                alert( JSON.stringify(e));
               }
             });
         }
@@ -746,22 +766,6 @@ window.fbAsyncInit = function() {
     xfbml      : true,  // parse social plugins on this page
     version    : 'v2.7' // use graph api version 2.7
   });
-
-  // Now that we've initialized the JavaScript SDK, we call
-  // FB.getLoginStatus().  This function gets the state of the
-  // person visiting this page and can return one of three states to
-  // the callback you provide.  They can be:
-  //
-  // 1. Logged into your app ('connected')
-  // 2. Logged into Facebook, but not your app ('not_authorized')
-  // 3. Not logged into Facebook and can't tell if they are logged into
-  //    your app or not.
-  //
-  // These three cases are handled in the callback function.
-
-  // FB.getLoginStatus(function(response) {
-  //   statusChangeCallback(response);
-  // });
 };
 
 (function(d, s, id) {
@@ -815,9 +819,6 @@ function add_product_to_cart(product_id) {
     },
     success : function(data){
       location.href = $('#route-cart').val();
-    },
-    error : function(e) {
-      alert( JSON.stringify(e));
     }
   });
 }

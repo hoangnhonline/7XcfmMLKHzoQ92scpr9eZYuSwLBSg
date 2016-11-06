@@ -410,5 +410,10 @@ class CartController extends Controller
 
         return view('frontend.cart.success', compact('order_id', 'customer', 'arrDate', 'seo', 'is_vanglai', 'vangLaiArr'));
     }
+
+    public function deleteAll(){
+        Session::put('products', []);
+        return redirect()->route('gio-hang');
+    }
 }
 
