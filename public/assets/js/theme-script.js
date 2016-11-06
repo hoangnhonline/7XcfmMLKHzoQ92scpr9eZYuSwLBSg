@@ -476,37 +476,39 @@
         $('.box-readmore').hide();
     }    
     */
+    if($('#content-chitiet').length==1){
+        $('#content-chitiet').readmore({
+            speed: 100,
+            collapsedHeight: 380,
+            heightMargin: 16,
+            moreLink: '<p class="box-readmore"><a href="javascript:;" class="readmore">Xem thêm</a></p>',        
+            lessLink: '<p class="box-readmore"><a href="javascript:;" class="readmore">Rút gọn</a></p>',
+            embedCSS: true,
+            blockCSS: ' width: 100%;  background: #fff;  height: 65px;  bottom: 0; margin:0px;',
+            startOpen: false,
+            afterToggle: function(trigger, element, expanded) {
+              if(! expanded) { // The "Close" link was clicked
+                $('html, body').animate({scrollTop: $('.product-tab').offset().top}, {duration: 100});
+              }
+            }           
+        });
 
-    $('#content-chitiet').readmore({
-        speed: 100,
-        collapsedHeight: 380,
-        heightMargin: 16,
-        moreLink: '<p class="box-readmore"><a href="javascript:;" class="readmore">Xem thêm</a></p>',        
-        lessLink: '<p class="box-readmore"><a href="javascript:;" class="readmore">Rút gọn</a></p>',
-        embedCSS: true,
-        blockCSS: ' width: 100%;  background: #fff;  height: 65px;  bottom: 0; margin:0px;',
-        startOpen: false,
-        afterToggle: function(trigger, element, expanded) {
-          if(! expanded) { // The "Close" link was clicked
-            $('html, body').animate({scrollTop: $('.product-tab').offset().top}, {duration: 100});
-          }
-        }           
-    });
-    $('#content-thongso').readmore({
-        speed: 100,
-        collapsedHeight: 380,
-        heightMargin: 16,
-        moreLink: '<p class="box-readmore"><a href="javascript:;" class="readmore">Xem thêm</a></p>',        
-        lessLink: '<p class="box-readmore"><a href="javascript:;" class="readmore">Rút gọn</a></p>',
-        embedCSS: true,
-        blockCSS: ' width: 100%;  background: #fff;  height: 65px;  bottom: 0; margin:0px;',
-        startOpen: false,
-        afterToggle: function(trigger, element, expanded) {
-          if(! expanded) { // The "Close" link was clicked
-            $('html, body').animate({scrollTop: $('.product-tab').offset().top}, {duration: 100});
-          }
-        }           
-    });
+        $('#content-thongso').readmore({
+            speed: 100,
+            collapsedHeight: 380,
+            heightMargin: 16,
+            moreLink: '<p class="box-readmore"><a href="javascript:;" class="readmore">Xem thêm</a></p>',        
+            lessLink: '<p class="box-readmore"><a href="javascript:;" class="readmore">Rút gọn</a></p>',
+            embedCSS: true,
+            blockCSS: ' width: 100%;  background: #fff;  height: 65px;  bottom: 0; margin:0px;',
+            startOpen: false,
+            afterToggle: function(trigger, element, expanded) {
+              if(! expanded) { // The "Close" link was clicked
+                $('html, body').animate({scrollTop: $('.product-tab').offset().top}, {duration: 100});
+              }
+            }           
+        });
+    }
       
     $('img.lazy').lazyload();
 
