@@ -4820,10 +4820,13 @@ padding-right: 10px;
   position: absolute;
   width: 100%;
   background: #fff;
-  height: 54px;
+  height: 65px;
   bottom: 0;
+  margin: 0px;
 }
-
+#content-chitiet, #content-thongso{
+  overflow: hidden;
+}
 .product-content-detail .box-readmore .readmore {
   display: block;
   padding: 8px 0;
@@ -6056,7 +6059,22 @@ padding-right: 10px;
   color: #fff;
   opacity: 0.8;
 }
-
-
-
-
+a.readmore{
+  display: block;
+    padding: 8px 0;
+    overflow: hidden;
+    border: 1px solid #288ad6;
+    border-radius: 4px;
+    background: #fff;
+    font-size: 15px;
+    font-weight: 700;
+    color: #288ad6;
+    text-transform: uppercase;
+    width: 200px;
+    margin: 10px auto;
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%,0);
+}

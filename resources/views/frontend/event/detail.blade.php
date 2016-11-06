@@ -20,7 +20,9 @@
     
     <!-- ldp-banner-full -->
     <div class="ldp-banner-full">
-        <img class="lazy" data-original="{{ Helper::showImage($detail->large_banner) }}" alt="{{ $detail->name }}">
+        <img class="lazy" data-original="{{ Helper::showImage($detail->large_banner) }}" alt="{{ $detail->name }}">        
+    </div>
+    <div class="text-center">
         <button type="button" class="btn-thelechuongtrinh" data-toggle="modal" data-target="#theleModal">Thể lệ chương trình</button>
     </div>
     <!-- ./ldp-banner-full -->

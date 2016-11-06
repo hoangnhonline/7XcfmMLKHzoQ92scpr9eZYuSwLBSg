@@ -6159,13 +6159,14 @@ footer .container ul li.fshop-ftcall-bh a {
 
 .ldp-banner-full {position: relative; margin-bottom: 20px;}
 
-.ldp-banner-full  .btn-thelechuongtrinh {    position: absolute;
-    bottom: -25px;
-    left: 41%;
-    background-color: #fff;
-    border: 1px solid #ec1c24;
-    font-size: 23px;
-    color: #ec1c24;    
-    padding: 10px 50px;
-    border-radius:5px;
+.btn-thelechuongtrinh {    
+	background-color: #fff;
+    border: 2px solid #ec1c24;
+    font-size: 17px;
+    color: #ec1c24;
+    font-weight: bold;
+    padding: 7px 50px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;    
 }
