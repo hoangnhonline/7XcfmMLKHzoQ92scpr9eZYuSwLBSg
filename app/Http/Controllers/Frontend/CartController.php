@@ -279,7 +279,10 @@ class CartController extends Controller
         $order['district_id'] = isset($vangLaiArr['district_id']) ? $vangLaiArr['district_id'] : $customer->district_id;
         $order['city_id']  = isset($vangLaiArr['city_id']) ? $vangLaiArr['city_id'] : $customer->city_id;
         $order['ward_id']  = isset($vangLaiArr['ward_id']) ? $vangLaiArr['ward_id'] : $customer->ward_id;
-        $order['address']  = isset($vangLaiArr['address']) ? $vangLaiArr['address'] : $customer->address;
+        $order['address']  = isset($vangLaiArr['address']) ? $vangLaiArr['address'] : $customer->address;        
+        $order['full_name']  = isset($vangLaiArr['full_name']) ? $vangLaiArr['full_name'] : $customer->full_name;
+        $order['email']  = isset($vangLaiArr['email']) ? $vangLaiArr['email'] : $customer->email;
+        $order['phone']  = isset($vangLaiArr['phone']) ? $vangLaiArr['phone'] : $customer->phone;
         $order['address_type']  = isset($vangLaiArr['address_type']) ? $vangLaiArr['address_type'] : $customer->address_type;
         $order['method_id'] = isset($vangLaiArr['payment_method']) ? $vangLaiArr['payment_method'] : $request->payment_method;
 
@@ -359,6 +362,7 @@ class CartController extends Controller
         }
         // send email
         $order_id =str_pad($order_id, 6, "0", STR_PAD_LEFT);
+        /*
         if(!empty($emailArr)){
             Mail::send('frontend.email.cart',
                 [
@@ -379,7 +383,7 @@ class CartController extends Controller
                     $message->sender('icho.vn@gmail.com', 'icho.vn');
             });
         }
-        
+        */
         return 'success';
 
     }

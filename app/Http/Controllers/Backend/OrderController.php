@@ -32,21 +32,20 @@ class OrderController extends Controller
 
         $query = Orders::whereRaw('1');
         if( $status > -1){
-            $query->where('orders.status', $status);
+            $query->where('status', $status);
         }
         if( $date_from ){
             $dateFromFormat = date('Y-m-d', strtotime($date_from));
-            $query->whereRaw("DATE(orders.created_at) >= '".$dateFromFormat."'");
+            $query->whereRaw("DATE(created_at) >= '".$dateFromFormat."'");
         }
         if( $date_to ){
             $dateToFormat = date('Y-m-d', strtotime($date_to));
-            $query->whereRaw("DATE(orders.created_at) <= '".$dateToFormat."'");
+            $query->whereRaw("DATE(created_at) <= '".$dateToFormat."'");
         }
         if( $name != '' ){            
-            $query->whereRaw(" ( customers.email LIKE '%".$name."%' ) OR ( customers.full_name LIKE '%".$name."%' )");
+            $query->whereRaw(" ( email LIKE '%".$name."%' ) OR ( full_name LIKE '%".$name."%' )");
         }
-        $orders = $query->leftJoin('customers', 'customers.id', '=', 'orders.customer_id')
-                        ->select(['orders.*', 'customers.full_name', 'customers.email', 'customers.phone'])->orderBy('orders.id', 'DESC')->paginate(20);
+        $orders = $query->orderBy('orders.id', 'DESC')->paginate(20);
         $list_status = $this->list_status;
        
         return view('backend.order.index', compact('orders', 'list_status','s'));

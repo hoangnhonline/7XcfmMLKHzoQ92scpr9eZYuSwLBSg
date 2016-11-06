@@ -42,7 +42,10 @@ class Orders extends Model  {
       'service_fee',
       'ngay_giao_du_kien',
       'ngay_giao_thuc',
-      'phi_cod'
+      'phi_cod',
+      'full_name',
+      'email',
+      'phone'
     ];
 
     public function order_detail()
