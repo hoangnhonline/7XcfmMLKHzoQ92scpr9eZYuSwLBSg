@@ -48,8 +48,7 @@
         </div>
         
         <!-- /.box-header -->
-        <div class="box-body">
-        <a href="{{ route('customer.export') }}" class="btn btn-info btn-sm" style="margin-bottom:5px;float:right" target="_blank">Export</a>
+        <div class="box-body">        
           <div style="text-align:center">
             {{ $items->appends( ['status' => $status, 'email' => $email, 'phone' => $phone, 'full_name' => $full_name] )->links() }}
           </div>  
