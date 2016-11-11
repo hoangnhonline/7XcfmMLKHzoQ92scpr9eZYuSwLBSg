@@ -20,7 +20,9 @@ class CustomerController extends Controller
     {
         $status = isset($request->status) ? $request->status : 0;
 
+        $full_name = isset($request->full_name) && $request->full_name != '' ? $request->full_name : '';
         $email = isset($request->email) && $request->email != '' ? $request->email : '';
+        $phone = isset($request->phone) && $request->phone != '' ? $request->phone : '';
         
         $query = Customer::whereRaw('1');
 
@@ -29,13 +31,18 @@ class CustomerController extends Controller
         if( $status > 0){
             $query->where('status', $status);
         }
-        
+        if( $full_name != ''){
+            $query->where('full_name', 'LIKE', '%'.$full_name.'%');
+        }
+        if( $phone != ''){
+            $query->where('phone', 'LIKE', '%'.$phone.'%');
+        }
         if( $email != ''){
             $query->where('email', 'LIKE', '%'.$email.'%');
         }
         $items = $query->orderBy('id', 'desc')->paginate(20);
         
-        return view('backend.customer.index', compact( 'items', 'email', 'status' ));
+        return view('backend.customer.index', compact( 'items', 'email', 'status' , 'phone', 'full_name'));
     }    
 
     /**

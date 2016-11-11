@@ -69,7 +69,7 @@ class CustomerController extends Controller
 
 
         $data['password'] = bcrypt($data['password']);
-
+        $data['status'] = 1;
         $customer = Customer::create($data);
 
         //set Session user for login here
@@ -95,7 +95,7 @@ class CustomerController extends Controller
 
 
         $data['password'] = bcrypt($data['password']);
-
+        $data['status'] = 1;
         $customer = Customer::create($data);
 
         //set Session user for login here

@@ -81,6 +81,14 @@ Route::group(['namespace' => 'Backend', 'prefix' => 'backend', 'middleware' => '
         Route::post('/update', ['as' => 'newsletter.update', 'uses' => 'NewsletterController@update']);
         Route::get('{id}/destroy', ['as' => 'newsletter.destroy', 'uses' => 'NewsletterController@destroy']);
     });
+    Route::group(['prefix' => 'customer'], function () {
+        Route::get('/', ['as' => 'customer.index', 'uses' => 'CustomerController@index']);
+        Route::post('/store', ['as' => 'customer.store', 'uses' => 'CustomerController@store']);
+        Route::get('{id}/edit',   ['as' => 'customer.edit', 'uses' => 'CustomerController@edit']);
+        Route::get('/export',   ['as' => 'customer.export', 'uses' => 'CustomerController@download']);
+        Route::post('/update', ['as' => 'customer.update', 'uses' => 'CustomerController@update']);
+        Route::get('{id}/destroy', ['as' => 'customer.destroy', 'uses' => 'CustomerController@destroy']);
+    });
     Route::group(['prefix' => 'contact'], function () {
         Route::get('/', ['as' => 'contact.index', 'uses' => 'ContactController@index']);
         Route::post('/store', ['as' => 'contact.store', 'uses' => 'ContactController@store']);

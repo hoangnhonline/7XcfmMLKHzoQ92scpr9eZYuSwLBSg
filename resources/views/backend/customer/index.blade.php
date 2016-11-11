@@ -4,11 +4,11 @@
 <!-- Content Header (Page header) -->
 <section class="content-header">
   <h1>
-    Khách hàng liên hệ
+    Khách hàng
   </h1>
   <ol class="breadcrumb">
     <li><a href="#"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-    <li><a href="{{ route( 'contact.index') }}">Khách hàng liên hệ</a></li>
+    <li><a href="{{ route( 'customer.index') }}">Khách hàng</a></li>
     <li class="active">Danh sách</li>
   </ol>
 </section>
@@ -25,22 +25,16 @@
           <h3 class="panel-title">Bộ lọc</h3>
         </div>
         <div class="panel-body">
-          <form class="form-inline" role="form" method="GET" action="{{ route('contact.index') }}" id="frmContact">  
-            <div class="form-group">
-              <select class="form-control input-sm" id="type" name="type">                                
-                  <option value="0" {{ $type == 0 ? "selected" : "" }}>Tất cả</option>
-                  <option value="1" {{ $type == 1 ? "selected" : "" }}>Tư vấn mua hàng</option>
-                  <option value="2" {{ $type == 2 ? "selected" : "" }}>Phản ánh dịch vụ</option>
-                  <option value="3" {{ $type == 3 ? "selected" : "" }}>Hợp tác</option>
-                  <option value="4" {{ $type == 4 ? "selected" : "" }}>Góp ý</option>
-              </select> 
-            </div>                                           
+          <form class="form-inline" role="form" method="GET" action="{{ route('customer.index') }}" id="frmContact">  <div class="form-group">
+              <label for="name">Họ tên :</label>
+              <input type="text" class="form-control" name="full_name" value="{{ $full_name }}">
+            </div>                                                 
             <div class="form-group">
               <label for="name">Email :</label>
               <input type="text" class="form-control" name="email" value="{{ $email }}">
             </div>
             <div class="form-group">
-              <label for="name">&nbsp;&nbsp;Phone :</label>
+              <label for="name">&nbsp;&nbsp;Điện thoại :</label>
               <input type="text" class="form-control" name="phone" value="{{ $phone }}">
             </div>
             <button type="submit" class="btn btn-default">Lọc</button>
@@ -50,14 +44,14 @@
       <div class="box">
 
         <div class="box-header with-border">
-          <h3 class="box-title">Danh sách ( <span class="value">{{ $items->total() }} liên hệ )</span></h3>
+          <h3 class="box-title">Danh sách ( <span class="value">{{ $items->total() }} khách hàng )</span></h3>
         </div>
         
         <!-- /.box-header -->
         <div class="box-body">
-        <a href="{{ route('contact.export') }}" class="btn btn-info btn-sm" style="margin-bottom:5px;float:right" target="_blank">Export</a>
+        <a href="{{ route('customer.export') }}" class="btn btn-info btn-sm" style="margin-bottom:5px;float:right" target="_blank">Export</a>
           <div style="text-align:center">
-            {{ $items->appends( ['status' => $status, 'email' => $email, 'phone' => $phone, 'type' => $type] )->links() }}
+            {{ $items->appends( ['status' => $status, 'email' => $email, 'phone' => $phone, 'full_name' => $full_name] )->links() }}
           </div>  
           <table class="table table-bordered" id="table-list-data">
             <tr>
@@ -79,29 +73,19 @@
                   {{ $item->full_name }}</br>
                   @endif
                   @if($item->email != '')
-                  <a href="{{ route( 'contact.edit', [ 'id' => $item->id ]) }}">{{ $item->email }}</a> -
+                  <a href="{{ route( 'customer.edit', [ 'id' => $item->id ]) }}">{{ $item->email }}</a> -
                   @endif
                   @if($item->phone != '')
                   {{ $item->phone }}</br>
                   @endif
                 </td>
-                <td>
-                  <strong>[@if($item->type == 1)
-                    Tư vấn mua hàng
-                  @elseif($item->type == 2)
-                    Phản ánh dịch vụ
-                  @elseif($item->type == 3)
-                    Hợp tác
-                  @else
-                    Góp ý
-                  @endif]-{{ $item->title }}</strong></br>
-                  {{ $item->content }}
+                <td>                  
 
                 </td>
                 <td>{{ date('d-m-Y H:i', strtotime($item->created_at)) }}</td>
                 <td style="white-space:nowrap">                                  
                   
-                  <a onclick="return callDelete('{{ $item->email }}','{{ route( 'contact.destroy', [ 'id' => $item->id ]) }}');" class="btn btn-danger">Xóa</a>
+                  <a onclick="return callDelete('{{ $item->email }}','{{ route( 'customer.destroy', [ 'id' => $item->id ]) }}');" class="btn btn-danger">Xóa</a>
                   
                 </td>
               </tr> 
@@ -115,7 +99,7 @@
           </tbody>
           </table>
           <div style="text-align:center">
-            {{ $items->appends( ['status' => $status, 'email' => $email, 'phone' => $phone, 'type' => $type] )->links() }}
+            {{ $items->appends( ['status' => $status, 'email' => $email, 'phone' => $phone, 'full_name' => $full_name] )->links() }}
           </div>  
         </div>        
       </div>

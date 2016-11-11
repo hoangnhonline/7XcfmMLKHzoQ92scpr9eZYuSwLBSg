@@ -19,7 +19,7 @@ class ContactController extends Controller
     public function index(Request $request)
     {
         $status = isset($request->status) ? $request->status : 0;
-
+        $type = isset($request->type) ? $request->type : 0;
         $email = isset($request->email) && $request->email != '' ? $request->email : '';
         $phone = isset($request->phone) && $request->phone != '' ? $request->phone : '';
         
@@ -30,7 +30,9 @@ class ContactController extends Controller
         if( $status > 0){
             $query->where('status', $status);
         }
-        
+        if( $type > 0){
+            $query->where('type', $type);
+        }
         if( $email != ''){
             $query->where('email', 'LIKE', '%'.$email.'%');
         }
@@ -39,7 +41,7 @@ class ContactController extends Controller
         }
         $items = $query->orderBy('id', 'desc')->paginate(20);
         
-        return view('backend.contact.index', compact( 'items', 'email', 'status', 'phone'));
+        return view('backend.contact.index', compact( 'items', 'email', 'status', 'phone', 'type'));
     }    
     public function download()
     {

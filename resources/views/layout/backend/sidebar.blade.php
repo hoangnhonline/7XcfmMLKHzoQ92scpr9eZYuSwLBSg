@@ -42,6 +42,12 @@
           <li {{ \Request::route()->getName() == "orders.index" ? "class=active" : "" }}><a href="{{ route('orders.index') }}"><i class="fa fa-circle-o"></i> Đơn hàng</a></li>          
         </ul>
       </li>
+      <li {{ in_array(\Request::route()->getName(), ['customer.edit', 'customer.index']) ? "class=active" : "" }}>
+        <a href="{{ route('customer.index') }}">
+          <i class="fa fa-pencil-square-o"></i> 
+          <span>Khách hàng</span>         
+        </a>       
+      </li>
       <li class="treeview {{ in_array(\Request::route()->getName(), ['pages.index', 'pages.create']) ? 'active' : '' }}">
         <a href="#">
           <i class="fa fa-twitch"></i> 
@@ -73,46 +79,33 @@
       <li {{ in_array(\Request::route()->getName(), ['newsletter.edit', 'newsletter.index']) ? "class=active" : "" }}>
         <a href="{{ route('newsletter.index') }}">
           <i class="fa fa-pencil-square-o"></i> 
-          <span>Newsletter</span>
-          <span class="pull-right-container">
-            <i class="fa fa-angle-left pull-right"></i>
-          </span>
+          <span>Newsletter</span>         
         </a>       
       </li>
       <li {{ in_array(\Request::route()->getName(), ['contact.edit', 'contact.index']) ? "class=active" : "" }}>
         <a href="{{ route('contact.index') }}">
           <i class="fa fa-pencil-square-o"></i> 
-          <span>Liên hệ</span>
-          <span class="pull-right-container">
-            <i class="fa fa-angle-left pull-right"></i>
-          </span>
+          <span>Liên hệ</span>          
         </a>       
       </li>
       <li {{ in_array(\Request::route()->getName(), ['banner.list', 'banner.edit', 'banner.create']) ? "class=active" : "" }}>
         <a href="{{ route('banner.list') }}">
           <i class="fa fa-file-image-o"></i> 
           <span>Banner</span>
-          <span class="pull-right-container">
-            <i class="fa fa-angle-left pull-right"></i>
-          </span>
+          
         </a>       
       </li>
       <li {{ in_array(\Request::route()->getName(), ['events.index', 'events.edit', 'events.create', 'events.product-event']) ? "class=active" : "" }}>
         <a href="{{ route('events.index') }}">
           <i class="fa fa-file-image-o"></i>
           <span>Khuyến mãi</span>
-          <span class="pull-right-container">
-            <i class="fa fa-angle-left pull-right"></i>
-          </span>
+          
         </a>       
       </li> 
       <li {{ in_array(\Request::route()->getName(), ['report.index']) ? "class=active" : "" }}>
         <a href="{{ route('report.index') }}">
           <i class="fa fa-area-chart"></i>
-          <span>Thống kê</span>
-          <span class="pull-right-container">
-            <i class="fa fa-angle-left pull-right"></i>
-          </span>
+          <span>Thống kê</span>          
         </a>       
       </li> 
       <li class="treeview {{ in_array(\Request::route()->getName(), ['loai-thuoc-tinh.index', 'thuoc-tinh.index', 'color.index']) ? 'active' : '' }}">
