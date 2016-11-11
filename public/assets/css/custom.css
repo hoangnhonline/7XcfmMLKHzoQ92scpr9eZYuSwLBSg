@@ -6055,9 +6055,6 @@ footer .container ul li.fshop-ftcall-bh a {
   border: 1px solid #ccc;
   position: relative;
 }
-.category-product-hot li.item-bnr .thumb-box img:hover {
-  opacity: .9;
-}
 .category-product-hot li.item-bnr .thumb-box .countdown {
   position: absolute;
   left: 0; bottom: 0;
