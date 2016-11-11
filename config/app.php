@@ -158,7 +158,8 @@ return [
         App\Providers\ViewComposerServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
         SammyK\LaravelFacebookSdk\LaravelFacebookSdkServiceProvider::class,
-        Intervention\Image\ImageServiceProvider::class
+        Intervention\Image\ImageServiceProvider::class,
+        Maatwebsite\Excel\ExcelServiceProvider::class
 
     ],
 
@@ -210,7 +211,8 @@ return [
         'Helper' => App\Helpers\Helper::class,
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
         'Facebook' => SammyK\LaravelFacebookSdk\FacebookFacade::class,
-        'Image' => Intervention\Image\Facades\Image::class
+        'Image' => Intervention\Image\Facades\Image::class,
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class
     ],
 
 ];
