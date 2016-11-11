@@ -99,27 +99,7 @@ $vangLaiArr  = Session::get('vanglai');
                                    </div>
                                 </div>
                              </div>
-                          </li>
-                          <li class="wc_payment_method payment_method_ichovn">
-                             <input id="payment_method_ichovn" type="radio" class="input-radio" name="payment_method" value="3">
-                             <label for="payment_method_ichovn">
-                             Thanh toán tại cửa hàng     </label>
-                             <div class="payment_box payment_method_ichovn" >
-                                <div class="box-info-payment">
-                                   <div class="info-payment-center">
-                                      <div class="info-payment-item">
-                                         <div class="payment-detail-title">iCho Thủ Đức:</div>
-                                         <div class="payment-detail-row">
-                                            <span class="payment-row-title">Địa chỉ: </span><span class="payment-row-txt">Thanh toán tại 240 Võ Văn Ngân, Bình Thọ, Thủ Đức</span>
-                                         </div>
-                                         <div class="payment-detail-row">
-                                            <span class="payment-row-title">Điện thoại: </span><span class="payment-row-txt">1900 63 69 75</span>
-                                         </div>
-                                      </div>
-                                   </div>
-                                </div>
-                             </div>
-                          </li>
+                          </li>                          
                           </ul>
                           
                           <div id="bookcare-option"> </div>

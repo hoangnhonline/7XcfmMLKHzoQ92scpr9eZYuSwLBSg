@@ -99,14 +99,7 @@
                                           <i class="fa fa-phone fa-stack-1x" aria-hidden="true"></i>
                                       </span>
                                       Mua online giá sỉ: <strong>1900 636 975</strong> (7:30 - 20:00)
-                                  </p>
-                                  <p>
-                                      <span class="fa-stack fa-lg">
-                                          <i class="fa fa-circle fa-stack-2x" aria-hidden="true"></i>
-                                          <i class="fa fa-map-marker fa-stack-1x" aria-hidden="true"></i>
-                                      </span>
-                                      Showroom: <strong>240 Võ Văn Ngân, Bình Thọ, Thủ Đức</strong>
-                                  </p>
+                                  </p>                                  
                                   <p>
                                       <span class="fa-stack fa-lg">
                                           <i class="fa fa-circle fa-stack-2x" aria-hidden="true"></i>

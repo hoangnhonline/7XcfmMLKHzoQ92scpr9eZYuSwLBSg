@@ -76,8 +76,7 @@
                 </div>
                 <div class="col-xs-12 col-sm-6" id="contact_form_map">                    
                     <div class="content">
-                        <h4 style="margin-bottom:10px">Showroom iCho.vn – Chợ máy tính và điện thoại</h4>
-                        <p>240 Võ Văn Ngân, Bình Thọ, Thủ Đức</p>
+                        <h4 style="margin-bottom:10px">iCho.vn – Chợ máy tính và điện thoại</h4>                        
                         <p>Tổng đài: <span class="tel">1900 63 69 75</span></p>
                         <p>Thời gian hoạt động: <span class="tel">07h30 đến 20h00</span></p>
                         <p>Email: <a href="mailto:chamsoc@icho.vn">chamsoc@icho.vn</a></p>

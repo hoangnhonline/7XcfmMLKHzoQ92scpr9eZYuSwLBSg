@@ -46,9 +46,7 @@
                           </a>
                       </li>
                       <li class="fshop-ftcall-bh">
-                          <a href="javascript:void(0)">Giờ làm việc <strong>7:30 - 20:00</strong><br>
-                              <strong class="fshop-ftcall-red">240 Võ Văn Ngân, Bình Thọ, Thủ Đức</strong>
-                          </a>
+                          
                       </li>
                   </ul>
               </div>
@@ -68,8 +66,8 @@
                     <div class="introduce-title">Thông tin liên hệ</div>
                     <div id="address-box">                        
                         <div id="address-list" style="margin-top:12px">
-                            <div class="tit-name">Showroom:</div>
-                            <div class="tit-contain">240 Võ Văn Ngân, Thủ Đức</div>
+                            <div class="tit-name">Giờ làm việc:</div>
+                            <div class="tit-contain">7:30 - 20:00</div>
                             <div class="tit-name">Hotline:</div>
                             <div class="tit-contain">1900 636 975</div>
                             <div class="tit-name">Email:</div>
