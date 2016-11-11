@@ -90,8 +90,7 @@
 
                 </td>
                 <td>{{ date('d-m-Y H:i', strtotime($item->created_at)) }}</td>
-                <td style="white-space:nowrap">                  
-                  <a href="{{ route( 'contact.edit', [ 'id' => $item->id ]) }}" class="btn btn-warning">Chỉnh sửa</a>                 
+                <td style="white-space:nowrap">                                  
                   
                   <a onclick="return callDelete('{{ $item->email }}','{{ route( 'contact.destroy', [ 'id' => $item->id ]) }}');" class="btn btn-danger">Xóa</a>
                   

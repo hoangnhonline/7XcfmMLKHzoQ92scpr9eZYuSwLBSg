@@ -79,6 +79,15 @@
           </span>
         </a>       
       </li>
+      <li {{ in_array(\Request::route()->getName(), ['contact.edit', 'contact.index']) ? "class=active" : "" }}>
+        <a href="{{ route('contact.index') }}">
+          <i class="fa fa-pencil-square-o"></i> 
+          <span>Liên hệ</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+        </a>       
+      </li>
       <li {{ in_array(\Request::route()->getName(), ['banner.list', 'banner.edit', 'banner.create']) ? "class=active" : "" }}>
         <a href="{{ route('banner.list') }}">
           <i class="fa fa-file-image-o"></i> 
