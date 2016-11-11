@@ -77,8 +77,17 @@ Route::group(['namespace' => 'Backend', 'prefix' => 'backend', 'middleware' => '
         Route::get('/', ['as' => 'newsletter.index', 'uses' => 'NewsletterController@index']);
         Route::post('/store', ['as' => 'newsletter.store', 'uses' => 'NewsletterController@store']);
         Route::get('{id}/edit',   ['as' => 'newsletter.edit', 'uses' => 'NewsletterController@edit']);
+        Route::get('/export',   ['as' => 'newsletter.export', 'uses' => 'NewsletterController@download']);
         Route::post('/update', ['as' => 'newsletter.update', 'uses' => 'NewsletterController@update']);
         Route::get('{id}/destroy', ['as' => 'newsletter.destroy', 'uses' => 'NewsletterController@destroy']);
+    });
+    Route::group(['prefix' => 'contact'], function () {
+        Route::get('/', ['as' => 'contact.index', 'uses' => 'ContactController@index']);
+        Route::post('/store', ['as' => 'contact.store', 'uses' => 'ContactController@store']);
+        Route::get('{id}/edit',   ['as' => 'contact.edit', 'uses' => 'ContactController@edit']);
+        Route::get('/export',   ['as' => 'contact.export', 'uses' => 'ContactController@download']);
+        Route::post('/update', ['as' => 'contact.update', 'uses' => 'ContactController@update']);
+        Route::get('{id}/destroy', ['as' => 'contact.destroy', 'uses' => 'ContactController@destroy']);
     });
     Route::group(['prefix' => 'events'], function () {
         Route::get('/', ['as' => 'events.index', 'uses' => 'EventsController@index']);

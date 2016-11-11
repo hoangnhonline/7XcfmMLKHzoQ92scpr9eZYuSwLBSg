@@ -6,10 +6,10 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Models\Newsletter;
+use App\Models\Contact;
 use Helper, File, Session, Auth;
 use Maatwebsite\Excel\Facades\Excel;
-class NewsletterController extends Controller
+class ContactController extends Controller
 {
     /**
     * Display a listing of the resource.
@@ -21,8 +21,9 @@ class NewsletterController extends Controller
         $status = isset($request->status) ? $request->status : 0;
 
         $email = isset($request->email) && $request->email != '' ? $request->email : '';
+        $phone = isset($request->phone) && $request->phone != '' ? $request->phone : '';
         
-        $query = Newsletter::whereRaw('1')->orderBy('id', 'DESC');
+        $query = Contact::whereRaw('1')->orderBy('id', 'DESC');
 
         $status = 1;
 
@@ -33,14 +34,17 @@ class NewsletterController extends Controller
         if( $email != ''){
             $query->where('email', 'LIKE', '%'.$email.'%');
         }
+        if( $phone != ''){
+            $query->where('phone', 'LIKE', '%'.$phone.'%');
+        }
         $items = $query->orderBy('id', 'desc')->paginate(20);
         
-        return view('backend.newsletter.index', compact( 'items', 'email', 'status' ));
+        return view('backend.contact.index', compact( 'items', 'email', 'status', 'phone'));
     }    
     public function download()
     {
         $contents = [];
-        $query = Newsletter::whereRaw('1')->orderBy('id', 'DESC')->get();
+        $query = Contact::whereRaw('1')->orderBy('id', 'DESC')->get();
         $i = 0;
         foreach ($query as $data) {
             $i++;
@@ -51,7 +55,7 @@ class NewsletterController extends Controller
             ];
         }        
         
-        Excel::create('newsletter_' . date('YmdHi'), function ($excel) use ($contents) {
+        Excel::create('contact_' . date('YmdHi'), function ($excel) use ($contents) {
             // Set sheets
             $excel->sheet('Email', function ($sheet) use ($contents) {
                 $sheet->fromArray($contents, null, 'A1', false, false);
@@ -86,9 +90,9 @@ class NewsletterController extends Controller
     {
         $tagSelected = [];
 
-        $detail = Newsletter::find($id);
+        $detail = Contact::find($id);
 
-        return view('backend.newsletter.edit', compact('detail'));
+        return view('backend.contact.edit', compact('detail'));
     }
 
     /**
@@ -103,7 +107,7 @@ class NewsletterController extends Controller
         $dataArr = $request->all();
         
         $this->validate($request,[                              
-            'email' => 'required|unique:newsletter,email,'.$dataArr['id'],
+            'email' => 'required|unique:contact,email,'.$dataArr['id'],
         ],
         [   
             'email.required' => 'Bạn chưa nhập email',
@@ -112,13 +116,13 @@ class NewsletterController extends Controller
     
         $dataArr['updated_user'] = Auth::user()->id;
         
-        $model = Newsletter::find($dataArr['id']);
+        $model = Contact::find($dataArr['id']);
 
         $model->update($dataArr);
 
         Session::flash('message', 'Cập nhật thành công');        
 
-        return redirect()->route('newsletter.edit', $dataArr['id']);
+        return redirect()->route('contact.edit', $dataArr['id']);
     }
 
     /**
@@ -130,11 +134,11 @@ class NewsletterController extends Controller
     public function destroy($id)
     {
         // delete
-        $model = Newsletter::find($id);
+        $model = Contact::find($id);
         $model->delete();
 
         // redirect
-        Session::flash('message', 'Xóa newsletter thành công');
-        return redirect()->route('newsletter.index');
+        Session::flash('message', 'Xóa contact thành công');
+        return redirect()->route('contact.index');
     }
 }

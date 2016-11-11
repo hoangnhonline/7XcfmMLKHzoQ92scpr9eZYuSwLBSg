@@ -4,11 +4,11 @@
 <!-- Content Header (Page header) -->
 <section class="content-header">
   <h1>
-    Newsletter
+    Khách hàng liên hệ
   </h1>
   <ol class="breadcrumb">
     <li><a href="#"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-    <li><a href="{{ route( 'newsletter.index') }}">Newsletter</a></li>
+    <li><a href="{{ route( 'contact.index') }}">Khách hàng liên hệ</a></li>
     <li class="active">Danh sách</li>
   </ol>
 </section>
@@ -25,10 +25,14 @@
           <h3 class="panel-title">Bộ lọc</h3>
         </div>
         <div class="panel-body">
-          <form class="form-inline" role="form" method="GET" action="{{ route('newsletter.index') }}">                                  
+          <form class="form-inline" role="form" method="GET" action="{{ route('contact.index') }}">                                  
             <div class="form-group">
               <label for="name">Email :</label>
               <input type="text" class="form-control" name="email" value="{{ $email }}">
+            </div>
+            <div class="form-group">
+              <label for="name">&nbsp;&nbsp;Phone :</label>
+              <input type="text" class="form-control" name="phone" value="{{ $phone }}">
             </div>
             <button type="submit" class="btn btn-default">Lọc</button>
           </form>         
@@ -37,20 +41,21 @@
       <div class="box">
 
         <div class="box-header with-border">
-          <h3 class="box-title">Danh sách ( <span class="value">{{ $items->total() }} email )</span></h3>
+          <h3 class="box-title">Danh sách ( <span class="value">{{ $items->total() }} liên hệ )</span></h3>
         </div>
         
         <!-- /.box-header -->
         <div class="box-body">
-        <a href="{{ route('newsletter.export') }}" class="btn btn-info btn-sm" style="margin-bottom:5px;float:right" target="_blank">Export</a>
+        <a href="{{ route('contact.export') }}" class="btn btn-info btn-sm" style="margin-bottom:5px;float:right" target="_blank">Export</a>
           <div style="text-align:center">
-            {{ $items->appends( ['status' => $status, 'email' => $email] )->links() }}
+            {{ $items->appends( ['status' => $status, 'email' => $email, 'phone' => $phone] )->links() }}
           </div>  
           <table class="table table-bordered" id="table-list-data">
             <tr>
               <th style="width: 1%">#</th>                            
-              <th>Tên</th>
-              <th width="10%">Đăng ký lúc</th>
+              <th>Thông tin liên hệ</th>
+              <th>Nội dung</th>
+              <th width="10%">Thời gian tạo</th>
               <th width="1%;white-space:nowrap">Thao tác</th>
             </tr>
             <tbody>
@@ -61,13 +66,34 @@
               <tr id="row-{{ $item->id }}">
                 <td><span class="order">{{ $i }}</span></td>                       
                 <td>                  
-                  <a href="{{ route( 'newsletter.edit', [ 'id' => $item->id ]) }}">{{ $item->email }}</a>           
+                  @if($item->full_name != '')
+                  {{ $item->full_name }}</br>
+                  @endif
+                  @if($item->email != '')
+                  <a href="{{ route( 'contact.edit', [ 'id' => $item->id ]) }}">{{ $item->email }}</a> -
+                  @endif
+                  @if($item->phone != '')
+                  {{ $item->phone }}</br>
+                  @endif
+                </td>
+                <td>
+                  <strong>[@if($item->type == 1)
+                    Tư vấn mua hàng
+                  @elseif($item->type == 2)
+                    Phản ánh dịch vụ
+                  @elseif($item->type == 3)
+                    Hợp tác
+                  @else
+                    Góp ý
+                  @endif]-{{ $item->title }}</strong></br>
+                  {{ $item->content }}
+
                 </td>
                 <td>{{ date('d-m-Y H:i', strtotime($item->created_at)) }}</td>
                 <td style="white-space:nowrap">                  
-                  <a href="{{ route( 'newsletter.edit', [ 'id' => $item->id ]) }}" class="btn btn-warning">Chỉnh sửa</a>                 
+                  <a href="{{ route( 'contact.edit', [ 'id' => $item->id ]) }}" class="btn btn-warning">Chỉnh sửa</a>                 
                   
-                  <a onclick="return callDelete('{{ $item->email }}','{{ route( 'newsletter.destroy', [ 'id' => $item->id ]) }}');" class="btn btn-danger">Xóa</a>
+                  <a onclick="return callDelete('{{ $item->email }}','{{ route( 'contact.destroy', [ 'id' => $item->id ]) }}');" class="btn btn-danger">Xóa</a>
                   
                 </td>
               </tr> 
@@ -81,7 +107,7 @@
           </tbody>
           </table>
           <div style="text-align:center">
-            {{ $items->appends( ['status' => $status, 'email' => $email] )->links() }}
+            {{ $items->appends( ['status' => $status, 'email' => $email, 'phone' => $phone] )->links() }}
           </div>  
         </div>        
       </div>
