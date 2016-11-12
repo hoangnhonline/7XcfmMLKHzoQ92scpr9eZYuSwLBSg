@@ -92,7 +92,7 @@
                                     @endif
                                 </div>
                                 
-                                <div class="buycall">
+                                <!--<div class="buycall">
                                   <p>
                                       <span class="fa-stack fa-lg">
                                           <i class="fa fa-circle fa-stack-2x" aria-hidden="true"></i>
@@ -107,7 +107,7 @@
                                       </span>
                                       <span>Miễn phí vận chuyển cho hóa đơn trên 150.000 vnđ</span> 
                                   </p>
-                                </div>
+                                </div>-->
                                 
                                 <div class="form-share">
                                     <div class="sendtofriend-print">
