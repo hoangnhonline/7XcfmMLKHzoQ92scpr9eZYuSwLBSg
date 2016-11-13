@@ -65,6 +65,14 @@ Route::group(['namespace' => 'Backend', 'prefix' => 'backend', 'middleware' => '
         Route::post('/update', ['as' => 'color.update', 'uses' => 'ColorController@update']);
         Route::get('{id}/destroy', ['as' => 'color.destroy', 'uses' => 'ColorController@destroy']);
     });
+    Route::group(['prefix' => 'customernoti'], function () {
+        Route::get('/', ['as' => 'customernoti.index', 'uses' => 'CustomerNotificationController@index']);
+        Route::get('/create', ['as' => 'customernoti.create', 'uses' => 'CustomerNotificationController@create']);
+        Route::post('/store', ['as' => 'customernoti.store', 'uses' => 'CustomerNotificationController@store']);
+        Route::get('{id}/edit',   ['as' => 'customernoti.edit', 'uses' => 'CustomerNotificationController@edit']);
+        Route::post('/update', ['as' => 'customernoti.update', 'uses' => 'CustomerNotificationController@update']);
+        Route::get('{id}/destroy', ['as' => 'customernoti.destroy', 'uses' => 'CustomerNotificationController@destroy']);
+    });
     Route::group(['prefix' => 'info-seo'], function () {
         Route::get('/', ['as' => 'info-seo.index', 'uses' => 'InfoSeoController@index']);
         Route::get('/create', ['as' => 'info-seo.create', 'uses' => 'InfoSeoController@create']);
