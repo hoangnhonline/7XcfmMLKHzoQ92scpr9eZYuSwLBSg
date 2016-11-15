@@ -79,7 +79,7 @@
                         <h4 style="margin-bottom:10px">iCho.vn – Chợ máy tính và điện thoại</h4>                        
                         <p>Tổng đài: <span class="tel">1900 63 69 75</span></p>
                         <p>Thời gian hoạt động: <span class="tel">07h30 đến 20h00</span></p>
-                        <p>Email: <a href="mailto:chamsoc@icho.vn">chamsoc@icho.vn</a></p>
+                        <p>Email: <a href="mailto:muahang@icho.vn">muahang@icho.vn</a></p>
                     </div>
                     <br/> 
                     <div class="with-map clearfix">

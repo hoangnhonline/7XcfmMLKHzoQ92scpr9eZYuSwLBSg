@@ -71,7 +71,7 @@
                             <div class="tit-name">Hotline:</div>
                             <div class="tit-contain">1900 636 975</div>
                             <div class="tit-name">Email:</div>
-                            <div class="tit-contain">chamsoc@icho.vn</div>
+                            <div class="tit-contain">muahang@icho.vn</div>
                         </div>
                     </div>
                 </div>
