@@ -72,6 +72,17 @@
                             <div class="tit-contain">1900 636 975</div>
                             <div class="tit-name">Email:</div>
                             <div class="tit-contain">muahang@icho.vn</div>
+                            <div class="tit-name">Skype:</div>
+                            <div class="tit-contain"><script type="text/javascript" src="https://secure.skypeassets.com/i/scom/js/skype-uri.js"></script>
+<div id="SkypeButton_Call_thao_tho_trang_1" style="padding: 0px; margin-top: -15px;margin-left: -15px;">
+ <script type="text/javascript">
+ Skype.ui({
+ "name": "chat",
+ "element": "SkypeButton_Call_thao_tho_trang_1",
+ "participants": ["thao_tho_trang"]
+ });
+ </script>
+</div></div>
                         </div>
                     </div>
                 </div>
