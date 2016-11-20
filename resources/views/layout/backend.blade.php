@@ -61,6 +61,7 @@
         </form>
     </div>
 </div>
+@include('backend.customer.customer-notification-modal')
   <!-- /.content-wrapper -->
   <footer class="main-footer">
     <div class="pull-right hidden-xs">
@@ -105,7 +106,7 @@
 <!-- AdminLTE for demo purposes -->
 <script src="{{ URL::asset('backend/dist/js/demo.js') }}"></script>
 <script src="{{ URL::asset('backend/dist/js/lazy.js') }}"></script>
-
+<script src="{{ URL::asset('backend/dist/js/ckeditor/ckeditor.js') }}"></script>
 
 <script type="text/javascript" type="text/javascript">
 $(document).ready(function(){
@@ -115,8 +116,45 @@ $(document).ready(function(){
           'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
       }
   });
-});
+  $('.sendNoti').click(function(){
+    var customer_id = $(this).data('customer-id');
+    var notiType = $(this).data('type');
+    $('#customer_id_noti').val(customer_id);
+    $('#notifiModal').modal('show');
+    $('#notifiModal  #type').val(notiType);
+    processNotiType(notiType);
+  });
+  $('#notifiModal  #type').change(function(){
+    processNotiType($(this).val())
+  });
+  CKEDITOR.editorConfig = function( config ) {
+  config.toolbarGroups = [
+    { name: 'clipboard', groups: [ 'clipboard', 'undo' ] },
+    { name: 'editing', groups: [ 'find', 'selection', 'spellchecker', 'editing' ] },
   
+  ];
+
+  config.removeButtons = 'Underline,Subscript,Superscript';
+};
+  var editor2 = CKEDITOR.replace('contentNoti',{
+          language : 'vi',
+          height : 100,
+          toolbarGroups : [            
+            { name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ] },          
+            { name: 'links', groups: [ 'links' ] },           
+            '/',
+            
+          ]
+      });
+});
+
+function processNotiType(type){
+  if(type == 1){
+    $('#notifiModal #url-km').show();
+  }else{
+    $('#notifiModal #url-km').hide();
+  }
+}
 </script>
 <style type="text/css">
   .pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover{

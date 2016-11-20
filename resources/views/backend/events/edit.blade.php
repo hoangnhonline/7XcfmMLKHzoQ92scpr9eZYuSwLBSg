@@ -152,7 +152,6 @@
 @stop
 @section('javascript_page')
 <script type="text/javascript" src="{{ URL::asset('assets/js/jquery.datetimepicker.min.js') }}"></script>
-<script src="{{ URL::asset('backend/dist/js/ckeditor/ckeditor.js') }}"></script>
 <script type="text/javascript">
     $(document).ready(function(){
       var editor2 = CKEDITOR.replace( 'the_le',{

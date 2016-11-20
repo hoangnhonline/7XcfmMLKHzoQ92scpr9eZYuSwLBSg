@@ -16,6 +16,9 @@
 <!-- Main content -->
 <section class="content">
  <a class="btn btn-default btn-sm" href="{{ route('orders.index') }}?status={{ $s['status'] }}&name={{ $s['name'] }}&date_from={{ $s['date_from'] }}&date_to={{ $s['date_to'] }}" style="margin-bottom:5px">Quay lại</a>
+ @if($order->customer_id > 0)
+  <button class="btn btn-danger btn-sm sendNoti" data-type="2" style="float:right" data-customer-id="{{ $order->customer_id }}"  style="margin-bottom:5px">Gửi tin nhắn cho khách hàng</button>
+@endif
   <div class="row">
     <div class="col-md-12">
       @if(Session::has('message'))

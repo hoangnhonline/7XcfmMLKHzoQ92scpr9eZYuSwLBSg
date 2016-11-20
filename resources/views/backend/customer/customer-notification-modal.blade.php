@@ -21,20 +21,20 @@
             </select>
           </div>
           <div class="form-group" id="url-km" style="display:none;">
-            <label>Nội dung</label>
-            <input type="text" name="url" value="{{ old('url') }}" id="url">
+            <label>URL khuyến mãi</label>
+            <input type="text" name="event_url" class="form-control" value="{{ old('event_url') }}" id="event_url">
           </div>
           <div class="form-group">
             <label>Nội dung</label>
-            <textarea class="form-control" rows="10" name="content" id="content">{{ old('content') }}</textarea>
+            <textarea class="form-control" rows="10" name="contentNoti" id="contentNoti">{{ old('content') }}</textarea>
           </div>
+          <input type="hidden" name="customer_id" id="customer_id_noti" value="">
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary">Save</button>
+        <button type="button" class="btn btn-primary" id="btnSaveNoti">Save</button>
         <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
       </div>
     </div>
-
   </div>
 </div>

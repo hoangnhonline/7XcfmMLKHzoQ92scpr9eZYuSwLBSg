@@ -163,7 +163,6 @@
 
 @stop
 @section('javascript_page')
-<script src="{{ URL::asset('backend/dist/js/ckeditor/ckeditor.js') }}"></script>
 <script type="text/javascript">
     $(document).ready(function(){
       $(".select2").select2();
