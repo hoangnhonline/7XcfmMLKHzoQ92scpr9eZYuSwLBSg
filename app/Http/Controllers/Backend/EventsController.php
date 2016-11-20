@@ -42,15 +42,26 @@ class EventsController extends Controller
         $str_value = $request->str_sp_id;
         $event_id = $request->event_id;
         $tmpArr = explode(',', $str_value);
-        $so_luong = $request->so_luong ? $request->so_luong : [];
-        $rs = ProductEvent::where('event_id', $event_id)->where('status', 1)->get(); // status = 1
+        $slArr = $request->so_luong ? $request->so_luong : [];
+        ///var_dump($str_value, $event_id, $so_luong);die;
+
+        //lay tat ca sp hien tai cua event
+        $rs = ProductEvent::where('event_id', $event_id)->where('status', 1)->get(); 
+        // status = 1
         $arrIdDb = [];
         if(!empty($rs)){
-            foreach($rs as $tmp1){
-                $arrIdDb[] = $tmp1->sp_id;
+            foreach($rs as $tmp1){    
+                $arrIdDb[] = $tmp1->sp_id;           
+                /*
+                    -kiem tra neu sp do da bi remove khoi event thi update [status = 0, so_luong = 0]
+                    - cap nhat lai so luong cua san pham trong table san_pham
+                */
                 if(!in_array($tmp1->sp_id, $tmpArr)){
+                    
                     $tmpPE1 =ProductEvent::where('event_id', $event_id)->where('sp_id', $tmp1->sp_id);
                     $tmpPE1->update(['status' => 0, 'so_luong' => 0]);
+
+                    //
                     $tmpModel = SanPham::find($tmp1->sp_id);
                     $tmpModel->so_luong_ton = $tmp1->so_luong + $tmpModel->so_luong_ton;
                     $tmpModel->is_event = 0;
@@ -58,28 +69,59 @@ class EventsController extends Controller
                 }
             }
         }
+
         if(!empty($tmpArr)){
             $dataArr['created_user'] = Auth::user()->id;
             $dataArr['updated_user'] = Auth::user()->id;
+            
+            //var_dump($tmpArr);die;
             foreach ($tmpArr as $sp_id) {                
-
-                if($sp_id > 0 && !in_array($sp_id, $arrIdDb)){
-                    //check so luong hien tai
+                if($sp_id > 0 ){
                     $tmpModel = SanPham::find($sp_id);
-                    $so_luong_ton = $tmpModel->so_luong_ton;    
+                    $so_luong_ton = $tmpModel->so_luong_ton; 
+                
+                    if(!in_array($sp_id, $arrIdDb)){
+                        //check so luong hien tai
+                        $dataArr['sp_id'] = $sp_id;
+                        $dataArr['event_id'] = $event_id;
+                        $dataArr['status'] = 1;
+                        $dataArr['so_luong'] = !empty($slArr) && isset($slArr[$sp_id]) ? $slArr[$sp_id] : 0;
 
-                    $dataArr['sp_id'] = $sp_id;
-                    $dataArr['event_id'] = $event_id;
-                    $dataArr['status'] = 1;
-                    $dataArr['so_luong'] = !empty($so_luong) && isset($so_luong[$sp_id]) ? $so_luong[$sp_id] : 0;
+                        $dataArr['so_luong'] = $dataArr['so_luong'] <= $so_luong_ton ? $dataArr['so_luong'] : $so_luong_ton;
+                        $dataArr['so_luong_tam'] = $dataArr['con_lai'] =  $dataArr['so_luong'];
+                        
+                        ProductEvent::create($dataArr);
+                        
+                    }else{
+                        // san pham da ton tai trong event
+                        $model = ProductEvent::where('sp_id', $sp_id)->where('event_id', $event_id);  
+                        $detailSpEvent = $model->first();
+                        $sl_hien_tai_event = $detailSpEvent->so_luong;
 
-                    $dataArr['so_luong'] = $dataArr['so_luong'] <= $so_luong_ton ? $dataArr['so_luong'] : $so_luong_ton;
-                    $dataArr['so_luong_tam'] = $dataArr['so_luong'];
-                    ProductEvent::create($dataArr);
-                    $tmpModel->so_luong_ton = $so_luong_ton - $dataArr['so_luong'];
+                        $sl_update = !empty($slArr) && isset($slArr[$sp_id]) ? $slArr[$sp_id] : 0;
+
+                        $dataArr['status'] = 1;                       
+                        
+
+                        $sl_tang = $sl_update > $sl_hien_tai_event ? $sl_update - $sl_hien_tai_event : 0;
+                        
+                        $sl_giam = $sl_update < $sl_hien_tai_event ? $sl_hien_tai_event - $sl_update : 0;
+                        $dataArr['so_luong'] = $sl_update;
+                        if($sl_tang > 0 && $sl_update > $so_luong_ton){ 
+                        // neu tang sl event thi can check xem so luong sp con lai trong tb sp con du hay ko ?                           
+                            $dataArr['so_luong'] = $so_luong_ton;
+                            $sl_tang = $so_luong_ton;                           
+                        }
+                        $dataArr['so_luong_tam'] = $dataArr['con_lai'] =  $dataArr['so_luong'];
+                        
+                        $model->update($dataArr);
+                    }
+                    // cap nhat sl table san_pham
+                    $tmpModel->so_luong_ton = $so_luong_ton - $sl_tang + $sl_giam;
                     $tmpModel->is_event = 1;
                     $tmpModel->save();
                 }
+                
             }
         }
         if($request->is_add == 1){
