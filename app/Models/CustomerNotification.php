@@ -23,6 +23,6 @@ class CustomerNotification extends Model  {
      *
      * @var array
      */
-    protected $fillable = ['customer_id', 'user_id', 'content', 'status', 'seen_at', 'type', 'url'];
+    protected $fillable = ['customer_id', 'content', 'status', 'seen_at', 'type', 'event_url', 'created_user', 'updated_user'];
 
 }

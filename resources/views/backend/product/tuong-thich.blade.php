@@ -193,7 +193,6 @@
 </style>
 @stop
 @section('javascript_page')
-<script src="{{ URL::asset('backend/dist/js/ckeditor/ckeditor.js') }}"></script>
 <script type="text/javascript">
 function filterAjax(cate_id){  
   $('#loai_id_search').val(7);
