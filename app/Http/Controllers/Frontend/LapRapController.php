@@ -110,14 +110,16 @@ class LapRapController extends Controller
             $productArr = SanPham::where('loai_id', $loai_id)
                     ->leftJoin('sp_hinh', 'sp_hinh.id', '=','san_pham.thumbnail_id')
                     ->join('sp_mucdich', 'sp_mucdich.sp_id', '=','san_pham.id')
+                    ->leftJoin('sp_thuoctinh', 'sp_thuoctinh.sp_id', '=','san_pham.id')
                     ->where('muc_dich', $muc_dich)
-                    ->select('sp_hinh.image_url', 'san_pham.*')
+                    ->select('sp_hinh.image_url', 'san_pham.*', 'thuoc_tinh')
                     ->orderBy('san_pham.id', 'desc')
-                    ->limit(6)->get();         
+                    ->limit(8)->get();
+            $hoverInfo = HoverInfo::where('loai_id', 3)->orderBy('display_order', 'asc')->orderBy('id', 'asc')->get();
         }       
         $seo = Helper::seo();
         $lap_rap = 1;
-        return view('frontend.may-bo.index', compact('productArr', 'cateArr', 'loaiSp', 'muc_dich', 'title', 'seo', 'lap_rap', 'slug'));
+        return view('frontend.may-bo.index', compact('productArr', 'cateArr', 'loaiSp', 'muc_dich', 'title', 'seo', 'lap_rap', 'slug', 'hoverInfo'));
     }
     
 

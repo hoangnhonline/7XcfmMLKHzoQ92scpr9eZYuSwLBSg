@@ -1,6 +1,6 @@
 <div class="left-block">
-    @if($product['pro_style'] == 1 && $product['image_pro'] != '' && $rs->icon_km != '')
-    <img class="gift-icon lazy" src="{{ Helper::showImage($rs->icon_km) }}" alt="Sản phẩm có quà tặng">
+    @if($product['pro_style'] == 1 && $product['image_pro'] != '' && $loaiSp->icon_km != '')
+    <img class="gift-icon lazy" src="{{ Helper::showImage($loaiSp->icon_km) }}" alt="Sản phẩm có quà tặng">
     @endif
     @if($product['pro_style'] == 2 && $product['image_pro'] != '')
     <img class="gift-icon lazy" src="{{ Helper::showImage($product['image_pro']) }}" alt="qua tang kem {{ $product['name'] }}">
@@ -15,7 +15,7 @@
     <img class="img-responsive lazy-img2 lazy" alt="product" src="{{ Helper::showImage($product['image_pro']) }}" />
     @endif
     </a>                                    
-    @if( $rs->is_hover == 1 && $product['pro_style'] == 0 && !empty($thuocTinhArr))
+    @if( $loaiSp->is_hover == 1 && $product['pro_style'] == 0 && !empty($thuocTinhArr))
     <figure class="mask-info">
         @foreach($hoverInfo as $info)
         <?php 

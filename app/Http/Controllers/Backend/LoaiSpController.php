@@ -58,7 +58,7 @@ class LoaiSpController extends Controller
                     $thuocTinhArr[$value->id]['id'] = $value->id;
                     $thuocTinhArr[$value->id]['name'] = $value->name;
 
-                    $thuocTinhArr[$value->id]['child'] = ThuocTinh::where('loai_thuoc_tinh_id', $value->id)->select('id', 'name')->orderBy('display_order')->get()->toArray();
+                    $thuocTinhArr[$value->id]['child'] = ThuocTinh::where('loai_thuoc_tinh_id', $value->id)->select('id', 'name')->orderBy('display_order')->orderBy('id')->get()->toArray();
                 }
                 
             }
