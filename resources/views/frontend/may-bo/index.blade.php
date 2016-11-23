@@ -74,7 +74,9 @@
                         
                     </ul>
                     <!-- ./PRODUCT LIST -->
-
+                     <div class="view-product-list" style="padding-left:0px;margin-top:20px;text-align:right">
+                        <a class="btn btn-warning" href="{{ route('lap-rap', $slug)}}" >Tự chọn cấu hình</a>
+                    </div>
                 </div>
                 <!-- ./view-product-list-->
                 
