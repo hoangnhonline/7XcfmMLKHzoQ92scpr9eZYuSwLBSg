@@ -53,7 +53,7 @@ class LapRapController extends Controller
         $seo = Helper::seo();
         $lap_rap = 1;
 
-        return view('frontend.may-bo.lap-rap', compact('muc_dich', 'title', 'seo', 'lap_rap', 'cateList', 'spFreeList', 'slug', 'title'));
+        return view('frontend.lap-rap.index', compact('muc_dich', 'title', 'seo', 'lap_rap', 'cateList', 'spFreeList', 'slug', 'title'));
     }
     public function getTuongThich(Request $request){
         $id = $request->sp_id;

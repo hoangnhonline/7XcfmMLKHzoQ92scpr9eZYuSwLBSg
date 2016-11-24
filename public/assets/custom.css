@@ -2324,6 +2324,7 @@ ul.collection li:first-child img {
 	border-bottom: 1px solid #fff;
 	position: relative;
 }
+
 .nav-choose-config ul li a:after {
 	content: "\f105";
 	font-family: "FontAwesome";
@@ -2334,6 +2335,11 @@ ul.collection li:first-child img {
 .nav-choose-config ul.level1 > li > a {
 	background-color: #999;
 	color: #fff;
+}
+.nav-choose-config ul.level1 > li > a.showing {
+	background-color: #fff;
+    color: #333;
+    border-left: 3px solid red;
 }
 .nav-choose-config ul.level1 > li > a:hover {
 	background-color: #888;
