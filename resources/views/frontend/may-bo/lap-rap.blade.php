@@ -47,6 +47,7 @@
                         $price = $sp->is_sale == 1 && $sp->price_sale  > 0 ? $sp->price_sale : $sp->price;
                         ?>
                         <li class="radio"><label class="text-bold"><input type="radio" class="select-lk radio-{{ $cate->slug }}" data-type="{{ $cate->slug }}" name="select[{{ $cate->id }}]" value="{{ $sp->id }}"> {{ $sp->name }}</label> <span class="price">[ {{ number_format($price) }} đ ]  </span></li>
+                        
                         @endforeach
                         @endif
                       </ul> 

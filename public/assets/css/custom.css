@@ -2486,7 +2486,7 @@ ul.collection li:first-child img {
   text-align: center;
   margin-top: 30px;
 }
-.buy-product-config .button-group-action .btn {
+.buy-product-config .button-group-action .btn, #btnAddCartLapRap {
   background-color: #ec1c24;
   padding: 8px 20px;
   font-size: 18px;
@@ -2500,9 +2500,10 @@ ul.collection li:first-child img {
   -ms-transition : all 0.5s ease 0s;
   transition : all 0.5s ease 0s;
 }
+#btnAddCartLapRap{
+	padding: 5px 10px;
+    font-size: 14px;
 }
-
-
 .tiki-cart .gift-popup .image {
   width: 110px;
   height: 110px;

@@ -55,6 +55,11 @@ class LapRapController extends Controller
 
         return view('frontend.lap-rap.index', compact('muc_dich', 'title', 'seo', 'lap_rap', 'cateList', 'spFreeList', 'slug', 'title'));
     }
+    public function xemCauHinh(Request $request){
+        $arrData = [];
+        parse_str($request->cau_hinh, $arrData);
+        return view('frontend.lap-rap.xem-cau-hinh-modal', compact('arrData'));   
+    }
     public function getTuongThich(Request $request){
         $id = $request->sp_id;
         $type = $request->type;
@@ -75,7 +80,7 @@ class LapRapController extends Controller
                     ->join('sp_tuongthich', 'sp_2' , '=', 'id')
                     ->where('sp_1', $id)
                     ->where('sp_tuongthich.cate_id', $cate_id)
-                    ->select('name', 'price', 'price_sale', 'is_sale', 'alias', 'slug', 'id', 'khe_ram')
+                    ->select('name', 'price', 'price_sale', 'is_sale', 'alias', 'slug', 'id', 'khe_ram', 'so_luong_ton')
                     ->get();
         }else{
             $tmpArr = SanPham::where('cate_id', $cate_id)->orderBy('id', 'DESC')->limit(20)->get();
@@ -83,11 +88,11 @@ class LapRapController extends Controller
         return view('frontend.may-bo.ajax-load', compact('tmpArr', 'cate', 'detail'));
     }
     public function mua(Request $request){
-        $data = $request->all();
+        $data = $request->all();        
         if(!empty($data['select'])){
             $listProduct = Session::get('products');
             foreach($data['select'] as $cate_id => $sp_id){
-                $quantity = $cate_id == 35 ? $request->so_ram : 1;
+                $quantity = $data['soluong'][$sp_id];
                 $listProduct[$sp_id] = $quantity;               
                 
             }

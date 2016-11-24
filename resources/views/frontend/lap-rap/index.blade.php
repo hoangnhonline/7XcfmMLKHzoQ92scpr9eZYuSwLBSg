@@ -53,47 +53,43 @@
                     <input type="hidden" id="value-{{ $cate->slug }}" value="0">
                     <h3 class="tit">HÃY CHỌN {{ $cate->name }}</h3>
                     <div class="row header-box hidden-xs">
-                        <div class="td col-sm-{{ $cate_id == 35 ? "6" : "9" }}">Sản phẩm</div>
-                        @if($cate_id == 35)
+                        <div class="td col-sm-6">Sản phẩm</div>
+                        
                         <div class="td col-sm-3">Số lượng</div>
-                        @endif
+                        
                         <div class="td col-sm-3 price">Thành tiền</div>
                     </div>
                     <div id="data-{{ $cate->slug }}">
-                    <ul class="row" >
-                        <li>
-                            <div class="col-sm-{{ $cate_id == 35 ? "6" : "9" }} box-name"><label><input type="radio" class="select-lk radio-{{ $cate->slug }}" data-type="{{ $cate->slug }}" name="select[{{ $cate->id }}]"> Không chọn</label></div>
-                            @if($cate_id == 35)
-                            <div class="col-sm-3 quantity"></div>
-                            @endif
-                            <div class="col-sm-3 price"></div>
-                        </li>
+                    <ul class="row" >                        
                         @if(isset($spFreeList[$cate_id]))
                         @foreach($spFreeList[$cate_id] as $sp)
                         <?php 
                         $price = $sp->is_sale == 1 && $sp->price_sale  > 0 ? $sp->price_sale : $sp->price;
                         ?>
                         <li>
-                            <div class="col-sm-{{ $cate_id == 35 ? "6" : "9" }} box-name"><label><input type="radio" class="select-lk radio-{{ $cate->slug }}" data-type="{{ $cate->slug }}" name="select[{{ $cate->id }}]" value="{{ $sp->id }}"> {{ $sp->name }}</label></div>
-                            @if($cate_id == 35)
+                            <div class="col-sm-6 box-name"><label><input type="radio" class="select-lk radio-{{ $cate->slug }}" data-type="{{ $cate->slug }}" name="select[{{ $cate->id }}]" value="{{ $sp->id }}"> {{ $sp->name }}</label></div>
+                            
                             <div class="col-sm-3 clearfix quantity">
                                 <p class="txt-name hidden-lg">Số lượng:</p>
                                 <div class="col-sm-3 clearfix quantity">
                                   <p class="txt-name hidden-lg">Số lượng:</p>
                                   
-                                  <select class="form-control" style="width:70px;margin:auto">
-                                      <option>
-                                        0
+                                  <select class="form-control" style="width:70px;margin:auto" name="soluong[{{ $sp->id }}]">
+                                     @for($i = 1; $i <= $sp->so_luong_ton; $i ++)
+                                      <option value="{{ $i }}">
+                                        {{ $i }}
                                       </option>
-
+                                      @endfor
                                   </select>                                
                               </div>
                             </div>
-                            @endif
+                            
                             <div class="col-sm-3 clearfix price">
                                 <p class="txt-name hidden-lg">Giá:</p>
                                 <span class="txt-num">{{ number_format($price) }} đ</span>
                             </div>
+                            <input type="hidden" name="price[{{ $sp->id }}]" value="{{ $price }}">
+                            <input type="hidden" name="name[{{ $sp->id }}]" value="{{ $sp->name }}">
                         </li>   
                         @endforeach
                         @endif
@@ -110,15 +106,36 @@
                 @endforeach
                 @endif
                 <div class="button-group-action">
-                    <button type="button" class="btn" id="btnPreview">Xem cấu hình</button>
+                    <button type="button" class="btn" id="btnPreview" >Xem cấu hình</button>
                   </div>
-
+                  {{ csrf_field() }}
             </form>
             </div>
             <!-- ./ Center colunm -->
         </div>
         <!-- ./row-->
     </div>
+</div>
+<!-- Modal -->
+<div id="xemCauHinhModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Cấu hình đã chọn</h4>
+      </div>
+      <div class="modal-body shipping-address-page" id="dataCauHinh">
+          
+      </div>
+      <div class="modal-footer text-center">
+        <button type="button" class="btn" id="btnAddCartLapRap">Thêm vào giỏ hàng</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Sửa</button>
+      </div>
+    </div>
+
+  </div>
 </div>
 @endsection
 
@@ -127,6 +144,25 @@
 @section('javascript')
 <script type="text/javascript">	
   $(document).ready(function(){
+    $('#btnPreview').click(function(){
+      $.ajax({
+        url : "{{ route('xem-cau-hinh') }}",
+        type : 'POST',
+        data : {
+          cau_hinh : $('#formLapRap').serialize()
+        },
+        beforeSend : function(){
+
+        },
+        success : function(data){
+          $('#dataCauHinh').html(data);
+          $('#xemCauHinhModal').modal('show');
+        }
+      });
+    });
+    $('#btnAddCartLapRap').click(function(){
+      $('#formLapRap').submit();
+    });
     $('.choose-config-list').eq(0).show();
     $('.choose-parent').eq(0).addClass('showing')
     $('a.choose-parent').click(function(){

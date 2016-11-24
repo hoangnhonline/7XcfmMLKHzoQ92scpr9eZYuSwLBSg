@@ -271,6 +271,7 @@ Route::group(['namespace' => 'Frontend'], function()
     Route::get('tu-chon-cau-hinh/{slug}/', ['as' => 'lap-rap', 'uses' => 'LapRapController@lapRap']);
     Route::post('tu-chon-cau-hinh/mua/', ['as' => 'mua-lap-rap', 'uses' => 'LapRapController@mua']);
     Route::post('tu-chon-cau-hinh/lay-san-pham-tuong-thich/', ['as' => 'lay-sp-tuong-thich', 'uses' => 'LapRapController@getTuongThich']);
+    Route::post('tu-chon-cau-hinh/xem-cau-hinh', ['as' => 'xem-cau-hinh', 'uses' => 'LapRapController@xemCauHinh']);
     Route::group(['prefix' => 'thanh-toan'], function () {
         Route::get('gio-hang', ['as' => 'gio-hang', 'uses' => 'CartController@index']);
         Route::get('xoa-gio-hang', ['as' => 'xoa-gio-hang', 'uses' => 'CartController@deleteAll']);
