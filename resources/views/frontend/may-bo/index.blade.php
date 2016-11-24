@@ -51,9 +51,12 @@
               
                 <!-- view-product-list-->
                 <div id="view-product-list" class="view-product-list">
-                    <h1 class="page-heading">
-                        <span class="page-heading-title">{{ $title }}</span>
-                    </h1>                    
+                    <div style="position:relative">
+                        <h1 class="page-heading">
+                            <span class="page-heading-title">{{ $title }}</span>
+                        </h1>                    
+                        <a class="btn btn-warning" href="{{ route('lap-rap', $slug)}}" style="position:absolute;right:0;bottom:2px">Tự chọn cấu hình</a>
+                    </div>
                     <!-- PRODUCT LIST -->
                     <ul class="row product-list grid">
                         @foreach( $productArr as $product )
@@ -73,10 +76,7 @@
                     @endforeach
                         
                     </ul>
-                    <!-- ./PRODUCT LIST -->
-                     <div class="view-product-list" style="padding-left:0px;margin-top:20px;text-align:right">
-                        <a class="btn btn-warning" href="{{ route('lap-rap', $slug)}}" >Tự chọn cấu hình</a>
-                    </div>
+                    <!-- ./PRODUCT LIST -->                     
                 </div>
                 <!-- ./view-product-list-->
                 

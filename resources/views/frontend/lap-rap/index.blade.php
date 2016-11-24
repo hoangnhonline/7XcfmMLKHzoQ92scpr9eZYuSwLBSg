@@ -129,6 +129,9 @@
 
 @section('javascript')
 <script type="text/javascript">	
+$(document).on('click', '#btnAddCartLapRap', function(){
+    $('#formLapRap').submit();
+});
   $(document).ready(function(){
     $('#btnPreview').click(function(){
       $.ajax({
@@ -145,10 +148,7 @@
           $('#xemCauHinhModal').modal('show');
         }
       });
-    });
-    $('#btnAddCartLapRap').click(function(){
-      $('#formLapRap').submit();
-    });
+    });    
     $('.choose-config-list').eq(0).show();
     $('.choose-parent').eq(0).addClass('showing')
     $('a.choose-parent').click(function(){

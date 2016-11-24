@@ -23,7 +23,7 @@
                 <div class="row title visible-md-block visible-lg-block">
                     <div class="col-lg-9 col-md-9">
                         <h5>Sản phẩm trong giỏ hàng</h5>
-                        <span class="badge">{{array_sum($getlistProduct)}}</span>
+                        <span class="badge">{{ array_sum($getlistProduct) }}</span>
                     </div>
                     <div class="col-lg-1 col-md-1"><h6>Giá mua</h6></div>
                     <div class="col-lg-1 col-md-1"><h6>Số lượng</h6></div>      
@@ -40,6 +40,7 @@
                   <?php 
                   $phi_dich_vu = DB::table('loai_sp')->where('id', $product->loai_id)->first()->phi_dich_vu;
                   ?>
+                  <?php $price = $product->is_sale ? $product->price_sale : $product->price; ?>
                   <div class="row shopping-cart-item">
                     <div class="col-lg-3 col-md-2 col-xs-3">
                       <p class="image">
@@ -47,17 +48,39 @@
                       <img class="img-responsive lazy" data-original="{{ Helper::showImage($product['image_url']) }}">
                       </p>
                     </div>
-                    <div class="col-lg-6 col-md-7 c2 col-xs-9">
+                    <div class="col-lg-6 col-md-6 c2 col-xs-9">
                       <p class="name">
-                      <a href="" target="_blank">{{$product->name}}</a>
+                      <a href="" target="_blank">{{ $product->name }}</a>
                       </p>
+                      <div class="row visible-xs-block visible-sm-block">
+                        <div class="col-xs-6 col-sm-8">
+                          @if($product->is_sale)
+                          <p class="price">{{ number_format($price) }}&nbsp;₫</p>
+                          @else
+                          <p class="price">{{ number_format($price) }}&nbsp;₫</p>
+                          @endif
+                        </div>
+                        <div class="col-xs-6 col-sm-4 cart-col-3 quantity-block">
+                           <select data-product-id="{{$product->id}}" class="form-control js-quantity-select quantity js-quantity-product">
+                            @for($i = 1; $i <= 50; $i++ )
+                            <option value="{{$i}}"
+                            @if ($i == $getlistProduct[$product->id])
+                              selected
+                            @endif
+                            > {{$i}}
+                              @if($i == 50) + @endif
+                            </option>
+                            @endfor
+                          </select>
+                        </div>
+                      </div>
                       <p class="action">
-                        <a class="btn btn-link btn-item-delete" data-product-id="{{$product->id}}"> Xóa </a>
+                        <a class="btn btn-link btn-item-delete" data-product-id="{{ $product->id }}"> Xóa </a>
                         @if($phi_dich_vu > 0)
-                         <p class="mb05"><label class="checkbox-inline"><input type="checkbox" name="chon_dich_vu[{{$product->id}}]" value="1"> Giao hàng, lắp đặt và hướng dẫn sử dụng</label></p>
-                        <p style="text-align:center">
+                         <p class="mb05"><label class="checkbox-inline"><input type="checkbox" name="chon_dich_vu[{{ $product->id }}]" value="1"> Giao hàng, lắp đặt và hướng dẫn sử dụng</label></p>
+                        <p style="margin-left: 26px;">
                         <input type="hidden" name="phi_dich_vu[{{$product->id}}]" value="{{ $phi_dich_vu }}">
-                          <select name="so_dich_vu[{{$product->id}}]" class="form-control quantity-product" style="display:inline-block; padding: 3px; height: 25px; width: auto;">
+                          <select name="so_dich_vu[{{$product->id}}]" class="form-control quantity-product" style="display:inline-block; padding: 3px; height: 25px; width: 50px;">
                             @for($i = 1; $i <= $getlistProduct[$product->id]; $i++ )
                             <option value="{{$i}}"              
                             > {{$i}}
@@ -66,12 +89,12 @@
                             @endfor
                           </select>
                           <span>x</span>
-                          <label><strong class="text-bold">{{ number_format($phi_dich_vu) }} vnđ</strong></label>@endif                          
+                          <label><strong class="text-bold">{{ number_format($phi_dich_vu) }} đ</strong></label>@endif                          
                         </p>
                       </p>
                     </div>
                     <div class="col-lg-1 col-md-1 visible-md-block visible-lg-block">
-                      <?php $price = $product->is_sale ? $product->price_sale : $product->price; ?>
+                      
                       @if($product->is_sale)
                       <p class="price">{{number_format($price)}}&nbsp;₫</p>
                       @else
@@ -108,9 +131,9 @@
                 <div class="row last" style="margin-top:10px">
                     <div class="col-lg-12 col-md-12">
                         <div class="all-new">
-                            <a class="btn btn-default btn-gradient" href="{{ route('home') }}"><i class="fa fa-angle-left"></i> Tiếp tục mua sắm</a>
+                            <a class="btn btn-default btn-gradient" href="{{ route('home') }}" style="margin-bottom:2px"><i class="fa fa-angle-left"></i> Tiếp tục mua sắm</a>
                             @if(!empty(Session::get('products')))
-                            <a class="btn btn-default btn-gradient" onclick="return confirm('Xóa tất cả sản phẩm trong giỏ hàng?');" href="{{ route('xoa-gio-hang') }}"><i class="fa fa-trash-o"></i> Xóa toàn bộ giỏ hàng</a>
+                            <a class="btn btn-default btn-gradient" style="margin-bottom:2px" onclick="return confirm('Xóa tất cả sản phẩm trong giỏ hàng?');" href="{{ route('xoa-gio-hang') }}"><i class="fa fa-trash-o"></i> Xóa toàn bộ giỏ hàng</a>
                             @endif
                         </div>
                     </div>
@@ -125,8 +148,8 @@
                   <div class="visible-lg-block">
                     <div class="panel panel-default fee">
                       <div class="panel-body">
-                        <p class="total">Tổng cộng: <span>{{number_format($total)}}&nbsp;₫</span></p>
-                        <p class="total2">Thành tiền: <span>{{number_format($total)}}&nbsp;₫ </span></p>
+                        <p class="total">Tổng cộng: <span>{{ number_format($total) }}&nbsp;₫</span></p>
+                        <p class="total2">Thành tiền: <span>{{ number_format($total) }}&nbsp;₫ </span></p>
                         <p class="text-right"> <i>(Đã bao gồm VAT)</i> </p>
                       </div>
                     </div>
@@ -135,6 +158,20 @@
                     <button type="button" class="btn btn-large btn-block btn-default btn-checkout"> TIẾN HÀNH ĐẶT HÀNG </button>
                     @endif                    
                   </div>
+                  <div class="visible-xs-block">
+                    <div class="panel panel-default fee">
+                      <div class="panel-body">
+                        <p class="total">Tổng cộng: <span>{{ number_format($total) }}&nbsp;₫</span></p>
+                        <p class="total2">Thành tiền: <span>{{ number_format($total) }}&nbsp;₫ </span></p>
+                        <p class="text-right"> <i>(Đã bao gồm VAT)</i> </p>
+                      </div>
+                    </div>
+                  </div>
+                  @if( $arrProductInfo->count() > 0)
+                  <div class="visible-xs-block">
+                    <button type="button" class="btn btn-large btn-block btn-default btn-checkout"> TIẾN HÀNH ĐẶT HÀNG </button>
+                  </div>
+                  @endif
                 </div>
             </div>
             <!-- ./left colunm -->
