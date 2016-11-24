@@ -9,7 +9,7 @@
         <h4 class="modal-title">Gửi tin nhắn</h4>
       </div>
       <div class="modal-body">
-        <form method="POST" action="{{ route('customernoti.store') }}">
+        <form method="POST" action="{{ route('customernoti.store') }}" id="formNoti">
           {!! csrf_field() !!} 
           <div class="form-group">
              <label for="email">Loại tin nhắn<span class="red-star">*</span></label>

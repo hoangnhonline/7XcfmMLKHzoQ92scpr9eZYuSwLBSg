@@ -45,19 +45,16 @@ class CustomerNotificationController extends Controller
         return view('backend.customer.index', compact( 'items', 'email', 'status' , 'phone', 'full_name'));
     }    
     public function store(Request $request)
-    {
-       
-        $dataArr = $request->all();
-         
-        $this->validate($request,[
-            'content' => 'required'          
-        ],
-        [
-            'content.required' => 'Bạn chưa nhập nội dung'
-        ]);       
-       
+    {         
+        parse_str($request->data, $data);
+
+        $dataArr['type'] = $data['type'];
+        $dataArr['status'] = 1;
+        $dataArr['event_url'] = $data['event_url'];
+        $dataArr['content'] = $request->content;
+        $dataArr['customer_id'] = $data['customer_id'];
         $dataArr['created_user'] = Auth::user()->id;
-        $dataArr['updated_user'] = Auth::user()->id;
+        $dataArr['updated_user'] = Auth::user()->id;        
 
         $rs = CustomerNotification::create($dataArr);
        

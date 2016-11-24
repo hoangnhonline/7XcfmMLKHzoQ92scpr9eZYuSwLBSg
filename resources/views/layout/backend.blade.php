@@ -109,6 +109,23 @@
 <script src="{{ URL::asset('backend/dist/js/ckeditor/ckeditor.js') }}"></script>
 
 <script type="text/javascript" type="text/javascript">
+$(document).on('click', '#btnSaveNoti', function(){
+  var content = CKEDITOR.instances['contentNoti'].getData();
+  if(content != ''){    
+    $.ajax({
+      url : $('#formNoti').attr('action'),
+      type : "POST",
+      data : {
+        data : $('#formNoti').serialize(),
+        content : content
+      },
+      success : function(data){
+        alert('Gửi tin nhắn thành công.');
+        $('#notifiModal').modal('hide');
+      }
+    });
+  }
+});
 $(document).ready(function(){
   $('img.lazy').lazyload();
   $.ajaxSetup({
@@ -116,6 +133,7 @@ $(document).ready(function(){
           'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
       }
   });
+
   $('.sendNoti').click(function(){
     var customer_id = $(this).data('customer-id');
     var notiType = $(this).data('type');
