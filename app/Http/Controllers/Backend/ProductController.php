@@ -135,22 +135,22 @@ class ProductController extends Controller
         $tmpArr = SpTuongThich::where('sp_1', $id)->get();
         //var_dump("<pre>", $tmpArr->toArray());die;
         $spSelected = $productArr = [];
-        $str_sp_mainboard = $str_sp_cpu = $str_sp_vga = $str_sp_ram = "";
+        $str_sp_bo_mach_chinh = $str_sp_bo_vi_xu_ly = $str_sp_card_man_hinh = $str_sp_bo_nho = "";
         if( $tmpArr->count() > 0){
             foreach ($tmpArr as $value) {
                 $spSelected[$value->cate_id][] = $value->sp_2;
                 $productArr[$value->sp_2] = SanPham::find($value->sp_2);
                 if($value->cate_id == 31){
-                    $str_sp_mainboard .= $value->sp_2.",";
+                    $str_sp_bo_mach_chinh .= $value->sp_2.",";
                 }
                 if($value->cate_id == 32){
-                    $str_sp_cpu .= $value->sp_2.",";
+                    $str_sp_bo_vi_xu_ly .= $value->sp_2.",";
                 }
                 if($value->cate_id == 35){
-                    $str_sp_ram .= $value->sp_2.",";
+                    $str_sp_bo_nho .= $value->sp_2.",";
                 }
                 if($value->cate_id == 85){
-                    $str_sp_vga .= $value->sp_2.",";
+                    $str_sp_card_man_hinh .= $value->sp_2.",";
                 }
             }
         }
@@ -159,7 +159,7 @@ class ProductController extends Controller
 
         $cateArr = Cate::where('loai_id', 7)->orderBy('display_order', 'desc')->get();
         
-        return view('backend.product.tuong-thich', compact( 'detail', 'loaiSpArr', 'cateArr', 'spSelected', 'productArr', 'str_sp_mainboard','str_sp_cpu', 'str_sp_vga', 'mucDichArr', 'str_sp_ram'));   
+        return view('backend.product.tuong-thich', compact( 'detail', 'loaiSpArr', 'cateArr', 'spSelected', 'productArr', 'str_sp_bo_mach_chinh','str_sp_bo_vi_xu_ly', 'str_sp_card_man_hinh', 'mucDichArr', 'str_sp_bo_nho'));   
     }
     public function ajaxSearch(Request $request){    
         $search_type = $request->search_type;
@@ -474,10 +474,10 @@ class ProductController extends Controller
                 SpMucDich::create(['sp_id' => $id, 'muc_dich' => $muc_dich]);
             }
         }
-        $sp_tuongthich_mainboard = $request->sp_tuongthich_31;
-        $sp_tuongthich_cpu = $request->sp_tuongthich_32;
-        $sp_tuongthich_vga = $request->sp_tuongthich_85;
-        $sp_tuongthich_ram = $request->sp_tuongthich_35;
+        $sp_tuongthich_bo_mach_chinh = $request->sp_tuongthich_31;
+        $sp_tuongthich_bo_vi_xu_ly = $request->sp_tuongthich_32;
+        $sp_tuongthich_card_man_hinh = $request->sp_tuongthich_85;
+        $sp_tuongthich_bo_nho = $request->sp_tuongthich_35;
         
         SpTuongThich::where(['sp_1' => $id, 'cate_id' => 31])->delete();
         SpTuongThich::where(['sp_1' => $id, 'cate_id' => 32])->delete();
@@ -486,8 +486,8 @@ class ProductController extends Controller
 
         SpTuongThich::where(['sp_2' => $id, 'cate_id' => $detail->cate_id])->delete();
 
-        if( !empty($sp_tuongthich_mainboard)){
-            foreach( $sp_tuongthich_mainboard as $sp_2){
+        if( !empty($sp_tuongthich_bo_mach_chinh)){
+            foreach( $sp_tuongthich_bo_mach_chinh as $sp_2){
                 if( $sp_2 > 0){
                     $check1 = SpTuongThich::where('sp_1', $id)->where('sp_2', $sp_2)->first();
                     $check2 = SpTuongThich::where('sp_1', $sp_2)->where('sp_2', $id)->first();
@@ -498,8 +498,8 @@ class ProductController extends Controller
                 }
             }
         }
-        if( !empty($sp_tuongthich_cpu)){
-            foreach( $sp_tuongthich_cpu as $sp_2){
+        if( !empty($sp_tuongthich_bo_vi_xu_ly)){
+            foreach( $sp_tuongthich_bo_vi_xu_ly as $sp_2){
                 if( $sp_2 > 0){
                     $check1 = SpTuongThich::where('sp_1', $id)->where('sp_2', $sp_2)->first();
                     $check2 = SpTuongThich::where('sp_1', $sp_2)->where('sp_2', $id)->first();
@@ -510,8 +510,8 @@ class ProductController extends Controller
                 }
             }
         }
-        if( !empty($sp_tuongthich_ram)){
-            foreach( $sp_tuongthich_ram as $sp_2){
+        if( !empty($sp_tuongthich_bo_nho)){
+            foreach( $sp_tuongthich_bo_nho as $sp_2){
                 if( $sp_2 > 0){
                     $check1 = SpTuongThich::where('sp_1', $id)->where('sp_2', $sp_2)->first();
                     $check2 = SpTuongThich::where('sp_1', $sp_2)->where('sp_2', $id)->first();
@@ -522,8 +522,8 @@ class ProductController extends Controller
                 }
             }
         }
-        if( !empty($sp_tuongthich_vga)){
-            foreach( $sp_tuongthich_vga as $sp_2){
+        if( !empty($sp_tuongthich_card_man_hinh)){
+            foreach( $sp_tuongthich_card_man_hinh as $sp_2){
                 if( $sp_2 > 0){
                     $check1 = SpTuongThich::where('sp_1', $id)->where('sp_2', $sp_2)->first();
                     $check2 = SpTuongThich::where('sp_1', $sp_2)->where('sp_2', $id)->first();

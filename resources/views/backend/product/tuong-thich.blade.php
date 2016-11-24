@@ -158,10 +158,10 @@
                   
             </div>
             <div class="box-footer">
-              <input type="hidden" name="str_sp_mainboard" id="str_sp_mainboard" value="{{ $str_sp_mainboard }}" >
-              <input type="hidden" name="str_sp_vga" id="str_sp_vga" value="{{ $str_sp_vga }}" >
-              <input type="hidden" name="str_sp_cpu" id="str_sp_cpu" value="{{ $str_sp_cpu }}" >
-              <input type="hidden" name="str_sp_ram" id="str_sp_ram" value="{{ $str_sp_ram }}" >
+              <input type="hidden" name="str_sp_bo_mach_chinh" id="str_sp_bo_mach_chinh" value="{{ $str_sp_bo_mach_chinh }}" >
+              <input type="hidden" name="str_sp_card_man_hinh" id="str_sp_card_man_hinh" value="{{ $str_sp_card_man_hinh }}" >
+              <input type="hidden" name="str_sp_bo_vi_xu_ly" id="str_sp_bo_vi_xu_ly" value="{{ $str_sp_bo_vi_xu_ly }}" >
+              <input type="hidden" name="str_sp_bo_nho" id="str_sp_bo_nho" value="{{ $str_sp_bo_nho }}" >
               <button type="button" class="btn btn-default" id="btnLoading" style="display:none"><i class="fa fa-spin fa-spinner"></i></button>
               <button type="submit" class="btn btn-primary" id="btnSave">Lưu</button>
               <a class="btn btn-default" class="btn btn-primary" href="{{ URL::previous() }}">Hủy</a>
@@ -212,25 +212,25 @@ function filterAjax(cate_id){
             //$('.selectpicker').selectpicker();            
             //check lai nhung checkbox da checked
             if( cate_id == "31"){
-              var str_checked = $('#str_sp_mainboard').val();
+              var str_checked = $('#str_sp_bo_mach_chinh').val();
               tmpArr = str_checked.split(",");              
               for (i = 0; i < tmpArr.length; i++) { 
                   $('input.checkSelect[value="'+ tmpArr[i] +'"]').prop('checked', true);
               }
             }else if( cate_id == "32"){
-              var str_checked = $('#str_sp_cpu').val();
+              var str_checked = $('#str_sp_bo_vi_xu_ly').val();
               tmpArr = str_checked.split(",");              
               for (i = 0; i < tmpArr.length; i++) { 
                   $('input.checkSelect[value="'+ tmpArr[i] +'"]').prop('checked', true);
               }
             }else if( cate_id == "35"){
-              var str_checked = $('#str_sp_ram').val();
+              var str_checked = $('#str_sp_bo_nho').val();
               tmpArr = str_checked.split(",");              
               for (i = 0; i < tmpArr.length; i++) { 
                   $('input.checkSelect[value="'+ tmpArr[i] +'"]').prop('checked', true);
               }
             }else{
-              var str_checked = $('#str_sp_vga').val();
+              var str_checked = $('#str_sp_card_man_hinh').val();
               tmpArr = str_checked.split(",");              
               for (i = 0; i < tmpArr.length; i++) { 
                   $('input.checkSelect[value="'+ tmpArr[i] +'"]').prop('checked', true);
@@ -245,41 +245,41 @@ $(document).on('click', '.checkSelect', function(){
   console.log(cate_id);
   var obj = $(this);
   if( cate_id == "31"){
-    var str_sp_mainboard = $('#str_sp_mainboard').val();
+    var str_sp_bo_mach_chinh = $('#str_sp_bo_mach_chinh').val();
     if(obj.prop('checked') == true){
-      str_sp_mainboard += obj.val() + ',';
+      str_sp_bo_mach_chinh += obj.val() + ',';
     }else{
       var str = obj.val() + ',';
-      str_sp_mainboard = str_sp_mainboard.replace(str, '');
+      str_sp_bo_mach_chinh = str_sp_bo_mach_chinh.replace(str, '');
     }
-    $('#str_sp_mainboard').val(str_sp_mainboard);
+    $('#str_sp_bo_mach_chinh').val(str_sp_bo_mach_chinh);
   }else if( cate_id == "32"){
-    var str_sp_cpu = $('#str_sp_cpu').val();
+    var str_sp_bo_vi_xu_ly = $('#str_sp_bo_vi_xu_ly').val();
     if(obj.prop('checked') == true){
-      str_sp_cpu += obj.val() + ',';
+      str_sp_bo_vi_xu_ly += obj.val() + ',';
     }else{
       var str = obj.val() + ',';
-      str_sp_cpu = str_sp_cpu.replace(str, '');
+      str_sp_bo_vi_xu_ly = str_sp_bo_vi_xu_ly.replace(str, '');
     }
-    $('#str_sp_cpu').val(str_sp_cpu);
+    $('#str_sp_bo_vi_xu_ly').val(str_sp_bo_vi_xu_ly);
   }else if( cate_id == "35"){
-    var str_sp_ram = $('#str_sp_ram').val();
+    var str_sp_bo_nho = $('#str_sp_bo_nho').val();
     if(obj.prop('checked') == true){
-      str_sp_ram += obj.val() + ',';
+      str_sp_bo_nho += obj.val() + ',';
     }else{
       var str = obj.val() + ',';
-      str_sp_ram = str_sp_ram.replace(str, '');
+      str_sp_bo_nho = str_sp_bo_nho.replace(str, '');
     }
-    $('#str_sp_ram').val(str_sp_ram);
+    $('#str_sp_bo_nho').val(str_sp_bo_nho);
   }else{ // so sanh
-    var str_sp_vga = $('#str_sp_vga').val();
+    var str_sp_card_man_hinh = $('#str_sp_card_man_hinh').val();
     if(obj.prop('checked') == true){
-      str_sp_vga += obj.val() + ',';
+      str_sp_card_man_hinh += obj.val() + ',';
     }else{
       var str = obj.val() + ',';
-      str_sp_vga = str_sp_vga.replace(str, '');
+      str_sp_card_man_hinh = str_sp_card_man_hinh.replace(str, '');
     }
-    $('#str_sp_vga').val(str_sp_vga);
+    $('#str_sp_card_man_hinh').val(str_sp_card_man_hinh);
   }
 });
 $(document).on('click', '.btnRemoveTuongThich', function(){
@@ -288,13 +288,13 @@ $(document).on('click', '.btnRemoveTuongThich', function(){
     var type = obj.attr('data-type');
     var value = obj.attr('data-value');
     if( type == "31"){
-      var name = "mainboard";
+      var name = "bo_mach_chinh";
     }else if(type == "32"){
-      var name = "cpu";
+      var name = "bo_vi_xu_ly";
     }else if(type == "35"){
-      var name = "ram";
+      var name = "bo_nho";
     }else{
-      var name = "vga";
+      var name = "card_man_hinh";
     }
     var str_sp = $('#str_sp_' + name).val();
    
@@ -321,13 +321,13 @@ $(document).on('click', 'button.btnSaveSearch',function(){
   var cate_id = $('#cate_id_search').val();  
   console.log(cate_id);
   if (cate_id == "31"){
-    str_value = $('#str_sp_mainboard').val();
+    str_value = $('#str_sp_bo_mach_chinh').val();
   }else if( cate_id == "32"){
-    str_value = $('#str_sp_cpu').val();
+    str_value = $('#str_sp_bo_vi_xu_ly').val();
   }else if( cate_id == "35"){
-    str_value = $('#str_sp_ram').val();
+    str_value = $('#str_sp_bo_nho').val();
   }else{
-    str_value = $('#str_sp_vga').val();
+    str_value = $('#str_sp_card_man_hinh').val();
   }
   if( str_value != '' ){
     
@@ -373,7 +373,7 @@ $(document).on('click', 'button.btnSaveSearch',function(){
       $('.btnLienQuan').click(function(){
         var type = $(this).attr('data-value');
         if( type == "31") {
-          $('#label-search').html("mainboard tương thích");
+          $('#label-search').html("Mainboard tương thích");
         }else if( type == "32" ){
           $('#label-search').html("CPU tương thích");
         }else if( type == "35" ){

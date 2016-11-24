@@ -59,24 +59,27 @@ class LapRapController extends Controller
         $id = $request->sp_id;
         $type = $request->type;
         $detail = (object) [];
-        if($type == "ram"){
+        if($type == "bo-nho"){
             $cate_id = 35;
             $detail = SanPham::find($id);
-        }elseif( $type == "mainboard"){
+        }elseif( $type == "bo-mach-chinh"){
             $cate_id = 31;
-        }elseif( $type == "vga"){
+        }elseif( $type == "card-man-hinh"){
             $cate_id = 85;
-        }elseif( $type == "cpu"){
+        }elseif( $type == "bo-vi-xu-ly"){
             $cate_id = 32;
         }
         $cate = Cate::find($cate_id);
-        $tmpArr = SanPham::where('status', 1)
+        if($id > 0){
+            $tmpArr = SanPham::where('status', 1)
                     ->join('sp_tuongthich', 'sp_2' , '=', 'id')
                     ->where('sp_1', $id)
                     ->where('sp_tuongthich.cate_id', $cate_id)
                     ->select('name', 'price', 'price_sale', 'is_sale', 'alias', 'slug', 'id', 'khe_ram')
                     ->get();
-                  
+        }else{
+            $tmpArr = SanPham::where('cate_id', $cate_id)->orderBy('id', 'DESC')->limit(20)->get();
+        }          
         return view('frontend.may-bo.ajax-load', compact('tmpArr', 'cate', 'detail'));
     }
     public function mua(Request $request){

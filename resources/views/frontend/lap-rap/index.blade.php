@@ -102,8 +102,8 @@
                     </div>
                     <p class="error" style="display:none">Vui lòng chọn 1 mục.</p>
                     <div class="button-group text-center mt10 pb10">
-                        <button type="button" class="btn btn-default btn-sm">HỦY</button>
-                        <button type="button" class="btn btn-default btn-sm btnOK" data-slug="{{ $cate->slug }}">OK</button>
+                        <button type="button" class="btn btn-default btn-sm btnAction">HỦY</button>
+                        <button type="button" class="btn btn-default btn-sm btnOK btnAction" data-slug="{{ $cate->slug }}">OK</button>
                     </div>
                 </div>
                 <!-- ./config-list-->
@@ -133,12 +133,22 @@
       $('a.choose-parent').removeClass('showing');
       $(this).addClass('showing');
       $('.choose-config-list').hide();
-      $('.' + $(this).data('slug')).show();
+      $('.' + $(this).data('slug')).show();      
+      if($('.' + $(this).data('slug') + ' input.select-lk').length == 0){
+        $('.btnAction').hide();
+      }else{
+        $('.btnAction').show();
+      }
     });
     $('button.btnOK').click(function(){
       var obj = $('a.showing');      
       obj.parent().next().find('a').addClass('showing').click();
       obj.removeClass('showing');
+
+      $('html, body').animate({
+          scrollTop: $(".breadcrumb").offset().top
+      });
+      
     });
   });
   $(document).on('ifChecked', '.select-lk', function(){
@@ -147,54 +157,56 @@
       var value = obj.val();
       var type = obj.attr('data-type');
       $('#value-' + type).val(value);
-      $('a.choose-parent[data-slug=' + type + ']').removeClass('no-sp').addClass('have-sp');
-      if(value > 0){ // co chon 
-        if( type == "mainboard"){
+      
+        $('a.choose-parent[data-slug=' + type + ']').removeClass('no-sp').addClass('have-sp');
+      
+    
+        if( type == "bo-mach-chinh"){
             // get RAM
-            if($('#value-ram').val() == 0){
-              getRelated(value, 'ram', type); 
+            if($('#value-bo-nho').val() == 0){
+              getRelated(value, 'bo-nho', type); 
             }
             if($('#value-card-man-hinh').val() == 0){
-              getRelated(value, 'vga', type); 
+              getRelated(value, 'card-man-hinh', type); 
             }
-            if($('#value-cpu').val() == 0){
-              getRelated(value, 'cpu', type); 
+            if($('#value-bo-vi-xu-ly').val() == 0){
+              getRelated(value, 'bo-vi-xu-ly', type); 
             }
         }else if( type == "card-man-hinh"){
             // get RAM
-            if($('#value-ram').val() == 0){
-              getRelated(value, 'ram', type); 
+            if($('#value-bo-nho').val() == 0){
+              getRelated(value, 'bo-nho', type); 
             }
-            if($('#value-mainboard').val() == 0){
-              getRelated(value, 'vga', type); 
+            if($('#value-bo-mach-chinh').val() == 0){
+              getRelated(value, 'card-man-hinh', type); 
             }
-            if($('#value-cpu').val() == 0){
-              getRelated(value, 'cpu', type); 
+            if($('#value-bo-vi-xu-ly').val() == 0){
+              getRelated(value, 'bo-vi-xu-ly', type); 
             }
-        }else if( type == "ram"){
+        }else if( type == "bo-nho"){
             // get RAM
-            if($('#value-mainboard').val() == 0){
-              getRelated(value, 'ram', type); 
+            if($('#value-bo-mach-chinh').val() == 0){
+              getRelated(value, 'bo-nho', type); 
             }
             if($('#value-card-man-hinh').val() == 0){
-              getRelated(value, 'vga', type); 
+              getRelated(value, 'card-man-hinh', type); 
             }
-            if($('#value-cpu').val() == 0){
-              getRelated(value, 'cpu', type); 
+            if($('#value-bo-vi-xu-ly').val() == 0){
+              getRelated(value, 'bo-vi-xu-ly', type); 
             }
-        }else if( type == "cpu"){
+        }else if( type == "bo-vi-xu-ly"){
             // get RAM
-            if($('#value-ram').val() == 0){
-              getRelated(value, 'ram', type); 
+            if($('#value-bo-nho').val() == 0){
+              getRelated(value, 'bo-nho', type); 
             }
             if($('#value-card-man-hinh').val() == 0){
-              getRelated(value, 'vga', type); 
+              getRelated(value, 'card-man-hinh', type); 
             }
-            if($('#value-mainboard').val() == 0){
-              getRelated(value, 'cpu', type); 
+            if($('#value-bo-mach-chinh').val() == 0){
+              getRelated(value, 'bo-vi-xu-ly', type); 
             }
-        }
-      }
+        }       
+      
     });
   function getRelated(sp_id, type, dataSlug) {
         $.ajax({
@@ -206,24 +218,23 @@
             _token : "{{ csrf_token() }}"
           },
           success : function(data){
-            if(type == "vga"){
-              $('#data-card-man-hinh').html(data);
-            }else{
-              $('#data-' + type).html(data);  
-            }
+            
+            $('#data-' + type).html(data);  
+            
             if(data == "<label>Không có sản phẩm tương thích với lựa chọn của bạn.</label>"){
-              if(type == "vga"){
-                $('a.choose-parent[data-slug=card-man-hinh]').removeClass('showing').addClass('no-sp');
-              }else{
-                $('a.choose-parent[data-slug=' + type + ']').removeClass('showing').addClass('no-sp');
-              }              
+             
+              $('a.choose-parent[data-slug=' + type + ']').removeClass('showing').addClass('no-sp');
+                           
             }else{
               $('input').iCheck({
                 checkboxClass: 'icheckbox_square-red',
                 radioClass: 'iradio_square-red',
                 increaseArea: '20%' // optional
               });
+              
               $('a.choose-parent[data-slug=' + type + ']').removeClass('no-sp');
+            
+              
             }
           },
           error : function(e) {
