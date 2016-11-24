@@ -74,7 +74,7 @@ class LapRapController extends Controller
                     ->join('sp_tuongthich', 'sp_2' , '=', 'id')
                     ->where('sp_1', $id)
                     ->where('sp_tuongthich.cate_id', $cate_id)
-                    ->select('name', 'price', 'price_sale', 'is_sale', 'alias', 'slug', 'id')
+                    ->select('name', 'price', 'price_sale', 'is_sale', 'alias', 'slug', 'id', 'khe_ram')
                     ->get();
                   
         return view('frontend.may-bo.ajax-load', compact('tmpArr', 'cate', 'detail'));

@@ -49,6 +49,7 @@
                 <?php $cate_id = $cate->id ;?>       
                 <!-- config-list-->
                 <div class="choose-config-list {{ $cate->slug }}" style="display:none" >
+                    <input type="hidden" id="value-{{ $cate->slug }}" value="0">
                     <h3 class="tit">HÃY CHỌN {{ $cate->name }}</h3>
                     <div class="row header-box hidden-xs">
                         <div class="td col-sm-{{ $cate_id == 35 ? "6" : "9" }}">Sản phẩm</div>
@@ -57,9 +58,10 @@
                         @endif
                         <div class="td col-sm-3 price">Thành tiền</div>
                     </div>
-                    <ul class="row">
+                    <div id="data-{{ $cate->slug }}">
+                    <ul class="row" >
                         <li>
-                            <div class="col-sm-{{ $cate_id == 35 ? "6" : "9" }} box-name"><label><input type="radio" id="" name="" value=""> Không chọn</label></div>
+                            <div class="col-sm-{{ $cate_id == 35 ? "6" : "9" }} box-name"><label><input type="radio" class="select-lk radio-{{ $cate->slug }}" data-type="{{ $cate->slug }}" name="select[{{ $cate->id }}]"> Không chọn</label></div>
                             @if($cate_id == 35)
                             <div class="col-sm-3 quantity"></div>
                             @endif
@@ -71,7 +73,7 @@
                         $price = $sp->is_sale == 1 && $sp->price_sale  > 0 ? $sp->price_sale : $sp->price;
                         ?>
                         <li>
-                            <div class="col-sm-{{ $cate_id == 35 ? "6" : "9" }} box-name"><label><input type="radio" id="" name="" value="5"> {{ $sp->name }}</label></div>
+                            <div class="col-sm-{{ $cate_id == 35 ? "6" : "9" }} box-name"><label><input type="radio" class="select-lk radio-{{ $cate->slug }}" data-type="{{ $cate->slug }}" name="select[{{ $cate->id }}]" value="{{ $sp->id }}"> {{ $sp->name }}</label></div>
                             @if($cate_id == 35)
                             <div class="col-sm-3 clearfix quantity">
                                 <p class="txt-name hidden-lg">Số lượng:</p>
@@ -96,6 +98,8 @@
                         @endif
                                               
                     </ul>
+                    </div>
+                    <p class="error" style="display:none">Vui lòng chọn 1 mục.</p>
                     <div class="button-group text-center mt10 pb10">
                         <button type="button" class="btn btn-default btn-sm">HỦY</button>
                         <button type="button" class="btn btn-default btn-sm btnOK" data-slug="{{ $cate->slug }}">OK</button>
@@ -136,11 +140,12 @@
     });
   });
   $(document).on('ifChecked', '.select-lk', function(){
+
       var obj = $(this);
       var value = obj.val();
       var type = obj.attr('data-type');
       $('#value-' + type).val(value);
-
+      console.log(type);
       if(value > 0){ // co chon 
         if( type == "mainboard"){
             // get RAM
