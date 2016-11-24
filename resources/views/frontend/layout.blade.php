@@ -98,7 +98,7 @@
       @yield('javascript')      
       
        <!-- Hỗ trơ trực tuyến Facebook -->
-  <div class="contact-face" style="">
+  <!--<div class="contact-face" style="">
           <div class="title_quancaog" style="background: #d0021b;color: #fff;padding: 3px 10px;cursor:pointer;">
           <p class="xclose" style="display: none;margin: 0;" onclick="closeface();"><i class="fa fa-minus" aria-hidden="true" style="margin-right: 10px;"></i>Hỗ trợ trực tuyến</p>
           <p class="xopen" style="margin: 0;" onclick="openface();"><i class="fa fa-envelope-o" style="margin-right: 10px;" aria-hidden="true"></i>Để lại lời nhắn</p>
@@ -110,6 +110,6 @@
               </blockquote>
           </div>
       </div>
-  </div>
+  </div>-->
   </body>
 </html>

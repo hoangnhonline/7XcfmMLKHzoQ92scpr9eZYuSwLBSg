@@ -117,18 +117,8 @@
   <div class="modal-dialog">
 
     <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Cấu hình đã chọn</h4>
-      </div>
-      <div class="modal-body shipping-address-page" id="dataCauHinh">
-          
-      </div>
-      <div class="modal-footer text-center">
-        <button type="button" class="btn" id="btnAddCartLapRap">Thêm vào giỏ hàng</button>
-        <button type="button" class="btn btn-default" data-dismiss="modal">Sửa</button>
-      </div>
+    <div class="modal-content" id="dataCauHinh">
+      
     </div>
 
   </div>
