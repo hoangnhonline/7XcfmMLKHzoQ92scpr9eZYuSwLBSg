@@ -70,18 +70,14 @@
                             <div class="col-sm-6 box-name"><label><input type="radio" class="select-lk radio-{{ $cate->slug }}" data-type="{{ $cate->slug }}" name="select[{{ $cate->id }}]" value="{{ $sp->id }}"> {{ $sp->name }}</label></div>
                             
                             <div class="col-sm-3 clearfix quantity">
-                                <p class="txt-name hidden-lg">Số lượng:</p>
-                                <div class="col-sm-3 clearfix quantity">
-                                  <p class="txt-name hidden-lg">Số lượng:</p>
-                                  
+                                <p class="txt-name hidden-lg">Số lượng:</p>                                
                                   <select class="form-control" style="width:70px;margin:auto" name="soluong[{{ $sp->id }}]">
                                      @for($i = 1; $i <= $sp->so_luong_ton; $i ++)
                                       <option value="{{ $i }}">
                                         {{ $i }}
                                       </option>
                                       @endfor
-                                  </select>                                
-                              </div>
+                                  </select>                                                              
                             </div>
                             
                             <div class="col-sm-3 clearfix price">
