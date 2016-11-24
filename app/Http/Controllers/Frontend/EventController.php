@@ -59,6 +59,8 @@ class EventController extends Controller
                     ->join('cate', 'san_pham.cate_id', '=', 'cate.id')                    
                     ->where('product_event.so_luong', '>', 0)
                     ->select('san_pham.*', 'sp_hinh.*', 'loai_sp.name as ten_loai', 'cate.name as ten_cate', 'product_event.*', 'san_pham.id as sp_id')
+                    ->orderBy('san_pham.price_sale')
+                    ->orderBy('san_pham.price')
                     ->get();
          
         $socialImage = $detail->large_banner;

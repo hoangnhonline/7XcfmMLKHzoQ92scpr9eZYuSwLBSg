@@ -44,6 +44,7 @@
             <!-- ./left colunm -->
             <!-- Center colunm-->
             <div class="center_column col-xs-12 col-sm-9" id="center_column">
+              <form action="{{ route('mua-lap-rap') }}" method="POST" id="formLapRap">
                 @if($cateList->count() > 0)
                 @foreach($cateList as $cate)
                 <?php $cate_id = $cate->id ;?>       
@@ -109,9 +110,10 @@
                 @endforeach
                 @endif
                 <div class="button-group-action">
-                    <button type="button" class="btn">Xem cấu hình</button>
+                    <button type="button" class="btn" id="btnPreview">Xem cấu hình</button>
                   </div>
 
+            </form>
             </div>
             <!-- ./ Center colunm -->
         </div>
