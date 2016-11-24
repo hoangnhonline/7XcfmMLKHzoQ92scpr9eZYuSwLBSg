@@ -2331,12 +2331,49 @@ ul.collection li:first-child img {
 	position: absolute; top: 0; right: 10px;
 }
 
-.nav-choose-config ul.level1 > li > a {
+.nav-choose-config ul.level1 > li > a{
 	background-color: #999;
 	color: #fff;
 }
+
+.nav-choose-config ul.level1 > li > a.showing,.nav-choose-config ul.level1 > li > a.have-sp.showing, .nav-choose-config ul.level1 > li > a.no-sp.showing {
+	background-color: #fff;
+    color: #333;
+    border-left: 3px solid red;
+    border-bottom: 1px solid #f2f2f2;
+    border-top: 1px solid #f2f2f2;
+}
+.nav-choose-config ul.level1 > li > a.no-sp {
+	background-color: #ccc;
+    color: #333;
+}
+
+.nav-choose-config ul.level1 > li > a.no-sp:before {
+	content: "\f00d";
+    font-family: "FontAwesome";
+    position: absolute;
+    top: 0;
+    left: 10px;
+    color: red;
+    font-size: 14px;
+}
+.nav-choose-config ul.level1 > li > a.have-sp {
+	background-color: #ccc;	
+	color: #333;
+}
+.nav-choose-config ul.level1 > li > a.have-sp:before {
+	content: "\f00c";
+    font-family: "FontAwesome";
+    position: absolute;
+    top: 0;
+    left: 10px;
+    color: #1fa67a;
+    font-size: 14px;
+}
 .nav-choose-config ul.level1 > li > a:hover {
-	background-color: #888;
+	background-color: #fff;
+    color: #333;
+    border-left: 3px solid red;
 }
 .nav-choose-config ul.level2 > li > a {
 	background-color: #ccc;

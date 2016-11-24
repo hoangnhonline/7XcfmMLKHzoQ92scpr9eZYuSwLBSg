@@ -1,10 +1,9 @@
-<input type="hidden" id="value-{{ $cate->slug }}" value="0">
 @if($cate->id == 35 && $tmpArr->count() > 0)
 <?php $so_khe = $detail->khe_ram == 0 ? 1 : $detail->khe_ram; ?>
 @endif
 @if($tmpArr->count() > 0)
+<input type="hidden" id="value-{{ $cate->slug }}" value="0">
 <ul class="row" >
-
 <li>
     <div class="col-sm-{{ $cate->id == 35 ? "6" : "9" }} box-name"><label><input type="radio" class="select-lk radio-{{ $cate->slug }}" data-type="{{ $cate->slug }}" name="select[{{ $cate->id }}]"> Không chọn</label></div>
     @if($cate->id == 35)
@@ -12,7 +11,6 @@
     @endif
     <div class="col-sm-3 price"></div>
 </li>
-
 @foreach($tmpArr as $sp)
 <?php 
 $price = $sp->is_sale == 1 && $sp->price_sale  > 0 ? $sp->price_sale : $sp->price;
@@ -42,8 +40,5 @@ $price = $sp->is_sale == 1 && $sp->price_sale  > 0 ? $sp->price_sale : $sp->pric
 </div>
 </li>
 @endforeach
-
 </ul>
-@else
-<label>Không có sản phẩm tương thích với lựa chọn của bạn.</label>
-@endif
+@else<label>Không có sản phẩm tương thích với lựa chọn của bạn.</label>@endif

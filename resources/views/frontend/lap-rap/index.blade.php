@@ -147,56 +147,56 @@
       var value = obj.val();
       var type = obj.attr('data-type');
       $('#value-' + type).val(value);
-      console.log(type);
+      $('a.choose-parent[data-slug=' + type + ']').removeClass('no-sp').addClass('have-sp');
       if(value > 0){ // co chon 
         if( type == "mainboard"){
             // get RAM
             if($('#value-ram').val() == 0){
-              getRelated(value, 'ram'); 
+              getRelated(value, 'ram', type); 
             }
             if($('#value-card-man-hinh').val() == 0){
-              getRelated(value, 'vga'); 
+              getRelated(value, 'vga', type); 
             }
             if($('#value-cpu').val() == 0){
-              getRelated(value, 'cpu'); 
+              getRelated(value, 'cpu', type); 
             }
         }else if( type == "card-man-hinh"){
             // get RAM
             if($('#value-ram').val() == 0){
-              getRelated(value, 'ram'); 
+              getRelated(value, 'ram', type); 
             }
             if($('#value-mainboard').val() == 0){
-              getRelated(value, 'vga'); 
+              getRelated(value, 'vga', type); 
             }
             if($('#value-cpu').val() == 0){
-              getRelated(value, 'cpu'); 
+              getRelated(value, 'cpu', type); 
             }
         }else if( type == "ram"){
             // get RAM
             if($('#value-mainboard').val() == 0){
-              getRelated(value, 'ram'); 
+              getRelated(value, 'ram', type); 
             }
             if($('#value-card-man-hinh').val() == 0){
-              getRelated(value, 'vga'); 
+              getRelated(value, 'vga', type); 
             }
             if($('#value-cpu').val() == 0){
-              getRelated(value, 'cpu'); 
+              getRelated(value, 'cpu', type); 
             }
         }else if( type == "cpu"){
             // get RAM
             if($('#value-ram').val() == 0){
-              getRelated(value, 'ram'); 
+              getRelated(value, 'ram', type); 
             }
             if($('#value-card-man-hinh').val() == 0){
-              getRelated(value, 'vga'); 
+              getRelated(value, 'vga', type); 
             }
             if($('#value-mainboard').val() == 0){
-              getRelated(value, 'cpu'); 
+              getRelated(value, 'cpu', type); 
             }
         }
       }
     });
-  function getRelated(sp_id, type) {
+  function getRelated(sp_id, type, dataSlug) {
         $.ajax({
           url: "{{route('lay-sp-tuong-thich')}}",
           method: "POST",
@@ -211,12 +211,20 @@
             }else{
               $('#data-' + type).html(data);  
             }
-            
-            $('input').iCheck({
-              checkboxClass: 'icheckbox_square-red',
-              radioClass: 'iradio_square-red',
-              increaseArea: '20%' // optional
-            });
+            if(data == "<label>Không có sản phẩm tương thích với lựa chọn của bạn.</label>"){
+              if(type == "vga"){
+                $('a.choose-parent[data-slug=card-man-hinh]').removeClass('showing').addClass('no-sp');
+              }else{
+                $('a.choose-parent[data-slug=' + type + ']').removeClass('showing').addClass('no-sp');
+              }              
+            }else{
+              $('input').iCheck({
+                checkboxClass: 'icheckbox_square-red',
+                radioClass: 'iradio_square-red',
+                increaseArea: '20%' // optional
+              });
+              $('a.choose-parent[data-slug=' + type + ']').removeClass('no-sp');
+            }
           },
           error : function(e) {
             //alert( JSON.stringify(e));
