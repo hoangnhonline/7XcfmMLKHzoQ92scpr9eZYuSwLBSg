@@ -40,7 +40,7 @@
                                   <i class="fa fa-circle-thin fa-stack-2x" aria-hidden="true"></i>
                                   <i class="fa fa-phone fa-stack-1x" aria-hidden="true"></i>
                               </span>
-                              <span>Mua online giá sỉ<br>
+                              <span style="text-transform: uppercase; color: #000;">Mua online giá sỉ<br>
                                   <strong class="fshop-ftcall-red">1900 636 975</strong>
                               </span>
                           </a>
@@ -51,7 +51,7 @@
                   </ul>
               </div>
               <div class="col-md-4 fshop-regmail">
-                  <div class="introduce-title">Đăng ký nhận tin khuyến mãi</div>
+                  <div class="introduce-title">NHẬN THÔNG TIN KHUYẾN MÃI</div>
                     <div class="input-group" id="mail-box">
                       <input type="text" placeholder="Email của bạn" id="newsletter_email"/>
                       <span class="input-group-btn">
@@ -63,33 +63,33 @@
             <!-- introduce-box -->
             <div id="introduce-box" class="row" style="margin-top:0px">
                 <div class="col-md-3">
-                    <div class="introduce-title">Thông tin liên hệ</div>
+                    <div class="introduce-title">Liên hệ</div>
                     <div id="address-box">                        
                         <div id="address-list" style="margin-top:12px">
-                            <div class="tit-name">Giờ làm việc:</div>
-                            <div class="tit-contain">7:30 - 20:00</div>
+                            <div class="tit-name">Làm việc:</div>
+                            <div class="tit-contain">7h30 - 20h00</div>
                             <div class="tit-name">Hotline:</div>
                             <div class="tit-contain">1900 636 975</div>
                             <div class="tit-name">Email:</div>
                             <div class="tit-contain">muahang@icho.vn</div>
                             <div class="tit-name">Skype:</div>
                             <div class="tit-contain"><script type="text/javascript" src="https://secure.skypeassets.com/i/scom/js/skype-uri.js"></script>
-<div id="SkypeButton_Call_thao_tho_trang_1" style="padding: 0px; margin-top: -15px;margin-left: -15px;">
- <script type="text/javascript">
- Skype.ui({
- "name": "chat",
- "element": "SkypeButton_Call_thao_tho_trang_1",
- "participants": ["thao_tho_trang"]
- });
- </script>
-</div></div>
+                            <div id="SkypeButton_Call_thao_tho_trang_1" style="padding: 0px; margin-top: -15px;margin-left: -15px;">
+                             <script type="text/javascript">
+                             Skype.ui({
+                             "name": "chat",
+                             "element": "SkypeButton_Call_thao_tho_trang_1",
+                             "participants": ["thao_tho_trang"]
+                             });
+                             </script>
+                            </div></div>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="row">
                         <div class="col-sm-4">
-                            <div class="introduce-title">Thông tin công ty</div>
+                            <div class="introduce-title">Công ty</div>
                             <ul id="introduce-company"  class="introduce-list">
                                 <li><a href="{{ route('danh-muc-cha', 'gioi-thieu') }}">Giới thiệu</a></li>
                                 <li><a href="{{ route('chuong-trinh-khuyen-mai') }}">Khuyến mãi</a></li>
@@ -99,7 +99,7 @@
                             </ul>
                         </div>
                         <div class="col-sm-4">
-                            <div class="introduce-title">HỖ TRỢ KHÁCH HÀNG</div>
+                            <div class="introduce-title">HỖ TRỢ</div>
                             <ul id = "introduce-Account" class="introduce-list">
                                 <li><a href="{{ route('danh-muc-cha', 'huong-dan-mua-hang') }}">Hướng dẫn mua hàng</a></li>
                                 <li><a href="{{ route('danh-muc-cha', 'bao-mat-thong-tin') }}">Bảo mật thông tin</a></li>
@@ -107,7 +107,7 @@
                             </ul>
                         </div>
                         <div class="col-sm-4">
-                            <div class="introduce-title">CHÍNH SÁCH MUA HÀNG</div>
+                            <div class="introduce-title">CHÍNH SÁCH</div>
                             <ul id = "introduce-support"  class="introduce-list">
                                 <li><a href="{{ route('danh-muc-cha', 'phuong-thuc-thanh-toan') }}">Phương thức thanh toán</a></li>
                                 <li><a href="{{ route('danh-muc-cha', 'hinh-thuc-van-chuyen') }}">Hình thức vận chuyển</a></li>

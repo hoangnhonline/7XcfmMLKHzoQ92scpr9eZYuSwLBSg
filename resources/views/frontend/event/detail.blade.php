@@ -23,11 +23,25 @@
         <img class="lazy" data-original="{{ Helper::showImage($detail->large_banner) }}" alt="{{ $detail->name }}">        
     </div>
     <div class="text-center">
-        <button type="button" class="btn-thelechuongtrinh" data-toggle="modal" data-target="#theleModal">Thể lệ chương trình</button>
-    </div>
+      <h1 class="btn-thelechuongtrinh">{{ $detail->name }}</h1>
+    </div>   
     <!-- ./ldp-banner-full -->
-    <div class="container">        
-        
+    <div class="container">           
+        @if($detail->the_le != "")
+        <div class="events-lp-default">
+          <div class="box-coupon-wrapper">
+            <div class="row coupon-1col">
+              <div class="box-coupon col-sm-6 col-md-4 col-lg-3 sach10">
+                <div class="wrapper">
+                  <?php 
+                  echo $detail->the_le;
+                  ?>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>       
+        @endif
         <!-- row -->
         <div class="row">
             <!-- Center colunm-->

@@ -136,8 +136,10 @@ $(document).ready(function(){
 
   $('.sendNoti').click(function(){
     var customer_id = $(this).data('customer-id');
+    var order_id = $(this).data('order-id');
     var notiType = $(this).data('type');
     $('#customer_id_noti').val(customer_id);
+    $('#order_id_noti').val(order_id);
     $('#notifiModal').modal('show');
     $('#notifiModal  #type').val(notiType);
     processNotiType(notiType);

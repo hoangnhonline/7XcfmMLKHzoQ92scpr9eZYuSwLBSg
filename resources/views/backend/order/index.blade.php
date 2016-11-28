@@ -75,7 +75,7 @@
               <th style="text-align:right;width:200px">Giao hàng đến</th>           
               <th style="text-align:right;width:100px">Tổng hoá đơn</th>
               <th width="120px" style="white-space:nowrap">Trạng thái</th>
-              <th width="1%" style="white-space:nowrap"> </th>
+              <th width="110px" style="white-space:nowrap"> </th>
             </tr>
             <tbody>
 
@@ -98,7 +98,8 @@
                 {{ $order->phone }}
                 </td>
                 <td style="text-align:center;width:150px;white-space:nowrap">{{ date('d-m-Y H:i ', strtotime($order->created_at))}}</td>
-                <td> 
+                <td>
+
                 <a href="http://maps.google.com/maps?&q={{ $order->address }}, {{ $order->ward_id ? Helper::getName($order->ward_id, 'ward') : "" }}, {{ $order->district_id ? Helper::getName($order->district_id, 'district') : "" }}, {{ $order->city_id ? Helper::getName($order->city_id, 'city') : "" }}" target="_blank"> 
                 {{ $order->full_name }}, {{ $order->address }}, {{ $order->ward_id ? Helper::getName($order->ward_id, 'ward') : "" }}, {{ $order->district_id ? Helper::getName($order->district_id, 'district') : "" }}, {{ $order->city_id ? Helper::getName($order->city_id, 'city') : "" }}</a>
                 </td>
@@ -116,7 +117,11 @@
                   </select>
                 </td>
                 <td >
+                
                   <a href="{{route('order.detail', $order->id)}}?status={{ $s['status'] }}&name={{ $s['name'] }}&date_from={{ $s['date_from'] }}&date_to={{ $s['date_to'] }}" class="btn btn-info btn-sm">Chi tiết</a>
+                   @if($order->customer_id > 0)
+                  <button class="btn btn-danger btn-sm sendNoti" data-type="2" style="float:right" data-customer-id="{{ $order->customer_id }}" data-order-id="{{ $order->id }}" >Gửi tin nhắn</button>
+                @endif
                 </td>
                 </tr>
                 @endforeach

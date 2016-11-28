@@ -29,6 +29,7 @@
             <textarea class="form-control" rows="10" name="contentNoti" id="contentNoti">{{ old('content') }}</textarea>
           </div>
           <input type="hidden" name="customer_id" id="customer_id_noti" value="">
+          <input type="hidden" name="order_id" id="order_id_noti" value="">
         </form>
       </div>
       <div class="modal-footer">
