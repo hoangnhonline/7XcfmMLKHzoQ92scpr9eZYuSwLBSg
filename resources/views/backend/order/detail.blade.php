@@ -17,7 +17,15 @@
 <section class="content">
  <a class="btn btn-default btn-sm" href="{{ route('orders.index') }}?status={{ $s['status'] }}&name={{ $s['name'] }}&date_from={{ $s['date_from'] }}&date_to={{ $s['date_to'] }}" style="margin-bottom:5px">Quay lại</a>
  @if($order->customer_id > 0)
-  <button class="btn btn-danger btn-sm sendNoti" data-type="2" style="float:right" data-customer-id="{{ $order->customer_id }}" data-order-id="{{ $order->id }}" style="margin-bottom:5px">Gửi tin nhắn cho khách hàng</button>
+  <button class="btn btn-danger btn-sm sendNoti" data-type="2" style="float:right" data-customer-id="{{ $order->customer_id }}" data-order-id="{{ $order->id }}" style="margin-bottom:5px">Gửi tin nhắn
+     <?php 
+      $countMess = App\Models\CustomerNotification::countMessOrderCustomer($order->customer_id, $order->id);
+
+      ?>
+      @if($countMess > 0)
+      <span class="badge">{{ $countMess }}</span>
+      @endif
+  </button>
 @endif
   <div class="row">
     <div class="col-md-12">

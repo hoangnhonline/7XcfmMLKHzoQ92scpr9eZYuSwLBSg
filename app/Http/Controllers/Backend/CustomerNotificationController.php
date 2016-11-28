@@ -53,6 +53,7 @@ class CustomerNotificationController extends Controller
         $dataArr['event_url'] = $data['event_url'];
         $dataArr['content'] = $request->content;
         $dataArr['customer_id'] = $data['customer_id'];
+        $dataArr['order_id'] = $data['order_id'];
         $dataArr['created_user'] = Auth::user()->id;
         $dataArr['updated_user'] = Auth::user()->id;        
 

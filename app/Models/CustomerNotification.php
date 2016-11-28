@@ -23,6 +23,10 @@ class CustomerNotification extends Model  {
      *
      * @var array
      */
-    protected $fillable = ['customer_id', 'content', 'status', 'seen_at', 'type', 'event_url', 'created_user', 'updated_user'];
+    protected $fillable = ['customer_id', 'content', 'status', 'seen_at', 'type', 'event_url', 'created_user', 'updated_user', 'order_id'];
+
+    public static function countMessOrderCustomer($customer_id, $order_id){
+        return CustomerNotification::where(['order_id' => $order_id, 'customer_id' => $customer_id])->count();        
+    }
 
 }
