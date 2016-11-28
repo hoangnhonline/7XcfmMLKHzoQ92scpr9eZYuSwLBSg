@@ -91,6 +91,18 @@
                     
                 }              
               });
+              @if(Session::get('userId') > 0)
+              $.ajax({
+                type: "GET",
+                url: '{{ route("count-message")}}',              
+                success: function(count) {
+                    if(parseInt(count) > 0){
+                      $('#countNoti').html(count).show();
+                    }
+                }              
+              });              
+              @endif
+
           });
 
       </script>

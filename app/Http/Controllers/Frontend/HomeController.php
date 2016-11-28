@@ -24,6 +24,7 @@ use App\Models\PriceRange;
 use App\Models\Settings;
 use App\Models\LinkSite;
 use App\Models\LinkImage;
+use App\Models\CustomerNotification;
 use Helper, File, Session, Auth, Hash;
 
 class HomeController extends Controller
@@ -110,8 +111,16 @@ class HomeController extends Controller
             $socialImage = $settingArr['logo'];
         }    
         $articlesArr = Articles::where(['cate_id' => 1, 'is_hot' => 1])->orderBy('id', 'desc')->get();
+                
+        return view('frontend.home.index', compact('productArr', 'hoverInfo', 'bannerArr', 'articlesArr', 'socialImage', 'seo', 'countMess'));
+    }
 
-        return view('frontend.home.index', compact('productArr', 'hoverInfo', 'bannerArr', 'articlesArr', 'socialImage', 'seo'));
+    public function getNoti(){
+        $countMess = 0;
+        if(Session::get('userId') > 0){
+            $countMess = CustomerNotification::where(['customer_id' => Session::get('userId'), 'status' => 1])->count();    
+        }
+        return $countMess;
     }
     /**
     * Show the form for creating a new resource.

@@ -61,31 +61,17 @@
               <div class="user-name-link user-ajax-link">
                 <div class="user-avatar"><img alt="{{Session::get('username')}}" data-original="{{ Session::get('avatar') != '' ? Session::get('avatar') :  URL::asset('assets/images/avatar-s.png') }}" height="40" width="40" class="lazy"></div>
                 <ul>
-                  <li class="user-name-short"><span>Chào, {{Session::get('username')}}</span><span class="badge">{{Session::get('products') ? array_sum(Session::get('products')) : 0}}</span></li>
+                  <li class="user-name-short">
+                      <span>Chào, {{ Session::get('username') }}     </span>                 
+                      <span class="badge" id="countNoti" style="display:none">0</span> 
+                  </li>
                   <li class="user-name-account"> <span>Tài khoản</span> <span>&amp; Đơn hàng</span> </li>
                 </ul>
                 <span class="caret"></span>
               </div>
               <div class="user-name-box user-ajax-box">
-                <ul class="user-ajax-guest" style="display: none;">
-                  <li id="login_link"> <a href="https://tiki.vn/checkout/cart/#" data-toggle="modal" data-target="#login-form" title="Đăng Nhập" class="user-name-login"> <i class="fa fa-sign-in"></i> Đăng nhập </a> </li>
-                  <li id="login_fb_link"> <a class="user-name-loginfb" title="Đăng nhập bằng Facebook" href="javascript: void(0)" data-url="https://tiki.vn/customer/account/loginFacebook"> <i class="fa fa-facebook-square"></i> <span>Đăng nhập bằng</span><span> Facebook</span> </a> </li>
-                  <li class="user-name-register"> <a href="https://tiki.vn/checkout/cart/#" title="Tạo tài khoản mới" data-toggle="modal" data-target="#register-form"> <i class="fa fa-user"></i> <span>Tạo tài khoản</span> </a> </li>
-                  <li class="order-tracking"> <a href="https://tiki.vn/sales/order/tracking" title="Kiểm tra đơn hàng">Kiểm tra đơn hàng</a> </li>
-                </ul>
                 <ul class="user-ajax-customer">
                   <li> <a href="{{ route('order-history') }}" title="Đơn hàng của tôi"> Đơn hàng của tôi </a> </li>
-                  {{-- <li class="book-profile"> </li>
-                  <li class="notification-count"> <a href="https://tiki.vn/customer/notification/" title="Thông báo của tôi" style="font-weight: bold;"> Thông báo của tôi <strong> (2)</strong></a> </li>
-                  <li> <a href="https://tiki.vn/customer/account/" title="Tài khoản của tôi"> Tài khoản của tôi </a> </li>
-                  <li> <a href="https://tiki.vn/customer/save_for_later/" title="Để dành mua sau"> Để dành mua sau </a> </li>
-                  <li> <a href="https://tiki.vn/customer/wishlist/" title="Danh sách yêu thích"> Danh sách yêu thích </a> </li>
-                  <li> <a href="https://tiki.vn/customer/review/" title="Đánh giá của tôi"> Đánh giá của tôi </a> </li>
-                  <li class="my-bookcare"> <a href="https://tiki.vn/customer/bookcare/" title="Book Care của tôi"> Book Care của tôi <br>
-                    <span>(Bạn đang có <b>0</b> Bookcare)</span></a> </li>
-                  <li> <a href="https://tiki.vn/doi-tra-de-dang" title="Hướng dẫn đổi trả"> Đổi trả dễ dàng </a> </li>
-                  <li class="tiki-friends hide"> <a href="https://tiki.vn/tikifriends/customer/#tiki-friends" title="Affiliate">Tiki Friends <img src="./Giỏ hàng _ Tiki.vn_files/new-icon-red.png" class="badge-new"></a> </li>
-                  <li class="tiki-first-user hide"> <a href="https://tiki.vn/tikifirst/customer" title="Tiki First"> Tiki First </a> </li> --}}
                   <li> <a href="{{route('user-logout')}}" title="Thoát tài khoản"> Thoát tài khoản </a> </li>
                 </ul>
               </div>

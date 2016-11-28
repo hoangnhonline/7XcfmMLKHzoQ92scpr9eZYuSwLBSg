@@ -75,7 +75,7 @@
               <th style="text-align:right;width:200px">Giao hàng đến</th>           
               <th style="text-align:right;width:100px">Tổng hoá đơn</th>
               <th width="120px" style="white-space:nowrap">Trạng thái</th>
-              <th width="150px" style="white-space:nowrap"> </th>
+              <th width="230px" style="white-space:nowrap"> </th>
             </tr>
             <tbody>
 
@@ -126,10 +126,11 @@
                   @if($countMess > 0)
                   <span class="badge">{{ $countMess }}</span>
                   @endif
-                  </button>    
+                  </button>  
+                   @endif  
                   <a href="{{route('order.detail', $order->id)}}?status={{ $s['status'] }}&name={{ $s['name'] }}&date_from={{ $s['date_from'] }}&date_to={{ $s['date_to'] }}" class="btn btn-info btn-sm">Chi tiết</a>
                                  
-                @endif
+               
                 </td>
                 </tr>
                 @endforeach

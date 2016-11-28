@@ -250,6 +250,7 @@ Route::group(['namespace' => 'Frontend'], function()
 
     Route::get('/', ['as' => 'home', 'uses' => 'HomeController@index']);
     Route::get('/load-slider', ['as' => 'load-slider', 'uses' => 'HomeController@loadSlider']);
+    Route::get('/count-message', ['as' => 'count-message', 'uses' => 'HomeController@getNoti']);
     Route::get('/chuong-trinh-khuyen-mai', ['as' => 'chuong-trinh-khuyen-mai', 'uses' => 'EventController@index']);
     Route::get('event/{slug}', ['as' => 'detail-event', 'uses' => 'EventController@detail']);
     Route::get('/may-bo-van-phong', ['as' => 'may-bo-van-phong', 'uses' => 'LapRapController@index']);
