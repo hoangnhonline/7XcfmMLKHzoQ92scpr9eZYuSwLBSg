@@ -902,7 +902,7 @@ img.alignright{
   position: relative;
   color: #444;
   cursor: pointer;
-  padding-right: 21px;
+  padding-right: 15px;
 }
 .main-header .header-user .user-name .user-name-link .user-avatar {
   float: left;
@@ -951,7 +951,7 @@ img.alignright{
   position: relative;
   font-weight: 700;
   font-size: 14px;
-  width: auto;
+  width: 120px;
   height: 21px;
   overflow: hidden;
 }
