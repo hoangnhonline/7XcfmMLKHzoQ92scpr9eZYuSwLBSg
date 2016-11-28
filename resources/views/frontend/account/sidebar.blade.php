@@ -10,6 +10,9 @@
                           <li {{ \Request::route()->getName() == "order-history" || \Request::route()->getName() == "order-detail" ? "class=active" : "" }}>
                               <a href="{{ route('order-history') }}" title="Đơn hàng của tôi"> Đơn hàng của tôi</a>
                           </li>
+                          <li {{ \Request::route()->getName() == "notification" ? "class=active" : "" }}>
+                              <a href="{{ route('notification') }}" title="Thông báo của tôi"> Thông báo của tôi</a>
+                          </li>
                           <li>
                               <a href="{{ route('user-logout') }}" title="Thoát tài khoản">Thoát tài khoản </a>
                           </li>

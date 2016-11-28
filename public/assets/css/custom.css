@@ -3580,10 +3580,10 @@ ul.collection li:first-child img {
 .tiki-register {
   background: url(../images/bg-form-repeat.jpg) repeat-x #fff
 }
-.tiki-register .wrap {
+.tiki-register {
   background: url(../images/bg-form.png) center bottom no-repeat #ddf3fe
 }
-.tiki-register .wrap #register-box {
+.tiki-register #register-box {
   margin: 50px auto 80px;
   width: 100%;
   padding: 20px;
@@ -3594,7 +3594,7 @@ ul.collection li:first-child img {
   -o-border-radius: 8px;
   border-radius: 8px
 }
-.tiki-register .wrap #register-box #register-form {
+.tiki-register #register-box #register-form {
   display: block
 }
 #register-form,
@@ -3769,7 +3769,7 @@ ul.collection li:first-child img {
 }
 
 @media (min-width:992px) {
-.tiki-register .wrap #register-box {
+.tiki-register #register-box {
   width: 780px
 }
 #register-form .content .input-wrap-left,
@@ -3817,11 +3817,11 @@ ul.collection li:first-child img {
   background: url(../images/bg-form-repeat.jpg) repeat-x #ddf3fe
 }
 .tiki-login .wrap,
-.tiki-reset-password .wrap {
+.tiki-reset-password {
   background: url(../images/bg-form.png) center bottom no-repeat
 }
-.tiki-login .wrap #login-box,
-.tiki-reset-password .wrap #login-box {
+.tiki-login #login-box,
+.tiki-reset-password #login-box {
   margin: 50px auto 80px;
   width: 100%;
   padding: 20px;
@@ -3832,8 +3832,8 @@ ul.collection li:first-child img {
   -o-border-radius: 8px;
   border-radius: 8px
 }
-.tiki-login .wrap #login-box #login-form,
-.tiki-reset-password .wrap #login-box #login-form {
+.tiki-login #login-box #login-form,
+.tiki-reset-password #login-box #login-form {
   display: block
 }
 #login-form,
@@ -3970,7 +3970,7 @@ ul.collection li:first-child img {
   clear: both
 }
 .tiki-cart .gift-popup,
-.tiki-cart .wrap .js-btn-accept {
+.tiki-cart .js-btn-accept {
   display: none
 }
 #reset-password-form .content .last {
@@ -3988,8 +3988,8 @@ ul.collection li:first-child img {
 }
 
 @media (min-width:768px) {
-.tiki-login .wrap #login-box,
-.tiki-reset-password .wrap #login-box {
+.tiki-login #login-box,
+.tiki-reset-password #login-box {
   width: 360px
 }
 #login-form .modal-dialog,
@@ -4253,7 +4253,7 @@ ul.collection li:first-child img {
   border-radius: 2px;
   margin-right: 1%
 }
-.tiki-home .wrap .home-header>.btn-group,
+.tiki-home .home-header>.btn-group,
 .shipping-address-page .btn-custom3 {
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
@@ -4709,7 +4709,7 @@ ul.collection li:first-child img {
   -o-border-radius: 3px;
   border-radius: 3px
 }
-.tiki-account .wrap .menu button,
+.menu button,
 .shipping-address-page .payment-sub {
   -webkit-border-radius: 0;
   -moz-border-radius: 0;
@@ -4993,7 +4993,7 @@ ul.collection li:first-child img {
   border-radius: 3px;
   margin-bottom: 10px
 }
-.tiki-home .wrap .home-slideshow,
+.tiki-home .home-slideshow,
 .shipping-address-page .newsletter .btn-primary {
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
@@ -6548,4 +6548,49 @@ footer .container ul li.fshop-ftcall-bh a {
   border-radius: 0 25px;
   margin-bottom: 20px;  
   display: inline-block;
+}
+@media (min-width: 768px){
+	.account-notify .item div:first-child {
+	    width: 13%;
+	}
+}
+@media (min-width: 768px){
+	.account-notify .item div {
+	    float: left;
+	}
+}
+.account-notify .item div {
+    font-size: 13px;
+    margin-bottom: 0;
+}
+@media (min-width: 768px){
+	.account-notify .item div:first-child+div {
+	    width: 87%;
+	}
+}
+@media (min-width: 768px){
+	.account-notify .item div {
+	    float: left;
+	}
+}
+.account-notify .item div {
+    font-size: 13px;
+    margin-bottom: 0;
+}
+.account-notify-content {
+    position: relative;
+}
+.account-header:after, .account-header:before, .account-notify .item:after, .account-notify .item:before {
+    display: table;
+    content: "";
+    clear: both;
+}
+.account-header:after, .account-header:before, .account-notify .item:after, .account-notify .item:before {
+    display: table;
+    content: "";
+    clear: both;
+}
+.account-notify .item {
+    padding: 15px;
+    border-bottom: 1px solid #dfdfdf;
 }

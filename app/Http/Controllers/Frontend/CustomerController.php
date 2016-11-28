@@ -5,18 +5,10 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Models\LoaiSp;
-use App\Models\Cate;
-use App\Models\SanPham;
-use App\Models\SpThuocTinh;
-use App\Models\SpHinh;
-use App\Models\ThuocTinh;
-use App\Models\TinhThanh;
-use App\Models\LoaiThuocTinh;
-use App\Models\Banner;
 use App\Models\Orders;
 use App\Models\OrderDetail;
 use App\Models\Customer;
+use App\Models\CustomerNotification;
 use Helper, File, Session, Auth;
 use Mail;
 
@@ -108,6 +100,22 @@ class CustomerController extends Controller
         return response()->json(['error' => 0]);
     }
 
+    public function notification(){
+        $notiSale = $notiOrder = [];
+        $tmpArr = CustomerNotification::where(['customer_id' => Session::get('userId')])->get();
+        if($tmpArr){
+            foreach($tmpArr as $tp){
+                if($tp->type == 1){
+                    $notiSale[] = $tp->toArray();
+                }else{
+                    $notiOrder[] = $tp->toArray();
+                }                
+            }
+        }
+        $seo['title'] = $seo['description'] = $seo['keywords'] = "Thông báo của tôi";     
+
+        return view('frontend.account.notification', compact('notiSale', 'notiOrder', 'seo'));
+    }
 
     public function isEmailExist(Request $request)
     {
