@@ -12,6 +12,12 @@
                             <span></span><a href="{{ route('danh-muc-con', [$rs->slug, $cate->slug]) }}">{{ $cate->name }}</a>                                        
                         </li>
                         @endforeach
+                        @if($rs->id == 6)
+                        <li><span></span><a title="Máy in" href="{{ route('danh-muc-cha', 'may-in') }}">Máy in</a></li>
+                        <li><span></span><a title="Máy scan" href="{{ route('danh-muc-cha', 'may-scan') }}">Máy scan</a></li>
+                        <li><span></span><a title="Máy fax" href="{{ route('danh-muc-cha', 'may-fax') }}">Máy fax</a></li>
+                        <li><span></span><a title="Máy chiếu" href="{{ route('danh-muc-cha', 'may-chieu') }}">Máy chiếu</a></li>
+                        @endif
                     </ul>
                 </div>
             </div>

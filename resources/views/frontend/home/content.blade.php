@@ -325,8 +325,10 @@
                                     @endforeach
                                     @if($loai['id'] == 6)
                                     <li><a title="Máy in" href="{{ route('danh-muc-cha', 'may-in') }}">Máy in</a></li>
-                                    @endif
-
+                                    <li><a title="Máy scan" href="{{ route('danh-muc-cha', 'may-scan') }}">Máy scan</a></li>
+                                    <li><a title="Máy fax" href="{{ route('danh-muc-cha', 'may-fax') }}">Máy fax</a></li>
+                                    <li><a title="Máy chiếu" href="{{ route('danh-muc-cha', 'may-chieu') }}">Máy chiếu</a></li>
+                                    @endif                                    
                                 </ul>
                                 @else
                                 <div class="owl-carousel-vertical" data-items="1" data-nav="true" data-dots="false" data-loop="false">

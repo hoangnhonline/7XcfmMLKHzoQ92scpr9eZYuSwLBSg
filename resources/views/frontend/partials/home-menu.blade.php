@@ -49,6 +49,12 @@
                                                     {{ $cate['name']}}
                                                 </a>
                                             </li>
+                                            @if($loai['id'] == 6)
+                                            <li><a title="Máy in" href="{{ route('danh-muc-cha', 'may-in') }}">Máy in</a></li>
+                                            <li><a title="Máy scan" href="{{ route('danh-muc-cha', 'may-scan') }}">Máy scan</a></li>
+                                            <li><a title="Máy fax" href="{{ route('danh-muc-cha', 'may-fax') }}">Máy fax</a></li>
+                                            <li><a title="Máy chiếu" href="{{ route('danh-muc-cha', 'may-chieu') }}">Máy chiếu</a></li>
+                                            @endif
                                                 @if($countSubMenu % 12 == 0)
                                                         </ul></div>
                                                     <div class="mega-group col-sm-3">
