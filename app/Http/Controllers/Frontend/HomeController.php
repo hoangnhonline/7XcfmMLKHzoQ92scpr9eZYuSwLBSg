@@ -72,8 +72,13 @@ class HomeController extends Controller
         $loaiSp = LoaiSp::where('status', 1)->get();
         $bannerArr = [];
         foreach( $loaiSp as $loai){
-            $query = SanPham::where(['loai_id' => $loai->id])->where('so_luong_ton', '>', 0)->where('price', '>', 0)
-            ->leftJoin('sp_hinh', 'sp_hinh.id', '=','san_pham.thumbnail_id')
+            $query = SanPham::where('so_luong_ton', '>', 0)->where('price', '>', 0);
+            if($loai->id == 6){
+                $query->whereIn('loai_id', [6, 13, 14, 15, 16]);
+            }else{
+                $query->where('loai_id', $loai->id);
+            }
+            $query->leftJoin('sp_hinh', 'sp_hinh.id', '=','san_pham.thumbnail_id')
             ->leftJoin('sp_thuoctinh', 'sp_thuoctinh.sp_id', '=','san_pham.id')
             ->select('sp_hinh.image_url', 'san_pham.*', 'thuoc_tinh')
             ->where('sp_hinh.image_url', '<>', '');
