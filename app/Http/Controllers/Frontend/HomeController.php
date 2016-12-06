@@ -66,7 +66,7 @@ class HomeController extends Controller
         return view('frontend.home.ajax-slider');
     }
     public function index(Request $request)
-    {  
+    {             
         $productArr = [];
         $hoverInfo = [];
         $loaiSp = LoaiSp::where('status', 1)->get();

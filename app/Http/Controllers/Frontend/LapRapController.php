@@ -33,14 +33,8 @@ class LapRapController extends Controller
        
 
     }
-    public function lapRap(Request $request){
-        
-        $slug = $request->slug;
-        
-        $tmp = $this->getMucDich($slug);
-        
-        $muc_dich = $tmp['muc_dich'];
-        $title = $tmp['title'];
+    public function lapRap(Request $request){       
+       
         $spFreeList = [];
            
         $cateList = Cate::where(['status' => 1, 'loai_id' => 7])->orderBy('display_order')->get();        
@@ -49,11 +43,11 @@ class LapRapController extends Controller
             $spFreeList[$cate->id] = SanPham::where('cate_id', $cate->id)->orderBy('id', 'DESC')->limit(20)->get();
             
         }
-        $title = $tmp['title'];
+        $title = 'Ráp máy tính online';
         $seo = Helper::seo();
         $lap_rap = 1;
 
-        return view('frontend.lap-rap.index', compact('muc_dich', 'title', 'seo', 'lap_rap', 'cateList', 'spFreeList', 'slug', 'title'));
+        return view('frontend.lap-rap.index', compact('seo', 'lap_rap', 'cateList', 'spFreeList', 'title'));
     }
     public function xemCauHinh(Request $request){
         $arrData = [];
@@ -73,7 +67,12 @@ class LapRapController extends Controller
             $cate_id = 85;
         }elseif( $type == "bo-vi-xu-ly"){
             $cate_id = 32;
+        }elseif( $type == "nguon"){
+            $cate_id = 33;
+        }elseif( $type == "thung-may-case"){
+            $cate_id = 89;
         }
+
         $cate = Cate::find($cate_id);
         if($id > 0){
             $tmpArr = SanPham::where('status', 1)

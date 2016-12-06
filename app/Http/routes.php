@@ -253,13 +253,11 @@ Route::group(['namespace' => 'Frontend'], function()
     Route::get('/count-message', ['as' => 'count-message', 'uses' => 'HomeController@getNoti']);
     Route::get('/chuong-trinh-khuyen-mai', ['as' => 'chuong-trinh-khuyen-mai', 'uses' => 'EventController@index']);
     Route::get('event/{slug}', ['as' => 'detail-event', 'uses' => 'EventController@detail']);
-    Route::get('/may-bo-van-phong', ['as' => 'may-bo-van-phong', 'uses' => 'LapRapController@index']);
+   
 
     Route::post('/send-contact', ['as' => 'send-contact', 'uses' => 'ContactController@store']);
     Route::post('/set-service', ['as' => 'set-service', 'uses' => 'CartController@setService']);
-    Route::get('/may-bo-choi-game', ['as' => 'may-bo-choi-game', 'uses' => 'LapRapController@index']);
-    Route::get('/may-bo-do-hoa', ['as' => 'may-bo-do-hoa', 'uses' => 'LapRapController@index']);
-    Route::get('/may-bo-am-thanh', ['as' => 'may-bo-am-thanh', 'uses' => 'LapRapController@index']);
+    
     Route::get('san-pham/{slug}', ['as' => 'chi-tiet', 'uses' => 'DetailController@index']);
     Route::get('/tin-tuc/{slug}-{id}.html', ['as' => 'news-detail', 'uses' => 'HomeController@newsDetail']);
     Route::get('{slugLoaiSp}/gia-{slugGia}', ['as' => 'theo-gia-danh-muc-cha', 'uses' => 'CateController@theoGia']);
@@ -269,7 +267,7 @@ Route::group(['namespace' => 'Frontend'], function()
     Route::get('{slugLoaiSp}/san-pham-moi/', ['as' => 'san-pham-moi', 'uses' => 'CateController@sanPhamMoi']);
     Route::get('{slugLoaiSp}/giam-gia/', ['as' => 'giam-gia', 'uses' => 'CateController@giamGia']);
 
-    Route::get('tu-chon-cau-hinh/{slug}/', ['as' => 'lap-rap', 'uses' => 'LapRapController@lapRap']);
+    Route::get('/rap-may-tinh-online', ['as' => 'lap-rap', 'uses' => 'LapRapController@lapRap']);
     Route::post('tu-chon-cau-hinh/mua/', ['as' => 'mua-lap-rap', 'uses' => 'LapRapController@mua']);
     Route::post('tu-chon-cau-hinh/lay-san-pham-tuong-thich/', ['as' => 'lay-sp-tuong-thich', 'uses' => 'LapRapController@getTuongThich']);
     Route::post('tu-chon-cau-hinh/xem-cau-hinh', ['as' => 'xem-cau-hinh', 'uses' => 'LapRapController@xemCauHinh']);
