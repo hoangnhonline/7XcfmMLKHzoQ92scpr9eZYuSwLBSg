@@ -140,9 +140,13 @@
                   
                 </td>
                 <td style="white-space:nowrap; text-align:right">
-                  @if( in_array($item->cate_id, [31,32,85,35]))
+                  @if( in_array($item->cate_id, [31,85]))
                   <?php 
-                  $countTuongThich = DB::table('sp_tuongthich')->where('sp_1', $item->id)->count();
+                  if($item->cate_id == 31){
+                    $countTuongThich = DB::table('sp_tuongthich')->where('sp_1', $item->id)->count();
+                  }else{
+                    $countTuongThich = DB::table('sp_tuongthich')->where('sp_1', $item->id)->where('cate_id', '<>', 31)->count();
+                  }
                   ?>
                   <a href="{{ route( 'product.tuong-thich', [ 'id' => $item->id ]) }}" class="btn btn-info btn-sm"><span class="badge">{{ $countTuongThich }}</span> SP tương thích</a>                 
                   @endif

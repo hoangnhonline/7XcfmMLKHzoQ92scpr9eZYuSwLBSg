@@ -92,19 +92,8 @@
                                 <li {{ \Request::route()->getName() == 'home' ? "class=active" : "" }}><a href="{{ route('home') }}">Trang chủ</a></li>
                                 <li {{ \Request::route()->getName() == 'chuong-trinh-khuyen-mai' || (isset($is_km) && $is_km == 1) ? "class=active" : "" }}><a href="{{ route('chuong-trinh-khuyen-mai') }}">Khuyến mãi</a></li>                                
                                 <li {{ (\Request::route()->getName() == 'news-list' && Request::path() == 'tin-tuc') || (isset($is_news) && $is_news == 1)? "class=active" : "" }}><a href="{{ route('news-list', 'tin-tuc') }}">Tin tức</a></li>
-                                <li class="dropdown {{ isset($lap_rap) && $lap_rap == 1 ? "active" : "" }}" >
-                                        <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">Ráp máy tính online</a>
-                                        <ul class="dropdown-menu container-fluid">
-                                            <li class="block-container">
-                                                <ul class="block">
-                                                    <li class="link_container"><a href="{{ route('may-bo-van-phong') }}">Máy bộ văn phòng</a></li>
-                                                    <li class="link_container"><a href="{{ route('may-bo-choi-game') }}">Máy bộ chơi game</a></li>
-                                                    <li class="link_container"><a href="{{ route('may-bo-do-hoa') }}">Máy bộ đồ họa</a></li>
-                                                    <li class="link_container"><a href="{{ route('may-bo-am-thanh') }}">Máy bộ âm thanh</a></li>                                                    
-                                                </ul>
-                                            </li>
-                                        </ul> 
-                                    </li>
+                                <li {{ \Request::route()->getName() == 'lap-rap' ? "class=active" : "" }}><a href="{{ route('lap-rap') }}">Ráp máy tính online</a></li>
+                               
                                 <li {{ (\Request::route()->getName() == 'news-list' && Request::path() == 'kinh-nghiem-hay') || (isset($is_kn) && $is_kn == 1)? "class=active" : "" }}><a href="{{ route('news-list', 'kinh-nghiem-hay') }}" >Kinh nghiệm hay</a></li>                                
                                 <li {{ \Request::route()->getName() == 'contact' ? "class=active" : "" }}><a href="{{ route('contact') }}">Liên hệ</a></li>
                             </ul>

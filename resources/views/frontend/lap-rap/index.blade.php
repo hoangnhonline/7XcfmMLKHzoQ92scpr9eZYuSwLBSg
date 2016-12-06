@@ -13,13 +13,13 @@
         <div class="breadcrumb clearfix">
             <a class="home" href="#" title="Return to Home">Home</a>
             <span class="navigation-pipe">&nbsp;</span>
-            <span class="navigation_page">Tùy chọn cấu hình</span>
+            <span class="navigation_page">Ráp máy tính online</span>
         </div>
         <!-- ./breadcrumb -->
         
         <!-- page heading-->
         <h2 class="page-heading">
-            <span class="page-heading-title3">Tùy chọn cấu hình : "Máy bộ văn phòng"</span>
+            <span class="page-heading-title3">Ráp máy tính online</span>
         </h2>
         <!-- ../page heading-->
         
@@ -53,10 +53,10 @@
                     <input type="hidden" id="value-{{ $cate->slug }}" value="0">
                     <h3 class="tit">HÃY CHỌN {{ $cate->name }}</h3>
                     <div class="row header-box hidden-xs">
-                        <div class="td col-sm-6">Sản phẩm</div>
-                        
+                        <div class="td col-sm-{{ $cate_id == 35 ? 6 : 9 }}">Sản phẩm</div>
+                        @if($cate_id == 35)
                         <div class="td col-sm-3">Số lượng</div>
-                        
+                        @endif
                         <div class="td col-sm-3 price">Thành tiền</div>
                     </div>
                     <div id="data-{{ $cate->slug }}">
@@ -67,8 +67,8 @@
                         $price = $sp->is_sale == 1 && $sp->price_sale  > 0 ? $sp->price_sale : $sp->price;
                         ?>
                         <li>
-                            <div class="col-sm-6 box-name"><label><input type="radio" class="select-lk radio-{{ $cate->slug }}" data-type="{{ $cate->slug }}" name="select[{{ $cate->id }}]" value="{{ $sp->id }}"> {{ $sp->name }}</label></div>
-                            
+                            <div class="col-sm-{{ $cate_id == 35 ? 6 : 9 }} box-name"><label><input type="radio" class="select-lk radio-{{ $cate->slug }}" data-type="{{ $cate->slug }}" name="select[{{ $cate->id }}]" value="{{ $sp->id }}"> {{ $sp->name }}</label></div>
+                            @if($cate_id == 35)
                             <div class="col-sm-3 clearfix quantity">
                                 <p class="txt-name hidden-lg">Số lượng:</p>                                
                                   <select class="form-control" style="width:70px;margin:auto" name="soluong[{{ $sp->id }}]">
@@ -79,7 +79,7 @@
                                       @endfor
                                   </select>                                                              
                             </div>
-                            
+                            @endif
                             <div class="col-sm-3 clearfix price">
                                 <p class="txt-name hidden-lg">Giá:</p>
                                 <span class="txt-num">{{ number_format($price) }} đ</span>
@@ -93,9 +93,8 @@
                     </ul>
                     </div>
                     <p class="error" style="display:none">Vui lòng chọn 1 mục.</p>
-                    <div class="button-group text-center mt10 pb10">
-                        <button type="button" class="btn btn-default btn-sm btnAction">HỦY</button>
-                        <button type="button" class="btn btn-default btn-sm btnOK btnAction" data-slug="{{ $cate->slug }}">OK</button>
+                    <div class="button-group text-right mt10 pb10">                       
+                        <button type="button" class="btn btn-default btn-sm btnOK btnAction" data-slug="{{ $cate->slug }}">Tiếp tục</button>
                     </div>
                 </div>
                 <!-- ./config-list-->
@@ -194,40 +193,17 @@ $(document).on('click', '#btnAddCartLapRap', function(){
             if($('#value-bo-vi-xu-ly').val() == 0){
               getRelated(value, 'bo-vi-xu-ly', type); 
             }
-        }else if( type == "card-man-hinh"){
+        }
+        if( type == "card-man-hinh"){
             // get RAM
-            if($('#value-bo-nho').val() == 0){
-              getRelated(value, 'bo-nho', type); 
+            if($('#value-nguon').val() == 0){
+              getRelated(value, 'nguon', type); 
             }
-            if($('#value-bo-mach-chinh').val() == 0){
-              getRelated(value, 'card-man-hinh', type); 
+            if($('#value-thung-may-case').val() == 0){
+              getRelated(value, 'thung-may-case', type); 
             }
-            if($('#value-bo-vi-xu-ly').val() == 0){
-              getRelated(value, 'bo-vi-xu-ly', type); 
-            }
-        }else if( type == "bo-nho"){
-            // get RAM
-            if($('#value-bo-mach-chinh').val() == 0){
-              getRelated(value, 'bo-nho', type); 
-            }
-            if($('#value-card-man-hinh').val() == 0){
-              getRelated(value, 'card-man-hinh', type); 
-            }
-            if($('#value-bo-vi-xu-ly').val() == 0){
-              getRelated(value, 'bo-vi-xu-ly', type); 
-            }
-        }else if( type == "bo-vi-xu-ly"){
-            // get RAM
-            if($('#value-bo-nho').val() == 0){
-              getRelated(value, 'bo-nho', type); 
-            }
-            if($('#value-card-man-hinh').val() == 0){
-              getRelated(value, 'card-man-hinh', type); 
-            }
-            if($('#value-bo-mach-chinh').val() == 0){
-              getRelated(value, 'bo-vi-xu-ly', type); 
-            }
-        }       
+           
+        }      
       
     });
   function getRelated(sp_id, type, dataSlug) {
@@ -254,8 +230,7 @@ $(document).on('click', '#btnAddCartLapRap', function(){
                 increaseArea: '20%' // optional
               });
               
-              $('a.choose-parent[data-slug=' + type + ']').removeClass('no-sp');
-            
+              $('a.choose-parent[data-slug=' + type + ']').removeClass('no-sp');           
               
             }
           },

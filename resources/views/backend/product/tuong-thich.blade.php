@@ -40,49 +40,8 @@
                     </ul>
                   </div>
                 @endif
-                <div class="col-md-12">
-                  <label>Mục đích sử dụng</label>
-                  <ul id="list_muc_dich">
-                    <li class="col-md-6"><div class="form-group">
-                    <input type="checkbox" name="muc_dich[]" value="1" class="muc_dich" id="van_phong" {{ in_array(1, $mucDichArr) ? "checked" : "" }}>&nbsp;&nbsp;<label for="van_phong">Văn phòng</label>
-                    </div>
-                    </li>
-                    <li class="col-md-6">
-                      <div class="form-group">
-                    <input type="checkbox" name="muc_dich[]" value="2" class="muc_dich" id="do_hoa" {{ in_array(2, $mucDichArr) ? "checked" : "" }}>&nbsp;&nbsp;<label for="do_hoa">Đồ họa</label></div></li>
-                    <li class="col-md-6">
-                      <div class="form-group">
-                    <input type="checkbox" name="muc_dich[]" value="3" class="muc_dich" id="game" {{ in_array(3, $mucDichArr) ? "checked" : "" }}>&nbsp;&nbsp;<label for="game">Game</label></div></li>
-                    <li class="col-md-6">
-                      <div class="form-group">
-                      <input type="checkbox" name="muc_dich[]" value="4" class="muc_dich" id="am_thanh" {{ in_array(4, $mucDichArr) ? "checked" : "" }}>&nbsp;&nbsp;<label for="am_thanh">Âm thanh</label></div></li>
-                  </ul>
-                </div>
-                @if($detail->cate_id != 31)
-                <div class="col-md-4">
-                      <button class="btn btn-warning btn-sm btnLienQuan" data-value="31" type="button" id="btnMainboard">Mainboard</button>
-                      <div class="clearfix"></div>
-                      <div id="dataMainboard" class="col-md-12 none-padding" style="min-height:150px; margin-top:5px">
-                        @if(isset($spSelected[31]) && !empty($spSelected[31]))
-                        <table class="table table-responsive table-bordered">                       
-                        @foreach($spSelected[31] as $sp_id)
-                          <tr id="row-31-{{ $productArr[$sp_id]->id }}">
-                            <td width="80%">{{ $productArr[$sp_id]->name }} 
-                            <input type="hidden" name="sp_tuongthich_31[]" value="{{$productArr[$sp_id]->id }}">
-                            </td>
-                            <td>      
-                            <button class="btn btn-sm btn-danger btnRemoveTuongThich" type="button" data-value="{{ $productArr[$sp_id]->id }}" data-type="31">Xóa</button>
-                            </td>
-                          </tr>
-                         
-                        @endforeach                        
-                        </table>
-                        @endif
-
-                      </div>
-                </div>
-                @endif
-                @if($detail->cate_id != 32)
+               
+                @if($detail->cate_id == 31)
                 <div class="col-md-4">
                     <button class="btn btn-warning btn-sm btnLienQuan" data-value="32" type="button" id="btnCpu">CPU</button>
                     <div class="clearfix"></div>
@@ -104,9 +63,7 @@
                         @endif
 
                     </div>
-                </div>
-                @endif
-                @if($detail->cate_id != 85)
+                </div>               
                 <div class="col-md-4">
                     <button class="btn btn-warning btn-sm btnLienQuan" data-value="85" type="button" id="btnCpu">VGA</button>
                     <div class="clearfix"></div>
@@ -128,9 +85,7 @@
                         @endif
 
                     </div>
-                </div>                
-                @endif
-                @if($detail->cate_id != 35)
+                </div>                               
                 <div class="col-md-4">
                     <button class="btn btn-warning btn-sm btnLienQuan" data-value="35" type="button" id="btnRam">RAM</button>
                     <div class="clearfix"></div>
@@ -154,14 +109,61 @@
                     </div>
                 </div>                
                 @endif
-                
-                  
+                @if($detail->cate_id == 85)
+                <div class="col-md-6">
+                    <button class="btn btn-warning btn-sm btnLienQuan" data-value="33" type="button" id="btnNguon">Nguồn</button>
+                    <div class="clearfix"></div>
+                    <div id="dataNguon" class="col-md-12 none-padding" style="min-height:150px; margin-top:5px">
+                        @if(isset($spSelected[33]) && !empty($spSelected[33]))
+                        <table class="table table-responsive table-bordered">                       
+                        @foreach($spSelected[33] as $sp_id)
+                          <tr id="row-33-{{ $productArr[$sp_id]->id }}">
+                            <td width="80%">{{ $productArr[$sp_id]->name }} 
+                            <input type="hidden" name="sp_tuongthich_33[]" value="{{ $productArr[$sp_id]->id }}">
+                            </td>
+                            <td>      
+                            <button class="btn btn-sm btn-danger btnRemoveTuongThich" type="button" data-value="{{ $productArr[$sp_id]->id }}" data-type="33">Xóa</button>
+                            </td>
+                          </tr>
+                         
+                        @endforeach                        
+                        </table>
+                        @endif
+
+                    </div>
+                </div>                                                             
+                <div class="col-md-6">
+                    <button class="btn btn-warning btn-sm btnLienQuan" data-value="89" type="button" id="btnCase">Thùng máy - Case</button>
+                    <div class="clearfix"></div>
+                    <div id="dataCase" class="col-md-12 none-padding" style="min-height:150px; margin-top:5px">
+                        @if(isset($spSelected[89]) && !empty($spSelected[89]))
+                        <table class="table table-responsive table-bordered">                       
+                        @foreach($spSelected[89] as $sp_id)
+                          <tr id="row-89-{{ $productArr[$sp_id]->id }}">
+                            <td width="80%">{{ $productArr[$sp_id]->name }} 
+                            <input type="hidden" name="sp_tuongthich_89[]" value="{{ $productArr[$sp_id]->id }}">
+                            </td>
+                            <td>      
+                            <button class="btn btn-sm btn-danger btnRemoveTuongThich" type="button" data-value="{{ $productArr[$sp_id]->id }}" data-type="89">Xóa</button>
+                            </td>
+                          </tr>
+                         
+                        @endforeach                        
+                        </table>
+                        @endif
+
+                    </div>
+                </div>                
+                @endif
             </div>
             <div class="box-footer">
               <input type="hidden" name="str_sp_bo_mach_chinh" id="str_sp_bo_mach_chinh" value="{{ $str_sp_bo_mach_chinh }}" >
+
               <input type="hidden" name="str_sp_card_man_hinh" id="str_sp_card_man_hinh" value="{{ $str_sp_card_man_hinh }}" >
               <input type="hidden" name="str_sp_bo_vi_xu_ly" id="str_sp_bo_vi_xu_ly" value="{{ $str_sp_bo_vi_xu_ly }}" >
               <input type="hidden" name="str_sp_bo_nho" id="str_sp_bo_nho" value="{{ $str_sp_bo_nho }}" >
+              <input type="hidden" name="str_sp_nguon" id="str_sp_nguon" value="{{ $str_sp_nguon }}" >
+              <input type="hidden" name="str_sp_case" id="str_sp_case" value="{{ $str_sp_case }}" >
               <button type="button" class="btn btn-default" id="btnLoading" style="display:none"><i class="fa fa-spin fa-spinner"></i></button>
               <button type="submit" class="btn btn-primary" id="btnSave">Lưu</button>
               <a class="btn btn-default" class="btn btn-primary" href="{{ URL::previous() }}">Hủy</a>
@@ -185,9 +187,6 @@
   .nav-tabs>li.active>a{
     color:#FFF !important;
     background-color: #3C8DBC !important;
-  }
-  #list_muc_dich li{
-    list-style: none !important;
   }
 
 </style>
@@ -225,6 +224,18 @@ function filterAjax(cate_id){
               }
             }else if( cate_id == "35"){
               var str_checked = $('#str_sp_bo_nho').val();
+              tmpArr = str_checked.split(",");              
+              for (i = 0; i < tmpArr.length; i++) { 
+                  $('input.checkSelect[value="'+ tmpArr[i] +'"]').prop('checked', true);
+              }
+            }else if( cate_id == "33"){
+              var str_checked = $('#str_sp_nguon').val();
+              tmpArr = str_checked.split(",");              
+              for (i = 0; i < tmpArr.length; i++) { 
+                  $('input.checkSelect[value="'+ tmpArr[i] +'"]').prop('checked', true);
+              }
+            }else if( cate_id == "89"){
+              var str_checked = $('#str_sp_case').val();
               tmpArr = str_checked.split(",");              
               for (i = 0; i < tmpArr.length; i++) { 
                   $('input.checkSelect[value="'+ tmpArr[i] +'"]').prop('checked', true);
@@ -271,6 +282,24 @@ $(document).on('click', '.checkSelect', function(){
       str_sp_bo_nho = str_sp_bo_nho.replace(str, '');
     }
     $('#str_sp_bo_nho').val(str_sp_bo_nho);
+  }else if( cate_id == "33"){
+    var str_sp_nguon = $('#str_sp_nguon').val();
+    if(obj.prop('checked') == true){
+      str_sp_nguon += obj.val() + ',';
+    }else{
+      var str = obj.val() + ',';
+      str_sp_nguon = str_sp_nguon.replace(str, '');
+    }
+    $('#str_sp_nguon').val(str_sp_nguon);
+  }else if( cate_id == "89"){
+    var str_sp_case = $('#str_sp_case').val();
+    if(obj.prop('checked') == true){
+      str_sp_case += obj.val() + ',';
+    }else{
+      var str = obj.val() + ',';
+      str_sp_case = str_sp_case.replace(str, '');
+    }
+    $('#str_sp_case').val(str_sp_case);
   }else{ // so sanh
     var str_sp_card_man_hinh = $('#str_sp_card_man_hinh').val();
     if(obj.prop('checked') == true){
@@ -293,6 +322,10 @@ $(document).on('click', '.btnRemoveTuongThich', function(){
       var name = "bo_vi_xu_ly";
     }else if(type == "35"){
       var name = "bo_nho";
+    }else if(type == "33"){
+      var name = "nguon";
+    }else if(type == "89"){
+      var name = "case";
     }else{
       var name = "card_man_hinh";
     }
@@ -326,6 +359,10 @@ $(document).on('click', 'button.btnSaveSearch',function(){
     str_value = $('#str_sp_bo_vi_xu_ly').val();
   }else if( cate_id == "35"){
     str_value = $('#str_sp_bo_nho').val();
+  }else if( cate_id == "33"){
+    str_value = $('#str_sp_nguon').val();
+  }else if( cate_id == "89"){
+    str_value = $('#str_sp_case').val();
   }else{
     str_value = $('#str_sp_card_man_hinh').val();
   }
@@ -353,6 +390,14 @@ $(document).on('click', 'button.btnSaveSearch',function(){
 
               $('#dataRam').html(response);
 
+            }else if( cate_id == "33"){
+
+              $('#dataNguon').html(response);
+
+            }else if( cate_id == "89"){
+
+              $('#dataCase').html(response);
+
             }else{
 
               $('#dataVga').html(response);
@@ -376,6 +421,10 @@ $(document).on('click', 'button.btnSaveSearch',function(){
           $('#label-search').html("Mainboard tương thích");
         }else if( type == "32" ){
           $('#label-search').html("CPU tương thích");
+        }else if( type == "33" ){
+          $('#label-search').html("Nguồn tương thích");
+        }else if( type == "89" ){
+          $('#label-search').html("Thùng máy - case tương thích");
         }else if( type == "35" ){
           $('#label-search').html("RAM tương thích");
         }else{
@@ -385,11 +434,7 @@ $(document).on('click', 'button.btnSaveSearch',function(){
       });      
       
       $(".select2").select2();
-      $('#dataForm').submit(function(){      
-        if($('input.muc_dich:checked').length == 0){
-          alert('Vui lòng chọn ít nhất 1 mục đích sử dụng');
-          return false;
-        }  
+      $('#dataForm').submit(function(){        
         $('#btnSave').hide();
         $('#btnLoading').show();
       });

@@ -6,8 +6,8 @@
 $price = $sp->is_sale == 1 && $sp->price_sale  > 0 ? $sp->price_sale : $sp->price;
 ?>
 <li>
-<div class="col-sm-6 box-name"><label><input type="radio" class="select-lk radio-{{ $cate->slug }}" data-type="{{ $cate->slug }}" name="select[{{ $cate->id }}]" value="{{ $sp->id }}"> {{ $sp->name }}</label></div>
-
+<div class="col-sm-{{ $cate->id == 35 ? 6 : 9 }} box-name"><label><input type="radio" class="select-lk radio-{{ $cate->slug }}" data-type="{{ $cate->slug }}" name="select[{{ $cate->id }}]" value="{{ $sp->id }}"> {{ $sp->name }}</label></div>
+@if($cate->id == 35)
 <div class="col-sm-3 clearfix quantity">
     <p class="txt-name hidden-lg">Số lượng:</p>      
       <select class="form-control" style="width:70px;margin:auto" name="soluong[{{ $sp->id }}]">
@@ -20,7 +20,7 @@ $price = $sp->is_sale == 1 && $sp->price_sale  > 0 ? $sp->price_sale : $sp->pric
       </select>                                
   
 </div>
-
+@endif
 <div class="col-sm-3 clearfix price">
     <p class="txt-name hidden-lg">Giá:</p>
     <input type="hidden" name="price[{{ $sp->id }}]" value="{{ $price }}">
