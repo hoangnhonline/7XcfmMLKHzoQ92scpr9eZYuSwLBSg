@@ -162,11 +162,7 @@
                   <div class="detail-benefits-support">
   
                     <label class="detail-lb-loiich clearfix"><strong>Ưu đãi dành cho khách hàng mua Online:</strong></label>
-                    <div class="left detail-support">
-                        <span>
-                            <i class="fa fa-check-circle"></i>
-                            Giữ hàng tại Shop (không mua không sao)
-                        </span>
+                    <div class="left detail-support">                        
                         <span>
                             <i class="fa fa-check-circle"></i>
                             Dịch vụ giao hàng tận nơi
@@ -177,7 +173,7 @@
                         </span>
                         <span>
                             <i class="fa fa-check-circle"></i>
-                            Bảo hành nhanh tại các chi nhánh cửa hàng iCho
+                            Bảo hành chính hãng
                         </span>
                         <span>
                             <i class="fa fa-check-circle"></i>

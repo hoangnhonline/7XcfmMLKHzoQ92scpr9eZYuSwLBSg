@@ -41,9 +41,7 @@ class CateController extends Controller
         $productArr = [];
         $slug = $request->slug;
         $rs = LoaiSp::where('slug', $slug)->first();
-        if(!$rs){
-            return redirect()->route('home');
-        }
+        
         if($rs){//danh muc cha
             $loai_id = $rs->id;
             $cateArr = Cate::where('status', 1)->where('loai_id', $loai_id)->get();
