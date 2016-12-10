@@ -161,10 +161,13 @@ $(document).on('click', '#btnReset, #btnChonLai', function(){
     $('.choose-parent').eq(0).addClass('showing');
 
     $('a.choose-parent').click(function(){
+
       var obj = $(this);
       var thu_tu_parent = obj.data('value');      
       var so_da_chon = $('.select-lk:checked').length;
-      console.log(thu_tu_parent, so_da_chon);
+      if(so_da_chon > 0){
+        $('#btnReset').show();
+      }     
       if(thu_tu_parent-1 == so_da_chon){
         $('a.choose-parent').removeClass('showing');
         obj.addClass('showing');
