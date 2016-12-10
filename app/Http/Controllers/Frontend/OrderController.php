@@ -52,7 +52,15 @@ class OrderController extends Controller
      $customer = Customer::find($customer_id);
     return view('frontend.account.order-detail', compact('order', 'orderDetail', 'seo', 'str_order_id', 'status', 'ngay_dat_hang', 'customer'));
   }
-
+  public function huy(Request $request){    
+    $order_id = $request->id;
+    $order = Orders::find($order_id);
+    $customer_id = Session::get('userId');
+    if( $customer_id == $order->customer_id && $order->status == 0){
+      $order->status = 4;
+      $order->save();
+    }
+  }
   public function show(Request $request)
   {
     $customer_id = Session::get('userId');

@@ -119,9 +119,11 @@
                           </tr>
                         </tfoot>
                       </table>
-                    </div>
+                    </div>                    
                     <a href="{{ route('order-history')}}" class="btn btn-info btn-back"><i class="fa fa-caret-left"></i> Quay về đơn hàng của tôi</a>
-                    <button id="btnHuy" data-value="{{ $order->id }}" class="btn btn-danger" style="float:right"><i class="fa fa-times"></i> Hủy đơn hàng</button>
+                    @if($order->status == 0)
+                    <button id="btnHuy" class="btn btn-danger" style="float:right"><i class="fa fa-times"></i> Hủy đơn hàng</button>
+                    @endif
                      </div>
 
               </div>
@@ -137,7 +139,22 @@
 @section('javascript')
    <script type="text/javascript">
     $(document).ready(function() {
-
+      $('#btnHuy').click(function(){ 
+        var obj = $(this);       
+        if(confirm('Quý khách chắc chắn muốn hủy đơn hàng này?')){
+          $.ajax({
+            url : '{{ route('order-cancel') }}',
+            type  : 'POST',
+            data : {
+              id : {{ $order->id }}
+            },
+            success : function(){
+              swal({ title: '', text: 'Đã hủy đơn hàng #{{ $str_order_id }}', type: 'success' });
+              obj.remove();
+            }
+          });
+        }
+      });
     });
   </script>
 @endsection

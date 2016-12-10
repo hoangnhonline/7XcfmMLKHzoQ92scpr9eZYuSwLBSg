@@ -98,15 +98,15 @@
                     </div>
                     <p class="error" style="display:none">Vui lòng chọn 1 mục.</p>
                     <div class="button-group text-right mt10 pb10">                       
-                        <button type="button" class="btn btn-primary btn-sm btnOK btnAction" data-slug="{{ $cate->slug }}" disabled="disabled">Tiếp tục</button>
+                        <button type="button" class="btn btn-primary btn-sm btnOK btnAction" data-slug="{{ $cate->slug }}" disabled="disabled">Tiếp tục <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></button>
                     </div>
                 </div>
                 <!-- ./config-list-->
                 @endforeach
                 @endif
                 <div class="button-group-action">
-                    <button type="button" id="btnReset" style="display:none;">Chọn lại</button>
-                    <button type="button" class="btn" id="btnPreview" disabled="disabled" >Xem cấu hình</button>
+                    <button type="button" id="btnReset" style="display:none;"><i class="fa fa-power-off" aria-hidden="true"></i> Chọn lại</button>
+                    <button type="button" class="btn" id="btnPreview" disabled="disabled" ><i class="fa fa-eye" aria-hidden="true"></i> Xem cấu hình</button>
                   </div>
                   {{ csrf_field() }}
             </form>
