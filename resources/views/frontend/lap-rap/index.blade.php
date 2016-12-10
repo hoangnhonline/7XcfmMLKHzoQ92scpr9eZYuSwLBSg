@@ -33,8 +33,10 @@
                 <nav class="nav-choose-config">
                     <ul class="level1">
                         @if($cateList->count() > 0)
+                        <?php $countParent = 0; ?>
                         @foreach($cateList as $cate)
-                        <li><a href="javascript:void(0)" class="choose-parent {{ $cate->slug }}" data-slug="{{ $cate->slug }}">{{ $cate->name }}</a></li>
+                        <?php $countParent++; ?>
+                        <li><a href="javascript:void(0)" class="choose-parent {{ $cate->slug }}" data-slug="{{ $cate->slug }}" data-value="{{ $countParent }}">{{ $cate->name }}</a></li>
                         @endforeach
                         @endif
                         
@@ -79,6 +81,8 @@
                                       @endfor
                                   </select>                                                              
                             </div>
+                            @else
+                            <input type="hidden" name="soluong[{{ $sp->id }}]" value="1">
                             @endif
                             <div class="col-sm-3 clearfix price">
                                 <p class="txt-name hidden-lg">Giá:</p>
@@ -94,14 +98,15 @@
                     </div>
                     <p class="error" style="display:none">Vui lòng chọn 1 mục.</p>
                     <div class="button-group text-right mt10 pb10">                       
-                        <button type="button" class="btn btn-default btn-sm btnOK btnAction" data-slug="{{ $cate->slug }}">Tiếp tục</button>
+                        <button type="button" class="btn btn-primary btn-sm btnOK btnAction" data-slug="{{ $cate->slug }}" disabled="disabled">Tiếp tục</button>
                     </div>
                 </div>
                 <!-- ./config-list-->
                 @endforeach
                 @endif
                 <div class="button-group-action">
-                    <button type="button" class="btn" id="btnPreview" >Xem cấu hình</button>
+                    <button type="button" id="btnReset" style="display:none;">Chọn lại</button>
+                    <button type="button" class="btn" id="btnPreview" disabled="disabled" >Xem cấu hình</button>
                   </div>
                   {{ csrf_field() }}
             </form>
@@ -131,6 +136,9 @@
 $(document).on('click', '#btnAddCartLapRap', function(){
     $('#formLapRap').submit();
 });
+$(document).on('click', '#btnReset, #btnChonLai', function(){
+  window.location.reload();
+});
   $(document).ready(function(){
     $('#btnPreview').click(function(){
       $.ajax({
@@ -149,19 +157,33 @@ $(document).on('click', '#btnAddCartLapRap', function(){
       });
     });    
     $('.choose-config-list').eq(0).show();
-    $('.choose-parent').eq(0).addClass('showing')
+    
+    $('.choose-parent').eq(0).addClass('showing');
+
     $('a.choose-parent').click(function(){
-      $('a.choose-parent').removeClass('showing');
-      $(this).addClass('showing');
-      $('.choose-config-list').hide();
-      $('.' + $(this).data('slug')).show();      
-      if($('.' + $(this).data('slug') + ' input.select-lk').length == 0){
-        $('.btnAction').hide();
-      }else{
-        $('.btnAction').show();
+      var obj = $(this);
+      var thu_tu_parent = obj.data('value');      
+      var so_da_chon = $('.select-lk:checked').length;
+      console.log(thu_tu_parent, so_da_chon);
+      if(thu_tu_parent-1 == so_da_chon){
+        $('a.choose-parent').removeClass('showing');
+        obj.addClass('showing');
+        $('.choose-config-list').hide();
+        $('.' + obj.data('slug')).show();      
+        if($('.' + obj.data('slug') + ' input.select-lk').length == 0){
+          $('.btnAction').hide();
+        }else{
+          $('.btnAction').show();
+        }
+        obj.attr('data-value', 0);
       }
     });
     $('button.btnOK').click(function(){
+      if($('.select-lk:checked').length > 0){
+        $('#btnReset').show();
+      }
+      var objContainer = $(this).parents('.choose-config-list');      
+      //return false;
       var obj = $('a.showing');      
       obj.parent().next().find('a').addClass('showing').click();
       obj.removeClass('showing');
@@ -173,42 +195,32 @@ $(document).on('click', '#btnAddCartLapRap', function(){
     });
   });
   $(document).on('ifChecked', '.select-lk', function(){
-
+     
       var obj = $(this);
       var value = obj.val();
-      var type = obj.attr('data-type');
-      $('#value-' + type).val(value);
-      
-        $('a.choose-parent[data-slug=' + type + ']').removeClass('no-sp').addClass('have-sp');
-      
+      var type = obj.attr('data-type');      
+      if($('.select-lk:checked').length < 7){ //da chon du 7 linh kien
+        obj.parents('.choose-config-list').find('.btnOK').removeAttr('disabled');  
+      }else{ // chua chon du 7 linh kien
+        obj.parents('.choose-config-list').find('.btnOK').hide();
+        $('#btnPreview').removeAttr('disabled');  
+      }      
+      $('#value-' + type).val(value);      
+      $('a.choose-parent[data-slug=' + type + ']').removeClass('no-sp').addClass('have-sp');
     
-        if( type == "bo-mach-chinh"){
-            // get RAM
-            if($('#value-bo-nho').val() == 0){
-              getRelated(value, 'bo-nho', type); 
-            }
-            if($('#value-card-man-hinh').val() == 0){
-              getRelated(value, 'card-man-hinh', type); 
-            }
-            if($('#value-bo-vi-xu-ly').val() == 0){
-              getRelated(value, 'bo-vi-xu-ly', type); 
-            }
-        }
-        if( type == "card-man-hinh"){
-            // get RAM
-            if($('#value-nguon').val() == 0){
-              getRelated(value, 'nguon', type); 
-            }
-            if($('#value-thung-may-case').val() == 0){
-              getRelated(value, 'thung-may-case', type); 
-            }
-           
-        }      
-      
+      if( type == "bo-mach-chinh"){
+          getRelated(value, 'bo-nho', type);
+          getRelated(value, 'card-man-hinh', type); 
+          getRelated(value, 'bo-vi-xu-ly', type);
+      }
+      if( type == "card-man-hinh"){
+          getRelated(value, 'nguon', type);
+          getRelated(value, 'thung-may-case', type);
+      }      
     });
   function getRelated(sp_id, type, dataSlug) {
         $.ajax({
-          url: "{{route('lay-sp-tuong-thich')}}",
+          url: "{{ route('lay-sp-tuong-thich') }}",
           method: "POST",
           data : {
             sp_id: sp_id,
@@ -228,14 +240,10 @@ $(document).on('click', '#btnAddCartLapRap', function(){
                 checkboxClass: 'icheckbox_square-red',
                 radioClass: 'iradio_square-red',
                 increaseArea: '20%' // optional
-              });
-              
-              $('a.choose-parent[data-slug=' + type + ']').removeClass('no-sp');           
+              });              
+              $('a.choose-parent[data-slug=' + type + ']').removeClass('no-sp');          
               
             }
-          },
-          error : function(e) {
-            //alert( JSON.stringify(e));
           }
         });
       }

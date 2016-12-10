@@ -11,15 +11,19 @@ $price = $sp->is_sale == 1 && $sp->price_sale  > 0 ? $sp->price_sale : $sp->pric
 <div class="col-sm-3 clearfix quantity">
     <p class="txt-name hidden-lg">Số lượng:</p>      
       <select class="form-control" style="width:70px;margin:auto" name="soluong[{{ $sp->id }}]">
-      	  @for($i = 1; $i <= $sp->so_luong_ton; $i ++)
-          <option value="{{ $i }}">
-            {{ $i }}
-          </option>
-          @endfor
+      	  @if($sp->khe_ram > 0)
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="4">4</option>
+          @else
+          <option value="1">1</option>
+          @endif
 
       </select>                                
   
 </div>
+@else
+<input type="hidden" name="soluong[{{ $sp->id }}]" value="1">
 @endif
 <div class="col-sm-3 clearfix price">
     <p class="txt-name hidden-lg">Giá:</p>

@@ -2492,13 +2492,31 @@ ul.collection li:first-child img {
   font-size: 18px;
   font-weight: 100;
   color: #fff;
-  border: 2px solid #ec1c24;
+  border: 1px solid #ec1c24;
   text-transform: uppercase;
   -webkit-transition : all 0.5s ease 0s;
   -moz-transition : all 0.5s ease 0s;
   -o-transition : all 0.5s ease 0s;
   -ms-transition : all 0.5s ease 0s;
   transition : all 0.5s ease 0s;
+}
+#btnReset{
+	background-color: #EAEAEA;
+  padding: 8px 20px;
+  font-size: 18px;
+  font-weight: 100;
+  border-radius: 5px;
+  color: #ec1c24;
+  border: 1px solid #ec1c24;
+  text-transform: uppercase;
+  -webkit-transition : all 0.5s ease 0s;
+  -moz-transition : all 0.5s ease 0s;
+  -o-transition : all 0.5s ease 0s;
+  -ms-transition : all 0.5s ease 0s;
+  transition : all 0.5s ease 0s;
+}
+#btnPreview{
+	margin-top: -4px !important;
 }
 #btnAddCartLapRap{
 	padding: 5px 10px;

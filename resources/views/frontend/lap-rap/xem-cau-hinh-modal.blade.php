@@ -38,7 +38,7 @@
 <div class="modal-footer text-center">
 @if(!empty($arrData['select']))
   <button type="button" class="btn" id="btnAddCartLapRap">Thêm vào giỏ hàng</button>
-  <button type="button" class="btn btn-default" data-dismiss="modal">Sửa</button>
+  <button type="button" class="btn btn-default" id="btnChonLai">Chọn lại</button>
 @else
   <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
 @endif
