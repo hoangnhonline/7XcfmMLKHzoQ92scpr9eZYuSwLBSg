@@ -56,6 +56,8 @@
                   <p>{{ $item->description }}</p>
                 </td>                
                 <td style="white-space:nowrap">
+                
+                <a class="btn btn-default btn-sm" href="{{ route('news-list', $item->slug ) }}" target="_blank"><i class="fa fa-eye" aria-hidden="true"></i> Xem</a>
                   <a class="btn btn-primary" href="{{ route('articles.index', ['id' => $item->id])}}" ><span class="badge">{{ $item->articles->count() }}</span> Bài viết </a>
                   <a href="{{ route( 'articles-cate.edit', [ 'id' => $item->id ]) }}" class="btn btn-warning">Chỉnh sửa</a>                 
                   @if( $item->articles->count() == 0)

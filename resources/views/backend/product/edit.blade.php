@@ -16,6 +16,7 @@
   <!-- Main content -->
   <section class="content">
     <a class="btn btn-default btn-sm" href="{{ route('product.index', ['loai_id' => $detail->loai_id, 'cate_id' => $detail->cate_id]) }}" style="margin-bottom:5px">Quay lại</a>
+    <a class="btn btn-primary btn-sm" href="{{ route('chi-tiet', $detail->slug ) }}" target="_blank" style="margin-top:-6px"><i class="fa fa-eye" aria-hidden="true"></i> Xem</a>
     <form role="form" method="POST" action="{{ route('product.update') }}" id="dataForm">
     <div class="row">
       <!-- left column -->
@@ -251,27 +252,7 @@
                      @endif
                      
                      </div>
-                     <div role="tabpanel" class="tab-pane" id="messages">
-                      @if($detail->loai_id == 3 || $detail->loai_id == 7)
-                        <div class="col-md-12">
-                        <label>Mục đích sử dụng</label>
-                        <ul id="list_muc_dich">
-                          <li class="col-md-6"><div class="form-group">
-                          <input type="checkbox" name="muc_dich[]" value="1" class="muc_dich" id="van_phong" {{ in_array(1, $mucDichArr) ? "checked" : "" }}>&nbsp;&nbsp;<label for="van_phong">Văn phòng</label>
-                          </div>
-                          </li>
-                          <li class="col-md-6">
-                            <div class="form-group">
-                          <input type="checkbox" name="muc_dich[]" value="2" class="muc_dich" id="do_hoa" {{ in_array(2, $mucDichArr) ? "checked" : "" }}>&nbsp;&nbsp;<label for="do_hoa">Đồ họa</label></div></li>
-                          <li class="col-md-6">
-                            <div class="form-group">
-                          <input type="checkbox" name="muc_dich[]" value="3" class="muc_dich" id="game" {{ in_array(3, $mucDichArr) ? "checked" : "" }}>&nbsp;&nbsp;<label for="game">Game</label></div></li>
-                          <li class="col-md-6">
-                            <div class="form-group">
-                            <input type="checkbox" name="muc_dich[]" value="4" class="muc_dich" id="am_thanh" {{ in_array(4, $mucDichArr) ? "checked" : "" }}>&nbsp;&nbsp;<label for="am_thanh">Âm thanh</label></div></li>
-                        </ul>
-                      </div>
-                      @endif
+                     <div role="tabpanel" class="tab-pane" id="messages">                      
                         <div class="col-md-4">
                             <button class="btn btn-warning btn-sm btnLienQuan" data-value="phukien" type="button" id="btnPhuKien">Phụ kiện đi kèm</button>
                             <div class="clearfix"></div>

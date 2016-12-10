@@ -94,6 +94,8 @@
                   @endif
                 </td>
                 <td style="white-space:nowrap; text-align:right">
+                
+                 <a class="btn btn-default btn-sm" href="{{ route('danh-muc-con', [$loaiSp->slug, $item->slug] ) }}" target="_blank"><i class="fa fa-eye" aria-hidden="true"></i> Xem</a>
                   @if($item->home_style > 0)
                   <a class="btn-sm btn btn-primary" href="{{ route('banner.index', ['object_type' => 2, 'object_id' => $item->id]) }}" ><span class="badge">{{ $item->banners->count() }}</span> Banner </a>
                   @endif

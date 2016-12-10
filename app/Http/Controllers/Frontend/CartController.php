@@ -153,7 +153,9 @@ class CartController extends Controller
         }
 
         $listProductId = $getlistProduct ? array_keys($getlistProduct) : [];
-
+        $arrProductInfo = SanPham::whereIn('san_pham.id', $listProductId)
+                            ->leftJoin('sp_hinh', 'sp_hinh.id', '=','san_pham.thumbnail_id')
+                            ->select('sp_hinh.image_url', 'san_pham.*')->get();
         $listCity = City::orderBy('display_order')->get();
 
         $userId = Session::get('userId');
@@ -172,9 +174,10 @@ class CartController extends Controller
         //     return redirect()->route('cap-nhat-thong-tin');
         // }
         // end
+        $totalServiceFee = Session::get('totalServiceFee') ? Session::get('totalServiceFee') : 0;
         if(is_null($customer)) $customer = new Customer;
         $seo = Helper::seo();
-        return view('frontend.cart.shipping-step-2', compact('customer', 'listCity', 'seo', 'is_vanglai'));
+        return view('frontend.cart.shipping-step-2', compact('customer', 'listCity', 'seo', 'is_vanglai', 'getlistProduct', 'arrProductInfo', 'totalServiceFee'));
     }
 
     public function updateUserInformation(Request $request)

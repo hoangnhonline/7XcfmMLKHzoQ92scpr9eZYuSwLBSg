@@ -639,9 +639,8 @@ class ProductController extends Controller
             }
             
         }        
-        $colorArr = Color::all();
-        $mucDichArr = SpMucDich::where('sp_id', $id)->lists('muc_dich')->toArray();
-        return view('backend.product.edit', compact( 'detail', 'hinhArr', 'thuocTinhArr', 'spThuocTinhArr', 'colorArr', 'loaiSpArr', 'cateArr', 'meta', 'phuKienArr', 'tuongTuArr', 'soSanhArr', 'mucDichArr'));
+        $colorArr = Color::all();        
+        return view('backend.product.edit', compact( 'detail', 'hinhArr', 'thuocTinhArr', 'spThuocTinhArr', 'colorArr', 'loaiSpArr', 'cateArr', 'meta', 'phuKienArr', 'tuongTuArr', 'soSanhArr'));
     }
     public function ajaxDetail(Request $request)
     {       

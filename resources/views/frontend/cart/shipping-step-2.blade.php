@@ -52,13 +52,13 @@ $vangLaiArr = Session::get('vanglai');
                 </div>
 
                 <div class="row row-style-2">
-                  <div class="col-lg-12">
+                  <div class="col-lg-8 has-padding">
                     <div class="panel panel-default address-list">
                       <div class="panel-body">
                         <form id="form-address" method="post" action="">
                           <h5 class="visible-lg-block"> Chọn địa chỉ giao hàng có sẵn bên dưới: </h5>                          
                           <div class="row row-address-list">
-                            <div class="col-lg-6 col-md-6 col-sm-6 item" id="item-1535497">
+                            <div class="col-lg-6 col-md-6 col-sm-6 item">
                               <div class="panel panel-default address-item is-default">
                                 <div class="panel-body">
                                   @if($is_vanglai == 0)
@@ -96,9 +96,10 @@ $vangLaiArr = Session::get('vanglai');
                                     <button type="button" class="btn btn-default btn-custom1 saving-address is-red" onclick="location.href='{{route('shipping-step-3')}}'"> Giao đến địa chỉ này </button>
                                     <button type="button" class="btn btn-default btn-custom1 edit-address">Sửa</button>
                                   </p>                                  
-                              </div>
-                            </div>
-                          </div>
+                                </div><!--panel-body-->
+                            </div><!--panel panel-default address-item is-default-->
+                          </div><!--col-lg-6 col-md-6 col-sm-6 item-->
+                          </div><!--row row-address-list-->
                         </form>
                       </div>
                     </div>
@@ -203,6 +204,43 @@ $vangLaiArr = Session::get('vanglai');
                       </div>
                     </div>
                     <div class="shiping_plan"></div>
+                  </div>
+                  <div class="col-lg-4">
+                    <div id="panel-cart">
+                      <div class="panel panel-default cart">
+                        <div class="panel-body">
+                          <div class="order"> <span class="title">Đơn Hàng</span> <span class="title">( {{ array_sum($getlistProduct) }} SP )</span> <a href="{{route('gio-hang')}}" class="btn btn-default btn-custom1">Sửa</a> </div>
+                          <div class="product">
+                            <?php $total = 0; ?>
+                            @foreach($arrProductInfo as $product)
+                            <div class="item">
+                              <p class="title"><strong>{{ $getlistProduct[$product->id] }} x</strong><a href="" target="_blank">{{$product->name}}</a></p>
+                              <p class="price"> <span>
+                              <?php 
+                              if( $product->price_sale > 0 && $product->is_sale == 1){
+                                echo number_format($getlistProduct[$product->id] * $product->price_sale);  
+                              }else{
+                                echo number_format($getlistProduct[$product->id] * $product->price);
+                              }
+                              ?>&nbsp;₫ </span> </p>
+                            </div>
+                            <?php                             
+                            if( $product->price_sale > 0 && $product->is_sale == 1){
+                              $total = $total += $getlistProduct[$product->id]*($product->price_sale);  
+                            }else{
+                              $total = $total += $getlistProduct[$product->id]*($product->price);                             
+                            }
+                            ?>
+                            @endforeach
+                          </div>
+                          <p class="total"> Tạm Tính: <span>{{ number_format($total) }}&nbsp;₫</span> </p>
+                          <p class="shipping"> Phí dịch vụ: <span>{{ number_format($totalServiceFee) }} &nbsp;₫ </span> </p>
+                          <p class="shipping"> Phí vận chuyển: <span>Chưa có</span> </p>
+                          <p class="total2"> Thành tiền: <span>{{number_format( $total + $totalServiceFee )}}&nbsp;₫ </span> </p>
+                          <p class="text-right"> <i>(Đã bao gồm VAT)</i> </p>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
 

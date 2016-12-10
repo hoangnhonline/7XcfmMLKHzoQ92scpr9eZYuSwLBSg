@@ -140,6 +140,7 @@
                   
                 </td>
                 <td style="white-space:nowrap; text-align:right">
+                  <a class="btn btn-default btn-sm" href="{{ route('chi-tiet', $item->slug ) }}" target="_blank"><i class="fa fa-eye" aria-hidden="true"></i> Xem</a>
                   @if( in_array($item->cate_id, [31,85]))
                   <?php 
                   if($item->cate_id == 31){

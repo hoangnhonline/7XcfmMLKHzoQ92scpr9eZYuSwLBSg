@@ -67,7 +67,9 @@
 
                   <p>{{ $item->description }}</p>
                 </td>
-                <td style="white-space:nowrap">                  
+                <td style="white-space:nowrap">   
+                
+                  <a class="btn btn-default btn-sm" href="{{ route('danh-muc-cha', $item->slug ) }}" target="_blank"><i class="fa fa-eye" aria-hidden="true"></i> Xem</a>               
                   <a href="{{ route( 'pages.edit', [ 'id' => $item->id ]) }}" class="btn btn-warning">Chỉnh sửa</a>                 
                   
                   <a onclick="return callDelete('{{ $item->title }}','{{ route( 'pages.destroy', [ 'id' => $item->id ]) }}');" class="btn btn-danger">Xóa</a>

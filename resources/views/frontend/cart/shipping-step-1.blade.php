@@ -213,7 +213,7 @@
                     <div id="panel-cart">
                       <div class="panel panel-default cart">
                         <div class="panel-body">
-                          <div class="order"> <span class="title">Đơn Hàng</span> <span class="title">{{array_sum($getlistProduct)}}</span> <a href="{{route('gio-hang')}}" class="btn btn-default btn-custom1">Sửa</a> </div>
+                          <div class="order"> <span class="title">Đơn Hàng</span> <span class="title">( {{ array_sum($getlistProduct) }} SP )</span> <a href="{{route('gio-hang')}}" class="btn btn-default btn-custom1">Sửa</a> </div>
                           <div class="product">
                             <?php $total = 0; ?>
                             @foreach($arrProductInfo as $product)
@@ -239,7 +239,7 @@
                           </div>
                           <p class="total"> Tạm Tính: <span>{{ number_format($total) }}&nbsp;₫</span> </p>
                           <p class="shipping"> Phí dịch vụ: <span>{{ number_format($totalServiceFee) }} &nbsp;₫ </span> </p>
-                          <p class="shipping"> Phí vận chuyển: <span>Chưa có &nbsp;₫</span> </p>
+                          <p class="shipping"> Phí vận chuyển: <span>Chưa có</span> </p>
                           <p class="total2"> Thành tiền: <span>{{number_format( $total + $totalServiceFee )}}&nbsp;₫ </span> </p>
                           <p class="text-right"> <i>(Đã bao gồm VAT)</i> </p>
                         </div>
