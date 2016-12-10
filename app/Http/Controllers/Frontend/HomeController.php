@@ -113,7 +113,7 @@ class HomeController extends Controller
             $seo['title'] = $settingArr['site_title'];
             $seo['description'] = $settingArr['site_description'];
             $seo['keywords'] = $settingArr['site_keywords'];
-            $socialImage = $settingArr['logo'];
+            $socialImage = $settingArr['banner'];
         }    
         $articlesArr = Articles::where(['cate_id' => 1, 'is_hot' => 1])->orderBy('id', 'desc')->get();
                 
