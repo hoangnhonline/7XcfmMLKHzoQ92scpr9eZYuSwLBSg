@@ -189,42 +189,75 @@ class Helper
         $phi = 0;
         if( $city_id == 294){ // HCM => tinh theo 
             if(in_array($district_id, [492,495,496,502,503,504,505,506,507])){ // ngoai_thanh, huyen xa khac
-                $phi = 20000;
+                $phi = 27000;
             }else{
-                $phi = 15000;
+                $phi = 22000;
             }
             if( $kg > 2){
-                $phi_them = 0;
-                $kg_them = ceil($kg - 2);
-                $phi_them = $kg_them*3000; // tren 2 kg moi kg tang 3000                
+                $phi_them = 0;                
+                $so_kg_them = $kg - 2;
+                $phi_them = ceil($so_kg_them/0.5) * 3000;             
                 $phi += $phi_them;
             }
-
         }else{ // cac tinh thanh khac ngoai HCM
+            $region_type = self::checkRegion($city_id);   
             if( $kg > 2){
-                $phi = 48000;
-                $phi_them = 0;
-                $kg_them = ceil($kg - 2);
-                $region_type = self::checkRegion($city_id);                
                 if( $region_type == 1){//cung mien                    
-                    $phi_them = $kg_them*5000;
+                    $phi = 64000;
+                    $gia_them = 6000;
                 }elseif( $region_type == 2){ //lien mien
-                    $phi_them = $kg_them*6000;
+                    $phi = 82000;
+                    $gia_them = 10000;
                 }else{ // cach mien
-                    $phi_them = $kg_them*8000;
+                    $phi = 87000;
+                    $gia_them = 13000;
                 }
+                $phi_them = 0;
+                $so_kg_them = $kg - 2;
+                $phi_them = ceil($so_kg_them/0.5) * $gia_them;
                 $phi += $phi_them;
-            }else{
-                if( 0 < $kg && $kg <= 0.5 ){
-                    $phi = 20000;
-                }elseif( 0.5 < $kg && $kg <= 1 ){
-                    $phi = 26000;
-                }elseif( 1 < $kg && $kg <= 1.5){
-                    $phi = 34000;
-                }elseif( 1.5 < $kg && $kg <= 2){
-                    $phi = 44000;
-                }elseif( 2 < $kg && $kg <= 3){
-                    $phi = 48000;
+            }else{                             
+                
+                if( 0 < $kg && $kg <= 0.5 ){                    
+                    if( $region_type == 1){//cung mien                    
+                        $phi = 25000;
+                    }elseif( $region_type == 2){ //lien mien
+                        $phi = 29000;
+                    }else{ // cach mien
+                        $phi = 32000;
+                    }
+                }elseif( 0.5 < $kg && $kg <= 1 ){                    
+                    if( $region_type == 1){//cung mien                    
+                        $phi = 30000;
+                    }elseif( $region_type == 2){ //lien mien
+                        $phi = 35000;
+                    }else{ // cach mien
+                        $phi = 40000;
+                    }
+                }elseif( 1 < $kg && $kg <= 1.5){                    
+                    if( $region_type == 1){//cung mien                    
+                        $phi = 42000;
+                    }elseif( $region_type == 2){ //lien mien
+                        $phi = 54000;
+                    }else{ // cach mien
+                        $phi = 55000;
+                    }
+                }elseif( 1.5 < $kg && $kg <= 2){                    
+                    if( $region_type == 1){//cung mien                    
+                        $phi = 54000;
+                    }elseif( $region_type == 2){ //lien mien
+                        $phi = 68000;
+                    }else{ // cach mien
+                        $phi = 71000;
+                    }
+                }elseif( 2 < $kg && $kg <= 3){                    
+                    if( $region_type == 1){//cung mien                    
+                        $phi = 64000;
+                    }elseif( $region_type == 2){ //lien mien
+                        $phi = 82000;
+                    }else{ // cach mien
+                        $phi = 87000;
+                    }
                 }
             }
         }

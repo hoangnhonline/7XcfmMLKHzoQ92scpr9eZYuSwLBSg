@@ -116,7 +116,12 @@ class CustomerController extends Controller
 
         return view('frontend.account.notification', compact('notiSale', 'notiOrder', 'seo'));
     }
+    public function accountInfo(){
+       
+        $seo['title'] = $seo['description'] = $seo['keywords'] = "Thông tin tài khoản";     
 
+        return view('frontend.account.update-info', compact('seo'));
+    }
     public function isEmailExist(Request $request)
     {
        $email = $request->email;
