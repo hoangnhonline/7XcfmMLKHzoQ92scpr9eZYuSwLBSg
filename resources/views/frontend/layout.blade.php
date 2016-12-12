@@ -72,6 +72,16 @@
       <script src="{{ URL::asset('assets/js/icheck.min.js') }}"></script>
       <script type="text/javascript" src="{{ URL::asset('assets/js/lazy.js') }}"></script>
       <script type="text/javascript" src="{{ URL::asset('assets/js/theme-script.js') }}"></script>
+      <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', '{{ $settingArr['google_analystic'] }}', 'auto');
+      ga('send', 'pageview');
+
+      </script>
       @if(\Request::route()->getName() == "home")
       <script type="text/javascript">
           $(document).ready(function(){
