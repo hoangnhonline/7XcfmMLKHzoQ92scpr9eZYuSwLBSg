@@ -249,7 +249,15 @@ class CartController extends Controller
         $totalServiceFee = Session::get('totalServiceFee') ? Session::get('totalServiceFee') : 0;
         
         $seo = Helper::seo();
-        return view('frontend.cart.shipping-step-3', compact('arrProductInfo', 'getlistProduct', 'customer', 'phi_giao_hang', 'totalServiceFee', 'seo', 'is_vanglai'));
+        $total = 0;
+        foreach($arrProductInfo as $product){
+            $price = $product->is_sale ? $product->price_sale : $product->price;                
+            $total += $getlistProduct[$product->id]*$price;                            
+        }        
+        $totalAmount = $total + $totalServiceFee + $phi_giao_hang;
+        $phi_cod = Helper::calCod($totalAmount, $city_id);                
+        
+        return view('frontend.cart.shipping-step-3', compact('arrProductInfo', 'getlistProduct', 'customer', 'phi_giao_hang', 'totalServiceFee', 'seo', 'is_vanglai', 'phi_cod', 'totalAmount'));
     }
 
     public function order(Request $request)
@@ -292,19 +300,16 @@ class CartController extends Controller
         // check if ho chi minh free else 150k
 
         $order['phi_giao_hang'] = (int) $request->phi_giao_hang;
+        $order['phi_cod'] = (int) $request->phi_cod;
         $order['service_fee'] = Session::get('totalServiceFee') ? Session::get('totalServiceFee') : 0;
 
-
         foreach ($arrProductInfo as $product) {
-
-            $price = $product->is_sale ? $product->price_sale : $product->price;
-
-            $order['tien_thanh_toan'] += $price * $getlistProduct[$product->id];
+            $price = $product->is_sale ? $product->price_sale : $product->price;        
             $order['tong_tien'] += $price * $getlistProduct[$product->id];
         }
 
-        $order['tong_tien'] = $order['tong_tien'] + $order['phi_giao_hang'] + $order['service_fee'];
-          $city_id = isset($vangLaiArr['city_id']) ? $vangLaiArr['city_id'] :  $customer->city_id;
+        $order['tong_tien'] = $order['tien_thanh_toan'] = $order['tong_tien'] + $order['phi_giao_hang'] + $order['service_fee'] + $order['phi_cod'];
+        $city_id = isset($vangLaiArr['city_id']) ? $vangLaiArr['city_id'] :  $customer->city_id;
         $arrDate = Helper::calDayDelivery( $city_id );
         
         $order['ngay_giao_du_kien'] = implode(" - ", $arrDate);

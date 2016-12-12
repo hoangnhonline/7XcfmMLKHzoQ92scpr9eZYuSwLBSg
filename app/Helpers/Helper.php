@@ -185,6 +185,17 @@ class Helper
                 echo "<br>";
         }
     }
+    public static function calCod($so_tien, $city_id){
+        $cod = 0;
+        if($so_tien < 3000000){
+            if($city_id != 294){ // hcm
+                $cod = round($so_tien/100);   
+            }
+        }else{
+            $cod = round($so_tien/100);   
+        }
+        return $cod;
+    }
     public static function phiVanChuyen($kg, $city_id, $district_id){        
         $phi = 0;
         if( $city_id == 294){ // HCM => tinh theo 
@@ -200,7 +211,7 @@ class Helper
                 $phi += $phi_them;
             }
         }else{ // cac tinh thanh khac ngoai HCM
-            $region_type = self::checkRegion($city_id);   
+            $region_type = self::checkRegion($city_id);            
             if( $kg > 2){
                 if( $region_type == 1){//cung mien                    
                     $phi = 64000;

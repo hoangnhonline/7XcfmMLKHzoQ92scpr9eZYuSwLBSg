@@ -71,6 +71,7 @@ $vangLaiArr  = Session::get('vanglai');
                              <div class="payment_box payment_method_cod" style="display: block;">
                                 <p>Quý khách có thể trả tiền mặt khi giao hàng</p>
                              </div>
+                             <p style="color:red;padding-left:20px;margin-top:-5px; margin-bottom:10px">Phí COD : <strong>{{ number_format($phi_cod) }}&nbsp;₫</strong></p>
                           </li>
                           <li class="wc_payment_method payment_method_bacs">
                              <input id="payment_method_bacs" type="radio" class="input-radio" name="payment_method" value="2">
@@ -111,6 +112,7 @@ $vangLaiArr  = Session::get('vanglai');
                             </div>
                           </div>
                           <input type="hidden" name="phi_giao_hang" value="{{ $phi_giao_hang }}">
+                          <input type="hidden" name="phi_cod" value="{{ $phi_cod }}">
                         </form>
                       </div>
                     </div>
@@ -169,16 +171,16 @@ $vangLaiArr  = Session::get('vanglai');
 
                                 <span>{{ number_format( $getlistProduct[$product->id]*$price ) }}&nbsp;₫ </span>
                                 </p>
-                            </div>
-
-                            <?php $total = $total += $getlistProduct[$product->id]*$price; ?>
+                            </div>                            
                         	@endforeach
-                          </div>
-                          <p class="total"> Tạm Tính: <span>{{ number_format( $total ) }}&nbsp;₫</span> </p>
+                          </div>                                                    
                           <p class="shipping"> Phí dịch vụ: <span>{{ number_format( $totalServiceFee ) }}&nbsp;₫</span> </p>
-                          <p class="shipping"> Phí vận chuyển: <span>{{ number_format( $phi_giao_hang ) }}&nbsp;₫</span> </p>                        
-
-                          <p class="total2"> Thành tiền: <span>{{ number_format( $total + $totalServiceFee + $phi_giao_hang) }}&nbsp;₫ </span> </p>
+                          <p class="shipping" style="border-bottom: 1px solid #c9c9c9;padding-bottom:5px"> Phí vận chuyển: <span id="phi_giao">{{ number_format( $phi_giao_hang ) }}&nbsp;₫</span> </p>                        
+                          <input type="hidden" id="phiCod" value="{{ $phi_cod }}">
+                          <p class="total"> Tạm Tính: <span id="total_amount" style="font-weight:bold">{{ number_format( $totalAmount) }}&nbsp;₫ </span> </p>
+                          <p class="shipping"> Phí COD: <span id="phi_giao">{{ number_format( $phi_cod ) }}&nbsp;₫</span> </p>
+                          <p class="total2"> Thành tiền: <span id="total_amount">{{ number_format( $totalAmount + $phi_cod) }}&nbsp;₫ </span> </p>
+                          <input type="hidden" id="totalAmount" value="{{ $totalAmount }}">
                           <p class="text-right"> <i>(Đã bao gồm VAT)</i> </p>
                         </div>
                       </div>
@@ -213,7 +215,8 @@ $vangLaiArr  = Session::get('vanglai');
           method: "POST",
           data : {
             payment_method : payment_method,
-            phi_giao_hang : '{{ $phi_giao_hang }}'            
+            phi_giao_hang : '{{ $phi_giao_hang }}',
+            phi_cod : '{{ $phi_cod }}',
           },
           success : function(data){            
             location.href = "{{ route('thanh-cong') }}";
