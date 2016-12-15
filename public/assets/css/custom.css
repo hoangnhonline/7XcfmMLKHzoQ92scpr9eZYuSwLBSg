@@ -6612,3 +6612,8 @@ footer .container ul li.fshop-ftcall-bh a {
     padding: 15px;
     border-bottom: 1px solid #dfdfdf;
 }
+.main-header .header-search-box {
+    margin-top: 17px;
+    padding-left: 0;
+    padding-right: 45px;
+}

@@ -4,7 +4,7 @@
         @if(in_array(\Request::route()->getName(), ['chi-tiet', 'danh-muc-con', 'news-detail', 'news-list']))
         <div class="col-xs-12 col-sm-2 col-md-2 logo">
         @else
-        <h1 class="col-xs-12 col-sm-2 col-md-2 logo">
+        <h1 class="col-xs-12 col-sm-2 col-md-3 logo" style="margin-right: -15px;">
         @endif
             <a href="{{ route('home') }}"><img alt="Logo icho.vn" src="{{ Helper::showImage($settingArr['logo']) }}"></a>
         @if(in_array(\Request::route()->getName(), ['chi-tiet', 'danh-muc-con', 'news-detail', 'news-list']))
@@ -12,7 +12,7 @@
         @else
         </h1>
         @endif
-        <div class="col-xs-12 col-sm-6 col-md-6 header-search-box">
+        <div class="col-xs-12 col-sm-5 col-md-5 header-search-box">
             <form class="form-inline" method="GET" action="{{ route('search') }}">
                   <div class="form-group input-serach">
                     <input type="text" name="keyword"  placeholder="Nhập sản phẩm cần tìm" value="{{ isset($tu_khoa) ? $tu_khoa : "" }}">
