@@ -48,6 +48,8 @@
         </script>
     </head>
     <body {{ \Request::route()->getName() == "home" ? "class=home" : "" }}>
+    <div class="tree-noel"></div>
+<div class="home-noel"></div>
         @yield('header')
         @yield('slider')
         @yield('content')
@@ -130,6 +132,20 @@
   
 </style>
   <div id = "flake">&#10052;</div>
+  <script>jQuery(document).ready(function() {
+$('.home-noel').animate({
+bottom:'0px',
+},10000);
+setInterval(function(){   $('.tree-noel').css('top','inherit');
+
+$(".tree-noel").animate({
+opacity:'1'
+},800);
+},10000);
+});
+
+</script>
+
 <script>
 
 
