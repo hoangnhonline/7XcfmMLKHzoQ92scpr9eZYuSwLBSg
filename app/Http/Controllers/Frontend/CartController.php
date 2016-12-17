@@ -238,14 +238,16 @@ class CartController extends Controller
                             ->select('sp_hinh.image_url', 'san_pham.*')->get();
         $totalCanNang = 0;
         foreach( $arrProductInfo as $product ){
-            $totalCanNang += $product->can_nang;
+            $canNangCongKenh = ($product->chieu_dai * $product->chieu_cao * $product->chieu_rong)/6000;
+            $tmpCanNang =  $canNangCongKenh > $product->can_nang ? $canNangCongKenh : $product->can_nang;
+            $totalCanNang += $tmpCanNang;
         }
         $vangLaiArr = Session::get('vanglai');
         $city_id = $is_vanglai == 1 && isset($vangLaiArr['city_id']) ? $vangLaiArr['city_id'] : $customer->city_id;
-        $district_id = $is_vanglai == 1 && isset($vangLaiArr['district_id']) ? $vangLaiArr['district_id'] : $customer->district_id;
-        
+        $district_id = $is_vanglai == 1 && isset($vangLaiArr['district_id']) ? $vangLaiArr['district_id'] : $customer->district_id;    
+
         $phi_giao_hang = Helper::phiVanChuyen( $totalCanNang, $city_id, $district_id );
-        
+       
         $totalServiceFee = Session::get('totalServiceFee') ? Session::get('totalServiceFee') : 0;
         
         $seo = Helper::seo();
@@ -254,7 +256,7 @@ class CartController extends Controller
             $price = $product->is_sale ? $product->price_sale : $product->price;                
             $total += $getlistProduct[$product->id]*$price;                            
         }        
-        $totalAmount = $total + $totalServiceFee + $phi_giao_hang;
+        $totalAmount = $total + $totalServiceFee + $phi_giao_hang;        
         $phi_cod = Helper::calCod($totalAmount, $city_id);                
         
         return view('frontend.cart.shipping-step-3', compact('arrProductInfo', 'getlistProduct', 'customer', 'phi_giao_hang', 'totalServiceFee', 'seo', 'is_vanglai', 'phi_cod', 'totalAmount'));
@@ -389,6 +391,7 @@ class CartController extends Controller
                     $message->from('icho.vn@gmail.com', 'icho.vn');
                     $message->sender('icho.vn@gmail.com', 'icho.vn');
             });
+
         }
         
         return 'success';
