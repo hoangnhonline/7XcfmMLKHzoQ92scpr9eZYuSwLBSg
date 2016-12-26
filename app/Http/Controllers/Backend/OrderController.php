@@ -14,7 +14,7 @@ use DB;
 use Mail;
 class OrderController extends Controller
 {
-    protected $status = [
+    protected $list_status = [
         0 => 'Chờ xử lý',
         1 => 'Đang giao hàng',    
         3 => 'Đã hoàn thành',
