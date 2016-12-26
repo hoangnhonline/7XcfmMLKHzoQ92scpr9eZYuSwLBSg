@@ -119,6 +119,7 @@
         <ul class="treeview-menu">
           <li {{ \Request::route()->getName() == "settings.index" ? "class=active" : "" }}><a href="{{ route('settings.index') }}"><i class="fa fa-circle-o"></i> Thông tin iCho.vn</a></li>
           <li {{ \Request::route()->getName() == "info-seo.index" ? "class=active" : "" }}><a href="{{ route('info-seo.index') }}"><i class="fa fa-circle-o"></i> Cài đặt SEO</a></li>
+          <li {{ \Request::route()->getName() == "account.index" ? "class=active" : "" }}><a href="{{ route('account.index') }}"><i class="fa fa-circle-o"></i> Users</a></li>
           <li {{ \Request::route()->getName() == "loai-thuoc-tinh.index" ? "class=active" : "" }}><a href="{{ route('loai-thuoc-tinh.index') }}"><i class="fa fa-circle-o"></i> Loại thuộc tính</a></li>
           <li {{ \Request::route()->getName() == "thuoc-tinh.index" ? "class=active" : "" }}><a href="{{ route('thuoc-tinh.index') }}"><i class="fa fa-circle-o"></i> Thuộc tính</a></li>
           <li {{ \Request::route()->getName() == "color.index" ? "class=active" : "" }}><a href="{{ route('color.index') }}"><i class="fa fa-circle-o"></i> Màu sắc</a></li>      

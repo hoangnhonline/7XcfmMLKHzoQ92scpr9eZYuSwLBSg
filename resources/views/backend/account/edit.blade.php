@@ -52,7 +52,7 @@
                 <div class="form-group">
                   <label>Role</label>
                   <select class="form-control" name="role" id="role">                             
-                    <option value="1" {{ $detail->role == 1 ? "selected" : "" }}>Mod</option>                  
+                    <option value="1" {{ $detail->role == 1 ? "selected" : "" }}>Editor</option>                  
                     <option value="2" {{ $detail->role == 2 ? "selected" : "" }}>Admin</option>                    
                   </select>
                 </div>                            
