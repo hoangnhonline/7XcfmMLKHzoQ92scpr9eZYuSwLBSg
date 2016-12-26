@@ -14,15 +14,12 @@ use DB;
 use Mail;
 class OrderController extends Controller
 {
-    protected $list_status = [
+    protected $status = [
         0 => 'Chờ xử lý',
-        1 => 'Đang xử lý',
-        2 => 'Đang tạm ngừng',
+        1 => 'Đang giao hàng',    
         3 => 'Đã hoàn thành',
-        4 => 'Đã huỷ',
-        5 => 'Đã hoàn lại tiền',
-        6 => 'Thất bại'
-    ];
+        4 => 'Đã huỷ'    
+      ];
 
     public function index(Request $request){     
         $s['status'] = $status = isset($request->status) ? $request->status : -1;

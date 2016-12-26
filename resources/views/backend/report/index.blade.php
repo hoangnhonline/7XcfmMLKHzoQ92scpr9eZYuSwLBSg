@@ -164,7 +164,7 @@ $(function () {
             @endforeach]
 
         }, {
-            name: 'Đang xử lý',
+            name: 'Đang giao hàng',
             data: [ @foreach($dateArr as $date)
             {{ isset($data['dang_xu_ly'][$date]) ? $data['dang_xu_ly'][$date] : 0 }}, 
             @endforeach]
