@@ -510,8 +510,11 @@
             blockCSS: ' width: 100%;  background: #fff;  height: 65px;  bottom: 0; margin:0px;',
             startOpen: false,
             afterToggle: function(trigger, element, expanded) {
-              if(! expanded) { // The "Close" link was clicked
-                $('html, body').animate({scrollTop: $('.product-tab').offset().top}, {duration: 100});
+              if(! expanded) { // The "Close" link was clicked 
+                $('html, body').animate({scrollTop: $('.product-tab').offset().top}, {duration: 100});                               
+                $('#content-chitiet').css('height', '380px');
+              }else{
+                $('#content-chitiet').css('height', parseInt($('#content-chitiet').height()) + 100 + 'px');
               }
             }           
         });
@@ -527,8 +530,11 @@
             startOpen: false,
             afterToggle: function(trigger, element, expanded) {
               if(! expanded) { // The "Close" link was clicked
-                $('html, body').animate({scrollTop: $('.product-tab').offset().top}, {duration: 100});
-              }
+                $('html, body').animate({scrollTop: $('.product-tab').offset().top}, {duration: 100});                
+                $('#content-thongso').css('height', '380px');
+              }else{
+                $('#content-thongso').css('height', parseInt($('#content-thongso').height()) + 100 + 'px');  
+              }              
             }           
         });
     }
