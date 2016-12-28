@@ -6,7 +6,7 @@
         @else
         <h1 class="col-xs-12 col-sm-2 col-md-3 logo" style="margin-right: -15px;">
         @endif
-            <a href="{{ route('home') }}"><img alt="Logo icho.vn" src="{{ Helper::showImage($settingArr['logo']) }}"></a>
+            <a href="{{ route('home') }}"><img alt="Logo iCho.vn" src="{{ Helper::showImage($settingArr['logo']) }}"></a>
         @if(in_array(\Request::route()->getName(), ['chi-tiet', 'danh-muc-con', 'news-detail', 'news-list']))
         </div>
         @else
@@ -152,12 +152,12 @@
                           </div>
                           <div class="form-group">
                               <label class="checkbox-inline" style="padding-left:0px">
-                                <input type="checkbox"> Nhận các thông tin và chương trình khuyến mãi của icho.vn qua email.
+                                <input type="checkbox"> Nhận các thông tin và chương trình khuyến mãi của iCho.vn qua email.
                               </label>
                           </div>
                           <div class="form-group policy-group">
                             <div class="input-wrap">
-                              <p class="policy">Khi bạn nhấn Đăng ký, bạn  đã đồng ý thực hiện mọi giao dịch mua bán theo <a target="_blank" href="#">điều kiện sử dụng và chính sách của icho.vn</a>.</p>
+                              <p class="policy">Khi bạn nhấn Đăng ký, bạn  đã đồng ý thực hiện mọi giao dịch mua bán theo <a target="_blank" href="#">điều kiện sử dụng và chính sách của iCho.vn</a>.</p>
                             </div>
                           </div>
                           <div class="form-group last">

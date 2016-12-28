@@ -261,7 +261,8 @@ $vangLaiArr = Session::get('vanglai');
       $('.edit-address').click(function() {
         $('.address-form').show();
       });
-      @if(!isset($is_vanglai))
+      @if($is_vanglai == 0)
+
         @if(Session::has('new-register') || Session::has('register') ||
            !$customer->full_name ||
            !$customer->email ||
@@ -275,19 +276,17 @@ $vangLaiArr = Session::get('vanglai');
           $('#form-address').hide();
         @endif
       @else
-        @if($is_vanglai == 1)
-        @if(empty($vangLaiArr) ||
-           !$vangLaiArr['full_name'] ||
-           (!$vangLaiArr['email'] && !$vangLaiArr['phone']) ||
-           !$vangLaiArr['address'] ||     
-           !$vangLaiArr['district_id'] ||
-           !$vangLaiArr['city_id'] ||
-           !$vangLaiArr['ward_id']
-          )
-          $('.address-form').show();
-          $('#form-address').hide();
-        @endif
-        @endif
+          @if(empty($vangLaiArr) ||
+             !$vangLaiArr['full_name'] ||
+             (!$vangLaiArr['email'] && !$vangLaiArr['phone']) ||
+             !$vangLaiArr['address'] ||     
+             !$vangLaiArr['district_id'] ||
+             !$vangLaiArr['city_id'] ||
+             !$vangLaiArr['ward_id']
+            )
+            $('.address-form').show();
+            $('#form-address').hide();
+          @endif      
       @endif
 
       $('#btn-address').click(function() {

@@ -73,6 +73,14 @@ class AuthenticationController extends Controller
         Session::forget('username');
         Session::forget('avatar');
         Session::forget('vanglai');
+        Session::put('products', []);
+        Session::put('order_id', '');
+        Session::forget('is_vanglai');        
+        Session::forget('service_fee');
+        Session::forget('totalServiceFee');
+        Session::forget('event_id');
+        Session::forget('order_id');
+        Session::forget('new-register');
         return redirect()->route('home');
     }
 }
