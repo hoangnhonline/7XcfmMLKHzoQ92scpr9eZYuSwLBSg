@@ -10,6 +10,7 @@ use App\Helpers\Helper;
 use App\Models\Orders;
 use App\Models\OrderDetail;
 use App\Models\Customer;
+use App\Models\SanPham;
 use DB;
 use Mail;
 class OrderController extends Controller
@@ -83,9 +84,9 @@ class OrderController extends Controller
         $order_id    = $request->order_id;
         $customer_id = $request->customer_id;
 
-        Orders::where('id', $order_id)->update([
-            'status' => $status_id
-        ]);
+        //Orders::where('id', $order_id)->update([
+          //  'status' => $status_id
+        //]);
         //get customer to send mail
         $customer = Customer::find($customer_id);
         $order = Orders::find($order_id);
@@ -94,19 +95,28 @@ class OrderController extends Controller
 
         switch ($status_id) {
             case "1":
-                Mail::send('frontend.email.ready',
+                /*Mail::send('frontend.email.ready',
                     [
                         'customer' => $customer,
                         'order'    => $order
                     ],
                     function($message) use ($customer, $method_id) {
-                        $message->subject('Cảm ơn bạn đã đặt hàng tại Icho.vn');
+                        $message->subject('Cảm ơn bạn đã đặt hàng tại iCho.vn');
                         $message->to($customer->email);
-                        $message->from('icho.vn@gmail.com', 'icho.vn');
-                        $message->sender('icho.vn@gmail.com', 'icho.vn');
-                });
+                        $message->from('icho.vn@gmail.com', 'iCho.vn');
+                        $message->sender('icho.vn@gmail.com', 'iCho.vn');
+                });*/
                 break;
             case "3":
+                $orderDetail = OrderDetail::where('order_id', $order_id)->get();
+                foreach($orderDetail as $detail){
+                    $sp_id = $detail->sp_id;                    
+                    $so_luong = $detail->so_luong;
+                    $modelProduct = SanPham::find($sp_id);
+                    $so_luong_ton =  $modelProduct->so_luong_ton - $so_luong;
+                    $so_luong_ton  = $so_luong_ton > 0 ? $so_luong_ton : 0;
+                    $modelProduct->update(['so_luong_ton' => $so_luong_ton]);
+                }
                 /*Mail::send('frontend.email.thanks',
                     [],
                     function($message) use ($customer) {
@@ -115,10 +125,7 @@ class OrderController extends Controller
                         $message->from('icho.vn@gmail.com', 'icho.vn');
                         $message->sender('icho.vn@gmail.com', 'icho.vn');
                 });*/
-                break;
-            case "3":
-
-                break;
+                break;            
             case "4":
 
                 break;
