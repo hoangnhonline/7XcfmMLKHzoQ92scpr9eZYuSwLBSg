@@ -48,8 +48,8 @@ class SocialAuthController extends Controller
             Session::put('username', $customer->full_name);
             Session::put('avatar', $customer->image_url);
             Session::put('new-register', true);
-
-
+            Session::forget('vanglai');
+            Session::forget('is_vanglai');
             return redirect()->route('shipping-step-2');
 
 
@@ -58,6 +58,8 @@ class SocialAuthController extends Controller
             Session::put('userId', $getCustomer->id);
             Session::put('username', $getCustomer->full_name);
             Session::put('avatar', $getCustomer->image_url);
+            Session::forget('vanglai');
+            Session::forget('is_vanglai');
             return redirect()->route('shipping-step-2');
             // return redirect()->back();
         }

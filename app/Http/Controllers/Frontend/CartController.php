@@ -177,6 +177,7 @@ class CartController extends Controller
         $totalServiceFee = Session::get('totalServiceFee') ? Session::get('totalServiceFee') : 0;
         if(is_null($customer)) $customer = new Customer;
         $seo = Helper::seo();
+        
         return view('frontend.cart.shipping-step-2', compact('customer', 'listCity', 'seo', 'is_vanglai', 'getlistProduct', 'arrProductInfo', 'totalServiceFee'));
     }
 
@@ -420,6 +421,12 @@ class CartController extends Controller
         Session::put('order_id', '');
         Session::forget('is_vanglai');
         Session::forget('vanglai');
+        Session::forget('service_fee');
+        Session::forget('totalServiceFee');
+        Session::forget('event_id');
+        Session::forget('order_id');
+
+
         $seo = Helper::seo();
 
         return view('frontend.cart.success', compact('order_id', 'customer', 'arrDate', 'seo', 'is_vanglai', 'vangLaiArr'));
