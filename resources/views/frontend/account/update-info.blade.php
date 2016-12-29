@@ -11,20 +11,20 @@
         <div class="breadcrumb clearfix">
             <a class="home" href="{{ route('home') }}" title="Trở về trang chủ">Trang chủ</a>
             <span class="navigation-pipe">&nbsp;</span>
-            <a href="" title="Thông tin tài khoản">Cập nhật thông tin</a>
+            <a href="" title="Thông tin tài khoản">Thông tin tài khoản</a>
         </div>
         <!-- ./breadcrumb -->
         <div class="row">
             @include ('frontend.account.sidebar')
             <div class="center_column col-xs-12 col-sm-9" id="center_column">
                 <h1 class="page-heading">
-                    <span class="page-heading-title2">Cập nhật thông tin</span>
+                    <span class="page-heading-title2">Thông tin tài khoản</span>
                 </h1>
                 <div class="shipping-address-page">              
                 <div class="row row-style-2">
                   <div class="col-lg-12">
                     <div class="panel panel-default">
-                      <div class="panel-heading hidden-lg">Cập nhật địa chỉ giao hàng mới</div>
+                      
                       <div class="panel-body">
                         <form class="form-horizontal bv-form" role="form" id="address-info" novalidate>
                           <button type="submit" class="bv-hidden-submit" style="width: 0px; height: 0px;"></button>

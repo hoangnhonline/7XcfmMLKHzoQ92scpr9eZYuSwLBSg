@@ -10,7 +10,7 @@ use App\Models\OrderDetail;
 use App\Models\Customer;
 use App\Models\City;
 use App\Models\CustomerNotification;
-use Helper, File, Session, Auth;
+use Helper, File, Session, Auth, Hash;
 use Mail;
 
 class CustomerController extends Controller
@@ -59,7 +59,6 @@ class CustomerController extends Controller
           Session::flash('validate', 'Email đã tồn tại');
           return 0;
         }
-
 
         $data['password'] = bcrypt($data['password']);
         $data['status'] = 1;
@@ -129,6 +128,31 @@ class CustomerController extends Controller
         $customer = Customer::find($customer_id);
         $listCity = City::orderBy('display_order')->get();
         return view('frontend.account.update-info', compact('seo', 'customer', 'listCity'));
+    }
+    public function changePassword(){
+        if(!Session::get('userId')){
+            return redirect()->route('home');
+        }
+        $customerDetail = Customer::find(Session::get('userId'));
+        if($customerDetail->facebook_id > 0){
+            return redirect()->route('home');   
+        }
+        $seo['title'] = $seo['description'] = $seo['keywords'] = "Đổi mật khẩu";     
+        $customer_id = Session::get('userId');
+        $customer = Customer::find($customer_id);        
+        return view('frontend.account.change-password', compact('seo', 'customer'));
+    }
+    public function saveNewPassword(Request $request){        
+        if(!Session::get('userId')){
+            return redirect()->route('home');
+        }
+        $customerDetail = Customer::find(Session::get('userId'));
+        $old_pass = $request->old_pass;        
+        if(!password_verify($old_pass,$customerDetail->password)){
+            
+        }else{
+            echo "dung roi";
+        }
     }
     public function isEmailExist(Request $request)
     {
