@@ -48,6 +48,8 @@
                                       </div>
                                    </div>
                                    @endforeach
+                                   @else
+                                   <p style="margin: 20px;font-style: italic;">Không có dữ liệu</p>
                                    @endif
                                    <div class="list-pager">
                                    </div>
@@ -67,7 +69,9 @@
                                       </div>
                                    </div>
                                    @endforeach
-                            @endif
+                                  @else
+                                   <p style="margin: 20px;font-style: italic;">Không có dữ liệu</p>
+                                   @endif
                             </div>
                             </div>                            
                           </div>

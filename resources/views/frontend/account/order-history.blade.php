@@ -40,6 +40,7 @@
                             </tr>
                             </thead>
                             <tbody>
+                            @if($orders->count() > 0)
                             @foreach($orders as $order)
                                 <tr>
                                     <td style="text-align:center;"><a style="color:#ec1c24" href="{{ route('order-detail', $order->id)}}">{{ str_pad($order->id, 6, "0", STR_PAD_LEFT)}}</a></td>
@@ -58,6 +59,9 @@
                                     </td>
                                 </tr>
                             @endforeach
+                            @else
+                            <tr><td colspan="5"><p style="margin: 10px;font-style: italic;">Không có dữ liệu</p></td></tr>
+                            @endif
                             </tbody>
                         </table>
                     </div>

@@ -67,10 +67,8 @@
                             <h4 class="mb20">Phương thức thanh toán</h4>
                             @if($order->method_id == 1)
                             <p>Giao hàng và thu tiền tại nhà </p>                            
-                            @elseif($order->method_id == 2)
-                            <p>Chuyển khoản ngân hàng</p>
                             @else
-                            <p>Thanh toán tại cửa hàng</p>
+                            <p>Chuyển khoản ngân hàng</p>                           
                             @endif
                           </div>
                         </div>

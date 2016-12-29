@@ -72,9 +72,7 @@
                             <label for="district_id" class="col-lg-4 control-label visible-lg-block">Quận/Huyện</label>
                             <div class="col-lg-8 input-wrap has-feedback">
                               <select name="district_id" class="form-control address" id="district_id">
-                                <option value="0">Chọn Quận/Huyện</option>
-                                <option value="0">Chọn Phường/Xã</option>
-                                <option value="0">Chọn Phường/Xã</option>
+                                <option value="0">Chọn Quận/Huyện</option>                               
                               </select>
                                <small class="help-block" data-bv-validator="notEmpty" data-bv-for="district_id" data-bv-result="NOT_VALIDATED" style="display: none;">Vui lòng chọn Quận/Huyện</small></div>
                           </div>

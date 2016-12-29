@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Orders;
 use App\Models\OrderDetail;
 use App\Models\Customer;
+use App\Models\City;
 use App\Models\CustomerNotification;
 use Helper, File, Session, Auth;
 use Mail;
@@ -101,6 +102,9 @@ class CustomerController extends Controller
     }
 
     public function notification(){
+        if(!Session::get('userId')){
+            return redirect()->route('home');
+        }
         $notiSale = $notiOrder = [];
         $tmpArr = CustomerNotification::where(['customer_id' => Session::get('userId')])->get();
         if($tmpArr){
@@ -117,10 +121,14 @@ class CustomerController extends Controller
         return view('frontend.account.notification', compact('notiSale', 'notiOrder', 'seo'));
     }
     public function accountInfo(){
-       
+        if(!Session::get('userId')){
+            return redirect()->route('home');
+        }
         $seo['title'] = $seo['description'] = $seo['keywords'] = "Thông tin tài khoản";     
-
-        return view('frontend.account.update-info', compact('seo'));
+        $customer_id = Session::get('userId');
+        $customer = Customer::find($customer_id);
+        $listCity = City::orderBy('display_order')->get();
+        return view('frontend.account.update-info', compact('seo', 'customer', 'listCity'));
     }
     public function isEmailExist(Request $request)
     {

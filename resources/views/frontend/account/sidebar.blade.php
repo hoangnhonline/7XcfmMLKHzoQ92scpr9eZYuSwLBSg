@@ -7,6 +7,9 @@
               <div class="layered layered-category">
                   <div class="layered-content">
                       <ul class="tree-menu">
+                          <li {{ \Request::route()->getName() == "account-info" ? "class=active" : "" }}>
+                              <a href="{{ route('account-info') }}" title="Cập nhật thông tin"> Cập nhật thông tin</a>
+                          </li>
                           <li {{ \Request::route()->getName() == "order-history" || \Request::route()->getName() == "order-detail" ? "class=active" : "" }}>
                               <a href="{{ route('order-history') }}" title="Đơn hàng của tôi"> Đơn hàng của tôi</a>
                           </li>
