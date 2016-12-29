@@ -88,9 +88,9 @@
                           </tr>
                         </thead>
                         <tbody>
-                          @foreach($orderDetail as $rowOrder)
+                          @foreach($orderDetail as $rowOrder)                          
                           <tr>
-                            <td><a href="#" target="_blank" class="link">{{ Helper::getName($rowOrder->sp_id, "san_pham" ) }}</a> </td>
+                            <td><a href="{{ route('chi-tiet', $detailArr[$rowOrder->sp_id]->slug) }}" target="_blank" class="link">{{ $detailArr[$rowOrder->sp_id]->name }}</a> </td>
                            
                             <td><strong class="hidden-lg hidden-md">Giá: </strong>{{ number_format($rowOrder->don_gia) }}&nbsp;₫</td>
                             <td><strong class="hidden-lg hidden-md">Số lượng: </strong>{{ $rowOrder['so_luong'] }} </td>
@@ -111,6 +111,12 @@
                             <td colspan="3" class="text-right"><strong>Chi phí vận chuyển</strong></td>
                             <td><strong>{{ $order->phi_giao_hang > 0 ? number_format($order->phi_giao_hang)."&nbsp;₫" : "Miễn phí" }}</strong></td>
                           </tr>
+                          @if($order->phi_cod > 0)
+                          <tr>
+                            <td colspan="3" class="text-right"><strong>Phí COD</strong></td>
+                            <td><strong>{{ $order->phi_cod > 0 ? number_format($order->phi_cod)."&nbsp;₫" : "Miễn phí" }}</strong></td>
+                          </tr>
+                          @endif
                           <tr>
                             <td colspan="3" class="text-right"><strong>Tổng cộng</strong></td>
                             <td><strong>{{ number_format($order->tong_tien)}}&nbsp;₫</strong></td>

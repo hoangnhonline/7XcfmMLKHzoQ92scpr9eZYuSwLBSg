@@ -41,13 +41,16 @@ class OrderController extends Controller
     }else{
       $orderDetail = $order->order_detail;      
     }
+    foreach($orderDetail as $detail){
+      $detailArr[$detail->sp_id] = SanPham::find($detail->sp_id);
+    }
     $str_order_id = str_pad($order->id, 6, "0", STR_PAD_LEFT);
      $seo['title'] = $seo['description'] = $seo['keywords'] = "Chi tiết đơn hàng #".$str_order_id;
 
      $status = $this->status;
      $ngay_dat_hang = Carbon::parse($order->created_at)->format('d-m-Y H:i:s');
      $customer = Customer::find($customer_id);
-    return view('frontend.account.order-detail', compact('order', 'orderDetail', 'seo', 'str_order_id', 'status', 'ngay_dat_hang', 'customer'));
+    return view('frontend.account.order-detail', compact('order', 'orderDetail', 'seo', 'str_order_id', 'status', 'ngay_dat_hang', 'customer', 'detailArr'));
   }
   public function huy(Request $request){    
     $order_id = $request->id;

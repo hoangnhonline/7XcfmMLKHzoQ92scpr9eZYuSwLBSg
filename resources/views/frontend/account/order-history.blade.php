@@ -32,8 +32,8 @@
                                 <th>Ngày mua</th>
                                 <th>Sản phẩm</th>
                                 <th style="text-align:right">Tổng tiền</th>
-                                <th>
-                                    <span class="hidden-xs hidden-sm hidden-md">Trạng thái đơn hàng</span>
+                                <th style="text-align:center">
+                                    <span class="hidden-xs hidden-sm hidden-md" >Trạng thái đơn hàng</span>
                                     <span class="hidden-lg">Trạng thái</span>
                                 </th>
                                 <!--                            <th></th>-->
@@ -48,7 +48,7 @@
                                     <td>                                        
                                     @foreach($order->order_detail()->get() as $detail)
                                     
-                                    <p>{{ Helper::getName($detail->sp_id, 'san_pham') }}</p>
+                                    <p>{{ Helper::getName($detail->sp_id, 'san_pham') }} [ <span style="color:#ec1c24">{{ $detail->so_luong }}</span> ]</p>
                                     @endforeach
                                     </td>
                                     <td style="text-align:right">{{ number_format($order->tong_tien) }}&nbsp;₫</td>                                    
