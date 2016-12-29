@@ -23,8 +23,22 @@
                 <div class="shipping-address-page">              
                 <div class="row row-style-2">
                   <div class="col-lg-12">
-                    <div class="panel panel-default">                      
+                    <div class="panel panel-default">                           
                       <div class="panel-body">
+                        @if (session('error'))
+                          <div class="alert alert-danger">
+                              <ul>                                  
+                                <li>{{ session('error') }}</li>                                  
+                              </ul>
+                          </div>
+                      @endif 
+                      @if (session('success'))
+                          <div class="alert alert-success">
+                              <ul>                                  
+                                <li>{{ session('success') }}</li>                                  
+                              </ul>
+                          </div>
+                      @endif   
                         <form class="form-horizontal bv-form" role="form" id="changePasswordForm" method="POST" action="{{ route('save-new-password') }}">
                           
                           {{ csrf_field() }}

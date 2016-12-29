@@ -129,10 +129,11 @@ class CustomerController extends Controller
         $listCity = City::orderBy('display_order')->get();
         return view('frontend.account.update-info', compact('seo', 'customer', 'listCity'));
     }
-    public function changePassword(){
+    public function changePassword(Request $request){
         if(!Session::get('userId')){
             return redirect()->route('home');
         }
+        $errors = $request->errors ? $request->errors : [];
         $customerDetail = Customer::find(Session::get('userId'));
         if($customerDetail->facebook_id > 0){
             return redirect()->route('home');   
@@ -147,11 +148,24 @@ class CustomerController extends Controller
             return redirect()->route('home');
         }
         $customerDetail = Customer::find(Session::get('userId'));
-        $old_pass = $request->old_pass;        
-        if(!password_verify($old_pass,$customerDetail->password)){
-            
+        $old_pass = $request->old_pass;
+        $new_pass = $request->new_pass;
+        $re_new_pass = $request->re_new_pass;
+        $errors = [];
+        if(!password_verify($old_pass,$customerDetail->password)){             
+             $request->session()->flash('error', 'Mật khẩu cũ không đúng.');
+             return redirect()->route('change-password');
         }else{
-            echo "dung roi";
+            if($new_pass == $re_new_pass){
+                $password = bcrypt($new_pass);
+                $customerDetail->password = $password;
+                $customerDetail->save();
+                $request->session()->flash('success', 'Đổi mật khẩu thành công.');
+                return redirect()->route('change-password');
+            }else{
+                $request->session()->flash('error', 'Mật khẩu mới nhập lại không đúng.');
+                return redirect()->route('change-password');  
+            }
         }
     }
     public function isEmailExist(Request $request)
