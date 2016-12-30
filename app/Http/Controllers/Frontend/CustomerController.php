@@ -99,7 +99,13 @@ class CustomerController extends Controller
     }
     public function resetPassword(Request $request){
         $key = $request->key;
+        $detailCustomer = Customer::where('key_reset', $key)->first();
+        if(!$detailCustomer){
+            return redirect()->route('home');
+        }
+        $seo['title'] = $seo['description'] = $seo['keywords'] = "Cập nhật mật khẩu mới";
 
+        return view('frontend.account.reset-password', compact('seo', 'detailCustomer'));
     }
     public function registerAjax(Request $request)
     {
@@ -195,6 +201,27 @@ class CustomerController extends Controller
             }
         }
     }
+
+    public function saveResetPassword(Request $request){
+        $email = $request->email;
+        $customerDetail = Customer::where('email', $email)->first();        
+        $new_pass = $request->new_pass;
+        $re_new_pass = $request->re_new_pass;
+        $errors = [];
+        
+        if($new_pass == $re_new_pass){
+            $password = bcrypt($new_pass);
+            $customerDetail->password = $password;
+            $customerDetail->save();
+            $request->session()->flash('success', 'Đổi mật khẩu thành công.');
+            return redirect()->back();
+        }else{
+            $request->session()->flash('error', 'Mật khẩu mới nhập lại không đúng.');
+            return redirect()->back();  
+        }
+        
+    }
+
     public function isEmailExist(Request $request)
     {
        $email = $request->email;
