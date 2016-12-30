@@ -118,7 +118,39 @@
 
       </script>
       @endif  
+      <script type="text/javascript">
+        $(document).on('keypress', '#email_reset', function(e) {
+          if(e.which == 13) {
+              $('#btnForgotPass').click();
+          }
+      });
+        $(document).ready(function(){
 
+          $('#btnForgotPass').click(function(){
+            $.ajax({
+              url  : '{{ route('forget-password') }}',
+              type : 'POST',
+              data : {
+                email_reset : $('#email_reset').val()
+              },
+              beforeSend : function(){
+                $('#btnForgotPass').attr('disabled', 'disabled').html('<i class="fa fa-spin fa-spinner"></i>');
+              },
+              success : function(data){
+                $('#forgot_pass').removeClass('has-error').hide();
+                $('#error_reset').html('');        
+                $('#btnForgotPass').hide();        
+                $('#forgot_successful').show();                
+              },
+              error : function(res){
+                $('#forgot_pass').addClass('has-error');
+                $('#error_reset').html(res.responseJSON.email_reset[0]);                
+                $('#btnForgotPass').removeAttr('disabled').html('Gửi');
+              }
+            })
+          });
+        });
+      </script>
       @yield('javascript')      
       
        <!-- Hỗ trơ trực tuyến Facebook -->

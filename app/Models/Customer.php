@@ -42,7 +42,8 @@ class Customer extends Model  {
       'ward_id',
       'facebook_id',
       'address_type',
-      'image_url'
+      'image_url',
+      'key_reset'
     ];
 
     public function tinh()

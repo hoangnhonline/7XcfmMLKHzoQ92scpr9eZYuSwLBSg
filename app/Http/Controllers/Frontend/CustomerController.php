@@ -10,7 +10,7 @@ use App\Models\OrderDetail;
 use App\Models\Customer;
 use App\Models\City;
 use App\Models\CustomerNotification;
-use Helper, File, Session, Auth, Hash;
+use Helper, File, Session, Auth, Hash, Validator;
 use Mail;
 
 class CustomerController extends Controller
@@ -73,7 +73,34 @@ class CustomerController extends Controller
         Session::forget('is_vanglai');
         return "1";
     }
+    public function forgetPassword(Request $request){        
+        $this->validate($request, [
+            'email_reset' => 'bail|required|email|exists:customers,email',            
+        ],[
+            'email_reset.required' => 'Vui lòng nhập email.',
+            'email_reset.email' => 'Vui lòng nhập email hợp lệ.',
+            'email_reset.exists' => 'Email không tồn tại trong hệ thống iCho.vn.',
+        ]);
+        $email = $request->email_reset;
+        $key = md5($request->email_reset.time().'iCho.vn');
+        $customer = Customer::where('email', $email)->first();
+        $customer->key_reset = $key;
+        $customer->save();
+        Mail::send('frontend.account.forgot',
+            [
+                'key'  => $key
+            ],
+            function($message) use ($email) {
+                $message->subject('Yêu cầu thay đổi mật khẩu');
+                $message->to($email);
+                $message->from('icho.vn@gmail.com', 'iCho.vn');
+                $message->sender('icho.vn@gmail.com', 'iCho.vn');
+        });
+    }
+    public function resetPassword(Request $request){
+        $key = $request->key;
 
+    }
     public function registerAjax(Request $request)
     {
         $data = $request->all();
@@ -115,7 +142,7 @@ class CustomerController extends Controller
                 }                
             }
         }
-        $seo['title'] = $seo['description'] = $seo['keywords'] = "Thông báo của tôi";     
+        $seo['title'] = $seo['description'] = $seo['keywords'] = "Thông báo của tôi";
 
         return view('frontend.account.notification', compact('notiSale', 'notiOrder', 'seo'));
     }

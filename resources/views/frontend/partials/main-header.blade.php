@@ -172,7 +172,7 @@
                         </div>
 
                         <div class="col-sm-6">
-                          <p class="text" style="margin-bottom:5px">Đăng nhập vào icho.vn bằng facebook</p>
+                          <p class="text" style="margin-bottom:5px">Đăng nhập vào iCho.vn bằng facebook</p>
                           <div class="form-group last"> <a class="btn btn-block btn-social btn-facebook user-name-loginfb login-by-facebook-popup" title="Đăng nhập bằng Facebook" data-url="#"> <i class="fa fa-facebook"></i> <span>Đăng nhập bằng</span><span> Facebook</span> </a> </div>
                         </div>
                       </form>
@@ -190,20 +190,21 @@
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     <h4 class="modal-title" id="myModalLabel">Quên mật khẩu?</h4>
                     <div class="head">
-                      <p><span>Vui lòng gửi email. Chúng tôi sẽ gửi link khởi tạo mật khẩu mới qua email của bạn.</span></p>
+                      <p><span style="font-size:13px">Vui lòng gửi email. Chúng tôi sẽ gửi link khởi tạo mật khẩu mới qua email của bạn.</span></p>
                     </div>
                   </div>
-                  <div class="modal-body">
-
-                      <form method="POST" action="#" class="content" id="">
-                        <div id="forgot_successful"> <span></span> </div>
+                  <div class="modal-body" id="body_reset_pass">
+                      <div id="forgot_successful" class="alert alert-success" style="display:none">
+                        <span>Email đã được gửi, vui lòng kiểm tra mail để cập nhật thông tin!</span>
+                    </div>                        
                         <div class="form-group" id="forgot_pass">
-                          <input name="email" id="email" class="form-control" value="" required="required" placeholder="Nhập email" type="text">
-                          <span class="help-block"></span> </div>
-                        <div class="form-group last">
-                          <button type="button" id="reset_form_submit" class="btn btn-danger btn-block">Lấy lại mật khẩu</button>
+                          <input name="email_reset" id="email_reset" class="form-control" value="" required="required" placeholder="Nhập email" type="email">
+                          <small class="help-block" id="error_reset"></small>
                         </div>
-                      </form>
+                        <div class="form-group last">
+                          <button type="button" id="btnForgotPass" class="btn btn-danger btn-block">Gửi</button>
+                        </div>
+                      
 
                   </div><!-- end modal-body -->
                 </div>

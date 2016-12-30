@@ -56,7 +56,7 @@ class CartController extends Controller
         $arrProductInfo = SanPham::whereIn('san_pham.id', $listProductId)
                             ->leftJoin('sp_hinh', 'sp_hinh.id', '=','san_pham.thumbnail_id')
                             ->select('sp_hinh.image_url', 'san_pham.*')->get();
-        $seo = Helper::seo();
+        $seo['title'] = $seo['description'] = $seo['keywords'] = "Giỏ hàng";
         return view('frontend.cart.index', compact('arrProductInfo', 'getlistProduct', 'seo'));
     }
 
@@ -390,10 +390,9 @@ class CartController extends Controller
                 function($message) use ($emailArr, $order_id) {
                     $message->subject('Xác nhận đơn hàng hàng #'.$order_id);
                     $message->to($emailArr);
-                    $message->from('icho.vn@gmail.com', 'icho.vn');
-                    $message->sender('icho.vn@gmail.com', 'icho.vn');
+                    $message->from('icho.vn@gmail.com', 'iCho.vn');
+                    $message->sender('icho.vn@gmail.com', 'iCho.vn');
             });
-
         }
         
         return 'success';
