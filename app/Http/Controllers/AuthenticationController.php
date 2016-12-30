@@ -39,6 +39,7 @@ class AuthenticationController extends Controller
         } else {
         	Session::put('login', true);
             Session::put('userId', $customer->id);
+            Session::put('facebook_id', $customer->facebook_id);
             Session::put('username', $customer->full_name);
             Session::put('avatar', $customer->image_url);
             Session::forget('vanglai');
@@ -58,6 +59,7 @@ class AuthenticationController extends Controller
         } else {
             Session::put('login', true);
             Session::put('userId', $customer->id);
+            Session::put('facebook_id', $customer->facebook_id);
             Session::put('username', $customer->full_name);
             Session::put('avatar', $customer->image_url);
             return response()->json(['error' => 0]);
@@ -72,6 +74,7 @@ class AuthenticationController extends Controller
         Session::forget('userId');
         Session::forget('username');
         Session::forget('avatar');
+        Session::forget('facebook_id');
         Session::forget('vanglai');
         Session::put('products', []);
         Session::put('order_id', '');

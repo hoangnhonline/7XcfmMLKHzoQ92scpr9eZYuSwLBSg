@@ -74,6 +74,9 @@
                   <li> <a href="{{ route('account-info') }}" title="Thông tin tài khoản"> Thông tin tài khoản </a> </li>
                   <li> <a href="{{ route('order-history') }}" title="Đơn hàng của tôi"> Đơn hàng của tôi </a> </li>
                   <li> <a href="{{ route('notification') }}" title="Thông báo của tôi"> Thông báo của tôi </a> </li>
+                  @if(Session::get('facebook_id') == null)
+                  <li> <a href="{{ route('change-password') }}" title="Đổi mật khẩu"> Đổi mật khẩu</a> </li>
+                  @endif
                   <li> <a href="{{route('user-logout')}}" title="Thoát tài khoản"> Thoát tài khoản </a> </li>
                 </ul>
               </div>

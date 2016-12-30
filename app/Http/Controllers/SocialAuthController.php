@@ -45,6 +45,7 @@ class SocialAuthController extends Controller
             Session::flash('register', 'true');
             Session::put('login', true);
             Session::put('userId', $customer->id);
+            Session::put('facebook_id', $customer->facebook_id);
             Session::put('username', $customer->full_name);
             Session::put('avatar', $customer->image_url);
             Session::put('new-register', true);
@@ -57,6 +58,7 @@ class SocialAuthController extends Controller
             Session::put('login', true);
             Session::put('userId', $getCustomer->id);
             Session::put('username', $getCustomer->full_name);
+            Session::put('facebook_id', $customer->facebook_id);
             Session::put('avatar', $getCustomer->image_url);
             Session::forget('vanglai');
             Session::forget('is_vanglai');
@@ -141,6 +143,7 @@ class SocialAuthController extends Controller
             Session::flash('register', 'true');
             Session::put('login', true);
             Session::put('userId', $customer->id);
+            Session::put('facebook_id', $customer->facebook_id);
             Session::put('username', $customer->full_name);
             Session::put('new-register', true);
             Session::flash('new-register-fb', 'true');
@@ -158,6 +161,7 @@ class SocialAuthController extends Controller
 
             Session::put('login', true);
             Session::put('userId', $getCustomer->id);
+            Session::put('facebook_id', $getCustomer->facebook_id);
             Session::put('username', $getCustomer->full_name);
             Session::put('avatar', $getCustomer->image_url);
             

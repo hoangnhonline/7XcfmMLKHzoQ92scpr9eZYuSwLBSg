@@ -16,6 +16,11 @@
                           <li {{ \Request::route()->getName() == "notification" ? "class=active" : "" }}>
                               <a href="{{ route('notification') }}" title="Thông báo của tôi"> Thông báo của tôi</a>
                           </li>
+                          @if(Session::get('facebook_id') == null)
+                          <li {{ \Request::route()->getName() == "change-password" ? "class=active" : "" }}>
+                              <a href="{{ route('change-password') }}" title="Đổi mật khẩu"> Đổi mật khẩu</a>
+                          </li>
+                          @endif
                           <li>
                               <a href="{{ route('user-logout') }}" title="Thoát tài khoản">Thoát tài khoản </a>
                           </li>

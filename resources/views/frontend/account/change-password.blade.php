@@ -45,21 +45,21 @@
                           <div class="form-group row">
                             <label for="old_pass" class="col-lg-3 control-label visible-lg-block">Mật khẩu cũ</label>
                             <div class="col-lg-9 input-wrap has-feedback">
-                                <input type="text" name="old_pass" class="form-control address" id="old_pass" value="" placeholder="Nhập mật khẩu cũ" data-bv-field="old_pass">
+                                <input type="password" name="old_pass" class="form-control address" id="old_pass" value="" placeholder="Nhập mật khẩu cũ" data-bv-field="old_pass" maxlength="30">
                                 <small class="help-block" data-bv-validator="notEmpty" data-bv-for="old_pass" data-bv-result="NOT_VALIDATED" style="display: none;">Vui lòng nhập mật khẩu cũ.</small>
                            </div>
                           </div>
                           <div class="form-group row">
                             <label for="new_pass" class="col-lg-3 control-label visible-lg-block">Mật khẩu mới</label>
                             <div class="col-lg-9 input-wrap has-feedback">
-                                <input type="text" name="new_pass" class="form-control address" id="new_pass" value="" placeholder="Nhập mật khẩu mới" data-bv-field="new_pass">
+                                <input type="password" name="new_pass" class="form-control address" id="new_pass" value="" placeholder="Nhập mật khẩu mới" data-bv-field="new_pass" maxlength="30">
                                 <small class="help-block" data-bv-validator="notEmpty" data-bv-for="new_pass" data-bv-result="NOT_VALIDATED" style="display: none;">Vui lòng nhập mật khẩu mới từ 6 đến 30 ký tự.</small>
                            </div>
                           </div> 
                           <div class="form-group row">
                             <label for="re_new_pass" class="col-lg-3 control-label visible-lg-block">Nhập lại</label>
                             <div class="col-lg-9 input-wrap has-feedback">
-                                <input type="text" name="re_new_pass" class="form-control address" id="re_new_pass" value="" placeholder="Nhập lại mật khẩu mới" data-bv-field="re_new_pass">
+                                <input type="password" name="re_new_pass" class="form-control address" id="re_new_pass" value="" placeholder="Nhập lại mật khẩu mới" data-bv-field="re_new_pass" maxlength="30">
                                 <small class="help-block" data-bv-validator="notEmpty" data-bv-for="re_new_pass" data-bv-result="NOT_VALIDATED" style="display: none;">Nhập lại mật khẩu mới từ 6 đến 30 ký tự và trùng khớp với mật khẩu vừa nhập.</small>
                            </div>
                           </div>                        
