@@ -2640,6 +2640,8 @@ span.notify-right{
 .product-list li .content_price{
     width: 100%;
     height: 25px;
+    text-align: right;
+    padding-top: 7px;
 }
 
 .product-list li .product-price{
@@ -2744,7 +2746,10 @@ span.notify-right{
 }
 
 .product-list li .compare-txt{
-  color: #0D6CB0;
+  color: #0D6CB0;  
+  display: block;
+  clear:both;
+  float: right
 }
 .product-list li .compare-txt:hover{
   text-decoration: underline;
@@ -2763,7 +2768,7 @@ span.notify-right{
   border-radius: 2px;
   background: #f89406;
   position: absolute; bottom: 8px;
-  right: 5px;
+  left: 5px;
   background: -webkit-gradient(linear,0% 0%,0% 100%,from(#f76b1c),to(#f89406));
   background: -webkit-linear-gradient(top,#f89406,#f76b1c);
   background: -moz-linear-gradient(top,#f89406,#f76b1c);

@@ -14,7 +14,7 @@
 
 	<script type="text/javascript">
 		$(document).ready(function() {
-      $('.add_to_cart_button, .btnorder, .btnMuaDetail').click(function() {
+      $('.btnMuaDetail').click(function() {
         var product_id = $(this).attr('product-id');
         add_product_to_cart(product_id);
       });

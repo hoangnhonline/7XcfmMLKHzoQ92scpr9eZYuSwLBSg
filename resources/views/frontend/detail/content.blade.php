@@ -150,7 +150,7 @@
                                     <a href="{{ route('chi-tiet', $productArr[$sp_id]->slug )}}" title="{{ $productArr[$sp_id]->name }} {{ $productArr[$sp_id]->name_extend }}">{{ $productArr[$sp_id]->name }} {{ $productArr[$sp_id]->name_extend }}</a>
                                 </h3>
                                 <p class="product-price">{{ $productArr[$sp_id]->is_sale == 1 ? number_format($productArr[$sp_id]->price_sale) : number_format($productArr[$sp_id]->price)}}đ</p>
-                                <button type="button" class="add_to_cart_button" product-id="{{ $sp_id }}">Mua</button>
+                                <button type="button" class="add_to_cart_button" href="{{ route('chi-tiet', $productArr[$sp_id]->slug )}}">Mua</button>
                             </div>
                         </li>
                         @endif
@@ -290,7 +290,7 @@
                                 <?php $str_sosanh = $detail->id.'-'.$sp_id; ?>
                                 <a href="{{ route('so-sanh', ['id' => $str_sosanh]) }}" class="compare-txt"> So sánh chi tiết</a>
                                 
-                                <a rel="nofollow" href="javascript:void(0)" class="add_to_cart_button" product-id="{{ $sp_id }}">Mua</a>
+                                <a rel="nofollow" href="javascript:void(0)" class="add_to_cart_button" href="{{ route('chi-tiet', $productArr[$sp_id]->slug )}}">Mua</a>
                             </div>
                         </div>
                     </li> 
@@ -342,7 +342,7 @@
                                 <?php $str_sosanh = $detail->id.'-'.$product->sp_id; ?>
                                 <a href="{{ route('so-sanh', ['id' => $str_sosanh]) }}" class="compare-txt"> So sánh chi tiết</a>
                                 @endif
-                                <a rel="nofollow" href="javascript:void(0)" class="add_to_cart_button" product-id="{{ $product->sp_id }}">Mua</a>
+                                <a rel="nofollow" href="javascript:void(0)" class="add_to_cart_button" href="{{ route('chi-tiet', $product->slug )}}">Mua</a>
                             </div>
                         </div>
                     </li> 

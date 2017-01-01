@@ -134,7 +134,7 @@
                         <div class="all-new">
                             <a class="btn btn-default btn-gradient" href="{{ route('home') }}" style="margin-bottom:2px"><i class="fa fa-angle-left"></i> Tiếp tục mua sắm</a>
                             @if(!empty(Session::get('products')))
-                            <a class="btn btn-default btn-gradient" style="margin-bottom:2px" onclick="return confirm('Xóa tất cả sản phẩm trong giỏ hàng?');" href="{{ route('xoa-gio-hang') }}"><i class="fa fa-trash-o"></i> Xóa toàn bộ giỏ hàng</a>
+                            <a class="btn btn-default btn-gradient" style="margin-bottom:2px" onclick="return confirm('Xóa tất cả sản phẩm trong giỏ hàng?');" href="{{ route('xoa-gio-hang') }}"><i class="fa fa-trash-o"></i> Xóa toàn bộ</a>
                             @endif
                         </div>
                     </div>
@@ -151,12 +151,14 @@
                       <div class="panel-body">
                         <p class="total">Tổng cộng: <span>{{ number_format($total) }}&nbsp;₫</span></p>
                         <p class="total2">Thành tiền: <span>{{ number_format($total) }}&nbsp;₫ </span></p>
+                        @if($total > 0)
                         <p class="text-right"> <i>(Đã bao gồm VAT)</i> </p>
+                        @endif
                       </div>
                     </div>
                    @if( $arrProductInfo->count() > 0)                    
                     
-                    <button type="button" class="btn btn-large btn-block btn-default btn-checkout"> TIẾN HÀNH ĐẶT HÀNG </button>
+                    <button type="button" class="btn btn-large btn-block btn-default btn-checkout"> ĐẶT HÀNG </button>
                     @endif                    
                   </div>
                   <div class="visible-xs-block">
@@ -164,13 +166,15 @@
                       <div class="panel-body">
                         <p class="total">Tổng cộng: <span>{{ number_format($total) }}&nbsp;₫</span></p>
                         <p class="total2">Thành tiền: <span>{{ number_format($total) }}&nbsp;₫ </span></p>
+                        @if( $total > 0)  
                         <p class="text-right"> <i>(Đã bao gồm VAT)</i> </p>
+                        @endif
                       </div>
                     </div>
                   </div>
                   @if( $arrProductInfo->count() > 0)
                   <div class="visible-xs-block">
-                    <button type="button" class="btn btn-large btn-block btn-default btn-checkout"> TIẾN HÀNH ĐẶT HÀNG </button>
+                    <button type="button" class="btn btn-large btn-block btn-default btn-checkout"> ĐẶT HÀNG </button>
                   </div>
                   @endif
                 </div>

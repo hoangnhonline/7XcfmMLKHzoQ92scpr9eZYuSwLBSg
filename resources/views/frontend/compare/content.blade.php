@@ -69,7 +69,7 @@
                 <li class="cp-cell cp-cell-1"><span class="cp-social">Thông tin này có ích với bạn chứ ?</span></li>
                   <?php $count = 2; ?>
                   @foreach($productArr as $sp_id => $product )
-                   <li style="width: 27%;" class="cp-cell cp-cell-{{ $count }}"><a href="javascript:void(0)" product-id="{{ $sp_id }}" class="compare-buy-btn">Mua  {{ $product->name }}</a></li>
+                   <li style="width: 27%;" class="cp-cell cp-cell-{{ $count }}"><a href="{{ route('chi-tiet', $product->slug) }}" class="compare-buy-btn">Mua  {{ $product->name }}</a></li>
                   <?php $count++; ?>
                   @endforeach
               </ul>

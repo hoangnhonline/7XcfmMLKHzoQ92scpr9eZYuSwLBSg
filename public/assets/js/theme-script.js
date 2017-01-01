@@ -806,12 +806,7 @@ $(document).ready(function() {
 
       }
     }, {scope: 'public_profile,email'});
-  });
-  //mua hang
-    $('.add_to_cart_button, .btnorder, .compare-buy-btn').click(function() {
-        var product_id = $(this).attr('product-id');
-        add_product_to_cart(product_id);
-    });
+  });  
 });
 
 

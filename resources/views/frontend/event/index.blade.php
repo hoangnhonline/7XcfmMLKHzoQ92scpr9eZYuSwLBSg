@@ -60,30 +60,4 @@
 
 <script type="text/javascript" src="{{ URL::asset('assets/lib/countdown/jquery.plugin.js') }}"></script>
 <script type="text/javascript" src="{{ URL::asset('assets/lib/countdown/jquery.countdown.js') }}"></script>
-
-  <script type="text/javascript">
-    $(document).ready(function() {
-      $('.add_to_cart_button, .btnorder').click(function() {
-        var product_id = $(this).attr('product-id');
-        add_product_to_cart(product_id);
-      });
-
-      function add_product_to_cart(product_id) {
-        $.ajax({
-          url: "{{route('them-sanpham')}}",
-          method: "POST",
-          data : {
-            id: product_id
-          },
-          success : function(data){
-            location.href = '{{route("gio-hang")}}';
-          },
-          error : function(e) {
-            alert( JSON.stringify(e));
-          }
-        });
-      }
-
-    });
-  </script>
 @endsection

@@ -84,15 +84,14 @@
                                 <i class="fa fa-bars"></i>
                             </button>
                             <a class="navbar-brand" href="#">MENU</a>
-                        </div>
-                        <?php //var_dump($lap_rap);?>
+                        </div>                        
                         <div id="navbar" class="navbar-collapse collapse">                        
                             <ul class="nav navbar-nav">
                                 <li class="logo-on-menu" id="small_logo" style="display:none;"><a href="{{ route('home') }}"><img class="lazy" data-original="{{ URL::asset('assets/images/logo.png') }}"></a></li>   
                                 <li {{ \Request::route()->getName() == 'home' ? "class=active" : "" }}><a href="{{ route('home') }}">Trang chủ</a></li>
                                 <li {{ \Request::route()->getName() == 'chuong-trinh-khuyen-mai' || (isset($is_km) && $is_km == 1) ? "class=active" : "" }}><a href="{{ route('chuong-trinh-khuyen-mai') }}">Khuyến mãi</a></li>                                
                                 <li {{ (\Request::route()->getName() == 'news-list' && Request::path() == 'tin-tuc') || (isset($is_news) && $is_news == 1)? "class=active" : "" }}><a href="{{ route('news-list', 'tin-tuc') }}">Tin tức</a></li>
-                                <li {{ \Request::route()->getName() == 'lap-rap' ? "class=active" : "" }}><a href="{{ route('lap-rap') }}">Ráp máy tính online</a></li>
+                                <!--<li {{ \Request::route()->getName() == 'lap-rap' ? "class=active" : "" }}><a href="{{ route('lap-rap') }}">Ráp máy tính online</a></li>-->
                                
                                 <li {{ (\Request::route()->getName() == 'news-list' && Request::path() == 'kinh-nghiem-hay') || (isset($is_kn) && $is_kn == 1)? "class=active" : "" }}><a href="{{ route('news-list', 'kinh-nghiem-hay') }}" >Kinh nghiệm hay</a></li>                                
                                 <li {{ \Request::route()->getName() == 'contact' ? "class=active" : "" }}><a href="{{ route('contact') }}">Liên hệ</a></li>

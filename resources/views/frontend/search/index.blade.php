@@ -92,7 +92,7 @@
                                          ?></span>
                                         @endforeach
                                         <div class="btn-action">
-                                          <a class="btnorder" product-id={{$product['id']}}>Đặt hàng</a>
+                                          <a class="btnorder" href="{{ route('chi-tiet', $product['slug']) }}">Đặt hàng</a>
                                           <a class="viewdetail" href="{{ route('chi-tiet', $product['slug']) }}">Chi tiết</a>
                                         </div>
                                     </figure>
@@ -106,7 +106,7 @@
                                         <span class="price old-price">{{ number_format($product['price']) }}</span>
                                         @endif
                                     </div>
-                                    <a class="add_to_cart_button" product-id={{$product['id']}}>Mua</a>
+                                    <a class="add_to_cart_button" href="{{ route('chi-tiet', $product['slug']) }}">Mua</a>
                                 </div>
                             </div>
                         </li>

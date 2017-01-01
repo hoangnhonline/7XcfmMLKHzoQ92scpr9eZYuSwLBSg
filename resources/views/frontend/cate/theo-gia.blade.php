@@ -77,7 +77,7 @@
                                              ?></span>
                                             @endforeach
                                             <div class="btn-action">
-                                              <a class="btnorder" product-id={{$product['id']}}>Đặt hàng</a>
+                                              <a class="btnorder" href="{{ route('chi-tiet', $product['slug']) }}">Đặt hàng</a>
                                               <a class="viewdetail" href="{{ route('chi-tiet', $product['slug']) }}">Chi tiết</a>
                                             </div>
                                         </figure>
@@ -98,7 +98,7 @@
                                         @endif
                                     </div>
                                     @if($product['price'] > 0)
-                                    <a class="add_to_cart_button" product-id={{$product['id']}}>Mua</a>
+                                    <a class="add_to_cart_button" href="{{ route('chi-tiet', $product['slug']) }}">Mua</a>
                                     @endif
                                 </div>
                             </div>
