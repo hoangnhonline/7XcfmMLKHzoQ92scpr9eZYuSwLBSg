@@ -237,10 +237,9 @@
                             ?>
                             @endforeach
                           </div>
-                          <p class="total"> Tạm Tính: <span>{{ number_format($total) }}&nbsp;₫</span> </p>
-                          <p class="shipping"> Phí dịch vụ: <span>{{ number_format($totalServiceFee) }} &nbsp;₫ </span> </p>
+                          <p class="total"> Tạm Tính: <span>{{ number_format($total) }}&nbsp;₫</span> </p>                          
                           <p class="shipping"> Phí vận chuyển: <span>Chưa có</span> </p>
-                          <p class="total2"> Thành tiền: <span>{{number_format( $total + $totalServiceFee )}}&nbsp;₫ </span> </p>
+                          <p class="total2"> Thành tiền: <span>{{number_format( $total )}}&nbsp;₫ </span> </p>
                           <p class="text-right"> <i>(Đã bao gồm VAT)</i> </p>
                         </div>
                       </div>

@@ -83,11 +83,7 @@
                                 <div class="form-action">
                                     @if($detail->price > 0)
                                     <div class="button-group">
-                                        <button type="button" class="btn-add-cart-on-product-detail btnMuaDetail" product-id="{{ $detail->id }}">MUA NGAY
-                                        @if($rsLoai->phi_dich_vu > 0)
-                                        <span>(Giá sản phẩm không bao gồm chi phí lắp đặt)</span>
-                                        @endif
-                                        </button>
+                                        <button type="button" class="btn-add-cart-on-product-detail btnMuaDetail" product-id="{{ $detail->id }}">MUA NGAY</button>
                                     </div>
                                     @else
                                     <div class="button-group">

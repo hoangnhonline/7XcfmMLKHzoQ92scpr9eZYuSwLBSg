@@ -99,14 +99,8 @@
                           </tr>
                           @endforeach                         
                         </tbody>
-                        <tfoot> 
-                        @if($rowOrder->tong_dich_vu >0)
-                          <tr>
-                            <td colspan="3" class="text-right"><strong>Chi phí dịch vụ</strong> : {{ number_format($rowOrder->so_dich_vu)}} x {{ number_format($rowOrder->don_gia_dich_vu)}}&nbsp;₫
-                            </td>
-                            <td><strong>{{ number_format($rowOrder->tong_dich_vu) }}&nbsp;₫</strong></td>
-                          </tr>  
-                          @endif                       
+                        <tfoot>
+                                                
                           <tr>
                             <td colspan="3" class="text-right"><strong>Chi phí vận chuyển</strong></td>
                             <td><strong>{{ $order->phi_giao_hang > 0 ? number_format($order->phi_giao_hang)."&nbsp;₫" : "Miễn phí" }}</strong></td>

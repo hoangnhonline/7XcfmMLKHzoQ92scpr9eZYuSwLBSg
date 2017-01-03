@@ -38,9 +38,7 @@
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                   @if( $arrProductInfo->count() > 0)
                   @foreach($arrProductInfo as $product)
-                  <?php 
-                  $phi_dich_vu = DB::table('loai_sp')->where('id', $product->loai_id)->first()->phi_dich_vu;
-                  ?>
+                  
                   <?php $price = $product->is_sale ? $product->price_sale : $product->price; ?>
                   <div class="row shopping-cart-item">
                     <div class="col-lg-3 col-md-2 col-xs-3">
@@ -76,22 +74,7 @@
                         </div>
                       </div>
                       <p class="action">
-                        <a class="btn btn-link btn-item-delete" data-product-id="{{ $product->id }}"> Xóa </a>
-                        @if($phi_dich_vu > 0)
-                         <p class="mb05"><label class="checkbox-inline"><input type="checkbox" name="chon_dich_vu[{{ $product->id }}]" value="1"> Giao hàng, lắp đặt và hướng dẫn sử dụng</label></p>
-                        <p style="margin-left: 26px;">
-                        <input type="hidden" name="phi_dich_vu[{{$product->id}}]" value="{{ $phi_dich_vu }}">
-                          <select name="so_dich_vu[{{$product->id}}]" class="form-control quantity-product" style="display:inline-block; padding: 3px; height: 25px; width: 50px;">
-                            @for($i = 1; $i <= $getlistProduct[$product->id]; $i++ )
-                            <option value="{{$i}}"              
-                            > {{$i}}
-                              @if($i == 50) + @endif
-                            </option>
-                            @endfor
-                          </select>
-                          <span>x</span>
-                          <label><strong class="text-bold">{{ number_format($phi_dich_vu) }} đ</strong></label>@endif                          
-                        </p>
+                        <a class="btn btn-link btn-item-delete" data-product-id="{{ $product->id }}"> Xóa </a>                        
                       </p>
                     </div>
                     <div class="col-lg-1 col-md-1 visible-md-block visible-lg-block">

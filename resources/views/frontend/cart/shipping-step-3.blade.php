@@ -174,10 +174,9 @@ $vangLaiArr  = Session::get('vanglai');
                             </div>                            
                         	@endforeach
                           </div>                                                    
-                          <p class="shipping"> Phí dịch vụ: <span>{{ number_format( $totalServiceFee ) }}&nbsp;₫</span> </p>
                           <p class="shipping" style="border-bottom: 1px solid #c9c9c9;padding-bottom:5px"> Phí vận chuyển: <span id="phi_giao">{{ number_format( $phi_giao_hang ) }}&nbsp;₫</span> </p>                        
                           <input type="hidden" id="phiCod" value="{{ $phi_cod }}">
-                          <p class="total"> Tạm Tính: <span id="total_amount" style="font-weight:bold">{{ number_format( $totalAmount) }}&nbsp;₫ </span> </p>
+                          <p class="total"> Tạm tính: <span id="total_amount" style="font-weight:bold">{{ number_format( $totalAmount) }}&nbsp;₫ </span> </p>
                           <p class="shipping" id="p_phi_cod" style="display:none"> Phí COD: <span >{{ number_format( $phi_cod ) }}&nbsp;₫</span> </p>
                           
                           <p class="total2" id="have_cod" id="p_phi_cod" style="display:none"> Thành tiền: <span id="total_amount">{{ number_format( $totalAmount + $phi_cod) }}&nbsp;₫ </span> </p>

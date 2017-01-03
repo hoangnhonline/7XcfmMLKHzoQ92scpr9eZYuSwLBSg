@@ -92,10 +92,11 @@ class CartController extends Controller
     public function shippingStep1(Request $request)
     {
         $getlistProduct = Session::get('products');
-        $chon_dich_vu = $request->chon_dich_vu;
+        //$chon_dich_vu = $request->chon_dich_vu;
         $so_dich_vu = $request->so_dich_vu;
         $phi_dich_vu = $request->phi_dich_vu;        
         $listProductId = array_keys($getlistProduct);
+        /*
         $service_fee = [];
         $totalServiceFee = 0;
         foreach($listProductId as $product_id){
@@ -106,9 +107,9 @@ class CartController extends Controller
                 $totalServiceFee+= $service_fee[$product_id]['fee'];
             }
         }
-
-        Session::set('service_fee', $service_fee);
-        Session::set('totalServiceFee', $totalServiceFee);
+        */
+        //Session::set('service_fee', $service_fee);
+        //Session::set('totalServiceFee', $totalServiceFee);
         
         if(Session::get('login') || Session::get('new-register')) {
             return redirect()->route('shipping-step-2');
@@ -117,11 +118,14 @@ class CartController extends Controller
         if(empty($getlistProduct)) {
             return redirect()->route('home');
         }
-        $chon_dich_vu = $request->chon_dich_vu;
+        
+        $listProductId = array_keys($getlistProduct);
+
+        /*$chon_dich_vu = $request->chon_dich_vu;
         $so_dich_vu = $request->so_dich_vu;
         $phi_dich_vu = $request->phi_dich_vu;
 
-        $listProductId = array_keys($getlistProduct);
+        
         $service_fee = [];
         $totalServiceFee = 0;
         foreach($listProductId as $product_id){
@@ -132,14 +136,14 @@ class CartController extends Controller
                 $totalServiceFee+= $service_fee[$product_id]['fee'];
             }
         }
-
+        */
         $arrProductInfo = SanPham::whereIn('san_pham.id', $listProductId)
                             ->leftJoin('sp_hinh', 'sp_hinh.id', '=','san_pham.thumbnail_id')
                             ->select('sp_hinh.image_url', 'san_pham.*')->get();
 
-        $service_fee = Session::get('service_fee') ? Session::get('service_fee') : 0;
+        //$service_fee = Session::get('service_fee') ? Session::get('service_fee') : 0;
         $seo = Helper::seo();
-        return view('frontend.cart.shipping-step-1', compact('arrProductInfo', 'getlistProduct', 'service_fee', 'seo', 'totalServiceFee'));
+        return view('frontend.cart.shipping-step-1', compact('arrProductInfo', 'getlistProduct' , 'seo' ));
     }
 
     public function shippingStep2(Request $request)
@@ -174,11 +178,12 @@ class CartController extends Controller
         //     return redirect()->route('cap-nhat-thong-tin');
         // }
         // end
-        $totalServiceFee = Session::get('totalServiceFee') ? Session::get('totalServiceFee') : 0;
+        //$totalServiceFee = Session::get('totalServiceFee') ? Session::get('totalServiceFee') : 0;
+        $totalServiceFee = 0;
         if(is_null($customer)) $customer = new Customer;
         $seo = Helper::seo();
         
-        return view('frontend.cart.shipping-step-2', compact('customer', 'listCity', 'seo', 'is_vanglai', 'getlistProduct', 'arrProductInfo', 'totalServiceFee'));
+        return view('frontend.cart.shipping-step-2', compact('customer', 'listCity', 'seo', 'is_vanglai', 'getlistProduct', 'arrProductInfo'));
     }
 
     public function updateUserInformation(Request $request)
@@ -249,7 +254,8 @@ class CartController extends Controller
 
         $phi_giao_hang = Helper::phiVanChuyen( $totalCanNang, $city_id, $district_id );
        
-        $totalServiceFee = Session::get('totalServiceFee') ? Session::get('totalServiceFee') : 0;
+        //$totalServiceFee = Session::get('totalServiceFee') ? Session::get('totalServiceFee') : 0;
+        $totalServiceFee = 0;
         
         $seo = Helper::seo();
         $total = 0;
@@ -260,7 +266,7 @@ class CartController extends Controller
         $totalAmount = $total + $totalServiceFee + $phi_giao_hang;        
         $phi_cod = Helper::calCod($totalAmount, $city_id);                
         
-        return view('frontend.cart.shipping-step-3', compact('arrProductInfo', 'getlistProduct', 'customer', 'phi_giao_hang', 'totalServiceFee', 'seo', 'is_vanglai', 'phi_cod', 'totalAmount'));
+        return view('frontend.cart.shipping-step-3', compact('arrProductInfo', 'getlistProduct', 'customer', 'phi_giao_hang', 'seo', 'is_vanglai', 'phi_cod', 'totalAmount'));
     }
 
     public function order(Request $request)
@@ -304,8 +310,8 @@ class CartController extends Controller
 
         $order['phi_giao_hang'] = (int) $request->phi_giao_hang;
         $order['phi_cod'] = (int) $request->phi_cod;
-        $order['service_fee'] = Session::get('totalServiceFee') ? Session::get('totalServiceFee') : 0;
-
+        //$order['service_fee'] = Session::get('totalServiceFee') ? Session::get('totalServiceFee') : 0;
+        $order['service_fee'] = 0;
         foreach ($arrProductInfo as $product) {
             $price = $product->is_sale ? $product->price_sale : $product->price;        
             $order['tong_tien'] += $price * $getlistProduct[$product->id];
@@ -325,7 +331,7 @@ class CartController extends Controller
         Session::put('order_id', $order_id);
 
         $orderDetail['order_id'] = $order_id;
-        $service_fee = Session::get('service_fee');
+        //$service_fee = Session::get('service_fee');
        
         foreach ($arrProductInfo as $product) {            
             # code...
@@ -333,9 +339,12 @@ class CartController extends Controller
             $orderDetail['so_luong']     = $getlistProduct[$product->id];
             $orderDetail['don_gia']      = $product->price;
             $orderDetail['tong_tien']    = $getlistProduct[$product->id]*$product->price;
-            $orderDetail['so_dich_vu']    = isset($service_fee[$product->id]) ? $service_fee[$product->id]['so_luong'] : 0;
-            $orderDetail['don_gia_dich_vu']    = isset($service_fee[$product->id]) ? $service_fee[$product->id]['don_gia_dich_vu'] : 0;
-            $orderDetail['tong_dich_vu']    = isset($service_fee[$product->id]) ? $service_fee[$product->id]['fee'] : 0;
+            //$orderDetail['so_dich_vu']    = isset($service_fee[$product->id]) ? $service_fee[$product->id]['so_luong'] : 0;
+            $orderDetail['so_dich_vu']    =  0;
+            //$orderDetail['don_gia_dich_vu']    = isset($service_fee[$product->id]) ? $service_fee[$product->id]['don_gia_dich_vu'] : 0;
+            $orderDetail['don_gia_dich_vu']    = 0;
+            //$orderDetail['tong_dich_vu']    = isset($service_fee[$product->id]) ? $service_fee[$product->id]['fee'] : 0;
+            $orderDetail['tong_dich_vu']    = 0;
             OrderDetail::create($orderDetail); 
 
             //  check so luong
@@ -373,7 +382,7 @@ class CartController extends Controller
         }
         // send email
         $order_id =str_pad($order_id, 6, "0", STR_PAD_LEFT);
-        //$emailArr = [];
+        $emailArr = [];
         if(!empty($emailArr)){
             Mail::send('frontend.email.cart',
                 [
@@ -421,8 +430,8 @@ class CartController extends Controller
         Session::put('order_id', '');
         Session::forget('is_vanglai');
         Session::forget('vanglai');
-        Session::forget('service_fee');
-        Session::forget('totalServiceFee');
+        //Session::forget('service_fee');
+        //Session::forget('totalServiceFee');
         Session::forget('event_id');
         Session::forget('order_id');
 
