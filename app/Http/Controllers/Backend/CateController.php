@@ -28,8 +28,8 @@ class CateController extends Controller
             $loai_id = $loaiSp->id;    
         }
 
-        $items = Cate::where('loai_id', '=', $loai_id)->orderBy('display_order')->get();
-        $loaiSpArr = LoaiSp::all();
+        $items = Cate::where('loai_id', '=', $loai_id)->where('status', 1)->orderBy('display_order')->get();
+        $loaiSpArr = LoaiSp::where('status', 1)->orderBy('display_order')->get();
         return view('backend.cate.index', compact( 'items', 'loaiSp' , 'loai_id', 'loaiSpArr'));
     }
 
@@ -42,7 +42,7 @@ class CateController extends Controller
     {
         $loai_id = isset($request->loai_id) ? $request->loai_id : 0;
         
-        $loaiSpArr = LoaiSp::all()->sortBy('display_order');
+        $loaiSpArr = LoaiSp::where('status', 1)->orderBy('display_order')->get();
 
         return view('backend.cate.create', compact( 'loai_id', 'loaiSpArr'));
     }
@@ -140,7 +140,7 @@ class CateController extends Controller
     public function edit($id)
     {
         $detail = Cate::find($id);
-        $loaiSpArr = LoaiSp::all();
+        $loaiSpArr = LoaiSp::where('status', 1)->orderBy('display_order')->get();
         $meta = (object) [];
         if ( $detail->meta_id > 0){
             $meta = MetaData::find( $detail->meta_id );

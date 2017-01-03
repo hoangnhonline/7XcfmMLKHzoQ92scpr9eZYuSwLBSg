@@ -21,11 +21,8 @@
                         <!-- Collect the nav links, forms, and other content for toggling -->
                         <div class="collapse navbar-collapse">
                           <ul class="nav navbar-nav"> 
-                            @foreach( $loai['child'] as $cate)
-                            @if(!in_array($cate['id'], [27,28,29]))
-                            <li><a title="{{ $cate['name'] }}" href="{{ route('danh-muc-con', [$loai['slug'], $cate['slug']])}}">{{ $cate['name']}}</a></li>
-                            @endif
-                            @endforeach
+                            @foreach( $loai['child'] as $cate)                            
+                            <li><a title="{{ $cate['name'] }}" href="{{ route('danh-muc-con', [$loai['slug'], $cate['slug']])}}">{{ $cate['name']}}</a></li>@endforeach
                           </ul>
                         </div><!-- /.navbar-collapse -->
                       </div><!-- /.container-fluid -->
@@ -299,11 +296,8 @@
                         <!-- Collect the nav links, forms, and other content for toggling -->
                         <div class="collapse navbar-collapse">           
                           <ul class="nav navbar-nav">
-                                @foreach( $loai['child'] as $cate)
-                                @if(!in_array($cate['id'], [27,28,29]))
-                                <li><a title="{{ $cate['name'] }}" href="{{ route('danh-muc-con', [$loai['slug'], $cate['slug']])}}">{{ $cate['name']}}</a></li>
-                                @endif
-                                @endforeach
+                                @foreach( $loai['child'] as $cate)                                
+                                <li><a title="{{ $cate['name'] }}" href="{{ route('danh-muc-con', [$loai['slug'], $cate['slug']])}}">{{ $cate['name']}}</a></li>@endforeach
                           </ul>
                         </div><!-- /.navbar-collapse -->
                       </div><!-- /.container-fluid -->
@@ -318,17 +312,8 @@
                                 @if( count($loai['child']) <= 14 )
                                 <ul class="sub-category-list">
 
-                                    @foreach( $loai['child'] as $cate)
-                                    @if(!in_array($cate['id'], [27,28,29]))
-                                    <li><a title="{{ $cate['name'] }}" href="{{ route('danh-muc-con', [$loai['slug'], $cate['slug']])}}">{{ $cate['name']}}</a></li>
-                                    @endif
-                                    @endforeach
-                                    @if($loai['id'] == 6)
-                                    <li><a title="Máy in" href="{{ route('danh-muc-cha', 'may-in') }}">Máy in</a></li>
-                                    <li><a title="Máy scan" href="{{ route('danh-muc-cha', 'may-scan') }}">Máy scan</a></li>
-                                    <li><a title="Máy fax" href="{{ route('danh-muc-cha', 'may-fax') }}">Máy fax</a></li>
-                                    <li><a title="Máy chiếu" href="{{ route('danh-muc-cha', 'may-chieu') }}">Máy chiếu</a></li>
-                                    @endif                                    
+                                    @foreach( $loai['child'] as $cate)                                    
+                                    <li><a title="{{ $cate['name'] }}" href="{{ route('danh-muc-con', [$loai['slug'], $cate['slug']])}}">{{ $cate['name']}}</a></li> @endforeach                                                                  
                                 </ul>
                                 @else
                                 <div class="owl-carousel-vertical" data-items="1" data-nav="true" data-dots="false" data-loop="false">

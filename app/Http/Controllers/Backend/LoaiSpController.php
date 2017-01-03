@@ -23,7 +23,7 @@ class LoaiSpController extends Controller
     */
     public function index(Request $request)
     {
-        $items = LoaiSp::all()->sortBy('display_order');
+        $items = LoaiSp::where('status', 1)->orderBy('display_order', 'asc')->get();
         return view('backend.loai-sp.index', compact( 'items' ));
     }
 
