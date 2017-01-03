@@ -63,18 +63,8 @@ $vangLaiArr  = Session::get('vanglai');
                           <div class="form-group row">
                             <h4 class="col-lg-12 is-mt">Hình thức thanh toán :</h4>
                           </div>
-
-                            <li class="wc_payment_method payment_method_cod">
-                             <input id="payment_method_cod" type="radio" class="input-radio" name="payment_method" value="1" checked="checked" data-cod="{{ $phi_cod }}">
-                             <label for="payment_method_cod">
-                             Giao hàng và thu tiền tại nhà     </label>
-                             <div class="payment_box payment_method_cod" style="display: block;">
-                                <p>Quý khách có thể trả tiền mặt khi giao hàng</p>
-                             </div>
-                             <p style="color:red;padding-left:20px;margin-top:-5px; margin-bottom:10px">Phí COD : <strong>{{ number_format($phi_cod) }}&nbsp;₫</strong></p>
-                          </li>
                           <li class="wc_payment_method payment_method_bacs">
-                             <input id="payment_method_bacs" type="radio" class="input-radio" name="payment_method" value="2">
+                             <input id="payment_method_bacs" type="radio" class="input-radio" name="payment_method" value="2"  checked="checked">
                              <label for="payment_method_bacs">
                              Chuyển khoản ngân hàng     </label>
                              <div class="payment_box payment_method_bacs" >
@@ -100,7 +90,17 @@ $vangLaiArr  = Session::get('vanglai');
                                    </div>
                                 </div>
                              </div>
-                          </li>                          
+                          </li>
+                            <li class="wc_payment_method payment_method_cod">
+                             <input id="payment_method_cod" type="radio" class="input-radio" name="payment_method" value="1" data-cod="{{ $phi_cod }}">
+                             <label for="payment_method_cod">
+                             Giao hàng và thu tiền tại nhà     </label>
+                             <div class="payment_box payment_method_cod" style="display: block;">
+                                <p>Quý khách có thể trả tiền mặt khi giao hàng</p>
+                             </div>
+                             <p style="color:red;padding-left:20px;margin-top:-5px; margin-bottom:10px">Phí COD : <strong>{{ number_format($phi_cod) }}&nbsp;₫</strong></p>
+                          </li>
+                                                    
                           </ul>
                           
                           <div id="bookcare-option"> </div>
@@ -112,7 +112,7 @@ $vangLaiArr  = Session::get('vanglai');
                             </div>
                           </div>
                           <input type="hidden" name="phi_giao_hang" value="{{ $phi_giao_hang }}">
-                          <input type="hidden" name="phi_cod" id="phi_cod" value="{{ $phi_cod }}">
+                          <input type="hidden" name="phi_cod" id="phi_cod" value="0">
                         </form>
                       </div>
                     </div>
@@ -178,10 +178,10 @@ $vangLaiArr  = Session::get('vanglai');
                           <p class="shipping" style="border-bottom: 1px solid #c9c9c9;padding-bottom:5px"> Phí vận chuyển: <span id="phi_giao">{{ number_format( $phi_giao_hang ) }}&nbsp;₫</span> </p>                        
                           <input type="hidden" id="phiCod" value="{{ $phi_cod }}">
                           <p class="total"> Tạm Tính: <span id="total_amount" style="font-weight:bold">{{ number_format( $totalAmount) }}&nbsp;₫ </span> </p>
-                          <p class="shipping" id="p_phi_cod"> Phí COD: <span >{{ number_format( $phi_cod ) }}&nbsp;₫</span> </p>
+                          <p class="shipping" id="p_phi_cod" style="display:none"> Phí COD: <span >{{ number_format( $phi_cod ) }}&nbsp;₫</span> </p>
                           
-                          <p class="total2" id="have_cod"> Thành tiền: <span id="total_amount">{{ number_format( $totalAmount + $phi_cod) }}&nbsp;₫ </span> </p>
-                          <p class="total2" id="no_cod" style="display:none"> Thành tiền: <span id="total_amount">{{ number_format( $totalAmount ) }}&nbsp;₫ </span> </p>
+                          <p class="total2" id="have_cod" id="p_phi_cod" style="display:none"> Thành tiền: <span id="total_amount">{{ number_format( $totalAmount + $phi_cod) }}&nbsp;₫ </span> </p>
+                          <p class="total2" id="no_cod" > Thành tiền: <span id="total_amount">{{ number_format( $totalAmount ) }}&nbsp;₫ </span> </p>
 
                           <p class="text-right"> <i>(Đã bao gồm VAT)</i> </p>
                         </div>
