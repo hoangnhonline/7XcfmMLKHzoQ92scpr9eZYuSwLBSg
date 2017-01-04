@@ -73,11 +73,9 @@ class HomeController extends Controller
         $bannerArr = [];
         foreach( $loaiSp as $loai){
             $query = SanPham::where('so_luong_ton', '>', 0)->where('price', '>', 0);
-            if($loai->id == 6){
-                $query->whereIn('loai_id', [6, 13, 14, 15, 16]);
-            }else{
-                $query->where('loai_id', $loai->id);
-            }
+           
+            $query->where('loai_id', $loai->id);
+            
             $query->leftJoin('sp_hinh', 'sp_hinh.id', '=','san_pham.thumbnail_id')
             ->leftJoin('sp_thuoctinh', 'sp_thuoctinh.sp_id', '=','san_pham.id')
             ->select('sp_hinh.image_url', 'san_pham.*', 'thuoc_tinh')
@@ -136,9 +134,10 @@ class HomeController extends Controller
     {
         $tu_khoa = $request->keyword;       
 
-        $productArr = SanPham::where('alias', 'LIKE', '%'.$tu_khoa.'%')->where('so_luong_ton', '>', 0)->where('price', '>', 0)
+        $productArr = SanPham::where('san_pham.alias', 'LIKE', '%'.$tu_khoa.'%')->where('so_luong_ton', '>', 0)->where('price', '>', 0)->where('loai_sp.status', 1)
                         ->leftJoin('sp_hinh', 'sp_hinh.id', '=','san_pham.thumbnail_id')
                         ->leftJoin('sp_thuoctinh', 'sp_thuoctinh.sp_id', '=','san_pham.id')
+                        ->join('loai_sp', 'loai_sp.id', '=', 'san_pham.loai_id')
                         ->select('sp_hinh.image_url', 'san_pham.*', 'thuoc_tinh')
                         ->orderBy('id', 'desc')->paginate(20);
         $seo['title'] = $seo['description'] =$seo['keywords'] = "Tìm kiếm sản phẩm theo từ khóa '".$tu_khoa."'";

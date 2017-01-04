@@ -44,7 +44,7 @@ class CateController extends Controller
         
         if($rs){//danh muc cha
             $loai_id = $rs->id;
-            $cateArr = Cate::where('status', 1)->where('loai_id', $loai_id)->get();
+            $cateArr = Cate::where('loai_id', $loai_id)->get();
             foreach( $cateArr as $cate){
                 $query = SanPham::where('cate_id', $cate->id)->where('so_luong_ton', '>', 0)->where('price', '>', 0)
                     ->leftJoin('sp_hinh', 'sp_hinh.id', '=','san_pham.thumbnail_id')

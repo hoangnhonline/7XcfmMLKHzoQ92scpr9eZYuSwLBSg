@@ -340,10 +340,14 @@
                             </div>
                             <div class="col-sm-2 banner-waper">
                                 <div class="banner-img">
-                                    <ul class="owl-intab owl-carousel" data-loop="{!! count($bannerArr[$loai['id']]) > 1 ? 'true' : 'false' !!}" data-items="1" data-autoplay="true" data-dots="false" {!! count($bannerArr[$loai['id']]) > 1 ? ' data-nav="true"' : '' !!}>
+
+                                    <ul class="owl-intab owl-carousel" data-loop="{!! count($bannerArr[$loai['id']]) > 1 ? 'true' : 'false' !!}" data-items="1" 
+                                    data-autoplay="true" data-dots="false" {!! count($bannerArr[$loai['id']]) > 1 ? ' data-nav="true"' : '' !!}>
+
                                         @if( !empty($bannerArr[$loai['id']]))
                                             @foreach($bannerArr[$loai['id']] as $banner)
                                                 <li>
+
                                                     @if($banner->type == 2)
                                                     <a href="{{ $banner->ads_url }}">
                                                     @endif
@@ -449,6 +453,7 @@
                 </div>
                 @endif
                 @if( $loai['home_style'] == 3 )
+
                 <div class="category-featured">
                     <nav class="navbar nav-menu show-brand">
                       <div class="container">
