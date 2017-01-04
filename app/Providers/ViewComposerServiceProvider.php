@@ -44,7 +44,7 @@ class ViewComposerServiceProvider extends ServiceProvider
 		
 		view()->composer( '*' , function( $view ){
 			$menuNgang = $menuDoc = $loaiSpHot = [];
-			$loaiSp = LoaiSp::whereRaw('1')->orderBy('display_order')->get();
+			$loaiSp = LoaiSp::where(['status' => 1])->orderBy('display_order')->get();
 
 	        if( $loaiSp ){
 
