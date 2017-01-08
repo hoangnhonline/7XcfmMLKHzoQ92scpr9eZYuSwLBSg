@@ -84,9 +84,9 @@ class OrderController extends Controller
         $order_id    = $request->order_id;
         $customer_id = $request->customer_id;
 
-        //Orders::where('id', $order_id)->update([
-          //  'status' => $status_id
-        //]);
+        Orders::where('id', $order_id)->update([
+            'status' => $status_id
+        ]);
         //get customer to send mail
         $customer = Customer::find($customer_id);
         $order = Orders::find($order_id);
