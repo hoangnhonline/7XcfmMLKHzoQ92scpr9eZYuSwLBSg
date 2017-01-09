@@ -77,14 +77,13 @@
                 <div class="col-xs-12 col-sm-6" id="contact_form_map">                    
                     <div class="content">
                         <h4 style="margin-bottom:10px">iCho.vn – Chợ máy tính và điện thoại</h4>                        
-                        <p>Tổng đài: <span class="tel">1900 63 69 75</span></p>
-                        <p>Thời gian hoạt động: <span class="tel">07h30 đến 20h00</span></p>
+                        <p>Tổng đài: <span class="tel">1900 63 69 75</span></p>                        
                         <p>Email: <a href="mailto:muahang@icho.vn">muahang@icho.vn</a></p>
                     </div>
                     <br/> 
-                    <div class="with-map clearfix">
+                    <!--<div class="with-map clearfix">
                         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.496143069247!2d106.7656088148014!3d10.849817992271774!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x920ec32248472005!2zQ2jhu6MgY8O0bmcgbmdo4buHIGdpw6Egc-G7iQ!5e0!3m2!1sen!2s!4v1462593207422" height="450" frameborder="0" style="border:0" allowfullscreen width="100%"></iframe>
-                    </div>
+                    </div>-->
           
                     </div>
             </div>
