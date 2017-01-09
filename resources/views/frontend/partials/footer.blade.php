@@ -51,7 +51,7 @@
                   </ul>
               </div>
               <div class="col-md-4 fshop-regmail">
-                  <div class="introduce-title">NHẬN THÔNG TIN KHUYẾN MÃI</div>
+                  <div class="introduce-title">NHẬN KHUYẾN MÃI</div>
                     <div class="input-group" id="mail-box">
                       <input type="text" placeholder="Email của bạn" id="newsletter_email"/>
                       <span class="input-group-btn">
@@ -103,7 +103,7 @@
                             <ul id = "introduce-Account" class="introduce-list">
                                 <li><a href="{{ route('danh-muc-cha', 'huong-dan-mua-hang') }}">Hướng dẫn mua hàng</a></li>
                                 <li><a href="{{ route('danh-muc-cha', 'bao-mat-thong-tin') }}">Bảo mật thông tin</a></li>
-                                <li><a href="#">Góp ý, khiếu nại</a></li>
+                                <li><a href="{{ route('contact') }}">Góp ý, khiếu nại</a></li>
                             </ul>
                         </div>
                         <div class="col-sm-4">
@@ -120,7 +120,7 @@
                 <div class="col-md-3">
                     <div class="introduce-title">Kết nối</div>
                     <div class="social-link">
-                        <a href="#"><i class="fa fa-facebook"></i></a>
+                        <a href="https://www.facebook.com/www.icho.vn" target="_blank"><i class="fa fa-facebook"></i></a>
                         <a href="#"><i class="fa fa-pinterest-p"></i></a>
                         <a href="#"><i class="fa fa-vk"></i></a>
                         <a href="#"><i class="fa fa-twitter"></i></a>

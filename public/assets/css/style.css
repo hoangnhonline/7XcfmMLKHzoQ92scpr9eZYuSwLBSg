@@ -6083,3 +6083,6 @@ a.readmore{
     left: 50%;
     transform: translate(-50%,0);
 }
+#content-page a{
+  color: #288ad6
+}

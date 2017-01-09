@@ -161,15 +161,15 @@
                 <div class="additional">
                   <div class="detail-benefits-support">
   
-                    <label class="detail-lb-loiich clearfix"><strong>Ưu đãi dành cho khách hàng mua Online:</strong></label>
+                    <label class="detail-lb-loiich clearfix"><strong>Ưu đãi mua online:</strong></label>
                     <div class="left detail-support">                        
                         <span>
                             <i class="fa fa-check-circle"></i>
-                            Dịch vụ giao hàng tận nơi
+                            Giao hàng tận nơi
                         </span>
                         <span>
                             <i class="fa fa-check-circle"></i>
-                            Tư vấn online miễn phí
+                            Tư vấn online
                         </span>
                         <span>
                             <i class="fa fa-check-circle"></i>
@@ -177,7 +177,7 @@
                         </span>
                         <span>
                             <i class="fa fa-check-circle"></i>
-                            <a href="/chinh-sach-doi-tra.html" target="_blank">
+                            <a href="{{ route('danh-muc-cha', 'chinh-sach-doi-tra') }}" target="_blank">
                                 Chính sách đổi trả
                             </a>
                         </span>

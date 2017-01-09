@@ -81,7 +81,7 @@
                           </div>
                           <div class="form-group row form-group-radio group-radio-k-address">
                             <label class="col-lg-3 control-label visible-lg-block"></label>
-                            <div class="col-lg-9 input-wrap"> <span style="font-size: 11px;font-style: italic;">Để nhận hàng thuận tiện hơn, bạn vui lòng cho icho.vn biết loại địa chỉ.</span> </div>
+                            <div class="col-lg-9 input-wrap"> <span style="font-size: 11px;font-style: italic;">Để nhận hàng thuận tiện hơn, bạn vui lòng cho iCho biết loại địa chỉ.</span> </div>
                           </div>
                           <div class="form-group row form-group-radio group-radio-k-address">
                             <label class="col-lg-3 control-label visible-lg-block">Loại địa chỉ</label>
