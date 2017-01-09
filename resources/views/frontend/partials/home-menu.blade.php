@@ -1,5 +1,5 @@
 <!-- END MANIN HEADER -->
-<div id="nav-top-menu" class="nav-top-menu">
+<div id="nav-top-menu" class="nav-top-menu noprint">
     <div class="container">
         <div class="row">
             <div class="col-sm-3" id="box-vertical-megamenus">

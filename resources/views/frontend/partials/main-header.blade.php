@@ -12,7 +12,7 @@
         @else
         </h1>
         @endif
-        <div class="col-xs-12 col-sm-5 col-md-5 header-search-box">
+        <div class="col-xs-12 col-sm-5 col-md-5 header-search-box noprint">
             <form class="form-inline" method="GET" action="{{ route('search') }}">
                   <div class="form-group input-serach">
                     <input type="text" name="keyword"  placeholder="Nhập sản phẩm cần tìm" value="{{ isset($tu_khoa) ? $tu_khoa : "" }}">
@@ -21,7 +21,7 @@
             </form>
         </div>
 
-        <div id="cart-block" class="col-md-1 col-sm-1 col-xs-4 shopping-cart-box">
+        <div id="cart-block" class="col-md-1 col-sm-1 col-xs-4 shopping-cart-box noprint">
             <a class="cart-link" href="{{route('gio-hang')}}">
                 @if(Session::has('products') && Session::get('products'))
                     <span class="notify notify-left">{{Session::get('products') ? array_sum(Session::get('products')) : 0}}</span>
@@ -31,7 +31,7 @@
             </a>
         </div><!-- end /.shopping-cart-box -->
 
-        <div class="header-user col-md-3 col-sm-4 col-xs-6">
+        <div class="header-user col-md-3 col-sm-4 col-xs-6 noprint">
             @if(!Session::get('login'))
             <div class="user-name">
                 <div class="user-name-link user-ajax-link">

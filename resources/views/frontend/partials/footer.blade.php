@@ -1,5 +1,5 @@
 @section('footer')
-<footer id="footer">
+<footer id="footer" class="noprint">
      <div class="container">
             <div class="service" style="margin-bottom:10px">
                 <div class="col-xs-12 col-sm-4 service-item">

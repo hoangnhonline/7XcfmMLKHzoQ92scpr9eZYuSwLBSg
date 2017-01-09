@@ -2,7 +2,7 @@
 @section('content')
 <div class="columns-container">
     <div class="container" id="columns">        
-        <div class="breadcrumb clearfix">
+        <div class="breadcrumb clearfix noprint">
             <a class="home" href="{{ route('home') }}" title="Trở về trang chủ">Trang chủ</a>
             <span class="navigation-pipe">&nbsp;</span>
             <a href="{{ route('danh-muc-cha', $rsLoai->slug) }}" title="{{ $rsCate->name }}">{{ $rsLoai->name }}</a>
@@ -109,7 +109,7 @@
                                   </p>
                                 </div>-->
                                 
-                                <div class="form-share">
+                                <div class="form-share noprint">
                                     <div class="sendtofriend-print">
                                         <a href="javascript:print();" class="link"><i class="fa fa-print"></i> Print</a>
                                         <a href="#" class="link" onclick="e_friend(); return false;"><i class="fa fa-envelope-o fa-fw"></i>Send to a friend</a>
@@ -248,7 +248,7 @@
           <!-- ./tab product -->
             @if( !empty($tuongtuArr) )
           <!-- box product -->
-            <div class="page-product-box">
+            <div class="page-product-box noprint">
                 <h3 class="heading">Sản phẩm tương tự</h3>
                 <ul class="product-list owl-carousel" data-dots="false" data-loop="true" data-nav = "true" data-margin = "20" data-autoplayTimeout="1000" data-autoplayHoverPause = "true" data-responsive='{"0":{"items":1},"600":{"items":3},"1000":{"items":5}}'>
                     @foreach( $tuongtuArr as $sp_id)
@@ -300,7 +300,7 @@
             @endif
             <!-- box product -->
             @if( $lienquanArr->count() > 0)
-            <div class="page-product-box">
+            <div class="page-product-box noprint">
                 <h3 class="heading">Sản phẩm liên quan</h3>
                 <ul class="product-list owl-carousel" data-dots="false" data-loop="true" data-nav = "true" data-margin = "20" data-autoplayTimeout="1000" data-autoplayHoverPause = "true" data-responsive='{"0":{"items":1},"600":{"items":3},"1000":{"items":5}}'>
                      @foreach( $lienquanArr as $product)
@@ -357,7 +357,7 @@
 @endsection
 @section('javascript_page')
 <script type="text/javascript">
-  
+
 
 </script>
 @endsection
