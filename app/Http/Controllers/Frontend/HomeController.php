@@ -72,7 +72,12 @@ class HomeController extends Controller
         $loaiSp = LoaiSp::where('status', 1)->get();
         $bannerArr = [];
         foreach( $loaiSp as $loai){
-            $query = SanPham::where('so_luong_ton', '>', 0)->where('price', '>', 0);
+            $query = SanPham::where('so_luong_ton', '>', 0)
+                            ->where('price', '>', 0)
+                            ->where('chieu_dai', '>', 0)
+                            ->where('chieu_rong', '>', 0)
+                            ->where('chieu_cao', '>', 0)
+                            ->where('can_nang', '>', 0);
            
             $query->where('loai_id', $loai->id);
             
@@ -135,6 +140,10 @@ class HomeController extends Controller
         $tu_khoa = $request->keyword;       
 
         $productArr = SanPham::where('san_pham.alias', 'LIKE', '%'.$tu_khoa.'%')->where('so_luong_ton', '>', 0)->where('price', '>', 0)->where('loai_sp.status', 1)
+                        ->where('chieu_dai', '>', 0)
+                        ->where('chieu_rong', '>', 0)
+                        ->where('chieu_cao', '>', 0)
+                        ->where('can_nang', '>', 0)
                         ->leftJoin('sp_hinh', 'sp_hinh.id', '=','san_pham.thumbnail_id')
                         ->leftJoin('sp_thuoctinh', 'sp_thuoctinh.sp_id', '=','san_pham.id')
                         ->join('loai_sp', 'loai_sp.id', '=', 'san_pham.loai_id')

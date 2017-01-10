@@ -80,8 +80,8 @@
                                     <!--<p>Mã sản phẩm: #453217907</p>-->
                                     <p>Danh mục: <a href="{{ route('danh-muc-con', [$rsLoai->slug, $rsCate->slug]) }}" class="link">{{ $rsCate->name }}</a></p>
                                 </div>
-                                <div class="form-action">
-                                    @if($detail->price > 0)
+                                <div class="form-action">                                
+                                    @if($detail->price > 0 && $detail->so_luong_ton > 0 && $detail->chieu_dai > 0 && $detail->chieu_rong > 0 && $detail->chieu_cao > 0 && $detail->can_nang > 0)
                                     <div class="button-group">
                                         <button type="button" class="btn-add-cart-on-product-detail btnMuaDetail" product-id="{{ $detail->id }}">MUA NGAY</button>
                                     </div>
