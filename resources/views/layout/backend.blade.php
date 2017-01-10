@@ -35,10 +35,8 @@
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
-
   @include('layout.backend.header')
-  <!-- Left side column. contains the logo and sidebar -->
-  @if(Auth::user()->email != "huongll@icho.vn")
+  @if(Auth::user()->email != "huongll@icho.vn" && \Request::route()->getName() != "compare.index" )
     @include('layout.backend.sidebar')
   @endif
 
@@ -180,6 +178,11 @@ function processNotiType(type){
   .pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover{
     z-index: 1 !important;
   }
+  @if(\Request::route()->getName() == "compare.index")
+.content-wrapper, .main-footer{
+  margin-left: 0px !important;
+}
+@endif
 </style>
 
 @yield('javascript_page')
