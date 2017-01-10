@@ -54,7 +54,7 @@ class NewsletterController extends Controller
         Excel::create('newsletter_' . date('YmdHi'), function ($excel) use ($contents) {
             // Set sheets
             $excel->sheet('Email', function ($sheet) use ($contents) {
-                $sheet->fromArray($contents, null, 'A1', false, false);
+                $sheet->fromArray($contents, null, 'A1', false, true);
             });
         })->download('xls');
     }

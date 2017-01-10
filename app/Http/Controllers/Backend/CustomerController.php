@@ -54,14 +54,16 @@ class CustomerController extends Controller
             $i++;
             $contents[] = [
                 'STT' => $i,
+                'Họ tên' => $data->full_name,
                 'Email' => $data->email,                
+                'Điện thoại' => $data->phone                
             ];
         }        
         
         Excel::create('customer_' . date('YmdHi'), function ($excel) use ($contents) {
             // Set sheets
-            $excel->sheet('Email', function ($sheet) use ($contents) {
-                $sheet->fromArray($contents, null, 'A1', false, false);
+            $excel->sheet('Khách hàng', function ($sheet) use ($contents) {
+                $sheet->fromArray($contents, null, 'A1', false, true);
             });
         })->download('xls');
     }
