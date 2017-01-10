@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Models\Customer;
 use Helper, File, Session, Auth;
+use Maatwebsite\Excel\Facades\Excel;
 
 class CustomerController extends Controller
 {
@@ -44,7 +45,26 @@ class CustomerController extends Controller
         
         return view('backend.customer.index', compact( 'items', 'email', 'status' , 'phone', 'full_name'));
     }    
-
+    public function download()
+    {
+        $contents = [];
+        $query = Customer::where('email', '<>', '')->orderBy('id', 'DESC')->groupBy('email')->get();
+        $i = 0;
+        foreach ($query as $data) {
+            $i++;
+            $contents[] = [
+                'STT' => $i,
+                'Email' => $data->email,                
+            ];
+        }        
+        
+        Excel::create('customer_' . date('YmdHi'), function ($excel) use ($contents) {
+            // Set sheets
+            $excel->sheet('Email', function ($sheet) use ($contents) {
+                $sheet->fromArray($contents, null, 'A1', false, false);
+            });
+        })->download('xls');
+    }
     /**
     * Store a newly created resource in storage.
     *

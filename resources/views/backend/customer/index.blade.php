@@ -49,14 +49,14 @@
         
         <!-- /.box-header -->
         <div class="box-body">        
+          <a href="{{ route('customer.export') }}" class="btn btn-info btn-sm" style="margin-bottom:5px;float:left" target="_blank">Export</a>
           <div style="text-align:center">
             {{ $items->appends( ['status' => $status, 'email' => $email, 'phone' => $phone, 'full_name' => $full_name] )->links() }}
           </div>  
           <table class="table table-bordered" id="table-list-data">
             <tr>
               <th style="width: 1%">#</th>                            
-              <th>Thông tin liên hệ</th>
-              <th>Nội dung</th>
+              <th>Thông tin liên hệ</th>              
               <th width="10%">Thời gian tạo</th>
               <th width="1%;white-space:nowrap">Thao tác</th>
             </tr>
@@ -77,10 +77,7 @@
                   @if($item->phone != '')
                   {{ $item->phone }}</br>
                   @endif
-                </td>
-                <td>                  
-
-                </td>
+                </td>              
                 <td>{{ date('d-m-Y H:i', strtotime($item->created_at)) }}</td>
                 <td style="white-space:nowrap">                                  
                   

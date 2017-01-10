@@ -107,7 +107,7 @@
                           </tr>
                           @if($order->phi_cod > 0)
                           <tr>
-                            <td colspan="3" class="text-right"><strong>Phí COD</strong></td>
+                            <td colspan="3" class="text-right"><strong>Phí Thu Hộ</strong></td>
                             <td><strong>{{ $order->phi_cod > 0 ? number_format($order->phi_cod)."&nbsp;₫" : "Miễn phí" }}</strong></td>
                           </tr>
                           @endif
