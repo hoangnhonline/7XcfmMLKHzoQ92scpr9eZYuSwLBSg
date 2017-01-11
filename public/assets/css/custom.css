@@ -448,10 +448,10 @@
   font-size: 48px;
 }
 .option2 .product-featured .owl-next{
-	background: url("file:///C|/Users/quangtk/images/next.png") no-repeat center center;
+	background: url("images/next.png") no-repeat center center;
 }
 .option2 .product-featured .owl-prev{
-	background: url("file:///C|/Users/quangtk/images/prev.png") no-repeat center center;
+	background: url("images/prev.png") no-repeat center center;
 }
 .option2 .product-featured .owl-prev .fa, 
 .option2 .product-featured .owl-next .fa{
@@ -460,11 +460,11 @@
 	display: none;
 }
 .option2 .product-featured .owl-prev:hover{
-	background: url("file:///C|/Users/quangtk/images/prev.png") no-repeat center center;
+	background: url("images/prev.png") no-repeat center center;
 }
 
 .option2 .product-featured .owl-next:hover{
-	background: url("file:///C|/Users/quangtk/images/next.png") no-repeat center center;
+	background: url("images/next.png") no-repeat center center;
 }
 
 .option2 .product-featured .deal-product{
