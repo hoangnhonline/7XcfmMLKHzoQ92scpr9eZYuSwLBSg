@@ -159,8 +159,8 @@ return [
         Laravel\Socialite\SocialiteServiceProvider::class,
         SammyK\LaravelFacebookSdk\LaravelFacebookSdkServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
-        Maatwebsite\Excel\ExcelServiceProvider::class
-
+        Maatwebsite\Excel\ExcelServiceProvider::class,
+        Weidner\Goutte\GoutteServiceProvider::class
     ],
 
     /*
@@ -212,7 +212,8 @@ return [
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
         'Facebook' => SammyK\LaravelFacebookSdk\FacebookFacade::class,
         'Image' => Intervention\Image\Facades\Image::class,
-        'Excel' => Maatwebsite\Excel\Facades\Excel::class
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
+        'Goutte' => Weidner\Goutte\GoutteFacade::class
     ],
 
 ];

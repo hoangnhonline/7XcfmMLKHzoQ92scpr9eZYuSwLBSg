@@ -5,6 +5,9 @@ Route::post('backend/login', ['as' => 'backend.check-login', 'uses' => 'Backend\
 Route::get('backend/logout', ['as' => 'backend.logout', 'uses' => 'Backend\UserController@logout']);
 Route::group(['namespace' => 'Backend', 'prefix' => 'backend', 'middleware' => 'isAdmin'], function()
 {    
+    Route::group(['prefix' => 'compare'], function () {
+        Route::get('/', ['as' => 'compare.index', 'uses' => 'CompareController@index']);
+    });
     Route::group(['prefix' => 'settings'], function () {
         Route::get('/', ['as' => 'settings.index', 'uses' => 'SettingsController@index']);
         Route::post('/update', ['as' => 'settings.update', 'uses' => 'SettingsController@update']);
