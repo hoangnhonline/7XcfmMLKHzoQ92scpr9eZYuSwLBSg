@@ -33,7 +33,7 @@
 .count-down-time2 .icon-clock{
   width: 23px;
   height: 26px;
-  background: url("images/icon-clock.png") no-repeat center center;
+  background: url("../images/icon-clock.png") no-repeat center center;
   display: inline-block;
   margin-top: 5px;
 }
@@ -520,7 +520,7 @@
 	text-decoration: line-through;
 }
 .option2 .product-featured .deal-product .price .sale-price{
-	background: url("images/sale-bg.png") no-repeat;
+	background: url("../images/sale-bg.png") no-repeat;
 	color: #fff;
 	padding: 0 7px;
 }
@@ -606,7 +606,7 @@
 	opacity: 1;
 }
 .option2 .product-list li .add-to-cart a {
-	  background: url("images/icon-cart-option2.png") no-repeat left center;
+	  background: url("../images/icon-cart-option2.png") no-repeat left center;
 }
 .option2 .product-list li .quick-view a.compare:before{
 	  content: "\f066";
@@ -2619,7 +2619,7 @@ ul.collection li:first-child img {
   width: 100%
 }
 .cart-page .image .sale {
-  background: url(images/sale-tag.png) no-repeat;
+  background: url(../images/sale-tag.png) no-repeat;
   width: 44px;
   height: 35px;
   display: block;
@@ -2767,7 +2767,7 @@ ul.collection li:first-child img {
 }
 .cart-page .action .continue {
   float: left;
-  background: url(images/ico4.png) 10px center no-repeat;
+  background: url(../images/ico4.png) 10px center no-repeat;
   padding: 0 10px 0 28px;
   height: 40px;
   font-size: 12px;
@@ -2866,7 +2866,7 @@ ul.collection li:first-child img {
 }
 .cart-page .tikixu .gift {
   padding: 0 0 34px 45px;
-  background: url(images/ico1.png) left center no-repeat;
+  background: url(../images/ico1.png) left center no-repeat;
   height: 45px;
   line-height: 45px
 }
@@ -2878,7 +2878,7 @@ ul.collection li:first-child img {
   border-top: #c3c3c3 1px solid;
   margin-top: 10px;
   margin-bottom: 0;
-  background: url(images/ico2.png) left center no-repeat;
+  background: url(../images/ico2.png) left center no-repeat;
   padding: 10px 0 0 45px
 }
 .cart-page .tikixu .p24h {
@@ -3147,7 +3147,7 @@ ul.collection li:first-child img {
   display: block;
   width: 40px;
   height: 30px;
-  background: url(images/gift2.png) center no-repeat #66bc27;
+  background: url(../images/gift2.png) center no-repeat #66bc27;
   top: -1px;
   left: -1px;
   z-index: 1
@@ -3320,7 +3320,7 @@ ul.collection li:first-child img {
   display: block;
   width: 40px;
   height: 30px;
-  background: url(images/gift2.png) center no-repeat #66bc27;
+  background: url(../images/gift2.png) center no-repeat #66bc27;
   top: -1px;
   left: -1px;
   z-index: 1
@@ -3596,11 +3596,11 @@ ul.collection li:first-child img {
   font-size: 11px
 }
 .tiki-register {
-  background: url(images/bg-form-repeat.jpg) repeat-x #fff
+  background: url(../images/bg-form-repeat.jpg) repeat-x #fff
 
 }
 .tiki-register {
-  background: url(images/bg-form.png) center bottom no-repeat #ddf3fe
+  background: url(../images/bg-form.png) center bottom no-repeat #ddf3fe
 
 }
 .tiki-register #register-box {
@@ -3662,7 +3662,7 @@ ul.collection li:first-child img {
 }
 #register-form .head,
 .register-form .head {
-  background: url(images/icon2.png) no-repeat;
+  background: url(../images/icon2.png) no-repeat;
   min-height: 36px;
   padding: 0 0 0 50px
 }
@@ -3834,12 +3834,12 @@ ul.collection li:first-child img {
 }
 .tiki-login,
 .tiki-reset-password {
-  background: url(images/bg-form-repeat.jpg) repeat-x #ddf3fe
+  background: url(../images/bg-form-repeat.jpg) repeat-x #ddf3fe
 
 }
 .tiki-login .wrap,
 .tiki-reset-password {
-  background: url(images/bg-form.png) center bottom no-repeat
+  background: url(../images/bg-form.png) center bottom no-repeat
 
 }
 .tiki-login #login-box,
@@ -3895,7 +3895,7 @@ ul.collection li:first-child img {
 }
 #login-form .head,
 .login-form .head {
-  background: url(images/icon1.png) no-repeat;
+  background: url(../images/icon1.png) no-repeat;
   min-height: 36px;
   padding: 0 0 0 50px
 }
@@ -4054,7 +4054,7 @@ ul.collection li:first-child img {
   height: 22px
 }
 .shipping-address-page .bootbox .content-installment .chk-camket label input[type=checkbox]:checked {
-  background: url(images/icheck/blue.png) -48px 0 no-repeat
+  background: url(../images/icheck/blue.png) -48px 0 no-repeat
 
 }
 .shipping-address-page .bootbox .content-installment .chk-camket label span {
@@ -4621,7 +4621,7 @@ ul.collection li:first-child img {
 }
 .shipping-address-page .tikixu .gift {
   padding: 0 0 0 45px;
-  background: url(images/ico1.png) left center no-repeat;
+  background: url(../images/ico1.png) left center no-repeat;
   height: 25px;
   line-height: 25px
 }
@@ -4637,7 +4637,7 @@ ul.collection li:first-child img {
 }
 .shipping-address-page .tikixu .ship {
   margin-bottom: 0;
-  background: url(images/ico2.png) left center no-repeat;
+  background: url(../images/ico2.png) left center no-repeat;
   padding: 0 0 0 45px
 }
 .shipping-address-page .time {
@@ -4950,7 +4950,7 @@ ul.collection li:first-child img {
   color: #000
 }
 .shipping-address-page .success .alert-success p {
-  background: url(images/ico13.png) left center no-repeat;
+  background: url(../images/ico13.png) left center no-repeat;
   padding-left: 40px;
   float: left;
   min-height: 30px;
@@ -5187,7 +5187,7 @@ margin:0
   display: inline-block;
   padding-left: 48px;
   height: 25px;
-  background: url(images/card-credits.png) no-repeat;
+  background: url(../images/card-credits.png) no-repeat;
   vertical-align: middle;
   padding-top: 5px;
   opacity: .1
@@ -5235,7 +5235,7 @@ margin:0
   margin-top: 15px
 }
 .shipping-address-page .cybersource-form .new-group-sub i.cvc-hint-icon {
-  background: url(images/cvv-hint.png) no-repeat;
+  background: url(../images/cvv-hint.png) no-repeat;
   background-size: 100%;
   width: 83px;
   height: 48px;
@@ -5255,7 +5255,7 @@ margin:0
 }
 .shipping-address-page .cybersource-form .credit-card-guide-wrap .credit-card-guide {
   display: block;
-  background: url(images/card-guide.png) no-repeat;
+  background: url(../images/card-guide.png) no-repeat;
   background-size: 100%;
   width: 225px;
   height: 152px
@@ -5301,7 +5301,7 @@ margin:0
   width: auto
 }
 .shipping-address-page #select-card-type .select-card-type-item span:before {
-  background: url(images/card-credits.png) no-repeat;
+  background: url(../images/card-credits.png) no-repeat;
   content: "";
   display: inline-block;
   height: 25px;
@@ -5744,7 +5744,7 @@ margin:0
     text-align: left
 }
 .doi-tra .header-banner {
-    background-image: url(img/main-banner.png);
+    background-image: url(../img/main-banner.png);
     background-position: center;
     background-size: cover;
 }
@@ -5867,7 +5867,7 @@ margin:0
     height: 76px;
     display: block;
     margin: -38px auto 0 -32px;
-    background-image: url(Downloads/..assets/images/doi-tra/step-order.jpg);
+    background-image: url(../assets/images/doi-tra/step-order.jpg);
     position: absolute;
     top: 0;
     left: 50%
@@ -6006,7 +6006,7 @@ h1.title-page{
     margin-bottom: 0;
 }
 .content-text #help-navigation ul li a {
-    background-image: url(img/help-left-menu-arrow.png);
+    background-image: url(../img/help-left-menu-arrow.png);
     background-position: 236px center;
     background-repeat: no-repeat;
     color: #0a63c7;
@@ -6143,7 +6143,7 @@ h1.title-page{
 .promotion-info p {
     margin-bottom: 5px;
     padding-left: 15px;
-    background: url(images/circle-2.png) left center no-repeat;
+    background: url(../images/circle-2.png) left center no-repeat;
     background-size: 6px 6px;
 }
 .infofollow {
@@ -6154,7 +6154,7 @@ h1.title-page{
     overflow: hidden;
     line-height: 21px;
     padding-left: 15px;
-    background: url(images/circle-2.png) left 7px no-repeat;
+    background: url(../images/circle-2.png) left 7px no-repeat;
     background-size: 6px 6px;
     margin-bottom: 0;
 }
@@ -6245,7 +6245,7 @@ footer .container ul li.fshop-ftcall-bh a {
   display: block;
   width: 38px;
   height: 38px;
-  background-image: url(Downloads/img/icon-footer.png);
+  background-image: url(../img/icon-footer.png);
   background-repeat: no-repeat
 }
 .fshop-ftad-fb {
