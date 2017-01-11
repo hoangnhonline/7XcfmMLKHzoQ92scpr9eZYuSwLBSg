@@ -13,8 +13,10 @@ Route::group(['namespace' => 'Backend', 'prefix' => 'backend', 'middleware' => '
         Route::post('/update', ['as' => 'settings.update', 'uses' => 'SettingsController@update']);
     });
     Route::group(['prefix' => 'report'], function () {
-        Route::get('/', ['as' => 'report.index', 'uses' => 'ReportController@index']);        
+        Route::get('/', ['as' => 'report.index', 'uses' => 'ReportController@index']);     
+        Route::post('/search-price-other-site', ['as' => 'crawler.search-price-other-site', 'uses' => 'CompareController@search']);
     });
+    
     Route::group(['prefix' => 'pages'], function () {
         Route::get('/', ['as' => 'pages.index', 'uses' => 'PagesController@index']);
         Route::get('/create', ['as' => 'pages.create', 'uses' => 'PagesController@create']);
