@@ -23,14 +23,11 @@
                       <div class="layered layered-category">
                           <div class="layered-content">
                               <ul class="tree-menu">
-                                  <li {{ $detailPage->slug == 'gioi-thieu' ? 'class=active' : '' }}><span></span><a href="{{ route('danh-muc-cha', 'gioi-thieu') }}">Giới thiệu</a></li>
-                                  <li {{ $detailPage->slug == 'huong-dan-mua-hang' ? 'class=active' : '' }}><span></span><a href="{{ route('danh-muc-cha', 'huong-dan-mua-hang') }}">Hướng dẫn mua hàng</a></li>
-                                  <li {{ $detailPage->slug == 'bao-mat-thong-tin' ? 'class=active' : '' }}><span></span><a href="{{ route('danh-muc-cha', 'bao-mat-thong-tin') }}">Bảo mật thông tin</a></li>
-                                  <li {{ $detailPage->slug == 'gop-y-khieu-nai' ? 'class=active' : '' }}><span></span><a href="{{ route('contact') }}">Góp ý, khiếu nại</a></li>
+                                  <li {{ $detailPage->slug == 'gioi-thieu' ? 'class=active' : '' }}><span></span><a href="{{ route('danh-muc-cha', 'gioi-thieu') }}">Giới thiệu</a></li>                               
+                                  <li {{ $detailPage->slug == 'bao-mat-thong-tin' ? 'class=active' : '' }}><span></span><a href="{{ route('danh-muc-cha', 'bao-mat-thong-tin') }}">Bảo mật thông tin</a></li>                      
                                   <li {{ $detailPage->slug == 'phuong-thuc-thanh-toan' ? 'class=active' : '' }}><span></span><a href="{{ route('danh-muc-cha', 'phuong-thuc-thanh-toan') }}">Phương thức thanh toán</a></li>
                                   <li {{ $detailPage->slug == 'hinh-thuc-van-chuyen' ? 'class=active' : '' }}><span></span><a href="{{ route('danh-muc-cha', 'hinh-thuc-van-chuyen') }}">Hình thức vận chuyển</a></li>
-                                  <li {{ $detailPage->slug == 'chinh-sach-bao-hanh' ? 'class=active' : '' }}><span></span><a href="{{ route('danh-muc-cha', 'chinh-sach-bao-hanh') }}">Chính sách bảo hành</a></li>
-                                  <li {{ $detailPage->slug == 'chinh-sach-doi-tra' ? 'class=active' : '' }}><span></span><a href="{{ route('danh-muc-cha', 'chinh-sach-doi-tra') }}">Chính sách đổi trả</a></li>
+                                  <li {{ $detailPage->slug == 'chinh-sach-bao-hanh' ? 'class=active' : '' }}><span></span><a href="{{ route('danh-muc-cha', 'chinh-sach-bao-hanh') }}">Chính sách bảo hành</a></li>                                 
                               </ul>
                           </div>
                       </div>

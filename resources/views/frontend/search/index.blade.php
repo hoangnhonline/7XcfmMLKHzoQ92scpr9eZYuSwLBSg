@@ -26,7 +26,6 @@
                               <ul class="tree-menu">
                                   <li><span></span><a href="{{ route('news-list', 'tin-tuc') }}">Tin tức</a></li>
                                   <li><span></span><a href="{{ route('chuong-trinh-khuyen-mai') }}">Khuyến mãi</a></li>
-                                  <li><span></span><a href="{{ route('news-list', 'tuyen-dung') }}">Tuyển dụng</a></li>
                               </ul>
                           </div>
                       </div>

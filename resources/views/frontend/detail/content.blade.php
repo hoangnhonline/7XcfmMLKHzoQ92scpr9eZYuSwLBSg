@@ -174,13 +174,7 @@
                         <span>
                             <i class="fa fa-check-circle"></i>
                             Bảo hành chính hãng
-                        </span>
-                        <span>
-                            <i class="fa fa-check-circle"></i>
-                            <a href="{{ route('danh-muc-cha', 'chinh-sach-doi-tra') }}" target="_blank">
-                                Chính sách đổi trả
-                            </a>
-                        </span>
+                        </span>                       
                     </div>
         
                     <div class="left detail-benefits">
