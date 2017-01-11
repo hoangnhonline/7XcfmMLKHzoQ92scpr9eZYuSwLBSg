@@ -62,7 +62,7 @@
             </div>
             <!-- introduce-box -->
             <div id="introduce-box" class="row" style="margin-top:0px">
-                <div class="col-md-3">
+                <div class="col-md-4">
                     <div class="introduce-title">Liên hệ</div>
                     <div id="address-box">                        
                         <div id="address-list" style="margin-top:12px">                            
@@ -84,38 +84,28 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <div class="row">
-                        <div class="col-sm-4">
+                        <div class="col-sm-6">
                             <div class="introduce-title">Công ty</div>
                             <ul id="introduce-company"  class="introduce-list">
                                 <li><a href="{{ route('danh-muc-cha', 'gioi-thieu') }}">Giới thiệu</a></li>
                                 <li><a href="{{ route('chuong-trinh-khuyen-mai') }}">Khuyến mãi</a></li>
-                                <li><a href="#">Sản phẩm mới</a></li>
-                                <li><a href="{{ route('news-list', 'tuyen-dung') }}">Tuyển dụng</a></li>
                                 <li><a href="{{ route('contact') }}">Liên hệ</a></li>
                             </ul>
-                        </div>
-                        <div class="col-sm-4">
-                            <div class="introduce-title">HỖ TRỢ</div>
-                            <ul id = "introduce-Account" class="introduce-list">
-                                <li><a href="{{ route('danh-muc-cha', 'huong-dan-mua-hang') }}">Hướng dẫn mua hàng</a></li>
-                                <li><a href="{{ route('danh-muc-cha', 'bao-mat-thong-tin') }}">Bảo mật thông tin</a></li>
-                                <li><a href="{{ route('contact') }}">Góp ý, khiếu nại</a></li>
-                            </ul>
-                        </div>
-                        <div class="col-sm-4">
+                        </div>                       
+                        <div class="col-sm-6">
                             <div class="introduce-title">CHÍNH SÁCH</div>
                             <ul id = "introduce-support"  class="introduce-list">
+                                <li><a href="{{ route('danh-muc-cha', 'bao-mat-thong-tin') }}">Bảo mật thông tin</a></li>
                                 <li><a href="{{ route('danh-muc-cha', 'phuong-thuc-thanh-toan') }}">Phương thức thanh toán</a></li>
                                 <li><a href="{{ route('danh-muc-cha', 'hinh-thuc-van-chuyen') }}">Hình thức vận chuyển</a></li>
                                 <li><a href="{{ route('danh-muc-cha', 'chinh-sach-bao-hanh') }}">Chính sách bảo hành</a></li>
-                                <li><a href="{{ route('danh-muc-cha', 'chinh-sach-doi-tra') }}">Chính sách đổi trả</a></li>
                             </ul>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-4">
                     <div class="introduce-title">Kết nối</div>
                     <div class="social-link">
                         <a href="https://www.facebook.com/www.icho.vn" target="_blank"><i class="fa fa-facebook"></i></a>
