@@ -30,12 +30,12 @@
                         <span>Quyền lợi tối đa cho khách hàng</span>
                     </div>
                 </div>
-            </div>           
-            <div class="row">
-              <div class="col-md-8 fshop-hotcall">
-                  <ul class="list-inline">
-                      <li class="fshop-ftcall-free">
-                          <a href="javascript:void(0)">
+            </div>          
+            <div class="clearfix" style="margin-bottom:10px"></div>
+            <!-- introduce-box -->
+            <div id="introduce-box" class="row">
+                <div class="col-md-4">
+                    <a href="javascript:void(0)">
                               <span class="fa-stack fa-lg">
                                   <i class="fa fa-circle-thin fa-stack-2x" aria-hidden="true"></i>
                                   <i class="fa fa-phone fa-stack-1x" aria-hidden="true"></i>
@@ -44,26 +44,6 @@
                                   <strong class="fshop-ftcall-red">1900 636 975</strong>
                               </span>
                           </a>
-                      </li>
-                      <li class="fshop-ftcall-bh">
-                          
-                      </li>
-                  </ul>
-              </div>
-              <div class="col-md-4 fshop-regmail">
-                  <div class="introduce-title">NHẬN KHUYẾN MÃI</div>
-                    <div class="input-group" id="mail-box">
-                      <input type="text" placeholder="Email của bạn" id="newsletter_email"/>
-                      <span class="input-group-btn">
-                        <button class="btn btn-default btn-get-newsletter" type="button">OK</button>
-                      </span>
-                    </div><!-- /input-group -->
-              </div>
-            </div>
-            <!-- introduce-box -->
-            <div id="introduce-box" class="row" style="margin-top:0px">
-                <div class="col-md-4">
-                    <div class="introduce-title">Liên hệ</div>
                     <div id="address-box">                        
                         <div id="address-list" style="margin-top:12px">                            
                             <div class="tit-name">Hotline:</div>
@@ -106,14 +86,13 @@
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="introduce-title">Kết nối</div>
-                    <div class="social-link">
-                        <a href="https://www.facebook.com/www.icho.vn" target="_blank"><i class="fa fa-facebook"></i></a>
-                        <a href="#"><i class="fa fa-pinterest-p"></i></a>
-                        <a href="#"><i class="fa fa-vk"></i></a>
-                        <a href="#"><i class="fa fa-twitter"></i></a>
-                        <a href="#"><i class="fa fa-google-plus"></i></a>
-                    </div>                  
+                    <div class="introduce-title">NHẬN KHUYẾN MÃI</div>
+                    <div class="input-group" id="mail-box">
+                      <input type="text" placeholder="Email của bạn" id="newsletter_email"/>
+                      <span class="input-group-btn">
+                        <button class="btn btn-default btn-get-newsletter" type="button">OK</button>
+                      </span>
+                    </div><!-- /input-group -->                 
 
                 </div>
             </div><!-- /#introduce-box -->
@@ -127,7 +106,17 @@
                     <p>Chịu trách nhiệm nội dung: Nguyễn Đình Quốc Tú</p>
                 </div>
               </div>
-              <div class="col-sm-6 bo-cong-thuong">
+              <div class="col-sm-4">
+                <div class="introduce-title">Kết nối</div>
+                  <div class="social-link">
+                      <a href="https://www.facebook.com/www.icho.vn" target="_blank"><i class="fa fa-facebook"></i></a>
+                      <a href="#"><i class="fa fa-pinterest-p"></i></a>
+                      <a href="#"><i class="fa fa-vk"></i></a>
+                      <a href="#"><i class="fa fa-twitter"></i></a>
+                      <a href="#"><i class="fa fa-google-plus"></i></a>
+                  </div> 
+              </div>
+              <div class="col-sm-2 bo-cong-thuong">
                 <a href="http://www.online.gov.vn/CustomWebsiteDisplay.aspx?DocId=24392" target="_blank"><img style="height: 60px; width: 160px;" data-original="{{ URL::asset('assets/images/bo-cong-thuong.png') }}" alt="Chứng nhận sàn giao dịch TMDT" class="lazy"> </a>
               </div>
             </div>
