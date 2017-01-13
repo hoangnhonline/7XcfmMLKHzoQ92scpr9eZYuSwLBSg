@@ -128,8 +128,7 @@
                                                             foreach( $tmpInfo as $tinfo){
                                                                 $countT++;
                                                                 if(isset($thuocTinhArr[$tinfo])){
-                                                                    echo $thuocTinhArr[$tinfo];
-                                                                    echo $countT < $totalT ? ", " : "";
+                                                                    echo $thuocTinhArr[$tinfo]. " ";                                        
                                                                 }
                                                             }
 
@@ -240,8 +239,7 @@
                                                                 foreach( $tmpInfo as $tinfo){
                                                                     $countT++;
                                                                     if(isset($thuocTinhArr[$tinfo])){
-                                                                        echo $thuocTinhArr[$tinfo];
-                                                                        echo $countT < $totalT ? ", " : "";
+                                                                        echo $thuocTinhArr[$tinfo]. " ";                                            
                                                                     }
                                                                 }
 
@@ -406,8 +404,7 @@
                                                                         foreach( $tmpInfo as $tinfo){
                                                                             $countT++;
                                                                             if(isset($thuocTinhArr[$tinfo])){
-                                                                                echo $thuocTinhArr[$tinfo];
-                                                                                echo $countT < $totalT ? ", " : "";
+                                                                                echo $thuocTinhArr[$tinfo]. " ";           
                                                                             }
                                                                         }
 
@@ -574,8 +571,7 @@
                                                             foreach( $tmpInfo as $tinfo){
                                                                 $countT++;
                                                                 if(isset($thuocTinhArr[$tinfo])){
-                                                                    echo $thuocTinhArr[$tinfo];
-                                                                    echo $countT < $totalT ? ", " : "";
+                                                                    echo $thuocTinhArr[$tinfo]. " ";
                                                                 }
                                                             }
 
@@ -659,8 +655,7 @@
                                                             $countT = 0; $totalT = count($tmpInfo);
                                                             foreach( $tmpInfo as $tinfo){
                                                                 $countT++;
-                                                                echo $thuocTinhArr[$tinfo];
-                                                                echo $countT < $totalT ? ", " : "";
+                                                                echo $thuocTinhArr[$tinfo]. " ";                                    
                                                             }
 
                                                              ?></span>
