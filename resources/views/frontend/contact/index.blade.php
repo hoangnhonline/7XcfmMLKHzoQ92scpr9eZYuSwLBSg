@@ -76,8 +76,8 @@
                 </div>
                 <div class="col-xs-12 col-sm-6" id="contact_form_map">                    
                     <div class="content">
-                        <h4 style="margin-bottom:10px">iCho.vn – Chợ máy tính và điện thoại</h4>                        
-                        <p>Tổng đài: <span class="tel">1900 63 69 75</span></p>                        
+                        <h4 style="margin-bottom:10px">iCho.vn - Chợ Công Nghệ Giá Sỉ</h4>                        
+                        <p>Hotline: <span class="tel">1900 63 69 75</span></p>                        
                         <p>Email: <a href="mailto:muahang@icho.vn">muahang@icho.vn</a></p>
                     </div>
                     <br/> 

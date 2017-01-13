@@ -45,9 +45,7 @@
                               </span>
                           </a>
                     <div id="address-box">                        
-                        <div id="address-list" style="margin-top:12px">                            
-                            <div class="tit-name">Hotline:</div>
-                            <div class="tit-contain">1900 636 975</div>
+                        <div id="address-list" style="margin-top:12px">                                                       
                             <div class="tit-name">Email:</div>
                             <div class="tit-contain"><a href="mailto:muahang@icho.vn">muahang@icho.vn</a></div>
                             <div class="tit-name">Skype:</div>
