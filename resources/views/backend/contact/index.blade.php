@@ -25,16 +25,7 @@
           <h3 class="panel-title">Bộ lọc</h3>
         </div>
         <div class="panel-body">
-          <form class="form-inline" role="form" method="GET" action="{{ route('contact.index') }}" id="frmContact">  
-            <div class="form-group">
-              <select class="form-control input-sm" id="type" name="type">                                
-                  <option value="0" {{ $type == 0 ? "selected" : "" }}>Tất cả</option>
-                  <option value="1" {{ $type == 1 ? "selected" : "" }}>Tư vấn mua hàng</option>
-                  <option value="2" {{ $type == 2 ? "selected" : "" }}>Phản ánh dịch vụ</option>
-                  <option value="3" {{ $type == 3 ? "selected" : "" }}>Hợp tác</option>
-                  <option value="4" {{ $type == 4 ? "selected" : "" }}>Góp ý</option>
-              </select> 
-            </div>                                           
+          <form class="form-inline" role="form" method="GET" action="{{ route('contact.index') }}" id="frmContact">                                                
             <div class="form-group">
               <label for="name">Email :</label>
               <input type="text" class="form-control" name="email" value="{{ $email }}">
@@ -75,6 +66,7 @@
               <tr id="row-{{ $item->id }}">
                 <td><span class="order">{{ $i }}</span></td>                       
                 <td>                  
+                  {{ $item->gender == 1 ? "Anh " : "Chị " }}
                   @if($item->full_name != '')
                   {{ $item->full_name }}</br>
                   @endif
@@ -85,20 +77,10 @@
                   {{ $item->phone }}</br>
                   @endif
                 </td>
-                <td>
-                  <strong>[@if($item->type == 1)
-                    Tư vấn mua hàng
-                  @elseif($item->type == 2)
-                    Phản ánh dịch vụ
-                  @elseif($item->type == 3)
-                    Hợp tác
-                  @else
-                    Góp ý
-                  @endif]-{{ $item->title }}</strong></br>
+                <td>                  
                   {{ $item->content }}
-
                 </td>
-                <td>{{ date('d-m-Y H:i', strtotime($item->created_at)) }}</td>
+                <td style="white-space:nowrap">{{ date('d-m-Y H:i', strtotime($item->created_at)) }}</td>
                 <td style="white-space:nowrap">                                  
                   
                   <a onclick="return callDelete('{{ $item->email }}','{{ route( 'contact.destroy', [ 'id' => $item->id ]) }}');" class="btn btn-danger">Xóa</a>

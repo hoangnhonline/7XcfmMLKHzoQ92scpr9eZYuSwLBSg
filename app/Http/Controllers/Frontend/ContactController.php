@@ -17,21 +17,18 @@ class ContactController extends Controller
     {
         $dataArr = $request->all();
         
-        $this->validate($request,[            
-            'title' => 'required',
+        $this->validate($request,[                       
             'email' => 'email|required',
             'full_name' => 'required',
             'content' => 'required',
-            'phone' => 'required',            
+            'phone' => 'required'         
         ],
-        [
-            'title.required' => 'Bạn chưa nhập tiêu đề.',            
+        [            
             'full_name.required' => 'Bạn chưa nhập họ và tên.',
             'email.required' => 'Bạn chưa nhập email.',
             'email.email' => 'Địa chỉ email không hợp lệ.',
             'phone.required' => 'Bạn chưa nhập số điện thoại.',
-            'content.required' => 'Bạn chưa nhập nội dung.',
-            
+            'content.required' => 'Bạn chưa nhập nội dung.'            
         ]);       
 
         $rs = Contact::create($dataArr);
