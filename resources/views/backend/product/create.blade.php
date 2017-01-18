@@ -99,17 +99,65 @@
                           </div>
                         </div>
                         <div class="form-group" >                  
-                            <label>Giá<span class="red-star">*</span></label>
+                            <label>Giá hiển thị ( 1 sản phẩm)<span class="red-star">*</span></label>
                             <input type="text" class="form-control" name="price" id="price" value="{{ old('price') }}">
                         </div>
-                        <div class="form-group col-md-6 none-padding" >                  
-                            <label>Giá sale</label>
-                            <input type="text" class="form-control" name="price_sale" id="price_sale" value="{{ old('price_sale') }}">
+
+                        <div class="form-group col-md-12 none-padding" >                  
+                          <div class="col-md-3 none-padding">
+                              <input type="text" class="form-control" name="no_from[]" placeholder="Số lượng từ">
+                          </div>
+                          <div class="col-md-3">
+                              <input type="text" class="form-control" name="no_to[]" placeholder="Số lượng đến">
+                          </div>
+                          <div class="col-md-6 none-padding">
+                            <input type="text" class="form-control" name="price_multi[]" placeholder="Giá tương ứng">
+                          </div>
                         </div>
-                        <div class="form-group col-md-6 none-padding pleft-5" >                  
-                            <label>Phần trăm sale (%) </label>
-                            <input type="text" class="form-control" name="sale_percent" id="sale_percent" value="{{ old('price_sale') }}">
+                        <div class="form-group col-md-12 none-padding" >                  
+                          <div class="col-md-3 none-padding">
+                              <input type="text" class="form-control" name="no_from[]" placeholder="Số lượng từ">
+                          </div>
+                          <div class="col-md-3">
+                              <input type="text" class="form-control" name="no_to[]" placeholder="Số lượng đến">
+                          </div>
+                          <div class="col-md-6 none-padding">
+                            <input type="text" class="form-control" name="price_multi[]" placeholder="Giá tương ứng">
+                          </div>
                         </div>
+                        <div class="form-group col-md-12 none-padding" >                  
+                          <div class="col-md-3 none-padding">
+                              <input type="text" class="form-control" name="no_from[]" placeholder="Số lượng từ">
+                          </div>
+                          <div class="col-md-3">
+                              <input type="text" class="form-control" name="no_to[]" placeholder="Số lượng đến">
+                          </div>
+                          <div class="col-md-6 none-padding">
+                            <input type="text" class="form-control" name="price_multi[]" placeholder="Giá tương ứng">
+                          </div>
+                        </div>
+                        <div class="form-group col-md-12 none-padding" >                  
+                          <div class="col-md-3 none-padding">
+                              <input type="text" class="form-control" name="no_from[]" placeholder="Số lượng từ">
+                          </div>
+                          <div class="col-md-3">
+                              <input type="text" class="form-control" name="no_to[]" placeholder="Số lượng đến">
+                          </div>
+                          <div class="col-md-6 none-padding">
+                            <input type="text" class="form-control" name="price_multi[]" placeholder="Giá tương ứng">
+                          </div>
+                        </div>
+                        <div class="form-group col-md-12 none-padding" >                  
+                          <div class="col-md-3 none-padding">
+                              <input type="text" class="form-control" name="no_from[]" placeholder="Số lượng từ">
+                          </div>
+                          <div class="col-md-3">
+                              <input type="text" class="form-control" name="no_to[]" placeholder="Số lượng đến">
+                          </div>
+                          <div class="col-md-6 none-padding">
+                            <input type="text" class="form-control" name="price_multi[]" placeholder="Giá tương ứng">
+                          </div>
+                        </div>                        
                         <div class="clearfix"></div>
                     </div><!--end thong tin co ban-->                    
                     <div role="tabpanel" class="tab-pane" id="profile">

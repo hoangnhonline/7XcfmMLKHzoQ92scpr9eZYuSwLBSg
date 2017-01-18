@@ -124,17 +124,44 @@
                           </div>
                         </div>
                         <div class="form-group" >                  
-                            <label>Giá<span class="red-star">*</span></label>
+                            <label>Giá hiển thị ( 1 sản phẩm)<span class="red-star">*</span></label>
                             <input type="text" class="form-control" name="price" id="price" value="{{ old('price') ? old('price') : $detail->price}}">
                         </div>
-                        <div class="form-group col-md-6 none-padding" >                  
-                            <label>Giá sale</label>
-                            <input type="text" class="form-control" name="price_sale" id="price_sale" value="{{ old('price_sale') ? old('price_sale') : $detail->price_sale }}">
+                        <?php 
+                        $noPrice = $priceArr->count();
+                        $conLai = 5-$noPrice;
+                        ?>
+                        @if($noPrice > 0)
+                          @foreach($priceArr as $prices)
+                            <div class="form-group col-md-12 none-padding" >                  
+                            <div class="col-md-3 none-padding">
+                                <input type="text" class="form-control" name="no_from[]" placeholder="Số lượng từ" value="{{ $prices->no_from }}">
+                            </div>
+                            <div class="col-md-3">
+                                <input type="text" class="form-control" name="no_to[]" placeholder="Số lượng đến" value="{{ $prices->no_to }}">
+                            </div>
+                            <div class="col-md-6 none-padding">
+                              <input type="text" class="form-control" name="price_multi[]" placeholder="Giá tương ứng" value="{{ $prices->price }}">
+                            </div>
+                          </div>
+                          @endforeach
+                        @endif
+                        @if($conLai > 0)
+                        @for($k1 = 0; $k1 < $conLai ; $k1++)
+                        <div class="form-group col-md-12 none-padding" >                  
+                          <div class="col-md-3 none-padding">
+                              <input type="text" class="form-control" name="no_from[]" placeholder="Số lượng từ">
+                          </div>
+                          <div class="col-md-3">
+                              <input type="text" class="form-control" name="no_to[]" placeholder="Số lượng đến">
+                          </div>
+                          <div class="col-md-6 none-padding">
+                            <input type="text" class="form-control" name="price_multi[]" placeholder="Giá tương ứng">
+                          </div>
                         </div>
-                        <div class="form-group col-md-6 none-padding pleft-5" >                  
-                            <label>Phần trăm sale (%) </label>
-                            <input type="text" class="form-control" name="sale_percent" id="sale_percent" value="{{ old('price_sale') ? old('sale_percent') : $detail->sale_percent }}">
-                        </div>
+                        @endfor
+                        @endif
+                        
                         <div class="clearfix"></div>
                     </div><!--end thong tin co ban-->                    
                     <div role="tabpanel" class="tab-pane" id="profile">

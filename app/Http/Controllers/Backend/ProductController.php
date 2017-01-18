@@ -17,6 +17,7 @@ use App\Models\SpHinh;
 use App\Models\MetaData;
 use App\Models\Compare;
 use App\Models\SpTuongThich;
+use App\Models\ProductPrice;
 use App\Models\SpMucDich;
 
 use Helper, File, Session, Auth, Hash, URL;
@@ -350,6 +351,17 @@ class ProductController extends Controller
 
         $sp_id = $rs->id;
 
+        if(!empty($dataArr['no_from'])){
+            foreach($dataArr['no_from'] as $no => $from){
+                if($dataArr['no_to'][$no] > 0 && $dataArr['price_multi'][$no] > 0){
+                    $d['no_from'] = $from;
+                    $d['no_to'] = $dataArr['no_to'][$no];
+                    $d['price'] = $dataArr['price_multi'][$no];
+                    $d['product_id'] = $sp_id;
+                    ProductPrice::create($d);
+                }
+            }
+        }
         //muc_dich
         $mucDichArr = $request->muc_dich;
         SpMucDich::where('sp_id', $sp_id)->delete();
@@ -639,8 +651,10 @@ class ProductController extends Controller
             }
             
         }        
-        $colorArr = Color::all();        
-        return view('backend.product.edit', compact( 'detail', 'hinhArr', 'thuocTinhArr', 'spThuocTinhArr', 'colorArr', 'loaiSpArr', 'cateArr', 'meta', 'phuKienArr', 'tuongTuArr', 'soSanhArr'));
+        $colorArr = Color::all();  
+        $priceArr = ProductPrice::where('product_id', $id)->get();
+            
+        return view('backend.product.edit', compact( 'detail', 'hinhArr', 'thuocTinhArr', 'spThuocTinhArr', 'colorArr', 'loaiSpArr', 'cateArr', 'meta', 'phuKienArr', 'tuongTuArr', 'soSanhArr', 'priceArr'));
     }
     public function ajaxDetail(Request $request)
     {       
@@ -722,6 +736,18 @@ class ProductController extends Controller
         $model->update($dataArr);
         
         $sp_id = $dataArr['id'];
+        ProductPrice::where('product_id', $sp_id)->delete();
+        if(!empty($dataArr['no_from'])){
+            foreach($dataArr['no_from'] as $no => $from){
+                if($dataArr['no_to'][$no] > 0 && $dataArr['price_multi'][$no] > 0){
+                    $d['no_from'] = $from;
+                    $d['no_to'] = $dataArr['no_to'][$no];
+                    $d['price'] = $dataArr['price_multi'][$no];
+                    $d['product_id'] = $sp_id;
+                    ProductPrice::create($d);
+                }
+            }
+        }
         //muc_dich
         $mucDichArr = $request->muc_dich;
         SpMucDich::where('sp_id', $sp_id)->delete();
