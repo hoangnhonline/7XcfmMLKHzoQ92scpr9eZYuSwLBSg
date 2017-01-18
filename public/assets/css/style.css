@@ -4126,12 +4126,22 @@ a.detail-consulting i{
 }
 .page-heading span.page-heading-title2{
   text-transform: uppercase;
+  font-weight: normal;
 }
 .page-heading span.page-heading-title3{
   border-bottom: 3px solid #ec1c24;
   position: absolute;
   bottom: -1px;
   padding: 0;
+}
+#contact .content{
+  margin-top:15px;
+  margin-bottom: 15px;
+}
+#contact .content h4{
+  color : #EF494F;
+  margin-bottom: 10px;
+  font-weight: bold
 }
 .no-line{
   border-bottom: none;
@@ -4976,12 +4986,16 @@ padding-right: 10px;
     color: white;
     padding: 0;
     font-weight: normal;
-    background: #666;
+    background: #EF494F;
     -webkit-border-radius: 0;
     -moz-border-radius: 0;
     border-radius: 0;
     border: none;
-    padding: 10px 25px;
+    padding: 6px 14px;
+}
+#contact_form_map ul li a{
+  color:#EF494F;
+  font-weight: bold;
 }
 #contact #btn-send-contact:hover{
     background: #ec1c24;
@@ -4989,8 +5003,7 @@ padding-right: 10px;
 #contact_form_map ul {
   line-height: 28px;
   list-style: disc;
-  list-style-position: inside;
-  font-style: italic;
+  list-style-position: inside;  
 }
 
 #contact_form_map ul.store_info {

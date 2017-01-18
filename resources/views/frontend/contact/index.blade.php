@@ -16,16 +16,21 @@
         </div>
         <!-- ./breadcrumb -->
         <!-- page heading-->
-        <h1 class="page-heading">
-            <span class="page-heading-title2">THÔNG TIN Liên hệ</span>
-        </h1>
+        
         <!-- ../page heading-->
         <div id="contact" class="page-content page-contact">
             <div id="message-box-conact"></div>
             <div class="row">
                 
-                <div class="col-sm-6">	               
-                    
+                <div class="col-sm-8">	
+                    <h3 class="page-heading">
+                        <span class="page-heading-title2">THÔNG TIN Liên hệ</span>
+                    </h3>               
+                    <div class="content">
+                        <h4>iCho.vn - Chợ Công Nghệ Giá Sỉ</h4>                        
+                        <p>Hotline: <span class="tel">1900 63 69 75</span></p>                        
+                        <p>Email: <a href="mailto:muahang@icho.vn">muahang@icho.vn</a></p>
+                    </div>
                     @if(Session::has('message'))
 	                <p class="alert alert-info" >{{ Session::get('message') }}</p>
 	                @endif
@@ -38,54 +43,53 @@
 	                  </div>
 	                @endif	
                     <div class="contact-form-box">
-                        <div class="form-selector">
-                            <label>Quý khách quan tâm <span class="required">*</span></label>
-                            <select class="form-control input-sm" id="type" name="type">                                
-                                <option value="1" {{ old('type') == 1 ? "selected" : "" }}>Tư vấn mua hàng</option>
-                                <option value="2" {{ old('type') == 2 ? "selected" : "" }}>Phản ánh dịch vụ</option>
-                                <option value="3" {{ old('type') == 3 ? "selected" : "" }}>Hợp tác</option>
-                                <option value="4" {{ old('type') == 4 ? "selected" : "" }}>Góp ý</option>
-                            </select>                            
+                        <div class="form-selector">                            
+                            <textarea style="font-size:14px" class="form-control input-sm" rows="8" id="content" name="content" placeholder="Nhập nội dung bạn muốn liên hệ hoặc góp ý với iCho.vn">{{ old('content') }}</textarea>
+
+                        </div>
+                        <input type="hidden" name="type" value="1">                        
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                        <div class="form-selector col-md-4" style="padding-left:0px;padding-top:7px">
+                            <input type="radio" name="gender" value="1" id="gender1" checked="checked"> <label for="gender1">Anh</label>
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+                            <input type="radio" name="gender" value="2" id="gender2"> <label for="gender2">Chị</label>
+                        </div>
+                        <div class="form-selector col-md-8" style="padding-right:0px">                            
+                            <input type="text" placeholder="Họ và tên" class="form-control input-sm" id="full_name" name="full_name"  value="{{ old('full_name') }}" style="height:35px" />
+                        </div>
+                        <div class="form-selector col-md-4" style="padding-left:0px">                            
+                            <input type="text" placeholder="Số điện thoại" class="form-control input-sm" id="phone" name="phone" value="{{ old('phone') }}" style="height:35px"/>
+                        </div>   
+                        <div class="form-selector col-md-8" style="padding-right:0px">                           
+                            <input type="email" placeholder="Email của bạn" class="form-control input-sm" id="email" name="email" value="{{ old('email') }}" style="height:35px"/>
                         </div>
                         <div class="form-selector">
-                            <label>Tiêu đề <span class="required">*</span></label>
-                            <input type="text" class="form-control input-sm" id="title" name="title" value="{{ old('title') }}" />
-                        </div>
-                       <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                        <div class="form-selector">
-                            <label>Họ và tên <span class="required">*</span></label>
-                            <input type="text" class="form-control input-sm" id="full_name" name="full_name"  value="{{ old('full_name') }}"/>
-                        </div>
-                        <div class="form-selector">
-                            <label>Email <span class="required">*</span></label>
-                            <input type="email" class="form-control input-sm" id="email" name="email" value="{{ old('email') }}" />
-                        </div>
-                         <div class="form-selector">
-                            <label>Số điện thoại <span class="required">*</span></label>
-                            <input type="text" class="form-control input-sm" id="phone" name="phone" value="{{ old('phone') }}" />
-                        </div>                  
-                        <div class="form-selector">
-                            <label>Nội dung <span class="required">*</span></label>
-                            <textarea class="form-control input-sm" rows="10" id="content" name="content">{{ old('content') }}</textarea>
-                        </div>
-                        <div class="form-selector">
-                            <button type="submit" id="btn-send-contact" class="btn">Gửi đi</button>
+                            <button type="submit" id="btn-send-contact" class="btn">GỬI LIÊN HỆ</button>
                         </div>
                     </div>
                     </form>
                 </div>
-                <div class="col-xs-12 col-sm-6" id="contact_form_map">                    
-                    <div class="content">
-                        <h4 style="margin-bottom:10px">iCho.vn - Chợ Công Nghệ Giá Sỉ</h4>                        
-                        <p>Hotline: <span class="tel">1900 63 69 75</span></p>                        
-                        <p>Email: <a href="mailto:muahang@icho.vn">muahang@icho.vn</a></p>
+                <div class="col-xs-12 col-sm-4" id="contact_form_map">                    
+                    <div class="row">
+                        <div class="col-sm-12" style="margin-bottom:20px">
+                            <div class="introduce-title">Thông tin Công ty</div>
+                            <ul id="introduce-company"  class="introduce-list">
+                                <li><a href="{{ route('danh-muc-cha', 'gioi-thieu') }}">Giới thiệu</a></li>
+                                <li><a href="{{ route('chuong-trinh-khuyen-mai') }}">Khuyến mãi</a></li>
+                                <li><a href="{{ route('contact') }}">Liên hệ</a></li>
+                            </ul>
+                        </div>                       
+                        <div class="col-sm-12">
+                            <div class="introduce-title">CHÍNH SÁCH</div>
+                            <ul id = "introduce-support"  class="introduce-list">
+                                <li><a href="{{ route('danh-muc-cha', 'bao-mat-thong-tin') }}">Bảo mật thông tin</a></li>
+                                <li><a href="{{ route('danh-muc-cha', 'phuong-thuc-thanh-toan') }}">Phương thức thanh toán</a></li>
+                                <li><a href="{{ route('danh-muc-cha', 'hinh-thuc-van-chuyen') }}">Hình thức vận chuyển</a></li>
+                                <li><a href="{{ route('danh-muc-cha', 'chinh-sach-bao-hanh') }}">Chính sách bảo hành</a></li>
+                            </ul>
+                        </div>
                     </div>
-                    <br/> 
-                    <!--<div class="with-map clearfix">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.496143069247!2d106.7656088148014!3d10.849817992271774!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x920ec32248472005!2zQ2jhu6MgY8O0bmcgbmdo4buHIGdpw6Egc-G7iQ!5e0!3m2!1sen!2s!4v1462593207422" height="450" frameborder="0" style="border:0" allowfullscreen width="100%"></iframe>
-                    </div>-->
-          
-                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -93,6 +97,9 @@
 <style type="text/css">
     span.required{
         color:red;
+    }
+    .contact-form-box input {
+        font-size: 14px;
     }
 </style>
 @endsection
