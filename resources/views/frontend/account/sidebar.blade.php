@@ -1,4 +1,4 @@
-<div class="col-sm-3" id="left_column">
+<div class="col-sm-3" id="left_column">  
   <!-- block category -->
       <div class="block left-module">
           <p class="title_block">Thông tin tài khoản</p>

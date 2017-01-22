@@ -1,4 +1,4 @@
-@extends('frontend.layout')
+@extends('frontend.layout')  
 @include('frontend.partials.meta')
 @section('header')
     @include('frontend.partials.main-header')
