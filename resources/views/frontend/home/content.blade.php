@@ -1,4 +1,3 @@
-@include('frontend.partials.meta')
 @section('content')
 <!-- END Home slideder-->
 <div class="option2 clearfix">
