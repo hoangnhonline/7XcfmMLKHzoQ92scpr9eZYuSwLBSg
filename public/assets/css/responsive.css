@@ -50,143 +50,127 @@
 [Styles for devices(<992px)]
 */
 @media (max-width: 992px) {
-	#main-menu .container {
-		padding: 0 15px;
-	}
-	.navbar-toggle {
-		display: block !important;
-		padding: 0;
-	}
-	.navbar-toggle.has-open i {
-		color: #707070;
-	}
-	.navbar-toggle.has-open:after {
-		content: "";
-		display: block;
-		position: fixed;
-		top: 0;
-		left: 0;
-		right: 0;
-		bottom: 0;
-		background-color: rgba(255, 255, 255, 0.5);
-		z-index: 777;
-	}
-	#header .menu {
-		background-color: #183544;
-		margin: 0;
-		height: auto !important;
-		clear: both;
-		float: none;
-		display: block;
-		position: fixed !important;
-		left: -100% !important;
-		width: 80%;
-		top: 0;
-		bottom: 0;
-		z-index: 9999;
-		padding-top: 20px;
-		padding-bottom: 20px;
-		overflow-y: auto !important;
-		opacity: 0;
-		visibility: hidden;
-		-webkit-transition: 0.3s;
-		-o-transition: 0.3s;
-		transition: 0.3s;
-		right: auto !important;
-	}
-	#header .menu.has-open {
-		visibility: visible;
-		opacity: 1;
-		left: 0 !important;
-		-webkit-transition: 0.3s;
-		-o-transition: 0.3s;
-		transition: 0.3s;
-		overflow-y: auto !important;
-	}
-	.menu ul {
-		padding: 10px;
-		margin: 0;
-	}
-	.navbar-left {
-	    float: none!important;
-	}
-	.navbar-nav>li {
-	    float: none;
-	    border-bottom: 1px solid #ddd;
-	}
-	.menu>li>a {
-	    border-bottom: 1px solid #363636;
-	}
-	.menu .navbar-nav>li>a {
-		margin-right: 0;
-	}
-	.menu .navbar-nav .submenu {
-		background: transparent;
-		box-shadow: none;
-		display: none;
-		left: 0px;
-		opacity: 1;
-		padding: 0;
-		position: relative;
-		top: -10px !important;
-		visibility: visible;
-		width: 100%;
-		max-height: 250px;
-	}
-	.menu .navbar-nav li:hover > .submenu {
-	    -webkit-transition: inherit;
-	    transition: inherit;
-	    -webkit-transform: translate(0, 10px);
-	    -ms-transform: translate(0, 10px);
-	    -o-transform: translate(0, 10px);
-	    transform: translate(0, 10px);
-	}
-	.menu li.parent .carret-down {
-	    color: #fff;
-	    height: 35px;
-	    line-height: 35px;
-	    position: absolute;
-	    right: 0;
-	    text-align: center;
-	    top: 0;
-	    width: 35px;
-	    z-index: 9;
-	    cursor: pointer;
-	}
-	.navbar.navbar-custom .navbar-nav>li.parent .carret-down {
-		right: 0;
-		top: 0;
-	}
-	.navbar.navbar-custom .navbar-nav>li.parent .carret-down:before {
-	    font-size: 20px;
-	}
-	.navbar.navbar-custom .navbar-nav>li.parent .carret-down.open:before {
-	    content: "\f0d8";
-	}
-	.submenu .container {
-    	width: 100%;
-	}
 	.logo-menu-res {
 		padding: 10px 15px 0;
+		display: block;
 	}
 	.logo-menu-res img {
 		margin: 0 auto;
 	}
-	.logo-menu-res { display: block; }
-	.news-list .news-items .news-item {
-	    margin-bottom: 30px;
-	    padding: 0 20px;
+	.navbar-toggle {
+		display: block !important;
 	}
-	.news-list .news-items .news-item-head {
-	    width: 80%;
-	    margin: 0 auto;
-	    float: none;
-	    margin-bottom: 10px;
+	header .menu {
+		background-color: #183544;
+	  clear: both;
+	  float: none;
+	  display: block;
+	  position: fixed !important;
+	  left: -100% !important;
+	  width: 80%;
+	  top: 0;
+	  bottom: 0;
+	  z-index: 9999;
+	  padding-top: 20px;
+	  padding-bottom: 20px;
+	  overflow-y: auto !important;
+	  opacity: 0;
+	  visibility: hidden;
+	  -webkit-transition: 0.3s;
+	  -o-transition: 0.3s;
+	  transition: 0.3s;
+	  right: auto !important;
 	}
-	.news-list .news-items .news-item-details {
-	    width: 80%;
-	    float: none;
-	    margin: 0 auto;
+	#header .menu {
+	  margin: 0;
+	  height: auto !important;
+	}
+	header .menu.has-open {
+	  visibility: visible;
+	  opacity: 1;
+	  left: 0 !important;
+	  -webkit-transition: 0.3s;
+	  -o-transition: 0.3s;
+	  transition: 0.3s;
+	  overflow-y: auto !important;
+	}
+	.navbar-left {
+	  float: none!important;
+	}
+		.menu ul {
+	  padding: 10px;
+	  margin: 0;
+	}
+	.menu>ul>li {
+	  border-bottom: 1px solid #ddd;
+	}
+	.navbar-nav>li {
+	  float: none;
+	}
+	.menu li.parent .plus {
+	  color: #252525!important;
+	}
+	.menu .navbar-nav > li> a {
+	  line-height: 35px;
+	  padding: 0;
+	}
+	.menu li.parent .carret-down {
+	  color: #fff;
+	  height: 35px;
+	  line-height: 35px;
+	  position: absolute;
+	  right: 0;
+	  text-align: center;
+	  top: 0;
+	  width: 35px;
+	  z-index: 9;
+	  cursor: pointer;
+	}
+	.navbar.navbar-custom .navbar-nav>li.parent .carret-down {
+	  right: 0;
+	  top: 0;
+	}
+	.navbar.navbar-custom .navbar-nav>li.parent .carret-down:before {
+	  font-size: 20px;
+	}
+	.menu .navbar-nav li:hover > .submenu {
+	  -webkit-transition: inherit;
+	  transition: inherit;
+	  -webkit-transform: translate(0, 10px);
+	  -ms-transform: translate(0, 10px);
+	  -o-transform: translate(0, 10px);
+	  transform: translate(0, 10px);
+	}
+	.menu .navbar-nav .submenu {
+  	background: transparent;
+	  box-shadow: none;
+	  display: none;
+	  left: 0px;
+	  opacity: 1;
+	  padding: 0 0 0 10px;
+	  position: relative;
+	  top: -10px;
+	  visibility: visible;
+	  width: 100%;
+	}
+	.menu .navbar-nav .submenu li a { color: #fff; }
+	.menu .navbar-nav .submenu .submenu {
+	  left: 0;
+	  top: -10px;
+	}
+	/*.navbar.navbar-custom .navbar-nav>li.parent .carret-down {
+	  position: absolute;
+	  color: #fff;
+	  right: 15px;
+	  top: 10px;
+	}*/
+	.menu .navbar-nav > li .submenu li.parent > a:after { display: none; }
+	.navbar.navbar-custom .navbar-nav>li.parent .carret-down:before {
+	  content: "\f0d7";
+	  font-family: "Fontawesome";
+	}
+	.menu li.parent .carret-down.open:before {
+	  content: "\f0d8";
 	}
 }
 /*----------------
@@ -296,29 +280,6 @@
 [Styles for devices(<600px)]
 */
 @media (max-width: 600px) {
-	.submenu .container {
-		background: transparent;
-		padding-bottom: 10px;
-	}
-	.menu .navbar-nav .submenu {
-		max-height: 100%;
-	}
-	.submenu .sub-submenu {
-		padding: 0;
-	}
-	.sub-submenu .submenu-item {
-		text-align: left;
-		margin: 5px 0;
-		float: left;
-		width: 100%;
-		padding: 0;
-	}
-	.sub-submenu .submenu-item a {
-		color: #fff;
-	}
-	.sub-submenu .submenu-item img {
-		display: none
-	}
 	.block-ft .block-contact-ft,
 	.block-ft .block-phone-ft,
 	.block-ft .block-accordion-ft {
