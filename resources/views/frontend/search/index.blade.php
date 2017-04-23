@@ -1,19 +1,14 @@
 @extends('frontend.layout')
 @include('frontend.partials.meta')
-@section('header')
-    @include('frontend.partials.main-header')
-    @include('frontend.partials.home-menu')
-  @endsection
 @section('content')
-<div class="columns-container">
-    <div class="container" id="columns">
-        <!-- breadcrumb -->
-        <div class="breadcrumb clearfix">
-            <a class="home" href="{{ route('home') }}" title="Trở về trang chủ">Trang chủ</a>
-            <span class="navigation-pipe">&nbsp;</span>
-            <a href="" title="Đơn hàng của tôi">Tìm kiếm</a>
-        </div>
-        <!-- ./breadcrumb -->
+<article class="block block-breadcrumb">
+  <ul class="breadcrumb">
+    <li><a href="{{ route('home') }}" title="Trở về trang chủ">Trang chủ</a></li>
+    <li class="active">Tìm kiếm</li>
+  </ul>
+</article><!-- /block-breadcrumb -->
+<section class="block-content">
+        <div class="block-common">
         <div class="row">        
             <div class="col-sm-3" id="left_column">
               <!-- block category -->
@@ -42,7 +37,7 @@
                         <span class="page-heading-title2" style="text-transform:none">Kết quả tìm kiếm với từ khóa '{{ $tu_khoa }}' ({{ $productArr->total() }})</span>
                     </h1>
                     <!-- view-product-list-->
-                <div id="view-product-list" class="view-product-list">                                   
+                <div id="view-product-list" class="products">                                   
                     <!-- PRODUCT LIST -->
                     <ul class="row product-list grid">
                         @foreach( $productArr as $product )
@@ -52,62 +47,28 @@
                                 $thuocTinhArr = json_decode($tmp, true);
                             }
                         ?>
-                        <li class="col-xs-6 col-sm-4 col-md-3">
-                            <div class="product-container">
-                                <div class="left-block">
-                                   @if($product['pro_style'] == 1 && $product['image_pro'] != '' && $loaiSpKey[$product['loai_id']]['icon_km'] != '')
-                                    <img class="gift-icon lazy" src="{{ Helper::showImage($loaiSpKey[$product['loai_id']]['icon_km']) }}" alt="Sản phẩm có quà tặng">
-                                    @endif
-                                    @if($product['pro_style'] == 2 && $product['image_pro'] != '')
-                                    <img class="gift-icon lazy" src="{{ Helper::showImage($product['image_pro']) }}" alt="qua tang kem {{ $product['name'] }}">
-                                    @endif
-                                    @if( $product['is_sale'] == 1)
-                                    <span class="discount">-{{
-                                        100-round($product['price_sale']*100/$product['price'])
-                                    }}%</span>
-                                    @endif
-                                    <a href="{{ route('chi-tiet', $product['slug']) }}"><img class="img-responsive lazy-img1 lazy" alt="product" data-original="{{ Helper::showImage($product['image_url']) }}" /></a>   
-                                    @if($product['pro_style'] == 1 && $product['image_pro'] != '')
-                                    <img class="img-responsive lazy-img2 lazy" alt="product" src="{{ Helper::showImage($product['image_pro']) }}" />
-                                    @endif
-                                    </a>
-                                    @if( $loaiSpKey[$product['loai_id']]['is_hover'] == 1 && $product['pro_style'] == 0)
-                                    <figure class="mask-info">
-                                        @foreach($hoverInfo[$product['loai_id']] as $info)
-                                        <?php 
-                                        $tmpInfo = explode(",", $info->str_thuoctinh_id);        
-                                        ?>
-
-                                        <span>{{ $info->text_hien_thi}}: <?php
-                                        $countT = 0; $totalT = count($tmpInfo);
-                                        foreach( $tmpInfo as $tinfo){
-                                            $countT++;
-                                            if(isset($thuocTinhArr[$tinfo])){
-                                                echo $thuocTinhArr[$tinfo]. " ";                                                
-                                            }
-                                        }
-
-                                         ?></span>
-                                        @endforeach
-                                        <div class="btn-action">
-                                          <a class="btnorder" href="{{ route('chi-tiet', $product['slug']) }}">Đặt hàng</a>
-                                          <a class="viewdetail" href="{{ route('chi-tiet', $product['slug']) }}">Chi tiết</a>
-                                        </div>
-                                    </figure>
-                                    @endif
-                                </div>
-                                <div class="right-block">
-                                    <h2 class="product-name"><a title="{{ $product['name'] }}" href="{{ route('chi-tiet', $product['slug']) }}">{{ $product['name'] }}</a></h2>
-                                    <div class="content_price">
-                                        <span class="price product-price">{{ $product['is_sale'] == 1 ? number_format($product['price_sale']) : number_format($product['price']) }}</span>
-                                        @if( $product['is_sale'] == 1)
-                                        <span class="price old-price">{{ number_format($product['price']) }}</span>
-                                        @endif
-                                    </div>
-                                    <a class="add_to_cart_button" href="{{ route('chi-tiet', $product['slug']) }}">Mua</a>
-                                </div>
+                        <li class="col-md-3 col-sm-4 col-xs-4">
+                          <div class="item">
+                           <!-- <p class="trapezoid">-18%</p>-->
+                            <div class="pro-thumb">
+                              <a href="{{ route('chi-tiet', $product['slug']) }}" title="{{ $product['name'] }}">
+                                <img src="{{ Helper::showImage($product['image_url']) }}" alt="{{ $product['name'] }}">
+                              </a>
                             </div>
-                        </li>
+                            <div class="pro-info">
+                              <h2 class="pro-title"><a href="{{ route('chi-tiet', $product['slug']) }}">{{ $product['name'] }}</a></h2>
+                              <div class="price-products">
+                                <p class="pro-price">@if($product['price'] > 0)
+                                      {{ $product['is_sale'] == 1 ? number_format($product['price_sale']) : number_format($product['price']) }}
+                                      @else
+                                      Liên hệ
+                                      @endif </p>
+                                <!-- <p class="pro-sale"><del>7,940,000đ</del></p> -->
+                              </div>
+                              <a href="{{ route('chi-tiet', $product['slug']) }}" title="" class="btn btn-select-buy">Chọn mua</a>
+                            </div>
+                          </div><!-- /item -->
+                        </li><!-- /col-sm-2 col-xs-6 -->  
                     @endforeach
                         
                     </ul>
@@ -124,8 +85,8 @@
                 </div>                   
             </div>
         </div><!-- /.page-content -->
-    </div>
-</div>
+    
+</section>
 <style type="text/css">    
     .dashboard-order.have-margin {
         margin-bottom: 20px;

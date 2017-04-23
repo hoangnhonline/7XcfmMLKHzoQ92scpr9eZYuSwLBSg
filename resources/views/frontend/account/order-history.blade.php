@@ -87,7 +87,7 @@
 @endsection
 
 @include('frontend.partials.footer')
-@section('javascript')
+@section('javascript_page')
    <script type="text/javascript">
     $(document).ready(function() {
 

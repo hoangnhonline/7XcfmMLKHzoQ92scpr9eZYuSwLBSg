@@ -1,24 +1,18 @@
 @extends('frontend.layout')
-@section('header')
-    @include('frontend.partials.main-header')
-    @include('frontend.partials.home-menu')
-  @endsection
-@include('frontend.partials.meta')
 @section('content')
+<article class="block block-breadcrumb">
+  <ul class="breadcrumb">
+    <li><a href="{{ route('home') }}" title="Trở về trang chủ">Trang chủ</a></li>
+    <li class="active">Giỏ hàng</li>
+  </ul>
+</article><!-- /block-breadcrumb -->
 <?php 
 $vangLaiArr = Session::get('vanglai');
 ?>
 <!-- page wapper-->
-<div class="columns-container">
-    <div class="container" id="columns">
-        <!-- breadcrumb -->
-        <div class="breadcrumb clearfix">
-            <a class="home" href="{{ route('home') }}" title="Trở về trang chủ">Trang chủ</a>
-            <span class="navigation-pipe">&nbsp;</span>
-            <a href="#" title="Giỏ hàng">Giỏ hàng</a>
-        </div>
-        <!-- ./breadcrumb -->
-        <div class="page-content">
+<section class="block-content">
+        <div class="block-common">
+          <p class="block-page-name">Giỏ hàng</p>
           <!-- row -->
           <div class="shipping-address-page">
 
@@ -244,13 +238,11 @@ $vangLaiArr = Session::get('vanglai');
                 </div>
 
            </div><!-- /.shipping-address-page -->
-
-        </div><!-- /.page-content -->
-    </div>
-</div>
+        </div><!-- /.page-content -->    
+</section>
 @endsection
 @include('frontend.partials.footer')
-@section('javascript')
+@section('javascript_page')
    <script type="text/javascript">
     $(document).ready(function() {
 

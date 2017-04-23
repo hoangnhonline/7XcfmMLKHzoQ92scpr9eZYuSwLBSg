@@ -1,23 +1,15 @@
 @extends('frontend.layout')
-@section('header')
-@include('frontend.partials.main-header')
-@include('frontend.partials.home-menu')
-@endsection
 
 @include('frontend.partials.meta')
 @section('content')
-<div class="columns-container">
-    <div class="container" id="columns">
-        <!-- breadcrumb -->
-        <div class="breadcrumb clearfix">
-            <a class="home" href="{{ route('home') }}" title="Trở về trang chủ">Trang chủ</a>
-            <span class="navigation-pipe">&nbsp;</span>
-            <span class="navigation_page">Liên hệ</span>
-        </div>
-        <!-- ./breadcrumb -->
-        <!-- page heading-->
-        
-        <!-- ../page heading-->
+<article class="block block-breadcrumb">
+  <ul class="breadcrumb">
+    <li><a href="{{ route('home') }}" title="Trở về trang chủ">Trang chủ</a></li>
+    <li class="active">Liên hệ</li>
+  </ul>
+</article><!-- /block-breadcrumb -->
+<section class="block-content">
+        <div class="block-common">  
         <div id="contact" class="page-content page-contact">
             <div id="message-box-conact"></div>
             <div class="row">
@@ -49,18 +41,18 @@
                         </div>
                         <input type="hidden" name="type" value="1">                        
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                        <div class="form-selector col-md-4" style="padding-left:0px;padding-top:7px">
+                        <div class="form-selector col-md-4" style="padding-left:0px;padding-top:7px;height:45px">
                             <input type="radio" name="gender" value="1" id="gender1" checked="checked"> <label for="gender1">Anh</label>
                             &nbsp;&nbsp;&nbsp;&nbsp;
                             <input type="radio" name="gender" value="2" id="gender2"> <label for="gender2">Chị</label>
                         </div>
-                        <div class="form-selector col-md-8" style="padding-right:0px">                            
+                        <div class="form-selector col-md-8" style="padding-right:0px;height:45px">                            
                             <input type="text" placeholder="Họ và tên" class="form-control input-sm" id="full_name" name="full_name"  value="{{ old('full_name') }}" style="height:35px" />
                         </div>
-                        <div class="form-selector col-md-4" style="padding-left:0px">                            
+                        <div class="form-selector col-md-4" style="padding-left:0px;height:45px">                            
                             <input type="text" placeholder="Số điện thoại" class="form-control input-sm" id="phone" name="phone" value="{{ old('phone') }}" style="height:35px"/>
                         </div>   
-                        <div class="form-selector col-md-8" style="padding-right:0px">                           
+                        <div class="form-selector col-md-8" style="padding-right:0px;height:45px">                           
                             <input type="email" placeholder="Email của bạn" class="form-control input-sm" id="email" name="email" value="{{ old('email') }}" style="height:35px"/>
                         </div>
                         <div class="form-selector">
@@ -92,16 +84,15 @@
                 </div>
             </div>
         </div>
-    </div>
-</div>
+
+</section>
 <style type="text/css">
     span.required{
         color:red;
     }
     .contact-form-box input {
         font-size: 14px;
+        border: 1px solid #ccc
     }
 </style>
 @endsection
-
-@include('frontend.partials.footer')

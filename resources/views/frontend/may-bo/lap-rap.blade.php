@@ -68,7 +68,7 @@
 
 @include('frontend.partials.footer')
 
-@section('javascript')
+@section('javascript_page')
 <script type="text/javascript">	
   $(document).on('ifChecked', '.select-lk', function(){
       var obj = $(this);

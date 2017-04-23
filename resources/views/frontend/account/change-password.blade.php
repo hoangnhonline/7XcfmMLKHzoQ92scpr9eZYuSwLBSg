@@ -1,18 +1,15 @@
 @extends('frontend.layout') 
 @include('frontend.partials.meta')
-@section('header')
-    @include('frontend.partials.main-header')
-    @include('frontend.partials.home-menu')
-  @endsection
 @section('content')
-<div class="columns-container">
-    <div class="container" id="columns">
-        <!-- breadcrumb -->
-        <div class="breadcrumb clearfix">
-            <a class="home" href="{{ route('home') }}" title="Trở về trang chủ">Trang chủ</a>
-            <span class="navigation-pipe">&nbsp;</span>
-            <a href="" title="Đổi mật khẩu">Đổi mật khẩu</a>
-        </div>
+<article class="block block-breadcrumb">
+  <ul class="breadcrumb">
+    <li><a href="{{ route('home') }}" title="Trở về trang chủ">Trang chủ</a></li>
+    <li class="active">Đổi mật khẩu</li>
+  </ul>
+</article><!-- /block-breadcrumb -->
+<section class="block-content">
+        <div class="block-common">
+          <p class="block-page-name">Đổi mật khẩu</p>
         <!-- ./breadcrumb -->
         <div class="row">
             @include ('frontend.account.sidebar')
@@ -78,13 +75,12 @@
            </div><!-- /.shipping-address-page -->
             </div>
         </div><!-- /.page-content -->
-    </div>
-</div>
+    
+</section>
 <div class="clearfix"></div>
 @endsection
 
-@include('frontend.partials.footer')
-@section('javascript')
+@section('javascript_page')
    <script type="text/javascript">
     var customer_district_id = '{{ $customer->district_id }}';
     var customer_ward_id = '{{ $customer->ward_id }}';

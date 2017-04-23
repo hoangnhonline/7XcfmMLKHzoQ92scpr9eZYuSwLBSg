@@ -56,7 +56,7 @@
 
 @include('frontend.partials.footer')
 
-@section('javascript')
+@section('javascript_page')
 
 <script type="text/javascript" src="{{ URL::asset('assets/lib/countdown/jquery.plugin.js') }}"></script>
 <script type="text/javascript" src="{{ URL::asset('assets/lib/countdown/jquery.countdown.js') }}"></script>

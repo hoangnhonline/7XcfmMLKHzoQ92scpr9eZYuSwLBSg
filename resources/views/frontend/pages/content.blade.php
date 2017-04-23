@@ -1,14 +1,14 @@
 @include('frontend.partials.meta')
 @section('content')
+<article class="block block-breadcrumb">
+  <ul class="breadcrumb">
+    <li><a href="{{ route('home') }}" title="Trở về trang chủ">Trang chủ</a></li>
+    <li class="active"><a href="{{ route('danh-muc-cha', $detailPage->slug) }}" title="{{ $detailPage->title }}">{{ $detailPage->title }}</a></li>
+  </ul>
+</article><!-- /block-breadcrumb -->
 <div class="columns-container">
     <div class="container" id="columns">
-        <!-- breadcrumb -->
-        <div class="breadcrumb clearfix">
-            <a class="home" href="{{ route('home') }}" title="Trở về trang chủ">Trang chủ</a>
-            <span class="navigation-pipe">&nbsp;</span>
-            <a href="{{ route('danh-muc-cha', $detailPage->slug) }}" title="{{ $detailPage->title }}">{{ $detailPage->title }}</a>
-        </div>
-        <!-- ./breadcrumb -->
+        <!-- breadcrumb -->    
         
       <!-- row -->
        <div class="row">

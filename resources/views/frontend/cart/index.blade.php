@@ -1,20 +1,15 @@
 @extends('frontend.layout')
-@section('header')
-    @include('frontend.partials.main-header')
-    @include('frontend.partials.home-menu')
-  @endsection
-@include('frontend.partials.meta')
 @section('content')
-<div class="columns-container">
-    <div class="container" id="columns">
-        <!-- breadcrumb -->
-        <div class="breadcrumb clearfix">
-            <a class="home" href="{{ route('home') }}" title="Trở về trang chủ">Trang chủ</a>
-            <span class="navigation-pipe">&nbsp;</span>
-            <a href="{{ route('gio-hang') }}" title="Giỏ hàng">Giỏ hàng</a>
-        </div>
-        <!-- ./breadcrumb -->
-        <div class="page-content container">
+<article class="block block-breadcrumb">
+  <ul class="breadcrumb">
+    <li><a href="{{ route('home') }}" title="Trở về trang chủ">Trang chủ</a></li>
+    <li class="active">Giỏ hàng</li>
+  </ul>
+</article><!-- /block-breadcrumb -->
+<section class="block-content">
+        <div class="block-common">
+          <p class="block-page-name">Giỏ hàng</p>
+        
           <!-- row -->
           <div class="cart-page row">
 
@@ -164,17 +159,16 @@
             </div>
             <!-- ./left colunm -->
         </div><!-- ./row-->
-        </div><!-- /.page-content -->
+        
     </div>
-</div>
+</section>
 <style type="text/css">
   .checkbox-inline, .radio-inline{
     padding-left: 0px !important;
   }
 </style>
 @endsection
-@include('frontend.partials.footer')
-@section('javascript')
+@section('javascript_page')
    <script type="text/javascript">
     $(document).ready(function() {
       $('#add_service').on('ifChecked', function(event){

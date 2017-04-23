@@ -1,14 +1,8 @@
 @extends('frontend.layout')
-
-@section('header')
-    @include('frontend.partials.main-header')
-    @include('frontend.partials.home-menu')
-  @endsection
-
 @include('frontend.partials.meta')
 @section('content')
-<div class="columns-container">
-    <div class="container" id="columns">
+<section class="block-content">
+    <div class="block-common block-sale-products">        
         <!-- breadcrumb -->
         <div class="breadcrumb clearfix">
             <a class="home" href="{{ route('home') }}" title="Trở về trang chủ">Trang chủ</a>
@@ -69,7 +63,7 @@
             <div class="center_column col-xs-12 col-sm-9" id="center_column">             
               
                 <!-- view-product-list-->
-                <div id="view-product-list" class="view-product-list">
+                <div id="view-product-list" class="products">
                     <h1 class="page-heading">
                         <span class="page-heading-title">{{ $rsCate->name }}</span>
                     </h1>                    
@@ -83,11 +77,28 @@
                             }
 
                         ?>
-                        <li class="col-xs-6 col-sm-4 col-md-3">
-                            <div class="product-container">
-                                @include('frontend.cate.per-product')
-                            </div>
-                        </li>
+                        <li class="col-md-3 col-sm-4 col-xs-4">
+                            <div class="item">
+                                <!--<p class="trapezoid">-18%</p>-->
+                                <div class="pro-thumb">
+                                    <a href="{{ route('chi-tiet', $product['slug']) }}" title="{{ $product['name'] }}">
+                                        <img src="{{ Helper::showImage($product['image_url']) }}" alt="{{ $product['name'] }}">
+                                    </a>
+                                </div>
+                                <div class="pro-info">
+                                    <h2 class="pro-title"><a href="{{ route('chi-tiet', $product['slug']) }}">{{ $product['name'] }}</a></h2>
+                                    <div class="price-products">
+                                        <p class="pro-price">@if($product['price'] > 0)
+                                        {{ $product['is_sale'] == 1 ? number_format($product['price_sale']) : number_format($product['price']) }}
+                                        @else
+                                        Liên hệ
+                                        @endif </p>
+                                        <!-- <p class="pro-sale"><del>7,940,000đ</del></p> -->
+                                    </div>
+                                    <a href="{{ route('chi-tiet', $product['slug']) }}" title="" class="btn btn-select-buy">Chọn mua</a>
+                                </div>
+                            </div><!-- /item -->
+                        </li><!-- /col-sm-2 col-xs-6 -->    
                     @endforeach
                         
                     </ul>
@@ -106,8 +117,7 @@
             <!-- ./ Center colunm -->
         </div>
         <!-- ./row-->
-    </div>
-</div>
+</section>
 @endsection
 
 @include('frontend.partials.footer')

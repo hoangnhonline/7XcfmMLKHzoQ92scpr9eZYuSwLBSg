@@ -1,24 +1,18 @@
 @extends('frontend.layout')
-@section('header')
-    @include('frontend.partials.main-header')
-    @include('frontend.partials.home-menu')
-  @endsection
 @include('frontend.partials.meta')
 @section('content')
 <?php 
 $vangLaiArr = Session::get('vanglai');
 ?>
-<div class="columns-container">
-    <div class="container" id="columns">
-        <!-- breadcrumb -->
-        <div class="breadcrumb clearfix">
-            <a class="home" href="#" title="Return to Home">Home</a>
-            <span class="navigation-pipe">&nbsp;</span>
-            <a href="#" title="Giỏ hàng">Đặt hàng thành công</a>
-        </div>
-        <!-- ./breadcrumb -->      
-             
-        <div class="page-content">
+<article class="block block-breadcrumb">
+  <ul class="breadcrumb">
+    <li><a href="{{ route('home') }}" title="Trở về trang chủ">Trang chủ</a></li>
+    <li class="active">Đặt hàng thành công</li>
+  </ul>
+</article><!-- /block-breadcrumb -->
+<section class="block-content">
+        <div class="block-common">
+          <p class="block-page-name">Đặt hàng thành công</p>
           <!-- row -->
           <div class="shipping-address-page">
               
@@ -70,7 +64,6 @@ $vangLaiArr = Session::get('vanglai');
            </div><!-- /.shipping-address-page -->   
                            
         </div><!-- /.page-content -->
-    </div>
-</div>
+
+</section>
 @endsection
-@include('frontend.partials.footer')

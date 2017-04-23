@@ -35,6 +35,9 @@
   <link rel="stylesheet" type="text/css" href="{{ URL::asset('assets/css/style.css') }}">
   <!-- ===== Responsive CSS ===== -->
   <link rel="stylesheet" type="text/css" href="{{ URL::asset('assets/css/responsive.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ URL::asset('assets/css/custom.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ URL::asset('assets/css/square/red.css') }}" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="{{ URL::asset('assets/css/sweetalert2.min.css') }}">
 
   <!-- ===== Responsive CSS ===== -->
   <!-- <link href="css/responsive.css" rel="stylesheet"> -->
@@ -64,19 +67,20 @@
       <div class="top-header">
         <div class="container">
           <div class="logo">
-            <a href="index.html">
+            <a href="{{ route('home') }}">
               <img alt="icho" src="{{ URL::asset('assets/images/logo.png') }}">
               <h1 class="hide">icho.vn</h1>
             </a>
           </div>
           <div class="header-search-box">
-            <form action="" method="" class="mainsearch">
-              <input type="text" autocomplete="off" name="key" placeholder="Bạn mua gì hôm nay?" maxlength="50">
+          <form class="form-inline" method="GET" action="{{ route('search') }}" class="mainsearch">            
+              <input type="text" autocomplete="off" name="keyword" placeholder="Bạn mua gì hôm nay?" maxlength="50" value="{{ isset($tu_khoa) ? $tu_khoa : "" }}">
+
               <button type="submit"><i class="fa fa-search"></i></button>
             </form>
           </div>
           <div class="header-contact">
-            <p>Tổng đài: <span class="hotline">1900.1908 - 08.3622.9900</span> <span class="time_active">(7:30 - 22:00)</span></p>
+            <p>Tổng đài: <span class="hotline">1900 636 975</span> <span class="time_active">(7:30 - 22:00)</span></p>
           </div>
         </div>
       </div><!-- /top_header -->
@@ -95,78 +99,16 @@
               <a title="Logo" href="index.html"><img src="{{ URL::asset('assets/images/logo.png') }}" alt="Logo"></a>
             </div>
             <ul class="nav navbar-nav navbar-left">
+              @foreach( $menuNgang as $loai)
               <li class="level0 parent">
-                <a class="" href="#">Máy Tính Xách Tay</a>
+                <a href="{{ route('danh-muc-cha', $loai['slug']) }}">{{ $loai['name'] }}</a>
                 <ul class="level0 submenu submenu-white">
-                  <li class="level1"><a href="home.html">Index Basic v1</a></li>
-                                    <li class="level1"><a href="home2.html">Index Basic v2</a></li>
-                                    <li class="level1"><a href="home3.html">Index Creative</a></li>
-                                    <li class="level1"><a href="home4.html">Index Boxed</a></li>
-                                    <li class="level1"><a href="home5.html">Index_Sidebar v1</a></li>
-                                    <li class="level1"><a href="home6.html">Index Sidebar v2</a></li>
-                                    <li class="level1"><a href="home7.html">Index Simple v1</a></li>
-                                    <li class="level1"><a href="home8.html">Index Simple v2</a></li>
-                                    <li class="level1"><a href="home9.html">Index Banner</a></li>
-                                    <li class="level1"><a href="home10.html">Index Full Width v1</a></li>
-                                    <li class="level1"><a href="home11.html">Index Slide v01</a></li>
-                                    <li class="level1"><a href="home12.html">Index Slide v2</a></li>
+                   @foreach( $loai['child'] as $cate)
+                   <li class="level1"><a href="{{ route('danh-muc-con',[ $loai['slug'], $cate['slug']]) }}">{{ $cate['name']}}</a></li>                   
+                   @endforeach
                 </ul>
               </li><!-- END MENU HOME -->
-              <li class="level0 parent">
-                <a href="#">Máy Tính Bàn</a>
-                <ul class="level0 submenu submenu-white">
-                  <li class="level1 parent"><a href="category_grid.html">Category Grid</a>
-                    <ul class="level1 submenu submenu-white">
-                      <li><a href="product_detail.html">Product Detail</a></li>
-                    </ul>
-                  </li>
-                  <li class="level1 parent"><a href="category_grid_left_sidebar.html">Category Grid Left Sidebar</a>
-                    <ul class="level1 submenu submenu-white">
-                      <li><a href="product_detail_left_Sidebar.html">Product Detail Left Sidebar</a></li>
-                    </ul>
-                  </li>
-                  <li class="level1 parent"><a href="category_grid_right_sidebar.html">Category Grid Right Sidebar</a>
-                    <ul class="level1 submenu submenu-white">
-                      <li><a href="product_detail_right_Sidebar.html">Product Detail Right Sidebar</a></li>
-                    </ul>
-                  </li>
-                  <li class="level1 parent"><a href="category_listing.html">Category Listing</a>
-                    <ul class="level1 submenu submenu-white">
-                      <li><a href="product_detail_configurable.html">Product Detail Configurable</a></li>
-                      <li><a href="product_detail_v2.html">Product Detail V2</a></li>
-                    </ul>
-                  </li>
-                  <li class="level1"><a href="category_listing_left_sidebar.html">Category Listing Left Sidebar</a></li>
-                                    <li class="level1"><a href="category_listing_right_sidebar.html">Category Listing Right Sidebar</a></li>
-                  <li class="level1"><a href="#">Cart</a></li>
-                </ul>
-              </li><!-- END MENU SHOP -->
-              <li class="level0 parent">
-                <a class="" href="#">Máy In</a>
-                <ul class="level0 submenu submenu-white">
-                  <li class="level1"><a href="about.html">About</a></li>
-                  <li class="level1"><a href="home.html">Menu v1 White</a></li>
-                  <li class="level1"><a href="home-menu-black.html">Menu v1 Black</a></li>
-                  <li class="level1"><a href="home-menu-black-top.html">Menu v2</a></li>
-                  <li class="level1"><a href="home-menu-mega-black.html">Mega Menu v1 Black</a></li>
-                  <li class="level1"><a href="home-menu-mega-white.html">Mega Menu v2 White</a></li>
-                </ul>
-              </li><!-- END MENU BLOG -->
-              <li><a class="" href="#">Mực In</a></li>
-              <li class="level0 parent">
-                <a class="" href="#">Thiết Bị Mạng</a>
-                <ul class="level0 submenu submenu-white">
-                  <li class="level1"><a href="blog_listing.html">Blog Listing</a></li>
-                  <li class="level1"><a href="blog_listing_left_sidebar.html">Blog Listing Left Sidebar</a></li>
-                  <li class="level1"><a href="blog_listing_right_sidebar.html">Blog Listing Right Sidebar</a></li>
-                  <li class="level1"><a href="blog_gird_no_sidebar.html">Blog Grid No Sidebar</a></li>
-                  <li class="level1"><a href="blog_gird_left_sidebar.html">Blog Grid Left Sidebar</a></li>
-                  <li class="level1"><a href="blog_gird_right_sidebar.html">Blog Grid_Right Sidebar</a></li>
-                  <li class="level1"><a href="blog_detail.html">Blog Detail</a></li>
-                </ul>
-              </li><!-- END MENU BLOG -->
-              <li><a class="" href="contact.html">Màn Hính Máy Tính</a></li>
-              <li><a class="" href="contact.html">Camera Quan Sát</a></li>
+              @endforeach
             </ul>
           </div><!-- /.navbar-collapse -->
             </div>
@@ -174,726 +116,23 @@
     </header><!-- /header -->
 
     <section class="container">
-      
       <section class="block block-banner">
-        <img src="{{ URL::asset('assets/images/banner/banner2.jpg') }}" alt="">
+        <?php 
+        $bannerArr = DB::table('banner')->where(['object_id' => 1, 'object_type' => 3])->orderBy('display_order', 'asc')->get();
+        ?>
+        @if($bannerArr)
+        @foreach($bannerArr as $banner)
+         @if($banner->ads_url !='')
+          <a href="{{ $banner->ads_url }}">
+          @endif
+          <img alt="banner" class="lazy" data-original="{{ Helper::showImage($banner->image_url) }}" title="banner">
+          @if($banner->ads_url !='')
+          </a>
+          @endif
+        @endforeach
+        @endif
       </section><!-- /banner -->
-
-      <section class="block block-products products">
-        <div class="block-title">
-          <h2 class="title">Máy tính xách tay</h2>
-          <a href="#" title="" class="viewmore">Xem 22 sản phẩm <i class="fa fa-angle-right"></i></a>
-        </div>
-        <div class="block-content">
-          <ul class="owl-carousel owl-theme owl-style2" data-nav="true" data-dots="false" data-margin="30" data-responsive='{"0":{"items":1},"480":{"items":2},"600":{"items":2},"768":{"items":3},"800":{"items":3},"992":{"items":6}}'>
-            <li class="item">
-              <div class="pro-thumb">
-                <a href="" title="">
-                  <img src="{{ URL::asset('assets/images/products/pro1.jpg') }}" alt="">
-                </a>
-              </div>
-              <div class="pro-info">
-                <h2 class="pro-title"><a href="#">Gigabyte GA-Z170X Gaming GT</a></h2>
-                <div class="price-products">
-                  <p class="pro-price">7,240,000đ</p>
-                  <p class="pro-sale"><del>7,940,000đ</del> <span>(6%)</span></p>
-                </div>
-              </div>
-            </li><!-- /item -->
-            <li class="item">
-              <div class="pro-thumb">
-                <a href="" title="">
-                  <img src="{{ URL::asset('assets/images/products/pro2.jpg') }}" alt="">
-                </a>
-              </div>
-              <div class="pro-info">
-                <h2 class="pro-title"><a href="#">Gigabyte GA-Z170X Gaming GT</a></h2>
-                <div class="price-products">
-                  <p class="pro-price">7,240,000đ</p>
-                  <p class="pro-sale"><del>7,940,000đ</del> <span>(6%)</span></p>
-                </div>
-              </div>
-            </li><!-- /item -->
-            <li class="item">
-              <div class="pro-thumb">
-                <a href="" title="">
-                  <img src="{{ URL::asset('assets/images/products/pro3.jpg') }}" alt="">
-                </a>
-              </div>
-              <div class="pro-info">
-                <h2 class="pro-title"><a href="#">Gigabyte GA-Z170X Gaming GT</a></h2>
-                <div class="price-products">
-                  <p class="pro-price">7,240,000đ</p>
-                  <p class="pro-sale"><del>7,940,000đ</del> <span>(6%)</span></p>
-                </div>
-              </div>
-            </li><!-- /item -->
-            <li class="item">
-              <div class="pro-thumb">
-                <a href="" title="">
-                  <img src="{{ URL::asset('assets/images/products/pro4.jpg') }}" alt="">
-                </a>
-              </div>
-              <div class="pro-info">
-                <h2 class="pro-title"><a href="#">Gigabyte GA-Z170X Gaming GT</a></h2>
-                <div class="price-products">
-                  <p class="pro-price">7,240,000đ</p>
-                  <p class="pro-sale"><del>7,940,000đ</del> <span>(6%)</span></p>
-                </div>
-              </div>
-            </li><!-- /item -->
-            <li class="item">
-              <div class="pro-thumb">
-                <a href="" title="">
-                  <img src="{{ URL::asset('assets/images/products/pro5.jpg') }}" alt="">
-                </a>
-              </div>
-              <div class="pro-info">
-                <h2 class="pro-title"><a href="#">Gigabyte GA-Z170X Gaming GT</a></h2>
-                <div class="price-products">
-                  <p class="pro-price">7,240,000đ</p>
-                  <p class="pro-sale"><del>7,940,000đ</del> <span>(6%)</span></p>
-                </div>
-              </div>
-            </li><!-- /item -->
-            <li class="item">
-              <div class="pro-thumb">
-                <a href="" title="">
-                  <img src="{{ URL::asset('assets/images/products/pro6.jpg') }}" alt="">
-                </a>
-              </div>
-              <div class="pro-info">
-                <h2 class="pro-title"><a href="#">Gigabyte GA-Z170X Gaming GT</a></h2>
-                <div class="price-products">
-                  <p class="pro-price">7,240,000đ</p>
-                  <p class="pro-sale"><del>7,940,000đ</del> <span>(6%)</span></p>
-                </div>
-              </div>
-            </li><!-- /item -->
-            <li class="item">
-              <div class="pro-thumb">
-                <a href="" title="">
-                  <img src="{{ URL::asset('assets/images/products/pro6.jpg') }}" alt="">
-                </a>
-              </div>
-              <div class="pro-info">
-                <h2 class="pro-title"><a href="#">Gigabyte GA-Z170X Gaming GT</a></h2>
-                <div class="price-products">
-                  <p class="pro-price">7,240,000đ</p>
-                  <p class="pro-sale"><del>7,940,000đ</del> <span>(6%)</span></p>
-                </div>
-              </div>
-            </li><!-- /item -->
-            <li class="item">
-              <div class="pro-thumb">
-                <a href="" title="">
-                  <img src="{{ URL::asset('assets/images/products/pro5.jpg') }}" alt="">
-                </a>
-              </div>
-              <div class="pro-info">
-                <h2 class="pro-title"><a href="#">Gigabyte GA-Z170X Gaming GT</a></h2>
-                <div class="price-products">
-                  <p class="pro-price">7,240,000đ</p>
-                  <p class="pro-sale"><del>7,940,000đ</del> <span>(6%)</span></p>
-                </div>
-              </div>
-            </li><!-- /item -->
-            <li class="item">
-              <div class="pro-thumb">
-                <a href="" title="">
-                  <img src="{{ URL::asset('assets/images/products/pro4.jpg') }}" alt="">
-                </a>
-              </div>
-              <div class="pro-info">
-                <h2 class="pro-title"><a href="#">Gigabyte GA-Z170X Gaming GT</a></h2>
-                <div class="price-products">
-                  <p class="pro-price">7,240,000đ</p>
-                  <p class="pro-sale"><del>7,940,000đ</del> <span>(6%)</span></p>
-                </div>
-              </div>
-            </li><!-- /item -->
-            <li class="item">
-              <div class="pro-thumb">
-                <a href="" title="">
-                  <img src="{{ URL::asset('assets/images/products/pro3.jpg') }}" alt="">
-                </a>
-              </div>
-              <div class="pro-info">
-                <h2 class="pro-title"><a href="#">Gigabyte GA-Z170X Gaming GT</a></h2>
-                <div class="price-products">
-                  <p class="pro-price">7,240,000đ</p>
-                  <p class="pro-sale"><del>7,940,000đ</del> <span>(6%)</span></p>
-                </div>
-              </div>
-            </li><!-- /item -->
-            <li class="item">
-              <div class="pro-thumb">
-                <a href="" title="">
-                  <img src="{{ URL::asset('assets/images/products/pro2.jpg') }}" alt="">
-                </a>
-              </div>
-              <div class="pro-info">
-                <h2 class="pro-title"><a href="#">Gigabyte GA-Z170X Gaming GT</a></h2>
-                <div class="price-products">
-                  <p class="pro-price">7,240,000đ</p>
-                  <p class="pro-sale"><del>7,940,000đ</del> <span>(6%)</span></p>
-                </div>
-              </div>
-            </li><!-- /item -->
-            <li class="item">
-              <div class="pro-thumb">
-                <a href="" title="">
-                  <img src="{{ URL::asset('assets/images/products/pro1.jpg') }}" alt="">
-                </a>
-              </div>
-              <div class="pro-info">
-                <h2 class="pro-title"><a href="#">Gigabyte GA-Z170X Gaming GT</a></h2>
-                <div class="price-products">
-                  <p class="pro-price">7,240,000đ</p>
-                  <p class="pro-sale"><del>7,940,000đ</del> <span>(6%)</span></p>
-                </div>
-              </div>
-            </li><!-- /item -->
-          </ul>
-        </div>
-      </section><!-- /block-products products -->
-
-      <section class="block block-products products">
-        <div class="block-title">
-          <h2 class="title">Máy để bàn <img src="{{ URL::asset('assets/images/hot.png') }}" alt=""></h2>
-          <a href="#" title="" class="viewmore">Xem 22 sản phẩm <i class="fa fa-angle-right"></i></a>
-        </div>
-        <div class="block-content">
-          <ul class="owl-carousel owl-theme owl-style2" data-nav="true" data-dots="false" data-margin="30" data-responsive='{"0":{"items":1},"480":{"items":2},"600":{"items":2},"768":{"items":3},"800":{"items":3},"992":{"items":6}}'>
-            <li class="item">
-              <div class="pro-thumb">
-                <a href="" title="">
-                  <img src="{{ URL::asset('assets/images/products/pro7.jpg') }}" alt="">
-                </a>
-              </div>
-              <div class="pro-info">
-                <h2 class="pro-title"><a href="#">Gigabyte GA-Z170X Gaming GT</a></h2>
-                <div class="price-products">
-                  <p class="pro-price">7,240,000đ</p>
-                  <p class="pro-sale"><del>7,940,000đ</del> <span>(6%)</span></p>
-                </div>
-              </div>
-            </li><!-- /item -->
-            <li class="item">
-              <div class="pro-thumb">
-                <a href="" title="">
-                  <img src="{{ URL::asset('assets/images/products/pro8.jpg') }}" alt="">
-                </a>
-              </div>
-              <div class="pro-info">
-                <h2 class="pro-title"><a href="#">Gigabyte GA-Z170X Gaming GT</a></h2>
-                <div class="price-products">
-                  <p class="pro-price">7,240,000đ</p>
-                  <p class="pro-sale"><del>7,940,000đ</del> <span>(6%)</span></p>
-                </div>
-              </div>
-            </li><!-- /item -->
-            <li class="item">
-              <div class="pro-thumb">
-                <a href="" title="">
-                  <img src="{{ URL::asset('assets/images/products/pro9.jpg') }}" alt="">
-                </a>
-              </div>
-              <div class="pro-info">
-                <h2 class="pro-title"><a href="#">Gigabyte GA-Z170X Gaming GT</a></h2>
-                <div class="price-products">
-                  <p class="pro-price">7,240,000đ</p>
-                  <p class="pro-sale"><del>7,940,000đ</del> <span>(6%)</span></p>
-                </div>
-              </div>
-            </li><!-- /item -->
-            <li class="item">
-              <div class="pro-thumb">
-                <a href="" title="">
-                  <img src="{{ URL::asset('assets/images/products/pro10.jpg') }}" alt="">
-                </a>
-              </div>
-              <div class="pro-info">
-                <h2 class="pro-title"><a href="#">Gigabyte GA-Z170X Gaming GT</a></h2>
-                <div class="price-products">
-                  <p class="pro-price">7,240,000đ</p>
-                  <p class="pro-sale"><del>7,940,000đ</del> <span>(6%)</span></p>
-                </div>
-              </div>
-            </li><!-- /item -->
-            <li class="item">
-              <div class="pro-thumb">
-                <a href="" title="">
-                  <img src="{{ URL::asset('assets/images/products/pro11.jpg') }}" alt="">
-                </a>
-              </div>
-              <div class="pro-info">
-                <h2 class="pro-title"><a href="#">Gigabyte GA-Z170X Gaming GT</a></h2>
-                <div class="price-products">
-                  <p class="pro-price">7,240,000đ</p>
-                  <p class="pro-sale"><del>7,940,000đ</del> <span>(6%)</span></p>
-                </div>
-              </div>
-            </li><!-- /item -->
-            <li class="item">
-              <div class="pro-thumb">
-                <a href="" title="">
-                  <img src="{{ URL::asset('assets/images/products/pro12.jpg') }}" alt="">
-                </a>
-              </div>
-              <div class="pro-info">
-                <h2 class="pro-title"><a href="#">Gigabyte GA-Z170X Gaming GT</a></h2>
-                <div class="price-products">
-                  <p class="pro-price">7,240,000đ</p>
-                  <p class="pro-sale"><del>7,940,000đ</del> <span>(6%)</span></p>
-                </div>
-              </div>
-            </li><!-- /item -->
-            <li class="item">
-              <div class="pro-thumb">
-                <a href="" title="">
-                  <img src="{{ URL::asset('assets/images/products/pro11.jpg') }}" alt="">
-                </a>
-              </div>
-              <div class="pro-info">
-                <h2 class="pro-title"><a href="#">Gigabyte GA-Z170X Gaming GT</a></h2>
-                <div class="price-products">
-                  <p class="pro-price">7,240,000đ</p>
-                  <p class="pro-sale"><del>7,940,000đ</del> <span>(6%)</span></p>
-                </div>
-              </div>
-            </li><!-- /item -->
-            <li class="item">
-              <div class="pro-thumb">
-                <a href="" title="">
-                  <img src="{{ URL::asset('assets/images/products/pro10.jpg') }}" alt="">
-                </a>
-              </div>
-              <div class="pro-info">
-                <h2 class="pro-title"><a href="#">Gigabyte GA-Z170X Gaming GT</a></h2>
-                <div class="price-products">
-                  <p class="pro-price">7,240,000đ</p>
-                  <p class="pro-sale"><del>7,940,000đ</del> <span>(6%)</span></p>
-                </div>
-              </div>
-            </li><!-- /item -->
-            <li class="item">
-              <div class="pro-thumb">
-                <a href="" title="">
-                  <img src="{{ URL::asset('assets/images/products/pro9.jpg') }}" alt="">
-                </a>
-              </div>
-              <div class="pro-info">
-                <h2 class="pro-title"><a href="#">Gigabyte GA-Z170X Gaming GT</a></h2>
-                <div class="price-products">
-                  <p class="pro-price">7,240,000đ</p>
-                  <p class="pro-sale"><del>7,940,000đ</del> <span>(6%)</span></p>
-                </div>
-              </div>
-            </li><!-- /item -->
-            <li class="item">
-              <div class="pro-thumb">
-                <a href="" title="">
-                  <img src="{{ URL::asset('assets/images/products/pro8.jpg') }}" alt="">
-                </a>
-              </div>
-              <div class="pro-info">
-                <h2 class="pro-title"><a href="#">Gigabyte GA-Z170X Gaming GT</a></h2>
-                <div class="price-products">
-                  <p class="pro-price">7,240,000đ</p>
-                  <p class="pro-sale"><del>7,940,000đ</del> <span>(6%)</span></p>
-                </div>
-              </div>
-            </li><!-- /item -->
-            <li class="item">
-              <div class="pro-thumb">
-                <a href="" title="">
-                  <img src="{{ URL::asset('assets/images/products/pro7.jpg') }}" alt="">
-                </a>
-              </div>
-              <div class="pro-info">
-                <h2 class="pro-title"><a href="#">Gigabyte GA-Z170X Gaming GT</a></h2>
-                <div class="price-products">
-                  <p class="pro-price">7,240,000đ</p>
-                  <p class="pro-sale"><del>7,940,000đ</del> <span>(6%)</span></p>
-                </div>
-              </div>
-            </li><!-- /item -->
-            <li class="item">
-              <div class="pro-thumb">
-                <a href="" title="">
-                  <img src="{{ URL::asset('assets/images/products/pro6.jpg') }}" alt="">
-                </a>
-              </div>
-              <div class="pro-info">
-                <h2 class="pro-title"><a href="#">Gigabyte GA-Z170X Gaming GT</a></h2>
-                <div class="price-products">
-                  <p class="pro-price">7,240,000đ</p>
-                  <p class="pro-sale"><del>7,940,000đ</del> <span>(6%)</span></p>
-                </div>
-              </div>
-            </li><!-- /item -->
-          </ul>
-        </div>
-      </section><!-- /block-products products -->
-
-      <section class="block block-products products">
-        <div class="block-title">
-          <h2 class="title">Thiết bị mạng</h2>
-          <a href="#" title="" class="viewmore">Xem 22 sản phẩm <i class="fa fa-angle-right"></i></a>
-        </div>
-        <div class="block-content">
-          <ul class="owl-carousel owl-theme owl-style2" data-nav="true" data-dots="false" data-margin="30" data-responsive='{"0":{"items":1},"480":{"items":2},"600":{"items":2},"768":{"items":3},"800":{"items":3},"992":{"items":6}}'>
-            <li class="item">
-              <div class="pro-thumb">
-                <a href="" title="">
-                  <img src="{{ URL::asset('assets/images/products/pro13.jpg') }}" alt="">
-                </a>
-              </div>
-              <div class="pro-info">
-                <h2 class="pro-title"><a href="#">Gigabyte GA-Z170X Gaming GT</a></h2>
-                <div class="price-products">
-                  <p class="pro-price">7,240,000đ</p>
-                  <p class="pro-sale"><del>7,940,000đ</del> <span>(6%)</span></p>
-                </div>
-              </div>
-            </li><!-- /item -->
-            <li class="item">
-              <div class="pro-thumb">
-                <a href="" title="">
-                  <img src="{{ URL::asset('assets/images/products/pro14.jpg') }}" alt="">
-                </a>
-              </div>
-              <div class="pro-info">
-                <h2 class="pro-title"><a href="#">Gigabyte GA-Z170X Gaming GT</a></h2>
-                <div class="price-products">
-                  <p class="pro-price">7,240,000đ</p>
-                  <p class="pro-sale"><del>7,940,000đ</del> <span>(6%)</span></p>
-                </div>
-              </div>
-            </li><!-- /item -->
-            <li class="item">
-              <div class="pro-thumb">
-                <a href="" title="">
-                  <img src="{{ URL::asset('assets/images/products/pro15.jpg') }}" alt="">
-                </a>
-              </div>
-              <div class="pro-info">
-                <h2 class="pro-title"><a href="#">Gigabyte GA-Z170X Gaming GT</a></h2>
-                <div class="price-products">
-                  <p class="pro-price">7,240,000đ</p>
-                  <p class="pro-sale"><del>7,940,000đ</del> <span>(6%)</span></p>
-                </div>
-              </div>
-            </li><!-- /item -->
-            <li class="item">
-              <div class="pro-thumb">
-                <a href="" title="">
-                  <img src="{{ URL::asset('assets/images/products/pro16.jpg') }}" alt="">
-                </a>
-              </div>
-              <div class="pro-info">
-                <h2 class="pro-title"><a href="#">Gigabyte GA-Z170X Gaming GT</a></h2>
-                <div class="price-products">
-                  <p class="pro-price">7,240,000đ</p>
-                  <p class="pro-sale"><del>7,940,000đ</del> <span>(6%)</span></p>
-                </div>
-              </div>
-            </li><!-- /item -->
-            <li class="item">
-              <div class="pro-thumb">
-                <a href="" title="">
-                  <img src="{{ URL::asset('assets/images/products/pro17.jpg') }}" alt="">
-                </a>
-              </div>
-              <div class="pro-info">
-                <h2 class="pro-title"><a href="#">Gigabyte GA-Z170X Gaming GT</a></h2>
-                <div class="price-products">
-                  <p class="pro-price">7,240,000đ</p>
-                  <p class="pro-sale"><del>7,940,000đ</del> <span>(6%)</span></p>
-                </div>
-              </div>
-            </li><!-- /item -->
-            <li class="item">
-              <div class="pro-thumb">
-                <a href="" title="">
-                  <img src="{{ URL::asset('assets/images/products/pro18.jpg') }}" alt="">
-                </a>
-              </div>
-              <div class="pro-info">
-                <h2 class="pro-title"><a href="#">Gigabyte GA-Z170X Gaming GT</a></h2>
-                <div class="price-products">
-                  <p class="pro-price">7,240,000đ</p>
-                  <p class="pro-sale"><del>7,940,000đ</del> <span>(6%)</span></p>
-                </div>
-              </div>
-            </li><!-- /item -->
-            <li class="item">
-              <div class="pro-thumb">
-                <a href="" title="">
-                  <img src="{{ URL::asset('assets/images/products/pro18.jpg') }}" alt="">
-                </a>
-              </div>
-              <div class="pro-info">
-                <h2 class="pro-title"><a href="#">Gigabyte GA-Z170X Gaming GT</a></h2>
-                <div class="price-products">
-                  <p class="pro-price">7,240,000đ</p>
-                  <p class="pro-sale"><del>7,940,000đ</del> <span>(6%)</span></p>
-                </div>
-              </div>
-            </li><!-- /item -->
-            <li class="item">
-              <div class="pro-thumb">
-                <a href="" title="">
-                  <img src="{{ URL::asset('assets/images/products/pro17.jpg') }}" alt="">
-                </a>
-              </div>
-              <div class="pro-info">
-                <h2 class="pro-title"><a href="#">Gigabyte GA-Z170X Gaming GT</a></h2>
-                <div class="price-products">
-                  <p class="pro-price">7,240,000đ</p>
-                  <p class="pro-sale"><del>7,940,000đ</del> <span>(6%)</span></p>
-                </div>
-              </div>
-            </li><!-- /item -->
-            <li class="item">
-              <div class="pro-thumb">
-                <a href="" title="">
-                  <img src="{{ URL::asset('assets/images/products/pro16.jpg') }}" alt="">
-                </a>
-              </div>
-              <div class="pro-info">
-                <h2 class="pro-title"><a href="#">Gigabyte GA-Z170X Gaming GT</a></h2>
-                <div class="price-products">
-                  <p class="pro-price">7,240,000đ</p>
-                  <p class="pro-sale"><del>7,940,000đ</del> <span>(6%)</span></p>
-                </div>
-              </div>
-            </li><!-- /item -->
-            <li class="item">
-              <div class="pro-thumb">
-                <a href="" title="">
-                  <img src="{{ URL::asset('assets/images/products/pro15.jpg') }}" alt="">
-                </a>
-              </div>
-              <div class="pro-info">
-                <h2 class="pro-title"><a href="#">Gigabyte GA-Z170X Gaming GT</a></h2>
-                <div class="price-products">
-                  <p class="pro-price">7,240,000đ</p>
-                  <p class="pro-sale"><del>7,940,000đ</del> <span>(6%)</span></p>
-                </div>
-              </div>
-            </li><!-- /item -->
-            <li class="item">
-              <div class="pro-thumb">
-                <a href="" title="">
-                  <img src="{{ URL::asset('assets/images/products/pro14.jpg') }}" alt="">
-                </a>
-              </div>
-              <div class="pro-info">
-                <h2 class="pro-title"><a href="#">Gigabyte GA-Z170X Gaming GT</a></h2>
-                <div class="price-products">
-                  <p class="pro-price">7,240,000đ</p>
-                  <p class="pro-sale"><del>7,940,000đ</del> <span>(6%)</span></p>
-                </div>
-              </div>
-            </li><!-- /item -->
-            <li class="item">
-              <div class="pro-thumb">
-                <a href="" title="">
-                  <img src="{{ URL::asset('assets/images/products/pro13.jpg') }}" alt="">
-                </a>
-              </div>
-              <div class="pro-info">
-                <h2 class="pro-title"><a href="#">Gigabyte GA-Z170X Gaming GT</a></h2>
-                <div class="price-products">
-                  <p class="pro-price">7,240,000đ</p>
-                  <p class="pro-sale"><del>7,940,000đ</del> <span>(6%)</span></p>
-                </div>
-              </div>
-            </li><!-- /item -->
-          </ul>
-        </div>
-      </section><!-- /block-products products -->
-
-      <section class="block block-products products">
-        <div class="block-title">
-          <h2 class="title">Camera quan sát</h2>
-          <a href="#" title="" class="viewmore">Xem 22 sản phẩm <i class="fa fa-angle-right"></i></a>
-        </div>
-        <div class="block-content">
-          <ul class="owl-carousel owl-theme owl-style2" data-nav="true" data-dots="false" data-margin="30" data-responsive='{"0":{"items":1},"480":{"items":2},"600":{"items":2},"768":{"items":3},"800":{"items":3},"992":{"items":6}}'>
-            <li class="item">
-              <div class="pro-thumb">
-                <a href="" title="">
-                  <img src="{{ URL::asset('assets/images/products/pro19.jpg') }}" alt="">
-                </a>
-              </div>
-              <div class="pro-info">
-                <h2 class="pro-title"><a href="#">Gigabyte GA-Z170X Gaming GT</a></h2>
-                <div class="price-products">
-                  <p class="pro-price">7,240,000đ</p>
-                  <p class="pro-sale"><del>7,940,000đ</del> <span>(6%)</span></p>
-                </div>
-              </div>
-            </li><!-- /item -->
-            <li class="item">
-              <div class="pro-thumb">
-                <a href="" title="">
-                  <img src="{{ URL::asset('assets/images/products/pro20.jpg') }}" alt="">
-                </a>
-              </div>
-              <div class="pro-info">
-                <h2 class="pro-title"><a href="#">Gigabyte GA-Z170X Gaming GT</a></h2>
-                <div class="price-products">
-                  <p class="pro-price">7,240,000đ</p>
-                  <p class="pro-sale"><del>7,940,000đ</del> <span>(6%)</span></p>
-                </div>
-              </div>
-            </li><!-- /item -->
-            <li class="item">
-              <div class="pro-thumb">
-                <a href="" title="">
-                  <img src="{{ URL::asset('assets/images/products/pro21.jpg') }}" alt="">
-                </a>
-              </div>
-              <div class="pro-info">
-                <h2 class="pro-title"><a href="#">Gigabyte GA-Z170X Gaming GT</a></h2>
-                <div class="price-products">
-                  <p class="pro-price">7,240,000đ</p>
-                  <p class="pro-sale"><del>7,940,000đ</del> <span>(6%)</span></p>
-                </div>
-              </div>
-            </li><!-- /item -->
-            <li class="item">
-              <div class="pro-thumb">
-                <a href="" title="">
-                  <img src="{{ URL::asset('assets/images/products/pro21.jpg') }}" alt="">
-                </a>
-              </div>
-              <div class="pro-info">
-                <h2 class="pro-title"><a href="#">Gigabyte GA-Z170X Gaming GT</a></h2>
-                <div class="price-products">
-                  <p class="pro-price">7,240,000đ</p>
-                  <p class="pro-sale"><del>7,940,000đ</del> <span>(6%)</span></p>
-                </div>
-              </div>
-            </li><!-- /item -->
-            <li class="item">
-              <div class="pro-thumb">
-                <a href="" title="">
-                  <img src="{{ URL::asset('assets/images/products/pro21.jpg') }}" alt="">
-                </a>
-              </div>
-              <div class="pro-info">
-                <h2 class="pro-title"><a href="#">Gigabyte GA-Z170X Gaming GT</a></h2>
-                <div class="price-products">
-                  <p class="pro-price">7,240,000đ</p>
-                  <p class="pro-sale"><del>7,940,000đ</del> <span>(6%)</span></p>
-                </div>
-              </div>
-            </li><!-- /item -->
-            <li class="item">
-              <div class="pro-thumb">
-                <a href="" title="">
-                  <img src="{{ URL::asset('assets/images/products/pro21.jpg') }}" alt="">
-                </a>
-              </div>
-              <div class="pro-info">
-                <h2 class="pro-title"><a href="#">Gigabyte GA-Z170X Gaming GT</a></h2>
-                <div class="price-products">
-                  <p class="pro-price">7,240,000đ</p>
-                  <p class="pro-sale"><del>7,940,000đ</del> <span>(6%)</span></p>
-                </div>
-              </div>
-            </li><!-- /item -->
-            <li class="item">
-              <div class="pro-thumb">
-                <a href="" title="">
-                  <img src="{{ URL::asset('assets/images/products/pro21.jpg') }}" alt="">
-                </a>
-              </div>
-              <div class="pro-info">
-                <h2 class="pro-title"><a href="#">Gigabyte GA-Z170X Gaming GT</a></h2>
-                <div class="price-products">
-                  <p class="pro-price">7,240,000đ</p>
-                  <p class="pro-sale"><del>7,940,000đ</del> <span>(6%)</span></p>
-                </div>
-              </div>
-            </li><!-- /item -->
-            <li class="item">
-              <div class="pro-thumb">
-                <a href="" title="">
-                  <img src="{{ URL::asset('assets/images/products/pro21.jpg') }}" alt="">
-                </a>
-              </div>
-              <div class="pro-info">
-                <h2 class="pro-title"><a href="#">Gigabyte GA-Z170X Gaming GT</a></h2>
-                <div class="price-products">
-                  <p class="pro-price">7,240,000đ</p>
-                  <p class="pro-sale"><del>7,940,000đ</del> <span>(6%)</span></p>
-                </div>
-              </div>
-            </li><!-- /item -->
-            <li class="item">
-              <div class="pro-thumb">
-                <a href="" title="">
-                  <img src="{{ URL::asset('assets/images/products/pro21.jpg') }}" alt="">
-                </a>
-              </div>
-              <div class="pro-info">
-                <h2 class="pro-title"><a href="#">Gigabyte GA-Z170X Gaming GT</a></h2>
-                <div class="price-products">
-                  <p class="pro-price">7,240,000đ</p>
-                  <p class="pro-sale"><del>7,940,000đ</del> <span>(6%)</span></p>
-                </div>
-              </div>
-            </li><!-- /item -->
-            <li class="item">
-              <div class="pro-thumb">
-                <a href="" title="">
-                  <img src="{{ URL::asset('assets/images/products/pro20.jpg') }}" alt="">
-                </a>
-              </div>
-              <div class="pro-info">
-                <h2 class="pro-title"><a href="#">Gigabyte GA-Z170X Gaming GT</a></h2>
-                <div class="price-products">
-                  <p class="pro-price">7,240,000đ</p>
-                  <p class="pro-sale"><del>7,940,000đ</del> <span>(6%)</span></p>
-                </div>
-              </div>
-            </li><!-- /item -->
-            <li class="item">
-              <div class="pro-thumb">
-                <a href="" title="">
-                  <img src="{{ URL::asset('assets/images/products/pro19.jpg') }}" alt="">
-                </a>
-              </div>
-              <div class="pro-info">
-                <h2 class="pro-title"><a href="#">Gigabyte GA-Z170X Gaming GT</a></h2>
-                <div class="price-products">
-                  <p class="pro-price">7,240,000đ</p>
-                  <p class="pro-sale"><del>7,940,000đ</del> <span>(6%)</span></p>
-                </div>
-              </div>
-            </li><!-- /item -->
-            <li class="item">
-              <div class="pro-thumb">
-                <a href="" title="">
-                  <img src="{{ URL::asset('assets/images/products/pro20.jpg') }}" alt="">
-                </a>
-              </div>
-              <div class="pro-info">
-                <h2 class="pro-title"><a href="#">Gigabyte GA-Z170X Gaming GT</a></h2>
-                <div class="price-products">
-                  <p class="pro-price">7,240,000đ</p>
-                  <p class="pro-sale"><del>7,940,000đ</del> <span>(6%)</span></p>
-                </div>
-              </div>
-            </li><!-- /item -->
-          </ul>
-        </div>
-      </section><!-- /block-products products -->
+      @yield('content')
 
     </section><!-- /container -->
 
@@ -905,11 +144,11 @@
               <p>Giới thiệu về <a href="#" title="" class="urlweb">iCho.vn</a> - Thành viên của IPL</p>
             </li>
             <li class="col-sm-5 col-xs-12 block-phone-ft">
-              <p>Tổng đài: 1900.1908 - 08.3622.9900 (7:30 - 22:00)</p>
+              <p>Tổng đài: 1900 636 975 (7:30 - 22:00)</p>
             </li>
             <li class="col-sm-2 col-xs-12 box-accordion block-accordion-ft">
               <p class="accordion-header">
-                Thông Tin Khác
+                Thông tin khác
                 <a href="javascript:void(0);" class="btn-opened" title="Down Up"></a>
               </p>
             </li>
@@ -923,22 +162,23 @@
               <div class="col-sm-5 col-xs-12">
                 <img src="{{ URL::asset('assets/images/bct.png') }}" alt="Đã đăng ký bộ công thương">
                 <p class="registered-bct">
-                  GPĐKKD số 0303217354<br>
-                  do sở KHĐT Tp.HCM cấp ngày 25/03/2004
+                  GPĐKKD số 0310140399<br>
+                  do Sở KHĐT TP.HCM cấp ngày 02/07/2010
                 </p>
               </div>
               <div class="col-sm-4 col-xs-12">
                 <ul class="menu-ft">
-                  <li><a href="#" title="">Chính sách giao hàng</a></li>
-                  <li><a href="#" title="">7 ngày đổi trả miễn phí</a></li>
-                  <li><a href="#" title="">Hướng dẵn mua hàng</a></li>
+                  <!--<li><a href="{{ route('danh-muc-cha', 'bao-mat-thong-tin') }}">Bảo mật thông tin</a></li>-->
+                  <li><a href="{{ route('danh-muc-cha', 'phuong-thuc-thanh-toan') }}">Phương thức thanh toán</a></li>
+                  <li><a href="{{ route('danh-muc-cha', 'hinh-thuc-van-chuyen') }}">Hình thức vận chuyển</a></li>
+                  <li><a href="{{ route('danh-muc-cha', 'chinh-sach-bao-hanh') }}">Chính sách bảo hành</a></li>
                 </ul><!-- /menu-ft -->
               </div>
               <div class="col-sm-3 col-xs-12">
-                <ul class="menu-ft">
-                  <li><a href="#" title="">Tìm trung tâm bảo hành</a></li>
-                  <li><a href="contact.html" title="">Liên hệ góp ý</a></li>
-                  <li><a href="#" title="">Quy chế chung</a></li>
+                <ul class="menu-ft">                  
+                  <li><a href="{{ route('danh-muc-cha', 'gioi-thieu') }}">Giới thiệu</a></li>
+                  <li><a href="{{ route('chuong-trinh-khuyen-mai') }}">Khuyến mãi</a></li>
+                  <li><a href="{{ route('contact') }}">Liên hệ</a></li>
                 </ul><!-- /menu-ft -->
               </div>  
             </div>
@@ -959,7 +199,13 @@
 
   </section>
   <!-- wrapper -->
-
+  <input type="hidden" id="route-ajax-login-fb" value="{{route('ajax-login-by-fb')}}">
+  <input type="hidden" id="route-cap-nhat-thong-tin" value="{{ route('cap-nhat-thong-tin') }}">
+  <input type="hidden" id="fb-app-id" value="{{ env('FACEBOOK_APP_ID') }}">
+  <input type="hidden" id="route-register-customer-ajax" value="{{ route('register-customer-ajax') }}">
+  <input type="hidden" id="route-register-newsletter" value="{{ route('register.newsletter') }}">
+  <input type="hidden" id="route-add-to-cart" value="{{ route('them-sanpham') }}" />
+  <input type="hidden" id="route-cart" value="{{ route('gio-hang') }}" />
   <!-- ===== JS ===== -->
   <script src="{{ URL::asset('assets/js/jquery.min.js') }}"></script>
   <script src="{{ URL::asset('assets/vendor/bootstrap/bootstrap.min.js') }}"></script>
@@ -969,5 +215,11 @@
   <script src="{{ URL::asset('assets/vendor/sticky/jquery.sticky.js') }}"></script>
   <!-- Js Common -->
   <script src="{{ URL::asset('assets/js/common.js') }}"></script>
+  <script src="{{ URL::asset('assets/js/icheck.min.js') }}"></script>
+  <script src="{{ URL::asset('assets/js/lazy.js') }}"></script>
+  <script src="{{ URL::asset('assets/lib/select2/js/select2.min.js') }}"></script>
+  <script src="{{ URL::asset('assets/js/theme-script.js') }}"></script>
+  <script src="{{ URL::asset('assets/js/sweetalert2.min.js') }}"></script>
+  @yield('javascript_page')
 </body>
 </html>

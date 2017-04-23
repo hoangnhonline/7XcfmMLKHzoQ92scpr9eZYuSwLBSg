@@ -8,6 +8,6 @@
 
   @include('frontend.partials.footer')
 
-  @section('javascript')
+  @section('javascript_page')
   	
 @endsection

@@ -95,15 +95,9 @@ class HomeController extends Controller
             ->orderBy('san_pham.display_order', 'desc')
             ->orderBy('san_pham.id', 'desc');
 
-            if($loai->home_style == 0){
-                $query->limit(12);
-            }elseif( $loai->home_style == 1){
-                $query->limit(6);
-            }elseif( $loai->home_style == 2){
-                $query->limit(8);
-            }else{
-                $query->limit(8);
-            }
+            
+            $query->limit(32);
+            
             if( $loai->home_style > 0 ){
                 $bannerArr[$loai->id] = Banner::where(['object_id' => $loai->id, 'object_type' => 1])->orderBy('display_order', 'asc')->orderBy('id', 'asc')->get();
             }

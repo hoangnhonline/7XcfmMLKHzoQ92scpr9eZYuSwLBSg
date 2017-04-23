@@ -127,7 +127,7 @@
 @endsection
 
 @include('frontend.partials.footer')
-@section('javascript')
+@section('javascript_page')
    <script type="text/javascript">
     var customer_district_id = '{{ $customer->district_id }}';
     var customer_ward_id = '{{ $customer->ward_id }}';

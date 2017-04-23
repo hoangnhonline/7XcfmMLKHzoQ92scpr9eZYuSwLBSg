@@ -1,22 +1,16 @@
 @extends('frontend.layout')
-@section('header')
-    @include('frontend.partials.main-header')
-    @include('frontend.partials.home-menu')
-  @endsection
 @include('frontend.partials.meta')
 @section('content')
-
+<article class="block block-breadcrumb">
+  <ul class="breadcrumb">
+    <li><a href="{{ route('home') }}" title="Trở về trang chủ">Trang chủ</a></li>
+    <li class="active">Cập nhật thông tin tài khoản</li>
+  </ul>
+</article><!-- /block-breadcrumb -->
 <!-- page wapper-->
-<div class="columns-container">
-    <div class="container" id="columns">
-        <!-- breadcrumb -->
-        <div class="breadcrumb clearfix">
-            <a class="home" href="{{ route('home') }}" title="Trở về trang chủ">Trang chủ</a>
-            <span class="navigation-pipe">&nbsp;</span>
-            <a href="#" title="Giỏ hàng"> Cập nhật thông tin tài khoản </a>
-        </div>
-        <!-- ./breadcrumb -->
-        <div class="page-content">
+<section class="block-content">
+        <div class="block-common">
+          <p class="block-page-name">Cập nhật thông tin</p>     
           <!-- row -->
           <div class="shipping-address-page">
                 <div class="row visible-lg-block">
@@ -134,11 +128,10 @@
            </div><!-- /.shipping-address-page -->
 
         </div><!-- /.page-content -->
-    </div>
-</div>
+
+</section>
 @endsection
-@include('frontend.partials.footer')
-@section('javascript')
+@section('javascript_page')
    <script type="text/javascript">
     $(document).ready(function() {
 

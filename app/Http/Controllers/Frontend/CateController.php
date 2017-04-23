@@ -44,36 +44,38 @@ class CateController extends Controller
         
         if($rs){//danh muc cha
             $loai_id = $rs->id;
-            $cateArr = Cate::where('loai_id', $loai_id)->get();
-            foreach( $cateArr as $cate){
-                $query = SanPham::where('cate_id', $cate->id)
-                    ->where('so_luong_ton', '>', 0)
-                    ->where('price', '>', 0)
-                    ->where('chieu_dai', '>', 0)
-                    ->where('chieu_rong', '>', 0)
-                    ->where('chieu_cao', '>', 0)
-                    ->where('can_nang', '>', 0)
-                    ->leftJoin('sp_hinh', 'sp_hinh.id', '=','san_pham.thumbnail_id')
-                    ->leftJoin('sp_thuoctinh', 'sp_thuoctinh.sp_id', '=','san_pham.id')
-                    ->select('sp_hinh.image_url', 'san_pham.*', 'thuoc_tinh');
-                    if($rs->price_sort == 0){
-                        $query->where('price', '>', 0)->orderBy('san_pham.price', 'asc');
-                    }else{
-                        $query->where('price', '>', 0)->orderBy('san_pham.price', 'desc');
-                    }
-                    //->where('sp_hinh.image_url', '<>', '')
-                    $query->orderBy('san_pham.id', 'desc');
-                    $productArr[$cate->id]  = $query->limit(12)->get()->toArray();
+            
+            $query = SanPham::where('loai_id', $loai_id)
+                ->where('so_luong_ton', '>', 0)
+                ->where('price', '>', 0)
+                ->where('chieu_dai', '>', 0)
+                ->where('chieu_rong', '>', 0)
+                ->where('chieu_cao', '>', 0)
+                ->where('can_nang', '>', 0)
+                ->leftJoin('sp_hinh', 'sp_hinh.id', '=','san_pham.thumbnail_id')
+                ->leftJoin('sp_thuoctinh', 'sp_thuoctinh.sp_id', '=','san_pham.id')
+                ->select('sp_hinh.image_url', 'san_pham.*', 'thuoc_tinh');
+                if($rs->price_sort == 0){
+                    $query->where('price', '>', 0)->orderBy('san_pham.price', 'asc');
+                }else{
+                    $query->where('price', '>', 0)->orderBy('san_pham.price', 'desc');
+                }
+                //->where('sp_hinh.image_url', '<>', '')
+                $query->orderBy('san_pham.id', 'desc');
 
-            }
+                $productList  = $query->limit(36)->get();
+                $productArr = $productList->toArray();
+
+           
+
             $hoverInfo = HoverInfo::where('loai_id', $rs->id)->orderBy('display_order', 'asc')->orderBy('id', 'asc')->get();
             $socialImage = $rs->banner_menu;
             if( $rs->meta_id > 0){
                $seo = MetaData::find( $rs->meta_id )->toArray();
             }else{
                 $seo['title'] = $seo['description'] = $seo['keywords'] = $rs->name;
-            }                        
-            return view('frontend.cate.parent', compact('productArr', 'cateArr', 'rs', 'hoverInfo', 'socialImage', 'seo'));
+            }                                     
+            return view('frontend.cate.parent', compact('productList','productArr', 'rs', 'hoverInfo', 'socialImage', 'seo'));
         }else{
             $detailPage = Pages::where('slug', $slug)->first();
             if(!$detailPage){
