@@ -116,22 +116,29 @@
     </header><!-- /header -->
 
     <section class="container">
-      <section class="block block-banner">
+
+        <section class="block block-slider">
         <?php 
         $bannerArr = DB::table('banner')->where(['object_id' => 1, 'object_type' => 3])->orderBy('display_order', 'asc')->get();
         ?>
         @if($bannerArr)
-        @foreach($bannerArr as $banner)
-         @if($banner->ads_url !='')
-          <a href="{{ $banner->ads_url }}">
-          @endif
-          <img alt="banner" class="lazy" data-original="{{ Helper::showImage($banner->image_url) }}" title="banner">
-          @if($banner->ads_url !='')
-          </a>
-          @endif
-        @endforeach
-        @endif
-      </section><!-- /banner -->
+            <ul class="owl-carousel owl-style2" data-nav="true" data-margin="0" data-items='1' data-autoplayTimeout="1000" data-autoplay="false" data-loop="true">
+            @foreach($bannerArr as $banner)
+            
+              <li class="item">
+              @if($banner->ads_url !='')
+              <a href="{{ $banner->ads_url }}" title="">
+              @endif
+              <img alt="banner" src="{{ Helper::showImage($banner->image_url) }}">
+              @if($banner->ads_url !='')
+              </a>
+              @endif
+              </li>
+              @endforeach             
+            </ul>
+            @endif
+        </section><!-- /slider -->
+      
       @yield('content')
 
     </section><!-- /container -->
