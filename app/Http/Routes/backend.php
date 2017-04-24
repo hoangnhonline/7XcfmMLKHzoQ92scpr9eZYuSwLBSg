@@ -138,7 +138,7 @@ Route::group(['namespace' => 'Backend', 'prefix' => 'backend', 'middleware' => '
     Route::group(['prefix' => 'banner'], function () {
         Route::get('/', ['as' => 'banner.index', 'uses' => 'BannerController@index']);
         Route::get('/create/', ['as' => 'banner.create', 'uses' => 'BannerController@create']);
-        Route::get('/list', ['as' => 'banner.list', 'uses' => 'BannerController@list']);
+        Route::get('/list', ['as' => 'banner.list', 'uses' => 'BannerController@lists']);
         Route::post('/store', ['as' => 'banner.store', 'uses' => 'BannerController@store']);
         Route::get('/edit',   ['as' => 'banner.edit', 'uses' => 'BannerController@edit']);
         Route::post('/update', ['as' => 'banner.update', 'uses' => 'BannerController@update']);
