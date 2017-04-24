@@ -160,7 +160,7 @@ return [
         SammyK\LaravelFacebookSdk\LaravelFacebookSdkServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
-        Weidner\Goutte\GoutteServiceProvider::class
+        //Weidner\Goutte\GoutteServiceProvider::class
     ],
 
     /*
