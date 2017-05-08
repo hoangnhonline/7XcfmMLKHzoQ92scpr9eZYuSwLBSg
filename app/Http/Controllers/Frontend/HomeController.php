@@ -68,7 +68,7 @@ class HomeController extends Controller
     public function index(Request $request)
     {             
         $productArr = [];
-        $hoverInfo = [];
+        //$hoverInfo = [];
         $loaiSp = LoaiSp::where('status', 1)->get();
         $bannerArr = [];
         foreach( $loaiSp as $loai){
@@ -81,9 +81,8 @@ class HomeController extends Controller
            
             $query->where('loai_id', $loai->id);
             
-            $query->leftJoin('sp_hinh', 'sp_hinh.id', '=','san_pham.thumbnail_id')
-            ->leftJoin('sp_thuoctinh', 'sp_thuoctinh.sp_id', '=','san_pham.id')
-            ->select('sp_hinh.image_url', 'san_pham.*', 'thuoc_tinh')
+            $query->leftJoin('sp_hinh', 'sp_hinh.id', '=','san_pham.thumbnail_id')            
+            ->select('sp_hinh.image_url', 'san_pham.*')
             ->where('sp_hinh.image_url', '<>', '');
             if($loai->price_sort == 0){
                 $query->where('price', '>', 0)->orderBy('san_pham.price', 'asc');
@@ -102,7 +101,7 @@ class HomeController extends Controller
                 $bannerArr[$loai->id] = Banner::where(['object_id' => $loai->id, 'object_type' => 1])->orderBy('display_order', 'asc')->orderBy('id', 'asc')->get();
             }
 
-            $hoverInfo[$loai->id] = HoverInfo::where('loai_id', $loai->id)->orderBy('display_order', 'asc')->orderBy('id', 'asc')->limit(8)->get();
+           // $hoverInfo[$loai->id] = HoverInfo::where('loai_id', $loai->id)->orderBy('display_order', 'asc')->orderBy('id', 'asc')->limit(8)->get();
             $productArr[$loai->id] = $query->get()->toArray();
             
             $settingArr = Settings::whereRaw('1')->lists('value', 'name');
@@ -114,7 +113,7 @@ class HomeController extends Controller
         }    
         $articlesArr = Articles::where(['cate_id' => 1, 'is_hot' => 1])->orderBy('id', 'desc')->get();
                 
-        return view('frontend.home.index', compact('productArr', 'hoverInfo', 'bannerArr', 'articlesArr', 'socialImage', 'seo', 'countMess'));
+        return view('frontend.home.index', compact('productArr', 'bannerArr', 'articlesArr', 'socialImage', 'seo', 'countMess'));
     }
 
     public function getNoti(){

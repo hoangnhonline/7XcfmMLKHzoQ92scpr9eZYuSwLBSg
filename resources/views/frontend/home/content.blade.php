@@ -1,7 +1,7 @@
 @include('frontend.partials.meta')
 @section('content')
 @foreach( $loaiSpHot as $loai)
-@if(count($productArr[$loai['id']]) > 0)
+
 <section class="block block-products products">
   <div class="block-title">
     <h2 class="title">{{ $loai['name']}}</h2>
@@ -30,6 +30,6 @@
     </ul>
   </div>
 </section><!-- /block-products products -->
-@endif
+
 @endforeach
 @endsection
