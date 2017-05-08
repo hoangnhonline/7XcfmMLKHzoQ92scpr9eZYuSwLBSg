@@ -51,7 +51,7 @@ class BannerController extends Controller
        // dd($items->count());die;
         return view('backend.banner.index', compact( 'items', 'detail', 'arrSearch'));
     }
-    public function list(Request $request){
+    public function lists(Request $request){
         return view('backend.banner.list');   
     }
     /**

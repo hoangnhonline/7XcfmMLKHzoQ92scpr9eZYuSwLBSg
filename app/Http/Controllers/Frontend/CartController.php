@@ -382,7 +382,7 @@ class CartController extends Controller
         }
         // send email
         $order_id =str_pad($order_id, 6, "0", STR_PAD_LEFT);
-        $emailArr = [];
+        //$emailArr = [];
         if(!empty($emailArr)){
             Mail::send('frontend.email.cart',
                 [
