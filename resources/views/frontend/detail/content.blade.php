@@ -80,9 +80,24 @@
 				            		<input type="text" min="1" max="50" maxlength="2" name="txtQuantity" value="1">
 				            		<span class="up">+</span>
 				            	</label>-->
-				            	<button class="buy buynow btn-add-cart-on-product-detail btnMuaDetail" product-id="{{ $detail->id }}" >Chọn Mua</button>
+				            	<button class="buy buynow btn-add-cart-on-product-detail btnMuaDetail" product-id="{{ $detail->id }}" ><i class="fa fa-shopping-cart"></i> &nbsp;Chọn Mua</button>
 				            	<span class="error hide">Số lượng sản phẩm hiện tại chỉ còn 16 sản phẩm</span>
 				            </div>
+				            <div class="panel panel-default block-buy block-panel-products ">
+								<!-- <div class="panel-heading">Nội dung mô tả trong từng sản phẩm tại iCho.vn</div> -->
+								<div class="panel-body">
+									<div class="block-delivery">
+				                	<ul>
+				                		<li>Giao hàng miễn phí với đơn hàng từ 5.000.000 vnd</li>
+					                	<li>Mua càng nhiều giá càng rẻ, hãy gọi 1900 636 975 (line 201) để thương lượng giá</li>
+					                	<li>Vui lòng thanh toán khi nhận hàng, vì iCho đang bán giá sỉ</li>
+					                	<li>Vui lòng kiểm tra sản phẩm khi nhận hàng (phải mới 100%, chính hãng,)</li>
+					                	<li>Quà tặng của sản phẩm kèm theo (nếu có) iCho không giữ quà tặng của khách hàng.</li>
+					                	<li>Quý khách không hài lòng về sản phẩm và dịch vụ, vui lòng phản hồi tại 1900 6076 (line 100)</li>
+				                	</ul>
+				                </div>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div><!-- /block-page-news -->
