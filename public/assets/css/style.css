@@ -250,38 +250,41 @@ img {
 }
 .top-header .logo {
   float: left;
-  width: 28%;
+  width: 33.3%;
   margin: 7px 0;
 }
 .top-header .header-search-box {
   float: left;
-  width: 33%;
+  width: 33.3%;
   height: 35px;
-  margin: 5px 0;
+  margin: 9px 0 0;
   position: relative;
 }
 .top-header .header-contact {
-  float: right;
+  float: left;
   line-height: 45px;
+  width: 33.3%;
+  text-align: right;
 }
 .header-search-box .mainsearch {
   position: relative;
+  width: 240px;
 }
 .header-search-box input {
-  height: 35px;
+  height: 27px;
   background: #fff;
   color: #7c7c7c;
   border-radius: 20px;
   font-style: italic;
-  padding: 5px 35px 5px 20px;
+  padding: 5px 30px 5px 15px;
   line-height: 35px;
 }
 .header-search-box button {
   color: #252525;
   font-size: 15px;
   position: absolute;
-  top: 7px;
-  right: 14px;
+  top: 2px;
+  right: 10px;
   background: transparent;
   border: none;
 }

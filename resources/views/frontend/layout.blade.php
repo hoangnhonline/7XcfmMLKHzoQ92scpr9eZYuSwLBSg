@@ -73,7 +73,7 @@
             </a>
           </div>
           <div class="header-search-box">
-          <form class="form-inline" method="GET" action="{{ route('search') }}" class="mainsearch">            
+          <form class="form-inline mainsearch"  method="GET" action="{{ route('search') }}">            
               <input type="text" autocomplete="off" name="keyword" placeholder="Bạn mua gì hôm nay?" maxlength="50" value="{{ isset($tu_khoa) ? $tu_khoa : "" }}">
 
               <button type="submit"><i class="fa fa-search"></i></button>
