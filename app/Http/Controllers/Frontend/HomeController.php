@@ -67,17 +67,20 @@ class HomeController extends Controller
     }
     public function index(Request $request)
     {             
-        $productArr = [];
+
+        $productArr = $manhinhArr = [];        
         //$hoverInfo = [];
         $loaiSp = LoaiSp::where('status', 1)->get();
         $bannerArr = [];
         foreach( $loaiSp as $loai){
-            $query = SanPham::where('so_luong_ton', '>', 0)
-                            ->where('price', '>', 0)
-                            ->where('chieu_dai', '>', 0)
-                            ->where('chieu_rong', '>', 0)
-                            ->where('chieu_cao', '>', 0)
-                            ->where('can_nang', '>', 0);
+            //var_dump($loai->id."-".$loai->name);
+            $query = SanPham::where('status', 1);
+            $query->where('so_luong_ton', '>', 0)
+                    ->where('price', '>', 0)
+                    ->where('chieu_dai', '>', 0)
+                    ->where('chieu_rong', '>', 0)
+                    ->where('chieu_cao', '>', 0)
+                    ->where('can_nang', '>', 0);
            
             $query->where('loai_id', $loai->id);
             
@@ -96,24 +99,56 @@ class HomeController extends Controller
 
             
             $query->limit(32);
-            
+           
+            $productArr[$loai->id] = $query->get()->toArray();
+
             if( $loai->home_style > 0 ){
                 $bannerArr[$loai->id] = Banner::where(['object_id' => $loai->id, 'object_type' => 1])->orderBy('display_order', 'asc')->orderBy('id', 'asc')->get();
             }
-
-           // $hoverInfo[$loai->id] = HoverInfo::where('loai_id', $loai->id)->orderBy('display_order', 'asc')->orderBy('id', 'asc')->limit(8)->get();
-            $productArr[$loai->id] = $query->get()->toArray();
+            // man hinh may tinh
+            $query = SanPham::where('status', 1);
+           /* $query->where('so_luong_ton', '>', 0)
+                    ->where('price', '>', 0);
+                    ->where('chieu_dai', '>', 0)
+                    ->where('chieu_rong', '>', 0)
+                    ->where('chieu_cao', '>', 0)
+                    ->where('can_nang', '>', 0);
+           */
+            $query->where('cate_id', 83);
             
+            $query->leftJoin('sp_hinh', 'sp_hinh.id', '=','san_pham.thumbnail_id')            
+            ->select('sp_hinh.image_url', 'san_pham.*')
+            ->where('sp_hinh.image_url', '<>', '');
+            if($loai->price_sort == 0){
+                $query->where('price', '>', 0)->orderBy('san_pham.price', 'asc');
+            }else{
+                $query->where('price', '>', 0)->orderBy('san_pham.price', 'desc');
+            }
+            $query->orderBy('san_pham.is_hot', 'desc')
+            ->orderBy('san_pham.is_sale', 'desc')
+            ->orderBy('san_pham.display_order', 'desc')
+            ->orderBy('san_pham.id', 'desc');
+
+            
+            $query->limit(32);
+           
+            $manhinhArr = $query->get()->toArray();
+
             $settingArr = Settings::whereRaw('1')->lists('value', 'name');
             $seo = $settingArr;
             $seo['title'] = $settingArr['site_title'];
             $seo['description'] = $settingArr['site_description'];
             $seo['keywords'] = $settingArr['site_keywords'];
             $socialImage = $settingArr['banner'];
-        }    
+        }
+
+
+
+
+
         $articlesArr = Articles::where(['cate_id' => 1, 'is_hot' => 1])->orderBy('id', 'desc')->get();
                 
-        return view('frontend.home.index', compact('productArr', 'bannerArr', 'articlesArr', 'socialImage', 'seo', 'countMess'));
+        return view('frontend.home.index', compact('productArr', 'bannerArr', 'articlesArr', 'socialImage', 'seo', 'countMess', 'manhinhArr'));
     }
 
     public function getNoti(){
