@@ -1574,11 +1574,14 @@ img {
   outline-offset: -2px;
   outline: none;
 }
-.block-delivery ul li {
-    list-style-type: square;
-    margin-bottom: 7px;
+.block-delivery ul,
+.block-colpolicy ul {
+  padding-left: 15px;
+  text-align: justify;
 }
-.block-delivery ul {
-    padding-left: 15px;
-    text-align: justify;
+.block-delivery ul li {
+  list-style-type: decimal;
+}
+.block-colpolicy ul li {
+    list-style-type: disc;
 }
