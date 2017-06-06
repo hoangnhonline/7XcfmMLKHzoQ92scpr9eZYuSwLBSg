@@ -87,14 +87,7 @@
 								<!-- <div class="panel-heading">Nội dung mô tả trong từng sản phẩm tại iCho.vn</div> -->
 								<div class="panel-body">
 									<div class="block-delivery">
-				                	<ul>
-				                		<li>Giao hàng miễn phí với đơn hàng từ 5.000.000 vnd</li>
-					                	<li>Mua càng nhiều giá càng rẻ, hãy gọi 1900 636 975 (line 201) để thương lượng giá</li>
-					                	<li>Vui lòng thanh toán khi nhận hàng, vì iCho đang bán giá sỉ</li>
-					                	<li>Vui lòng kiểm tra sản phẩm khi nhận hàng (phải mới 100%, chính hãng,)</li>
-					                	<li>Quà tặng của sản phẩm kèm theo (nếu có) iCho không giữ quà tặng của khách hàng.</li>
-					                	<li>Quý khách không hài lòng về sản phẩm và dịch vụ, vui lòng phản hồi tại 1900 6076 (line 100)</li>
-				                	</ul>
+				                	<?php echo $settingArr['mo_ta_sp']; ?>
 				                </div>
 								</div>
 							</div>
