@@ -95,6 +95,7 @@
 					</div>
 				</div><!-- /block-page-news -->
 			</div><!-- /block-left -->
+			@if($detail->chi_tiet)
 			<div class="block-left">
 				<div class="block-details-info">
 					<p class="block-page-name">Thông tin chi tiết</p>
@@ -123,6 +124,7 @@
 	                  @endif
 				</div>
 			</div>
+			@endif
 		</div><!-- /col-md-9 col-sm-8 col-xs-12 page-pl0 -->
 
 		<div class="col-md-3 col-sm-4 col-xs-12">
