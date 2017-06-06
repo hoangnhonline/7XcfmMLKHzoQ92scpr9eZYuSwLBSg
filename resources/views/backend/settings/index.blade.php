@@ -68,6 +68,10 @@
                   <textarea class="form-control" rows="3" name="email_cc" id="email_cc">{{ $settingArr['email_cc'] }}</textarea>
                 </div>
                 <div class="form-group">
+                  <label>Mô tả chung</label>
+                  <textarea class="form-control" rows="7" name="mo_ta_sp" id="mo_ta_sp">{{ $settingArr['mo_ta_sp'] }}</textarea>
+                </div>
+                <div class="form-group">
                   <label>Code google analystic </label>
                   <input type="text" class="form-control" name="google_analystic" id="google_analystic" value="{{ $settingArr['google_analystic'] }}">
                 </div>   
@@ -167,6 +171,16 @@
 @section('javascript_page')
 <script type="text/javascript">
     $(document).ready(function(){
+      var editor = CKEDITOR.replace( 'mo_ta_sp',{
+          language : 'vi',
+          filebrowserBrowseUrl: "{{ URL::asset('/backend/dist/js/kcfinder/browse.php?type=files') }}",
+          filebrowserImageBrowseUrl: "{{ URL::asset('/backend/dist/js/kcfinder/browse.php?type=images') }}",
+          filebrowserFlashBrowseUrl: "{{ URL::asset('/backend/dist/js/kcfinder/browse.php?type=flash') }}",
+          filebrowserUploadUrl: "{{ URL::asset('/backend/dist/js/kcfinder/upload.php?type=files') }}",
+          filebrowserImageUploadUrl: "{{ URL::asset('/backend/dist/js/kcfinder/upload.php?type=images') }}",
+          filebrowserFlashUploadUrl: "{{ URL::asset('/backend/dist/js/kcfinder/upload.php?type=flash') }}",
+          height : 500
+      });
       $('#btnUploadLogo').click(function(){        
         $('#file-logo').click();
       });
